@@ -1,5 +1,6 @@
 package dev.entao.ui.widget
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import dev.entao.appbase.ex.*
+import dev.entao.ui.base.ContainerActivity
 
 import dev.entao.ui.ext.*
 import dev.entao.ui.res.D
@@ -16,6 +18,7 @@ import dev.entao.ui.res.Res
 import dev.entao.ui.viewcreator.*
 import dev.entao.util.Task
 
+@SuppressLint("ViewConstructor")
 class TitleBar(val context: Activity) : RelativeLayout(context) {
     private val leftCmds = ArrayList<BarItem>()
     private val rightCmds = ArrayList<BarItem>()
@@ -261,7 +264,12 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
         }
         val a = leftImage(resId, BACK)
         a.onClick = {
-            context.finish()
+
+            if(context is ContainerActivity) {
+                context.pop()
+            }else {
+                context.finish()
+            }
         }
         return a
     }

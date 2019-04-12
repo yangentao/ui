@@ -11,7 +11,7 @@ import dev.entao.json.YsonObject
 import dev.entao.ui.dialogs.DialogX
 import dev.entao.ui.ext.act
 import dev.entao.ui.ext.openActivity
-import dev.entao.ui.page.BaseFragment
+import dev.entao.ui.base.BaseFragment
 import dev.entao.util.Task
 import dev.entao.util.ToastUtil
 import java.io.File

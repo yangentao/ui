@@ -10,7 +10,7 @@ import dev.entao.base.ex.extraInt
 import dev.entao.base.ex.hasBits
 import dev.entao.base.ex.removeBits
 import dev.entao.log.Yog
-import dev.entao.ui.page.BaseFragment
+import dev.entao.ui.base.BaseFragment
 import dev.entao.util.InMainThread
 import dev.entao.util.Msg
 import kotlin.reflect.KClass

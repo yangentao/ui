@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.support.v4.app.Fragment
 import dev.entao.ui.ext.act
-import dev.entao.ui.page.BaseFragment
+import dev.entao.ui.base.BaseFragment
 import kotlin.reflect.KClass
 
 fun Activity.openPage(page: BaseFragment, block: Intent.() -> Unit = {}) {

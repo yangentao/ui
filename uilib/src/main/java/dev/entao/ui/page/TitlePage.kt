@@ -10,6 +10,8 @@ import android.widget.LinearLayout
 import dev.entao.appbase.ex.Colors
 import dev.entao.base.Progress
 import dev.entao.ui.activities.TabBarActivity
+import dev.entao.ui.base.BaseFragment
+import dev.entao.ui.base.ContainerActivity
 import dev.entao.ui.ext.*
 import dev.entao.ui.viewcreator.createLinearVertical
 import dev.entao.ui.widget.BottomBar
@@ -48,7 +50,7 @@ open class TitlePage : BaseFragment(), Progress {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         rootView = LinearLayoutX(act)
-	    rootView.vertical()
+        rootView.vertical()
         rootView.backColorWhite()
         if (hasTopProgress) {
             val b = TopProgressBar(act).gone()
@@ -80,9 +82,14 @@ open class TitlePage : BaseFragment(), Progress {
             bottomBar = bar
         }
 
-        if (this.activity !is TabBarActivity) {
-            titleBar.showBack().onClick = {
-                finish()
+        val ac = this.activity
+        if (ac !is TabBarActivity) {
+            if (ac is ContainerActivity) {
+                if (ac.pageSize == 0) {
+                    titleBar.showBack()
+                }
+            } else {
+                titleBar.showBack()
             }
         }
 

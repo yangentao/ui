@@ -7,7 +7,7 @@ import android.view.KeyEvent
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import dev.entao.ui.ext.*
-import dev.entao.ui.page.BaseFragment
+import dev.entao.ui.base.BaseFragment
 import dev.entao.ui.util.FragmentHelper
 import dev.entao.ui.viewcreator.createFrame
 import dev.entao.ui.viewcreator.createLinearVertical

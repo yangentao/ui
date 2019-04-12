@@ -1,16 +1,15 @@
 package dev.entao.utilapp
 
-import android.widget.LinearLayout
-import dev.entao.ui.activities.TitledActivity
+import android.os.Bundle
+import dev.entao.ui.base.ContainerActivity
 
-class MainActivity : TitledActivity() {
+class MainActivity : ContainerActivity() {
 
-    override fun onCreateContent(contentView: LinearLayout) {
-        titleBar.title("Hello")
-        titleBar.showBack()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        push(HelloPage())
     }
-
-
 
 }
 

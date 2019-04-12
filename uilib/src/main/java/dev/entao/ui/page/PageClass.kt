@@ -2,6 +2,7 @@ package dev.entao.ui.page
 
 import android.app.Activity
 import dev.entao.ui.activities.openPage
+import dev.entao.ui.base.BaseFragment
 import kotlin.reflect.full.createInstance
 /**
  * Created by entaoyang@163.com on 2018-07-13.

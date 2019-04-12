@@ -5,8 +5,8 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.KeyEvent
 import android.widget.FrameLayout
+import dev.entao.ui.base.BaseFragment
 import dev.entao.ui.ext.fragMgr
-import dev.entao.ui.page.BaseFragment
 import dev.entao.ui.viewcreator.createFrame
 import dev.entao.util.Msg
 

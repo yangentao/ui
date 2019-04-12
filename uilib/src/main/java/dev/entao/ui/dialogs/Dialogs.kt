@@ -9,7 +9,7 @@ import dev.entao.appbase.ex.dp
 import dev.entao.ui.ext.act
 import dev.entao.ui.ext.inputTypeNumber
 import dev.entao.ui.ext.textS
-import dev.entao.ui.page.BaseFragment
+import dev.entao.ui.base.BaseFragment
 
 /**
  * Created by entaoyang@163.com on 16/5/10.
