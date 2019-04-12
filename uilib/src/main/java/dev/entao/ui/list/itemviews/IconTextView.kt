@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.appbase.ex.dp
-import dev.entao.theme.IconSize
+import dev.entao.ui.theme.IconSize
 import dev.entao.ui.ext.*
 import dev.entao.ui.creator.createImageView
 import dev.entao.ui.creator.createTextViewA

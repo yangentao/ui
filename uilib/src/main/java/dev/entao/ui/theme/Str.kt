@@ -1,4 +1,4 @@
-package dev.entao.theme
+package dev.entao.ui.theme
 
 import dev.entao.ui.R
 import dev.entao.ui.res.Res

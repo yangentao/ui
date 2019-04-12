@@ -17,7 +17,7 @@ import android.widget.TextView
 import dev.entao.appbase.App
 import dev.entao.appbase.ex.Colors
 import dev.entao.appbase.ex.dp
-import dev.entao.theme.ViewSize
+import dev.entao.ui.theme.ViewSize
 import dev.entao.ui.ext.*
 import dev.entao.ui.grid.SimpleGridView
 import dev.entao.ui.list.CheckListView

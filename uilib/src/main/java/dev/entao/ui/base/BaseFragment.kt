@@ -30,7 +30,7 @@ import dev.entao.appbase.ex.saveJpg
 import dev.entao.appbase.ex.savePng
 import dev.entao.base.MyDate
 import dev.entao.log.Yog
-import dev.entao.theme.Str
+import dev.entao.ui.theme.Str
 import dev.entao.ui.dialogs.DialogX
 import dev.entao.ui.dialogs.HorProgressDlg
 import dev.entao.ui.dialogs.SpinProgressDlg

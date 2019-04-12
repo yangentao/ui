@@ -1,4 +1,4 @@
-package dev.entao.util.imgloader
+package dev.entao.ui.imgloader
 
 import android.widget.ImageView
 

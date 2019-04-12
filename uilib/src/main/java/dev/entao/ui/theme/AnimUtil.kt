@@ -1,4 +1,4 @@
-package dev.entao.ui
+package dev.entao.ui.theme
 
 import android.view.View
 import android.view.animation.*
@@ -13,23 +13,23 @@ class AnimUtil {
 
 	private val animSet = AnimationSet(true)
 
-	fun trans(fromXDelta: Float, toXDelta: Float, fromYDelta: Float, toYDelta: Float): dev.entao.ui.AnimUtil {
+	fun trans(fromXDelta: Float, toXDelta: Float, fromYDelta: Float, toYDelta: Float): AnimUtil {
 		val anim = TranslateAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta)
 		animSet.addAnimation(anim)
 		return this
 	}
 
-	fun alpha(fromAlpha: Float, toAlpha: Float): dev.entao.ui.AnimUtil {
+	fun alpha(fromAlpha: Float, toAlpha: Float): AnimUtil {
 		animSet.addAnimation(AlphaAnimation(fromAlpha, toAlpha))
 		return this
 	}
 
-	fun scale(fromX: Float, toX: Float, fromY: Float, toY: Float): dev.entao.ui.AnimUtil {
+	fun scale(fromX: Float, toX: Float, fromY: Float, toY: Float): AnimUtil {
 		animSet.addAnimation(ScaleAnimation(fromX, toX, fromY, toY))
 		return this
 	}
 
-	fun rotate(fromDegrees: Float, toDegrees: Float): dev.entao.ui.AnimUtil {
+	fun rotate(fromDegrees: Float, toDegrees: Float): AnimUtil {
 		animSet.addAnimation(RotateAnimation(fromDegrees, toDegrees))
 		return this
 	}

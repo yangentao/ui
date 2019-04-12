@@ -13,6 +13,7 @@ import dev.entao.ui.base.act
 import dev.entao.ui.ext.*
 import dev.entao.ui.creator.append
 import dev.entao.ui.creator.linearVer
+import dev.entao.ui.theme.MyColor
 import dev.entao.ui.widget.BottomBar
 import dev.entao.ui.widget.TitleBar
 import dev.entao.ui.widget.TopProgressBar
@@ -80,7 +81,7 @@ open class TitlePage : BaseFragment(), Progress {
         titleBar.commit()
         bottomBar?.commit()
         if (OS.GE50) {
-            val c = dev.entao.ui.MyColor(Colors.Theme)
+            val c = MyColor(Colors.Theme)
             statusBarColor(c.multiRGB(0.7))
         }
         onContentCreated()

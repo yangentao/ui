@@ -1,4 +1,4 @@
-package dev.entao.util.imgloader
+package dev.entao.ui.imgloader
 
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -91,7 +91,7 @@ class UriImage(val uri: Uri) {
 				bmp = bmp.roundSqure(option.corner)
 			}
 			if (option.limit < 800) {
-				ImageCache.put(key, bmp)
+                ImageCache.put(key, bmp)
 			}
 		}
 		return bmp

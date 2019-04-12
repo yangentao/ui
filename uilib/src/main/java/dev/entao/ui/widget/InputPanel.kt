@@ -6,7 +6,7 @@ import android.widget.*
 import dev.entao.appbase.ex.Colors
 import dev.entao.appbase.ex.ImageStated
 import dev.entao.appbase.ex.RectDraw
-import dev.entao.theme.ViewSize
+import dev.entao.ui.theme.ViewSize
 import dev.entao.ui.R
 import dev.entao.ui.base.BaseFragment
 import dev.entao.ui.ext.*

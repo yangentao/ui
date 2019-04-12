@@ -1,4 +1,4 @@
-package dev.entao.theme
+package dev.entao.ui.theme
 
 /**
  * Created by entaoyang@163.com on 16/7/21.

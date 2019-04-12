@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.appbase.ex.*
-import dev.entao.theme.Space
+import dev.entao.ui.theme.Space
 import dev.entao.ui.res.D
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.reflect.KClass

@@ -5,7 +5,7 @@ import android.support.annotation.DrawableRes
 import android.view.View
 import dev.entao.appbase.ex.Colors
 import dev.entao.appbase.ex.ImageStated
-import dev.entao.theme.IconSize
+import dev.entao.ui.theme.IconSize
 import dev.entao.ui.R
 import dev.entao.ui.res.D
 import dev.entao.util.Task

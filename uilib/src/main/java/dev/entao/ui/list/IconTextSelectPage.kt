@@ -2,8 +2,8 @@ package dev.entao.ui.list
 
 import android.content.Context
 import android.view.View
-import dev.entao.theme.IconSize
-import dev.entao.theme.TextSize
+import dev.entao.ui.theme.IconSize
+import dev.entao.ui.theme.TextSize
 import dev.entao.ui.list.itemviews.IconTextView
 
 /**

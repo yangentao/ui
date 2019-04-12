@@ -1,4 +1,4 @@
-package dev.entao.util.imgloader
+package dev.entao.ui.imgloader
 
 import dev.entao.appbase.sql.MapTable
 import java.io.File

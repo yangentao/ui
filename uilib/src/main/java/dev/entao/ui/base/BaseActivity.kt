@@ -15,6 +15,7 @@ import android.widget.Toast
 import dev.entao.appbase.App
 import dev.entao.appbase.ex.Colors
 import dev.entao.json.YsonObject
+import dev.entao.ui.theme.MyColor
 import dev.entao.util.*
 import dev.entao.util.app.Perm
 import dev.entao.util.app.yson
@@ -106,7 +107,7 @@ open class BaseActivity : AppCompatActivity(), MsgListener {
     }
 
     fun statusBarColorFromTheme() {
-        val c = dev.entao.ui.MyColor(Colors.Theme)
+        val c = MyColor(Colors.Theme)
         statusBarColor(c.multiRGB(0.7))
     }
 

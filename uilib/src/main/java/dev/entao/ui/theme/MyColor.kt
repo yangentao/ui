@@ -1,4 +1,4 @@
-package dev.entao.ui
+package dev.entao.ui.theme
 
 import android.graphics.Color
 
@@ -15,7 +15,7 @@ class MyColor(val color: Int) {
 
 
 	fun multiRGB(f: Double): Int {
-		return dev.entao.ui.MyColor.Companion.argb(alpha, (red * f).toInt(), (green * f).toInt(), (blue * f).toInt())
+		return argb(alpha, (red * f).toInt(), (green * f).toInt(), (blue * f).toInt())
 	}
 
 

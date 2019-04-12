@@ -1,4 +1,4 @@
-package dev.entao.util.imgloader
+package dev.entao.ui.imgloader
 
 /**
  * Created by entaoyang@163.com on 2016-11-02.

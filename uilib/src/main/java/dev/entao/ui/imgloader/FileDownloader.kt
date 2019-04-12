@@ -1,4 +1,4 @@
-package dev.entao.util.imgloader
+package dev.entao.ui.imgloader
 
 import dev.entao.appbase.App
 import dev.entao.base.Sleep
@@ -24,12 +24,12 @@ object FileDownloader {
 
 	fun download(url: String, block: (File?) -> Unit) {
 		Task.back {
-			downloadSync(url, object : DownListener {
-				override fun onDownload(url: String, ok: Boolean) {
-					val f = ImageLocal.find(url)
-					block(f)
-				}
-			})
+            downloadSync(url, object : DownListener {
+                override fun onDownload(url: String, ok: Boolean) {
+                    val f = ImageLocal.find(url)
+                    block(f)
+                }
+            })
 		}
 	}
 
@@ -59,7 +59,7 @@ object FileDownloader {
 		val tmp = App.files.ex.tempFile()
 		val ok = httpDown(url, tmp)
 		if (ok) {
-			ImageLocal.put(url, tmp.absolutePath)
+            ImageLocal.put(url, tmp.absolutePath)
 		} else {
 			tmp.delete()
 		}
@@ -82,6 +82,6 @@ object FileDownloader {
 			block(f)
 			return
 		}
-		download(url, block)
+        download(url, block)
 	}
 }

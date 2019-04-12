@@ -3,7 +3,7 @@ package dev.entao.ui.ext
 import android.widget.Button
 import android.widget.CheckBox
 import dev.entao.appbase.ex.Colors
-import dev.entao.theme.ViewSize
+import dev.entao.ui.theme.ViewSize
 import dev.entao.ui.res.D
 
 /**

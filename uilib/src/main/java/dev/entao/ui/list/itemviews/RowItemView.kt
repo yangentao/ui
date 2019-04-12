@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.appbase.ex.Colors
-import dev.entao.theme.TextSize
+import dev.entao.ui.theme.TextSize
 import dev.entao.ui.ext.*
 /**
  * Created by entaoyang@163.com on 16/3/13.

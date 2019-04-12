@@ -11,7 +11,7 @@ import dev.entao.appbase.ex.Colors
 import dev.entao.appbase.ex.dp
 import dev.entao.base.getValue
 import dev.entao.base.labelProp_
-import dev.entao.theme.ViewSize
+import dev.entao.ui.theme.ViewSize
 import dev.entao.ui.dialogs.DialogX
 import dev.entao.ui.res.D
 import dev.entao.ui.creator.*

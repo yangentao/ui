@@ -10,8 +10,8 @@ import android.os.Build
 import android.support.annotation.DrawableRes
 import dev.entao.appbase.App
 import dev.entao.appbase.ex.*
-import dev.entao.theme.IconSize
-import dev.entao.theme.ViewSize
+import dev.entao.ui.theme.IconSize
+import dev.entao.ui.theme.ViewSize
 import dev.entao.ui.R
 import dev.entao.ui.widget.EditTextX
 

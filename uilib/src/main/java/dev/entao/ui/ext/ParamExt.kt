@@ -3,8 +3,8 @@ package dev.entao.ui.ext
 import android.view.View
 import android.view.ViewGroup
 import dev.entao.appbase.ex.dp
-import dev.entao.theme.Space
-import dev.entao.theme.ViewSize
+import dev.entao.ui.theme.Space
+import dev.entao.ui.theme.ViewSize
 
 /**
  * Created by yangentao on 2015/11/21.

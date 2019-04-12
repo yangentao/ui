@@ -19,8 +19,8 @@ import dev.entao.appbase.ex.ColorListLight
 import dev.entao.appbase.ex.Colors
 import dev.entao.appbase.ex.dp
 import dev.entao.appbase.ex.sized
-import dev.entao.theme.Space
-import dev.entao.theme.TextSize
+import dev.entao.ui.theme.Space
+import dev.entao.ui.theme.TextSize
 import dev.entao.ui.R
 import dev.entao.ui.res.D
 import dev.entao.util.HtmlText

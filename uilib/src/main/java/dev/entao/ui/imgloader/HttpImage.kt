@@ -1,4 +1,4 @@
-package dev.entao.util.imgloader
+package dev.entao.ui.imgloader
 
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -42,7 +42,7 @@ class HttpImage(val url: String) {
 					bmp = bmp.roundSqure(option.corner)
 				}
 				if (option.limit <= 800) {
-					ImageCache.put(key, bmp)
+                    ImageCache.put(key, bmp)
 				}
 			}
 		}
@@ -52,18 +52,18 @@ class HttpImage(val url: String) {
 	fun bitmap(block: (Bitmap?) -> Unit) {
 		val key = keyString()
 		if (option.forceDownload) {
-			FileDownloader.download(url) {
-				ImageCache.remove(key)
-				block(findCache())
-			}
+            FileDownloader.download(url) {
+                ImageCache.remove(key)
+                block(findCache())
+            }
 		} else {
 			val b = findCache()
 			if (b != null) {
 				block(b)
 			} else {
-				FileDownloader.retrive(url) {
-					block(findCache())
-				}
+                FileDownloader.retrive(url) {
+                    block(findCache())
+                }
 			}
 		}
 

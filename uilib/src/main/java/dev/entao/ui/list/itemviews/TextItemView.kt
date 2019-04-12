@@ -5,8 +5,8 @@ import android.graphics.drawable.Drawable
 import android.support.annotation.DrawableRes
 import android.widget.TextView
 import dev.entao.appbase.ex.sized
-import dev.entao.theme.IconSize
-import dev.entao.theme.Space
+import dev.entao.ui.theme.IconSize
+import dev.entao.ui.theme.Space
 import dev.entao.ui.ext.gravityLeftCenter
 import dev.entao.ui.ext.padding
 import dev.entao.ui.ext.textColorMajor

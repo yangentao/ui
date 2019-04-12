@@ -1,7 +1,7 @@
 package dev.entao.ui.ext
 
 import android.widget.EditText
-import dev.entao.theme.Str
+import dev.entao.ui.theme.Str
 import dev.entao.ui.res.D
 
 /**
