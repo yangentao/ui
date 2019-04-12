@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.widget.FrameLayout
 import android.widget.LinearLayout
-import dev.entao.ui.ext.*
 import dev.entao.ui.base.BaseFragment
+import dev.entao.ui.ext.*
 import dev.entao.ui.util.FragmentHelper
 import dev.entao.ui.viewcreator.createFrame
 import dev.entao.ui.viewcreator.createLinearVertical
@@ -20,7 +20,7 @@ import kotlin.collections.set
  */
 
 open class TabBarActivity : BaseActivity() {
-	lateinit var rootView: LinearLayout
+	lateinit var rootLinearView: LinearLayout
 		private set
 	lateinit var containerView: FrameLayout
 		private set
@@ -38,11 +38,11 @@ open class TabBarActivity : BaseActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		fragMgr.beginTransaction().setTransition(FragmentTransaction.TRANSIT_NONE).commit()
-		rootView = this.createLinearVertical()
-		this.setContentView(rootView)
+		rootLinearView = this.createLinearVertical()
+		this.setContentView(rootLinearView)
 
 		containerView = this.createFrame()
-		rootView.addViewParam(containerView) {
+		rootLinearView.addViewParam(containerView) {
 			widthFill().heightDp(0).weight(1)
 		}
 		fragLayoutId = containerView.id
@@ -55,7 +55,7 @@ open class TabBarActivity : BaseActivity() {
 			this@TabBarActivity.onXTabBarSelect(it.text)
 		}
 
-		rootView.addView(tabBar)
+		rootLinearView.addView(tabBar)
 	}
 
 	fun tab(text: String, icon: Int, page: BaseFragment) {

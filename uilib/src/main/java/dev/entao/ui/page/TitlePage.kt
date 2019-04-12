@@ -3,10 +3,8 @@ package dev.entao.ui.page
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.widget.NestedScrollView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import dev.entao.appbase.ex.Colors
 import dev.entao.base.Progress
 import dev.entao.ui.activities.TabBarActivity
@@ -22,7 +20,7 @@ import dev.entao.util.Task
 import dev.entao.util.app.OS
 
 open class TitlePage : BaseFragment(), Progress {
-    lateinit var rootView: LinearLayoutX
+    lateinit var rootLinearView: LinearLayoutX
         private set
 
     lateinit var titleBar: TitleBar
@@ -46,39 +44,38 @@ open class TitlePage : BaseFragment(), Progress {
 
     var enableContentScroll = false
 
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
-        rootView = LinearLayoutX(act)
-        rootView.vertical()
-        rootView.backColorWhite()
+    override fun onCreatePage(context: Context, pageView: RelativeLayout, savedInstanceState: Bundle?) {
+        rootLinearView = LinearLayoutX(act)
+        pageView.addView(rootLinearView, RParam.Fill)
+        rootLinearView.vertical()
+        rootLinearView.backColorWhite()
         if (hasTopProgress) {
             val b = TopProgressBar(act).gone()
-            rootView.addView(b, LParam.WidthFill.height(6))
+            rootLinearView.addView(b, LParam.WidthFill.height(6))
             topProgress = b
         }
         titleBar = TitleBar(act)
-        rootView.addView(titleBar, LParam.WidthFill.height(TitleBar.HEIGHT))
+        rootLinearView.addView(titleBar, LParam.WidthFill.height(TitleBar.HEIGHT))
 
 
         if (hasSnak) {
             val v = Snack(act).gone()
-            rootView.addView(v, LParam.WidthFill.HeightWrap.GravityCenterVertical)
+            rootLinearView.addView(v, LParam.WidthFill.HeightWrap.GravityCenterVertical)
             snack = v
         }
 
         contentView = createLinearVertical()
         if (enableContentScroll) {
 //			val scrollView = createScroll()
-            val scrollView = NestedScrollView(rootView.context).genId()
-            rootView.addView(scrollView, LParam.WidthFill.height(0).weight(1))
+            val scrollView = NestedScrollView(rootLinearView.context).genId()
+            rootLinearView.addView(scrollView, LParam.WidthFill.height(0).weight(1))
             scrollView.addView(contentView, LParam.WidthFill.HeightWrap)
         } else {
-            rootView.addView(contentView, LParam.WidthFill.height(0).weight(1))
+            rootLinearView.addView(contentView, LParam.WidthFill.height(0).weight(1))
         }
         if (hasBottomBar) {
             val bar = BottomBar(act)
-            rootView.addView(bar, LParam.WidthFill.height(BottomBar.HEIGHT))
+            rootLinearView.addView(bar, LParam.WidthFill.height(BottomBar.HEIGHT))
             bottomBar = bar
         }
 
@@ -102,7 +99,6 @@ open class TitlePage : BaseFragment(), Progress {
         }
         onContentCreated()
         contentCreated = true
-        return rootView
     }
 
 

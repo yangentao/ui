@@ -15,6 +15,11 @@ open class ContainerActivity : AppCompatActivity() {
 
     private lateinit var containerView: FrameLayout
 
+    private val containerId: Int
+        get() = containerView.id
+
+    val pageSize: Int get() = this.fragMgr.fragments.size
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         containerView = this.createFrame()
@@ -32,11 +37,6 @@ open class ContainerActivity : AppCompatActivity() {
             finish()
         }
     }
-
-    val containerId: Int
-        get() = containerView.id
-
-    val pageSize: Int get() = this.fragMgr.fragments.size
 
 
     fun push(fragment: BaseFragment, pushAnim: Boolean, popAnim: Boolean) {

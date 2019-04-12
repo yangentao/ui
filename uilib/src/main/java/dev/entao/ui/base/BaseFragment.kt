@@ -16,10 +16,10 @@ import android.preference.PreferenceManager
 import android.provider.MediaStore
 import android.support.v4.app.Fragment
 import android.util.SparseArray
-import android.view.KeyEvent
-import android.view.WindowManager
+import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
+import android.widget.RelativeLayout
 import android.widget.TimePicker
 import android.widget.Toast
 import dev.entao.appbase.App
@@ -29,15 +29,16 @@ import dev.entao.appbase.ex.savePng
 import dev.entao.base.MyDate
 import dev.entao.base.getValue
 import dev.entao.log.Yog
-import dev.entao.log.loge
 import dev.entao.theme.Str
 import dev.entao.ui.activities.TabBarActivity
 import dev.entao.ui.dialogs.DialogX
-import dev.entao.ui.dialogs.GridConfig
 import dev.entao.ui.dialogs.HorProgressDlg
 import dev.entao.ui.dialogs.SpinProgressDlg
 import dev.entao.ui.ext.act
-import dev.entao.ui.page.WebPage
+import dev.entao.ui.ext.selectItem
+import dev.entao.ui.ext.selectItemT
+import dev.entao.ui.ext.selectString
+import dev.entao.ui.widget.RelativeLayoutX
 import dev.entao.ui.widget.TabBar
 import dev.entao.util.*
 import dev.entao.util.app.Perm
@@ -55,7 +56,7 @@ import kotlin.reflect.KProperty1
  * fragment基类 公用方法在此处理
  */
 open class BaseFragment : Fragment(), MsgListener {
-
+    protected lateinit var pageRalativeView: RelativeLayoutX
 
     private val resultListeners = SparseArray<PreferenceManager.OnActivityResultListener>(8)
     lateinit var spinProgressDlg: SpinProgressDlg
@@ -71,39 +72,15 @@ open class BaseFragment : Fragment(), MsgListener {
 
     val watchMap = HashMap<Uri, ContentObserver>()
 
-    fun openWeb(title: String, url: String) {
-        WebPage.open(act, title, url)
+
+    final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        pageRalativeView = RelativeLayoutX(act)
+        onCreatePage(act, pageRalativeView, savedInstanceState)
+        return pageRalativeView
     }
 
-    fun openAssetHtml(title: String, file: String) {
-        WebPage.openAsset(act, title, file)
-    }
+    open fun onCreatePage(context: Context, pageView: RelativeLayout, savedInstanceState: Bundle?) {
 
-    fun smsTo(phoneSet: Set<String>, body: String = "") {
-        if (phoneSet.isNotEmpty()) {
-            smsTo(phoneSet.joinToString(";"), body)
-        }
-    }
-
-    fun smsTo(phone: String, body: String = "") {
-        val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:$phone"))
-        if (body.isNotEmpty()) {
-            intent.putExtra("sms_body", body)
-        }
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        act.startActivity(intent)
-    }
-
-
-    fun dial(phone: String) {
-        try {
-            val uri = Uri.fromParts("tel", phone, null)
-            val it = Intent(Intent.ACTION_DIAL, uri)
-            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            act.startActivity(it)
-        } catch (e: Throwable) {
-            loge(e)
-        }
     }
 
 
@@ -140,41 +117,6 @@ open class BaseFragment : Fragment(), MsgListener {
         selectItem(items, { prop.getValue(it)?.toString() ?: "" }, resultBlock)
     }
 
-    @Suppress("UNCHECKED_CAST")
-    fun <T : Any> selectItemT(
-        title: String,
-        items: Collection<T>,
-        displayBlock: (T) -> String,
-        resultBlock: (T) -> Unit
-    ) {
-        DialogX.listItem(act, items.toList(), title, { displayBlock(it as T) }, { resultBlock(it as T) })
-    }
-
-    fun selectItem(items: Collection<Any>, displayBlock: (Any) -> String, resultBlock: (Any) -> Unit) {
-        DialogX.listItem(act, items.toList(), "", displayBlock, resultBlock)
-    }
-
-    fun selectString(items: Collection<String>, resultBlock: (String) -> Unit) {
-        DialogX.listItem(act, items.toList(), "", { it as String }) {
-            resultBlock(it as String)
-        }
-    }
-
-    fun selectStringN(items: Collection<String>, block: (Int) -> Unit) {
-        DialogX.listStringN(act, items.toList(), "", block)
-    }
-
-
-    fun selectGrid(items: List<Any>, callback: GridConfig.() -> Unit) {
-        DialogX.selectGrid(act, items, callback)
-    }
-
-    fun showDialog(block: DialogX.() -> Unit): DialogX {
-        val d = DialogX(act)
-        d.block()
-        d.show()
-        return d
-    }
 
     override fun onResume() {
         super.onResume()

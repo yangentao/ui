@@ -10,6 +10,10 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
+import dev.entao.log.loge
+import dev.entao.ui.dialogs.DialogX
+import dev.entao.ui.dialogs.GridConfig
+import dev.entao.ui.page.WebPage
 import kotlin.reflect.KClass
 
 /**
@@ -92,3 +96,73 @@ val AppCompatActivity.currentFragment: Fragment? get() = fragMgr.fragments?.last
 
 val Fragment.act: FragmentActivity get() = this.requireActivity()
 
+fun Fragment.openWeb(title: String, url: String) {
+    WebPage.open(act, title, url)
+}
+
+fun Fragment.openAssetHtml(title: String, file: String) {
+    WebPage.openAsset(act, title, file)
+}
+
+fun Fragment.smsTo(phoneSet: Set<String>, body: String = "") {
+    if (phoneSet.isNotEmpty()) {
+        smsTo(phoneSet.joinToString(";"), body)
+    }
+}
+
+fun Fragment.smsTo(phone: String, body: String = "") {
+    val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:$phone"))
+    if (body.isNotEmpty()) {
+        intent.putExtra("sms_body", body)
+    }
+    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+    act.startActivity(intent)
+}
+
+
+fun Fragment.dial(phone: String) {
+    try {
+        val uri = Uri.fromParts("tel", phone, null)
+        val it = Intent(Intent.ACTION_DIAL, uri)
+        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        act.startActivity(it)
+    } catch (e: Throwable) {
+        loge(e)
+    }
+}
+
+@Suppress("UNCHECKED_CAST")
+fun <T : Any> Fragment.selectItemT(
+    title: String,
+    items: Collection<T>,
+    displayBlock: (T) -> String,
+    resultBlock: (T) -> Unit
+) {
+    DialogX.listItem(act, items.toList(), title, { displayBlock(it as T) }, { resultBlock(it as T) })
+}
+
+fun Fragment.selectItem(items: Collection<Any>, displayBlock: (Any) -> String, resultBlock: (Any) -> Unit) {
+    DialogX.listItem(act, items.toList(), "", displayBlock, resultBlock)
+}
+
+fun Fragment.selectString(items: Collection<String>, resultBlock: (String) -> Unit) {
+    DialogX.listItem(act, items.toList(), "", { it as String }) {
+        resultBlock(it as String)
+    }
+}
+
+fun Fragment.selectStringN(items: Collection<String>, block: (Int) -> Unit) {
+    DialogX.listStringN(act, items.toList(), "", block)
+}
+
+
+fun Fragment.selectGrid(items: List<Any>, callback: GridConfig.() -> Unit) {
+    DialogX.selectGrid(act, items, callback)
+}
+
+fun Fragment.showDialog(block: DialogX.() -> Unit): DialogX {
+    val d = DialogX(act)
+    d.block()
+    d.show()
+    return d
+}
