@@ -7,6 +7,9 @@ import dev.entao.appbase.ex.Colors
 import dev.entao.base.*
 import dev.entao.log.logd
 import dev.entao.theme.ViewSize
+import dev.entao.ui.base.selectItem
+import dev.entao.ui.base.selectString
+import dev.entao.ui.base.selectStringN
 import dev.entao.ui.ext.*
 import dev.entao.ui.list.views.TextDetailView
 import dev.entao.ui.list.views.textDetail

@@ -30,14 +30,9 @@ import dev.entao.base.MyDate
 import dev.entao.base.getValue
 import dev.entao.log.Yog
 import dev.entao.theme.Str
-import dev.entao.ui.activities.TabBarActivity
 import dev.entao.ui.dialogs.DialogX
 import dev.entao.ui.dialogs.HorProgressDlg
 import dev.entao.ui.dialogs.SpinProgressDlg
-import dev.entao.ui.ext.act
-import dev.entao.ui.ext.selectItem
-import dev.entao.ui.ext.selectItemT
-import dev.entao.ui.ext.selectString
 import dev.entao.ui.widget.RelativeLayoutX
 import dev.entao.ui.widget.TabBar
 import dev.entao.util.*
@@ -66,8 +61,6 @@ open class BaseFragment : Fragment(), MsgListener {
     var windowBackColor: Int? = null
 
     var openFlag: Int = 0
-
-    var activityAnim: dev.entao.ui.activities.AnimConf? = dev.entao.ui.activities.AnimConf.RightIn
 
 
     val watchMap = HashMap<Uri, ContentObserver>()
@@ -338,13 +331,14 @@ open class BaseFragment : Fragment(), MsgListener {
         activity?.finish()
     }
 
-    val tabBar: TabBar?
-        get() {
-            if (activity is TabBarActivity) {
-                return (activity as TabBarActivity).tabBar
+    fun findTabBar(): TabBar? {
+        for (f in this.fragMgr.fragments) {
+            if (f is TabBarPage) {
+                return f.tabBar
             }
-            return null
         }
+        return null
+    }
 
     fun toastIf(condition: Boolean, trueString: String, falseString: String) {
         if (condition) {
@@ -482,7 +476,6 @@ open class BaseFragment : Fragment(), MsgListener {
         }
         watchMap.clear()
         MsgCenter.remove(this)
-        dev.entao.ui.activities.Pages.onDestroy(this)
         super.onDestroy()
     }
 

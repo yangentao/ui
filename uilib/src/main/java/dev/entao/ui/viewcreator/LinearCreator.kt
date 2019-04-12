@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import dev.entao.ui.ext.act
+import dev.entao.ui.base.act
 import dev.entao.ui.ext.genId
 import dev.entao.ui.ext.horizontal
 import dev.entao.ui.ext.vertical

@@ -6,10 +6,10 @@ import android.app.Activity
 import android.app.Dialog
 import android.view.Gravity
 import dev.entao.appbase.ex.dp
-import dev.entao.ui.ext.act
+import dev.entao.ui.base.BaseFragment
+import dev.entao.ui.base.act
 import dev.entao.ui.ext.inputTypeNumber
 import dev.entao.ui.ext.textS
-import dev.entao.ui.base.BaseFragment
 
 /**
  * Created by entaoyang@163.com on 16/5/10.

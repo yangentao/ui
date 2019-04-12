@@ -7,7 +7,9 @@ import android.widget.LinearLayout
 import dev.entao.appbase.App
 import dev.entao.log.Yog
 import dev.entao.ui.R
-import dev.entao.ui.ext.act
+import dev.entao.ui.base.ContainerActivity
+import dev.entao.ui.base.containerActivity
+import dev.entao.ui.base.act
 import dev.entao.ui.list.ListPage
 import dev.entao.ui.list.views.TextDetailView
 import java.io.File
@@ -54,7 +56,7 @@ class DirSelectPage : ListPage() {
 	private fun goUp() {
 		val f = file.parentFile
 		if (f != null) {
-			DirSelectPage.open(act, f, onValue)
+			DirSelectPage.open(this.containerActivity, f, onValue)
 			finish()
 		}
 	}
@@ -73,7 +75,7 @@ class DirSelectPage : ListPage() {
 	override fun onItemClickAdapter(view: View, item: Any, position: Int) {
 		item as File
 		if (item.isDirectory) {
-			DirSelectPage.open(act, item, onValue)
+			DirSelectPage.open(this.containerActivity, item, onValue)
 			finish()
 		}
 	}
@@ -82,18 +84,18 @@ class DirSelectPage : ListPage() {
 	companion object {
 		private val SELECT = "选择"
 
-		fun open(context: Context, onValue: (File) -> Unit) {
-			open(context, Environment.getExternalStorageDirectory(), onValue)
+		fun open(act: ContainerActivity, onValue: (File) -> Unit) {
+			open(act, Environment.getExternalStorageDirectory(), onValue)
 		}
 
-		fun open(context: Context, dir: File, onValue: (File) -> Unit) {
+		fun open(act: ContainerActivity, dir: File, onValue: (File) -> Unit) {
 			if (App.debug && !dir.isDirectory) {
 				Yog.fatal("应该给一个存在的目录做参数")
 			}
 			val page = DirSelectPage()
 			page.file = dir
 			page.onValue = onValue
-			dev.entao.ui.activities.Pages.open(context, page)
+			act.push(page)
 		}
 	}
 

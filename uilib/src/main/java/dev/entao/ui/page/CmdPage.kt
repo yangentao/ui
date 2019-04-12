@@ -12,6 +12,7 @@ import dev.entao.appbase.ex.tinted
 import dev.entao.base.getValue
 import dev.entao.base.labelProp_
 import dev.entao.base.nameProp
+import dev.entao.ui.base.act
 import dev.entao.ui.ext.*
 import dev.entao.ui.list.views.TextDetailView
 import dev.entao.ui.list.views.TextItemView

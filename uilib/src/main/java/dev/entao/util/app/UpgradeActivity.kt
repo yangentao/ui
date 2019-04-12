@@ -11,7 +11,7 @@ import dev.entao.appbase.App
 import dev.entao.base.Progress
 import dev.entao.base.ex.keepDot
 import dev.entao.log.loge
-import dev.entao.ui.activities.TitledActivity
+import dev.entao.ui.base.TitledActivity
 import dev.entao.ui.ext.*
 import dev.entao.ui.viewcreator.buttonGreenRound
 import dev.entao.ui.viewcreator.textView

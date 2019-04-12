@@ -7,7 +7,8 @@ import android.view.View
 import android.widget.LinearLayout
 import dev.entao.appbase.App
 import dev.entao.log.Yog
-import dev.entao.ui.ext.act
+import dev.entao.ui.base.ContainerActivity
+import dev.entao.ui.base.act
 import dev.entao.ui.list.ListPage
 import dev.entao.ui.list.views.TextDetailView
 import dev.entao.util.app.needPerm
@@ -110,18 +111,18 @@ class FileSelectPage : ListPage() {
 		private val CLEAR = "清除"
 		val RootSD = Environment.getExternalStorageDirectory()
 
-		fun open(context: Context, onValue: (File?) -> Unit) {
-			open(context, Environment.getExternalStorageDirectory(), onValue)
+		fun open(container: ContainerActivity, onValue: (File?) -> Unit) {
+			open(container, Environment.getExternalStorageDirectory(), onValue)
 		}
 
-		fun open(context: Context, dir: File, onValue: (File?) -> Unit) {
+		fun open(container: ContainerActivity, dir: File, onValue: (File?) -> Unit) {
 			if (App.debug && !dir.isDirectory) {
 				Yog.fatal("应该给一个存在的目录做参数")
 			}
 			val page = FileSelectPage()
 			page.dir = dir
 			page.onValue = onValue
-			dev.entao.ui.activities.Pages.open(context, page)
+			container.push(page)
 		}
 	}
 

@@ -10,7 +10,6 @@ class YangPage : TitlePage() {
         super.onCreateContent(context, contentView)
         titleBar {
             title("Yang")
-            showBack()
         }
     }
 }

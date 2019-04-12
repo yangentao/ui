@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import dev.entao.ui.base.act
 import dev.entao.ui.ext.*
 /**
  * Created by entaoyang@163.com on 2018-03-14.

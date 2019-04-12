@@ -1,8 +1,8 @@
 package dev.entao.util.app
 
 import android.app.Activity
-import android.support.v4.app.Fragment
 import android.os.Build
+import android.support.v4.app.Fragment
 import dev.entao.appbase.App
 import dev.entao.util.Task
 import java.util.*

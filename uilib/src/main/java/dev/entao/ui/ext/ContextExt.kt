@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.inputmethod.InputMethodManager
+import dev.entao.ui.base.openActivity
 import java.io.Serializable
 
 /**

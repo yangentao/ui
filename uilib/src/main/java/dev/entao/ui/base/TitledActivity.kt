@@ -1,7 +1,8 @@
-package dev.entao.ui.activities
+package dev.entao.ui.base
 
 import android.os.Bundle
 import android.widget.LinearLayout
+import dev.entao.ui.base.BaseActivity
 import dev.entao.ui.ext.LParam
 import dev.entao.ui.ext.WidthFill
 import dev.entao.ui.ext.backColorWhite
@@ -13,7 +14,7 @@ import dev.entao.ui.widget.TitleBar
  * Created by entaoyang@163.com on 16/4/14.
  */
 
-abstract class TitledActivity : dev.entao.ui.activities.BaseActivity() {
+abstract class TitledActivity : BaseActivity() {
 	lateinit var rootView: LinearLayout
 	lateinit var titleBar: TitleBar
 

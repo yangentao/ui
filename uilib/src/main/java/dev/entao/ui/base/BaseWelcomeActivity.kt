@@ -6,6 +6,7 @@ import dev.entao.appbase.ex.ARGB
 import dev.entao.appbase.ex.RGB
 import dev.entao.appbase.ex.Shapes
 import dev.entao.base.Sleep
+import dev.entao.ui.base.BaseActivity
 import dev.entao.ui.ext.*
 import dev.entao.ui.viewcreator.createRelative
 import dev.entao.ui.viewcreator.imageView
@@ -19,7 +20,7 @@ import dev.entao.util.Tick
  */
 
 
-abstract class BaseWelcomeActivity : dev.entao.ui.activities.BaseActivity() {
+abstract class BaseWelcomeActivity : BaseActivity() {
 
 
 	/**

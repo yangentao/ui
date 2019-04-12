@@ -7,18 +7,16 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.FrameLayout
 import dev.entao.log.logd
 import dev.entao.ui.R
-import dev.entao.ui.ext.currentFragment
-import dev.entao.ui.ext.fragMgr
 import dev.entao.ui.viewcreator.createFrame
 
 open class ContainerActivity : AppCompatActivity() {
 
-    private lateinit var containerView: FrameLayout
+    protected lateinit var containerView: FrameLayout
 
     private val containerId: Int
         get() = containerView.id
 
-    val pageSize: Int get() = this.fragMgr.fragments.size
+    val backCount: Int get() = this.fragMgr.backStackEntryCount
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

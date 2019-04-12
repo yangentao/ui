@@ -1,4 +1,4 @@
-package dev.entao.ui.ext
+package dev.entao.ui.base
 
 import android.app.Activity
 import android.content.Context
@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
+import android.view.WindowManager
 import dev.entao.log.loge
 import dev.entao.ui.dialogs.DialogX
 import dev.entao.ui.dialogs.GridConfig
@@ -52,6 +53,17 @@ fun Context.openActivity(cls: Class<out Activity>, block: Intent.() -> Unit = {}
     this.openActivity(n)
 }
 
+fun Activity.setWindowFullScreen() {
+    window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+}
+
+fun Activity.setWindowFullScreen(full: Boolean) {
+    if (full) {
+        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    } else {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    }
+}
 
 fun Activity.hasPermission(p: String): Boolean {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -97,11 +109,11 @@ val AppCompatActivity.currentFragment: Fragment? get() = fragMgr.fragments?.last
 val Fragment.act: FragmentActivity get() = this.requireActivity()
 
 fun Fragment.openWeb(title: String, url: String) {
-    WebPage.open(act, title, url)
+    WebPage.open(containerActivity, title, url)
 }
 
 fun Fragment.openAssetHtml(title: String, file: String) {
-    WebPage.openAsset(act, title, file)
+    WebPage.openAsset(containerActivity, title, file)
 }
 
 fun Fragment.smsTo(phoneSet: Set<String>, body: String = "") {

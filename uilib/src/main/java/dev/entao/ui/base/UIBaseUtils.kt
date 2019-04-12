@@ -1,7 +1,6 @@
 package dev.entao.ui.base
 
 import android.support.v4.app.Fragment
-import dev.entao.ui.ext.act
 
 
 val Fragment.containerActivity: ContainerActivity get() = this.act as ContainerActivity

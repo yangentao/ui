@@ -6,11 +6,12 @@ import android.support.multidex.MultiDex
 import dev.entao.appbase.App
 import dev.entao.json.YsonObject
 import dev.entao.log.logd
+import dev.entao.ui.base.AppVisibleListener
 
 /**
  * Created by yet on 2015/10/10.
  */
-open class YetApp : Application(), dev.entao.ui.activities.AppVisibleListener {
+open class YetApp : Application(), AppVisibleListener {
 
 	override fun attachBaseContext(base: Context?) {
 		super.attachBaseContext(base)

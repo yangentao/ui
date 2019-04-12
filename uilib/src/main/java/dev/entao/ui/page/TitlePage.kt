@@ -7,9 +7,9 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import dev.entao.appbase.ex.Colors
 import dev.entao.base.Progress
-import dev.entao.ui.activities.TabBarActivity
 import dev.entao.ui.base.BaseFragment
 import dev.entao.ui.base.ContainerActivity
+import dev.entao.ui.base.act
 import dev.entao.ui.ext.*
 import dev.entao.ui.viewcreator.createLinearVertical
 import dev.entao.ui.widget.BottomBar
@@ -45,7 +45,7 @@ open class TitlePage : BaseFragment(), Progress {
     var enableContentScroll = false
 
     override fun onCreatePage(context: Context, pageView: RelativeLayout, savedInstanceState: Bundle?) {
-        rootLinearView = LinearLayoutX(act)
+        rootLinearView = LinearLayoutX(context)
         pageView.addView(rootLinearView, RParam.Fill)
         rootLinearView.vertical()
         rootLinearView.backColorWhite()
@@ -79,15 +79,13 @@ open class TitlePage : BaseFragment(), Progress {
             bottomBar = bar
         }
 
-        val ac = this.activity
-        if (ac !is TabBarActivity) {
-            if (ac is ContainerActivity) {
-                if (ac.pageSize == 0) {
-                    titleBar.showBack()
-                }
-            } else {
+        val ac = this.act
+        if (ac is ContainerActivity) {
+            if (ac.backCount > 1) {
                 titleBar.showBack()
             }
+        } else {
+            titleBar.showBack()
         }
 
         onCreateContent(this.act, contentView)

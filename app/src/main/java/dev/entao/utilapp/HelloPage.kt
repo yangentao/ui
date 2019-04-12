@@ -12,7 +12,7 @@ class HelloPage : TitlePage() {
         titleBar {
             title("Hello")
             rightText("Yang").onClick = {
-                pushPage(YangPage(), true, false )
+                pushPage(YangPage(), true, false)
             }
         }
     }

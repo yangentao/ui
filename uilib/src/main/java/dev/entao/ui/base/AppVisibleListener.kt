@@ -1,4 +1,4 @@
-package dev.entao.ui.activities
+package dev.entao.ui.base
 
 /**
  * Created by entaoyang@163.com on 2016-07-26.
