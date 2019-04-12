@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanBePrivate", "ObjectLiteralToLambda")
+
 package dev.entao.ui.base
 
 import android.app.Activity
@@ -27,7 +29,6 @@ import dev.entao.appbase.ex.Bmp
 import dev.entao.appbase.ex.saveJpg
 import dev.entao.appbase.ex.savePng
 import dev.entao.base.MyDate
-import dev.entao.base.getValue
 import dev.entao.log.Yog
 import dev.entao.theme.Str
 import dev.entao.ui.dialogs.DialogX
@@ -39,7 +40,6 @@ import dev.entao.util.*
 import dev.entao.util.app.Perm
 import java.io.File
 import kotlin.collections.set
-import kotlin.reflect.KProperty1
 
 /**
  * Created by entaoyang@163.com on 16/3/12.
@@ -51,39 +51,38 @@ import kotlin.reflect.KProperty1
  * fragment基类 公用方法在此处理
  */
 open class BaseFragment : Fragment(), MsgListener {
-    protected lateinit var pageRalativeView: RelativeLayoutX
+    protected lateinit var pageRootView: RelativeLayoutX
 
     private val resultListeners = SparseArray<PreferenceManager.OnActivityResultListener>(8)
     lateinit var spinProgressDlg: SpinProgressDlg
     lateinit var horProgressDlg: HorProgressDlg
-
-    var fullScreen = false
-    var windowBackColor: Int? = null
-
-    var openFlag: Int = 0
 
 
     val watchMap = HashMap<Uri, ContentObserver>()
 
 
     final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        pageRalativeView = RelativeLayoutX(act)
-        onCreatePage(act, pageRalativeView, savedInstanceState)
-        return pageRalativeView
+        pageRootView = RelativeLayoutX(act)
+        onCreatePage(act, pageRootView, savedInstanceState)
+        return pageRootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onPageCreated()
     }
 
     open fun onCreatePage(context: Context, pageView: RelativeLayout, savedInstanceState: Bundle?) {
 
     }
 
+    open fun onPageCreated() {
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        Perm.onPermResult(requestCode)
     }
 
 
-    fun singleTop() {
-        openFlag = openFlag or Intent.FLAG_ACTIVITY_SINGLE_TOP
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        Perm.onPermResult(requestCode)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,14 +99,6 @@ open class BaseFragment : Fragment(), MsgListener {
         if (Build.VERSION.SDK_INT >= 21) {
             w.statusBarColor = color
         }
-    }
-
-    fun <T : Any> selectItemT(title: String, items: Collection<T>, prop: KProperty1<*, *>, resultBlock: (T) -> Unit) {
-        selectItemT(title, items, { prop.getValue(it)?.toString() ?: "" }, resultBlock)
-    }
-
-    fun selectItem(items: Collection<Any>, prop: KProperty1<*, *>, resultBlock: (Any) -> Unit) {
-        selectItem(items, { prop.getValue(it)?.toString() ?: "" }, resultBlock)
     }
 
 
@@ -247,16 +238,16 @@ open class BaseFragment : Fragment(), MsgListener {
     }
 
     fun takePhoto(width: Int, png: Boolean, block: (File) -> Unit) {
-        val FMT = if (png) "PNG" else "JPEG"
-        val outputFile = App.files.ex.temp("" + System.currentTimeMillis() + "." + FMT)
+        val fmt = if (png) "PNG" else "JPEG"
+        val outputFile = App.files.ex.temp("" + System.currentTimeMillis() + "." + fmt)
         val intent = Intent("android.media.action.IMAGE_CAPTURE")
         intent.putExtra(MediaStore.Images.Media.ORIENTATION, 0)
         val outUri = UriFromSdFile(outputFile)
         intent.putExtra(MediaStore.EXTRA_OUTPUT, outUri)
-        intent.putExtra("outputFormat", FMT)
+        intent.putExtra("outputFormat", fmt)
         val onResult = PreferenceManager.OnActivityResultListener { _, resultCode, _ ->
             if (resultCode == Activity.RESULT_OK && outputFile.exists()) {
-                val f = App.files.ex.tempFile(FMT.toLowerCase())
+                val f = App.files.ex.tempFile(fmt.toLowerCase())
                 val bmp = Bmp.file(outputFile, width, Bitmap.Config.ARGB_8888)
                 if (bmp != null) {
                     if (png) {
@@ -464,7 +455,7 @@ open class BaseFragment : Fragment(), MsgListener {
     fun viewImage(uri: Uri) {
         val intent = Intent()
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        intent.action = android.content.Intent.ACTION_VIEW
+        intent.action = Intent.ACTION_VIEW
         intent.setDataAndType(uri, "image/*")
         startActivity(intent)
     }

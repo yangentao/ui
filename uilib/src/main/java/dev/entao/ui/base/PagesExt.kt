@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.entao.ui.base
 
 import android.app.Activity
@@ -11,11 +13,13 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
+import dev.entao.base.getValue
 import dev.entao.log.loge
 import dev.entao.ui.dialogs.DialogX
 import dev.entao.ui.dialogs.GridConfig
 import dev.entao.ui.page.WebPage
 import kotlin.reflect.KClass
+import kotlin.reflect.KProperty1
 
 /**
  * Created by entaoyang@163.com on 16/5/23.
@@ -144,13 +148,17 @@ fun Fragment.dial(phone: String) {
 }
 
 @Suppress("UNCHECKED_CAST")
-fun <T : Any> Fragment.selectItemT(
-    title: String,
-    items: Collection<T>,
-    displayBlock: (T) -> String,
-    resultBlock: (T) -> Unit
-) {
+fun <T : Any> Fragment.selectItemT(title: String, items: Collection<T>, displayBlock: (T) -> String, resultBlock: (T) -> Unit) {
     DialogX.listItem(act, items.toList(), title, { displayBlock(it as T) }, { resultBlock(it as T) })
+}
+
+
+fun <T : Any> Fragment.selectItemT(title: String, items: Collection<T>, prop: KProperty1<*, *>, resultBlock: (T) -> Unit) {
+    selectItemT(title, items, { prop.getValue(it)?.toString() ?: "" }, resultBlock)
+}
+
+fun Fragment.selectItem(items: Collection<Any>, prop: KProperty1<*, *>, resultBlock: (Any) -> Unit) {
+    selectItem(items, { prop.getValue(it)?.toString() ?: "" }, resultBlock)
 }
 
 fun Fragment.selectItem(items: Collection<Any>, displayBlock: (Any) -> String, resultBlock: (Any) -> Unit) {

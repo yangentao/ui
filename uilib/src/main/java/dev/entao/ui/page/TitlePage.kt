@@ -11,16 +11,16 @@ import dev.entao.ui.base.BaseFragment
 import dev.entao.ui.base.ContainerActivity
 import dev.entao.ui.base.act
 import dev.entao.ui.ext.*
-import dev.entao.ui.viewcreator.createLinearVertical
+import dev.entao.ui.viewcreator.append
+import dev.entao.ui.viewcreator.linearVer
 import dev.entao.ui.widget.BottomBar
-import dev.entao.ui.widget.LinearLayoutX
 import dev.entao.ui.widget.TitleBar
 import dev.entao.ui.widget.TopProgressBar
 import dev.entao.util.Task
 import dev.entao.util.app.OS
 
 open class TitlePage : BaseFragment(), Progress {
-    lateinit var rootLinearView: LinearLayoutX
+    lateinit var rootLinearView: LinearLayout
         private set
 
     lateinit var titleBar: TitleBar
@@ -45,39 +45,27 @@ open class TitlePage : BaseFragment(), Progress {
     var enableContentScroll = false
 
     override fun onCreatePage(context: Context, pageView: RelativeLayout, savedInstanceState: Bundle?) {
-        rootLinearView = LinearLayoutX(context)
-        pageView.addView(rootLinearView, RParam.Fill)
-        rootLinearView.vertical()
-        rootLinearView.backColorWhite()
-        if (hasTopProgress) {
-            val b = TopProgressBar(act).gone()
-            rootLinearView.addView(b, LParam.WidthFill.height(6))
-            topProgress = b
+        rootLinearView = pageView.linearVer(RParam.Fill) {
+            backColorWhite()
+            if (hasTopProgress) {
+                topProgress = append(TopProgressBar(act).gone(), LParam.WidthFill.height(6))
+            }
+            titleBar = append(TitleBar(act), LParam.WidthFill.height(TitleBar.HEIGHT))
+            if (hasSnak) {
+                snack = append(Snack(act).gone(), LParam.WidthFill.HeightWrap.GravityCenterVertical)
+            }
+            if (enableContentScroll) {
+                append(NestedScrollView(rootLinearView.context).genId(), LParam.WidthFill.height(0).weight(1)) {
+                    contentView = linearVer(LParam.WidthFill.HeightWrap) {}
+                }
+            } else {
+                contentView = linearVer(LParam.WidthFill.height(0).weight(1)) {}
+            }
+            if (hasBottomBar) {
+                bottomBar = append(BottomBar(act), LParam.WidthFill.height(BottomBar.HEIGHT))
+            }
         }
-        titleBar = TitleBar(act)
-        rootLinearView.addView(titleBar, LParam.WidthFill.height(TitleBar.HEIGHT))
 
-
-        if (hasSnak) {
-            val v = Snack(act).gone()
-            rootLinearView.addView(v, LParam.WidthFill.HeightWrap.GravityCenterVertical)
-            snack = v
-        }
-
-        contentView = createLinearVertical()
-        if (enableContentScroll) {
-//			val scrollView = createScroll()
-            val scrollView = NestedScrollView(rootLinearView.context).genId()
-            rootLinearView.addView(scrollView, LParam.WidthFill.height(0).weight(1))
-            scrollView.addView(contentView, LParam.WidthFill.HeightWrap)
-        } else {
-            rootLinearView.addView(contentView, LParam.WidthFill.height(0).weight(1))
-        }
-        if (hasBottomBar) {
-            val bar = BottomBar(act)
-            rootLinearView.addView(bar, LParam.WidthFill.height(BottomBar.HEIGHT))
-            bottomBar = bar
-        }
 
         val ac = this.act
         if (ac is ContainerActivity) {
