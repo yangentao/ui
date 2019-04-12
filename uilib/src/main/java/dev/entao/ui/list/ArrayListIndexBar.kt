@@ -15,7 +15,7 @@ import dev.entao.appbase.ex.colorParse
 import dev.entao.appbase.ex.dp
 import dev.entao.base.BlockUnit
 import dev.entao.ui.ext.*
-import dev.entao.ui.viewcreator.textView
+import dev.entao.ui.creator.textView
 import dev.entao.util.Task
 import java.util.*
 

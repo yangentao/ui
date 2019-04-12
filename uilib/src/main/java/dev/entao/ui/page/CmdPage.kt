@@ -16,12 +16,12 @@ import dev.entao.base.labelProp_
 import dev.entao.base.nameProp
 import dev.entao.ui.base.act
 import dev.entao.ui.ext.*
-import dev.entao.ui.list.views.TextDetailView
-import dev.entao.ui.list.views.TextItemView
+import dev.entao.ui.list.itemviews.TextDetailView
+import dev.entao.ui.list.itemviews.TextItemView
 import dev.entao.ui.res.Res
-import dev.entao.ui.viewcreator.createButton
-import dev.entao.ui.viewcreator.createView
-import dev.entao.ui.viewcreator.linearVer
+import dev.entao.ui.creator.createButton
+import dev.entao.ui.creator.createView
+import dev.entao.ui.creator.linearVer
 import dev.entao.ui.widget.UserItemView
 import kotlin.reflect.KProperty
 import kotlin.reflect.KProperty0

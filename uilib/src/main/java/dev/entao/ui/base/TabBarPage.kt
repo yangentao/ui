@@ -7,8 +7,8 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import dev.entao.ui.ext.*
-import dev.entao.ui.viewcreator.frame
-import dev.entao.ui.viewcreator.linearVer
+import dev.entao.ui.creator.frame
+import dev.entao.ui.creator.linearVer
 import dev.entao.ui.widget.TabBar
 import java.util.*
 

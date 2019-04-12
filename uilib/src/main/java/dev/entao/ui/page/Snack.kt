@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.appbase.ex.Colors
 import dev.entao.ui.ext.*
-import dev.entao.ui.viewcreator.textView
+import dev.entao.ui.creator.textView
 import dev.entao.util.Task
 import java.util.*
 

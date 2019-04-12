@@ -7,8 +7,8 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import dev.entao.ui.ext.*
 import dev.entao.ui.res.Res
-import dev.entao.ui.viewcreator.imageView
-import dev.entao.ui.viewcreator.textView
+import dev.entao.ui.creator.imageView
+import dev.entao.ui.creator.textView
 
 class UserItemView(context: Context) : RelativeLayout(context) {
 

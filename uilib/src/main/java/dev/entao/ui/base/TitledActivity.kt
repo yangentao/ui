@@ -2,12 +2,11 @@ package dev.entao.ui.base
 
 import android.os.Bundle
 import android.widget.LinearLayout
-import dev.entao.ui.base.BaseActivity
 import dev.entao.ui.ext.LParam
 import dev.entao.ui.ext.WidthFill
 import dev.entao.ui.ext.backColorWhite
 import dev.entao.ui.ext.height
-import dev.entao.ui.viewcreator.createLinearVertical
+import dev.entao.ui.creator.createLinearVertical
 import dev.entao.ui.widget.TitleBar
 
 /**

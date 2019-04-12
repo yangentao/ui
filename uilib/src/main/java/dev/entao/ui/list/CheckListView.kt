@@ -3,8 +3,7 @@ package dev.entao.ui.list
 import android.content.Context
 import android.view.View
 import dev.entao.ui.ext.textS
-import dev.entao.ui.list.check.CheckView
-import dev.entao.ui.list.views.TextItemView
+import dev.entao.ui.list.itemviews.TextItemView
 
 /**
  */

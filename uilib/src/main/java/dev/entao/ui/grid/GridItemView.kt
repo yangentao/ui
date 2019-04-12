@@ -9,9 +9,9 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import dev.entao.theme.IconSize
 import dev.entao.ui.ext.*
-import dev.entao.ui.viewcreator.imageView
-import dev.entao.ui.viewcreator.linearVer
-import dev.entao.ui.viewcreator.textView
+import dev.entao.ui.creator.imageView
+import dev.entao.ui.creator.linearVer
+import dev.entao.ui.creator.textView
 
 /**
  * Created by entaoyang@163.com on 2016-08-24.

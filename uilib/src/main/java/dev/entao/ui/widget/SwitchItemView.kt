@@ -5,7 +5,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.appbase.ex.Colors
 import dev.entao.ui.ext.*
-import dev.entao.ui.viewcreator.createTextViewB
+import dev.entao.ui.creator.createTextViewB
 
 /**
  * Created by entaoyang@163.com on 2016-09-04.

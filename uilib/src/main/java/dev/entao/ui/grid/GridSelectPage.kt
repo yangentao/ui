@@ -6,7 +6,7 @@ import dev.entao.ui.ext.HeightFlex
 import dev.entao.ui.ext.LParam
 import dev.entao.ui.ext.WidthFill
 import dev.entao.ui.page.TitlePage
-import dev.entao.ui.viewcreator.simpleGridView
+import dev.entao.ui.creator.simpleGridView
 
 /**
  * Created by entaoyang@163.com on 2016-08-24.

@@ -12,8 +12,8 @@ import dev.entao.appbase.ex.Shapes
 import dev.entao.appbase.ex.dp
 import dev.entao.log.Yog
 import dev.entao.ui.ext.*
-import dev.entao.ui.viewcreator.createLinearVertical
-import dev.entao.ui.viewcreator.createTextViewC
+import dev.entao.ui.creator.createLinearVertical
+import dev.entao.ui.creator.createTextViewC
 import dev.entao.util.AmrRecord
 import dev.entao.util.ToastUtil
 import java.io.File

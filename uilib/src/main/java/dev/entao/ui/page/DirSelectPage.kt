@@ -11,7 +11,7 @@ import dev.entao.ui.base.ContainerActivity
 import dev.entao.ui.base.containerActivity
 import dev.entao.ui.base.act
 import dev.entao.ui.list.ListPage
-import dev.entao.ui.list.views.TextDetailView
+import dev.entao.ui.list.itemviews.TextDetailView
 import java.io.File
 
 class DirSelectPage : ListPage() {

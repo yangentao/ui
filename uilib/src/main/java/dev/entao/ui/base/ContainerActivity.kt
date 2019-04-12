@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.FrameLayout
 import dev.entao.log.logd
 import dev.entao.ui.R
-import dev.entao.ui.viewcreator.createFrame
+import dev.entao.ui.creator.createFrame
 
 open class ContainerActivity : AppCompatActivity() {
 

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import dev.entao.ui.ext.genId
-import dev.entao.ui.list.views.TextItemView
+import dev.entao.ui.list.itemviews.TextItemView
 import dev.entao.util.Task
 import java.util.TreeSet
 import kotlin.collections.ArrayList

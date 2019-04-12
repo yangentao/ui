@@ -14,7 +14,7 @@ import dev.entao.appbase.ex.dp
 import dev.entao.ui.ext.backColor
 import dev.entao.ui.ext.padding
 import dev.entao.ui.ext.textColorWhite
-import dev.entao.ui.viewcreator.createTextView
+import dev.entao.ui.creator.createTextView
 
 /**
  * Created by entaoyang@163.com on 2016-11-20.

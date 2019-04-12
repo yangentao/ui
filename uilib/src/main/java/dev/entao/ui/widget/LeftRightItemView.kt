@@ -11,10 +11,10 @@ import android.widget.TextView
 import dev.entao.appbase.ex.Colors
 import dev.entao.ui.ext.*
 import dev.entao.ui.res.D
-import dev.entao.ui.viewcreator.createCheckBox
-import dev.entao.ui.viewcreator.createImageView
-import dev.entao.ui.viewcreator.createTextViewA
-import dev.entao.ui.viewcreator.createTextViewB
+import dev.entao.ui.creator.createCheckBox
+import dev.entao.ui.creator.createImageView
+import dev.entao.ui.creator.createTextViewA
+import dev.entao.ui.creator.createTextViewB
 
 /**
  * 左右对齐listview itemview

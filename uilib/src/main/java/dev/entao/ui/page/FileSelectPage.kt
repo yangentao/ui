@@ -10,7 +10,7 @@ import dev.entao.log.Yog
 import dev.entao.ui.base.ContainerActivity
 import dev.entao.ui.base.act
 import dev.entao.ui.list.ListPage
-import dev.entao.ui.list.views.TextDetailView
+import dev.entao.ui.list.itemviews.TextDetailView
 import dev.entao.util.app.needPerm
 import java.io.File
 

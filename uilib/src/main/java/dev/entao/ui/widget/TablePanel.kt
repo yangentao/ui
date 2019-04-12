@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.LinearLayout
 import dev.entao.appbase.ex.Colors
 import dev.entao.ui.ext.*
-import dev.entao.ui.viewcreator.linearHor
+import dev.entao.ui.creator.linearHor
 
 /**
  * Created by entaoyang@163.com on 16/3/13.

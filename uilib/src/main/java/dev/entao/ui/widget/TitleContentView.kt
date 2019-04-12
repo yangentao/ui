@@ -7,9 +7,9 @@ import android.widget.TextView
 import dev.entao.appbase.ex.Colors
 import dev.entao.appbase.ex.color
 import dev.entao.ui.ext.*
-import dev.entao.ui.list.views.TextDetailView
-import dev.entao.ui.viewcreator.createTextView
-import dev.entao.ui.viewcreator.textView
+import dev.entao.ui.list.itemviews.TextDetailView
+import dev.entao.ui.creator.createTextView
+import dev.entao.ui.creator.textView
 
 /**
  * Created by entaoyang@163.com on 2017-05-20.

@@ -15,8 +15,8 @@ import dev.entao.ui.ext.*
 import dev.entao.ui.page.Cmd
 import dev.entao.ui.res.D
 import dev.entao.ui.res.Res
-import dev.entao.ui.viewcreator.createLinearVertical
-import dev.entao.ui.viewcreator.createTextViewB
+import dev.entao.ui.creator.createLinearVertical
+import dev.entao.ui.creator.createTextViewB
 import dev.entao.util.Task
 /**
  * Created by entaoyang@163.com on 2018-04-18.

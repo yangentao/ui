@@ -8,7 +8,7 @@ import android.widget.TableLayout
 import android.widget.TableRow
 import dev.entao.appbase.ex.Colors
 import dev.entao.ui.ext.*
-import dev.entao.ui.viewcreator.createRelative
+import dev.entao.ui.creator.createRelative
 import java.util.*
 
 /**

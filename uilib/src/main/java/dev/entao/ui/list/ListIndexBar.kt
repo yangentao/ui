@@ -14,7 +14,7 @@ import dev.entao.appbase.ex.dp
 import dev.entao.base.BlockUnit
 import dev.entao.base.ex.MultiHashMapArray
 import dev.entao.ui.ext.*
-import dev.entao.ui.viewcreator.createTextView
+import dev.entao.ui.creator.createTextView
 import dev.entao.util.Task
 import java.util.*
 

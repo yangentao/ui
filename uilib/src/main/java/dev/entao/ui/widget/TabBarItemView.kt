@@ -9,7 +9,7 @@ import dev.entao.appbase.ex.*
 import dev.entao.ui.ext.*
 import dev.entao.ui.res.D
 import dev.entao.ui.res.Res
-import dev.entao.ui.viewcreator.textView
+import dev.entao.ui.creator.textView
 
 /**
  * Created by entaoyang@163.com on 2018-04-18.

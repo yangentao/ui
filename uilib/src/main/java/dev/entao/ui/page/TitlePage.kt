@@ -11,8 +11,8 @@ import dev.entao.ui.base.BaseFragment
 import dev.entao.ui.base.ContainerActivity
 import dev.entao.ui.base.act
 import dev.entao.ui.ext.*
-import dev.entao.ui.viewcreator.append
-import dev.entao.ui.viewcreator.linearVer
+import dev.entao.ui.creator.append
+import dev.entao.ui.creator.linearVer
 import dev.entao.ui.widget.BottomBar
 import dev.entao.ui.widget.TitleBar
 import dev.entao.ui.widget.TopProgressBar
