@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.support.v4.app.Fragment
+import dev.entao.ui.base.Perm
 import dev.entao.ui.base.act
 
 

@@ -1,8 +1,10 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "ObjectLiteralToLambda")
 
 package dev.entao.ui.base
 
 import android.app.Activity
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -13,11 +15,18 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import android.widget.DatePicker
+import android.widget.TimePicker
+import android.widget.Toast
+import dev.entao.appbase.App
+import dev.entao.base.MyDate
 import dev.entao.base.getValue
 import dev.entao.log.loge
 import dev.entao.ui.dialogs.DialogX
 import dev.entao.ui.dialogs.GridConfig
 import dev.entao.ui.page.WebPage
+import dev.entao.util.Task
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty1
 
@@ -185,4 +194,98 @@ fun Fragment.showDialog(block: DialogX.() -> Unit): DialogX {
     d.block()
     d.show()
     return d
+}
+
+fun Fragment.pickDate(initDate: Long, block: (Long) -> Unit) {
+    pickDate(MyDate(initDate), block)
+}
+
+fun Fragment.pickDate(date: MyDate, block: (Long) -> Unit) {
+    val dlg = DatePickerDialog(activity, object : DatePickerDialog.OnDateSetListener {
+        override fun onDateSet(view: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
+            block(MyDate.makeDate(year, monthOfYear, dayOfMonth))
+        }
+
+    }, date.year, date.month, date.day)
+    dlg.show()
+}
+
+fun Fragment.pickTime(time: Long, block: (Long) -> Unit) {
+    pickTime(MyDate(time), block)
+}
+
+fun Fragment.pickTime(time: MyDate, block: (Long) -> Unit) {
+    val dlg = TimePickerDialog(activity, object : TimePickerDialog.OnTimeSetListener {
+        override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
+            block(MyDate.makeTime(hourOfDay, minute))
+        }
+
+    }, time.hour, time.minute, true)
+    dlg.show()
+}
+
+
+fun Fragment.viewImage(uri: Uri) {
+    val intent = Intent()
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    intent.action = Intent.ACTION_VIEW
+    intent.setDataAndType(uri, "image/*")
+    startActivity(intent)
+}
+
+
+fun Fragment.softInputAdjustResize() {
+    act.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+}
+
+fun Fragment.hideInputMethod() {
+    val imm = act.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    if (imm.isActive && act.currentFocus != null) {
+        imm.hideSoftInputFromWindow(
+            act.currentFocus!!.windowToken,
+            InputMethodManager.HIDE_NOT_ALWAYS
+        )
+    }
+}
+
+fun Fragment.showInputMethod() {
+    val imm = act.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    // 显示或者隐藏输入法
+    imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS)
+}
+
+fun Fragment.toastIf(condition: Boolean, trueString: String, falseString: String) {
+    if (condition) {
+        toast(trueString)
+    } else {
+        toast(falseString)
+    }
+}
+
+fun Fragment.toastIf(condition: Boolean, trueString: String) {
+    if (condition) {
+        toast(trueString)
+    }
+}
+
+fun Fragment.toast(vararg texts: Any) {
+    val s = texts.joinToString(", ") { it.toString() }
+    Task.fore {
+        if (activity != null) {
+            Toast.makeText(activity, s, Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(App.inst, s, Toast.LENGTH_LONG).show()
+        }
+    }
+}
+
+
+fun Fragment.toastShort(text: String) {
+    Task.fore {
+        if (activity != null) {
+            Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(App.inst, text, Toast.LENGTH_SHORT).show()
+        }
+    }
 }

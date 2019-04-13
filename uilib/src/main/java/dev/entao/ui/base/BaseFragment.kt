@@ -3,8 +3,6 @@
 package dev.entao.ui.base
 
 import android.app.Activity
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.database.ContentObserver
@@ -17,27 +15,22 @@ import android.os.Looper
 import android.preference.PreferenceManager
 import android.provider.MediaStore
 import android.support.v4.app.Fragment
-import android.util.SparseArray
-import android.view.*
-import android.view.inputmethod.InputMethodManager
-import android.widget.DatePicker
+import android.view.KeyEvent
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.RelativeLayout
-import android.widget.TimePicker
-import android.widget.Toast
 import dev.entao.appbase.App
 import dev.entao.appbase.ex.Bmp
 import dev.entao.appbase.ex.saveJpg
 import dev.entao.appbase.ex.savePng
-import dev.entao.base.MyDate
 import dev.entao.log.Yog
-import dev.entao.ui.theme.Str
 import dev.entao.ui.dialogs.DialogX
 import dev.entao.ui.dialogs.HorProgressDlg
 import dev.entao.ui.dialogs.SpinProgressDlg
 import dev.entao.ui.widget.RelativeLayoutX
 import dev.entao.ui.widget.TabBar
 import dev.entao.util.*
-import dev.entao.util.app.Perm
 import java.io.File
 import kotlin.collections.set
 
@@ -53,7 +46,7 @@ import kotlin.collections.set
 open class BaseFragment : Fragment(), MsgListener {
     protected lateinit var pageRootView: RelativeLayoutX
 
-    private val resultListeners = SparseArray<PreferenceManager.OnActivityResultListener>(8)
+    private val resultListeners = HashMap<Int, PreferenceManager.OnActivityResultListener>(8)
     lateinit var spinProgressDlg: SpinProgressDlg
     lateinit var horProgressDlg: HorProgressDlg
 
@@ -87,7 +80,6 @@ open class BaseFragment : Fragment(), MsgListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
         spinProgressDlg = SpinProgressDlg(act)
         horProgressDlg = HorProgressDlg(act)
         MsgCenter.listenAll(this)
@@ -119,14 +111,8 @@ open class BaseFragment : Fragment(), MsgListener {
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if (hidden) {
-            if (isResumed) {
-                onHide()
-            }
-        } else {
-            if (isResumed) {
-                onShow()
-            }
+        if (isResumed) {
+            if (hidden) onHide() else onShow()
         }
     }
 
@@ -295,16 +281,12 @@ open class BaseFragment : Fragment(), MsgListener {
     }
 
     fun startActivityForResult(requestCode: Int, intent: Intent, onResult: PreferenceManager.OnActivityResultListener) {
-        resultListeners.put(requestCode, onResult)
+        resultListeners[requestCode] = onResult
         startActivityForResult(intent, requestCode)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        val rl = resultListeners.get(requestCode)
-        if (rl != null) {
-            resultListeners.remove(requestCode)
-            rl.onActivityResult(requestCode, resultCode, data)
-        }
+        resultListeners.remove(requestCode)?.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
     }
 
@@ -319,7 +301,12 @@ open class BaseFragment : Fragment(), MsgListener {
     }
 
     fun finish() {
-        activity?.finish()
+        val a = act
+        if (a is ContainerActivity) {
+            a.pop()
+        } else {
+            a.finish()
+        }
     }
 
     fun findTabBar(): TabBar? {
@@ -331,64 +318,7 @@ open class BaseFragment : Fragment(), MsgListener {
         return null
     }
 
-    fun toastIf(condition: Boolean, trueString: String, falseString: String) {
-        if (condition) {
-            toast(trueString)
-        } else {
-            toast(falseString)
-        }
-    }
 
-    fun toastIf(condition: Boolean, trueString: String) {
-        if (condition) {
-            toast(trueString)
-        }
-    }
-
-    fun toast(vararg texts: Any) {
-        val s = texts.joinToString(", ") { it.toString() }
-        Task.fore {
-            if (activity != null) {
-                Toast.makeText(activity, s, Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(App.inst, s, Toast.LENGTH_LONG).show()
-            }
-        }
-    }
-
-    fun toastSuccessFailed(b: Boolean) {
-        toast(if (b) Str.OP_SUCCESS else Str.OP_FAILED)
-    }
-
-    fun toastShort(text: String) {
-        Task.fore {
-            if (activity != null) {
-                Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(App.inst, text, Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    fun softInputAdjustResize() {
-        act.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
-    }
-
-    fun hideInputMethod() {
-        val imm = act.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        if (imm.isActive && act.currentFocus != null) {
-            imm.hideSoftInputFromWindow(
-                act.currentFocus!!.windowToken,
-                InputMethodManager.HIDE_NOT_ALWAYS
-            )
-        }
-    }
-
-    fun showInputMethod() {
-        val imm = act.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        // 显示或者隐藏输入法
-        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS)
-    }
 
     open fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         return false
@@ -424,41 +354,9 @@ open class BaseFragment : Fragment(), MsgListener {
     }
 
 
-    fun pickDate(initDate: Long, block: (Long) -> Unit) {
-        pickDate(MyDate(initDate), block)
-    }
 
-    fun pickDate(date: MyDate, block: (Long) -> Unit) {
-        val dlg = DatePickerDialog(activity, object : DatePickerDialog.OnDateSetListener {
-            override fun onDateSet(view: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
-                block(MyDate.makeDate(year, monthOfYear, dayOfMonth))
-            }
 
-        }, date.year, date.month, date.day)
-        dlg.show()
-    }
 
-    fun pickTime(time: Long, block: (Long) -> Unit) {
-        pickTime(MyDate(time), block)
-    }
-
-    fun pickTime(time: MyDate, block: (Long) -> Unit) {
-        val dlg = TimePickerDialog(activity, object : TimePickerDialog.OnTimeSetListener {
-            override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
-                block(MyDate.makeTime(hourOfDay, minute))
-            }
-
-        }, time.hour, time.minute, true)
-        dlg.show()
-    }
-
-    fun viewImage(uri: Uri) {
-        val intent = Intent()
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        intent.action = Intent.ACTION_VIEW
-        intent.setDataAndType(uri, "image/*")
-        startActivity(intent)
-    }
 
 
     override fun onDestroy() {

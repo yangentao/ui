@@ -17,7 +17,6 @@ import dev.entao.appbase.ex.Colors
 import dev.entao.json.YsonObject
 import dev.entao.ui.theme.MyColor
 import dev.entao.util.*
-import dev.entao.util.app.Perm
 import dev.entao.util.app.yson
 import java.util.*
 
@@ -37,7 +36,7 @@ open class BaseActivity : AppCompatActivity(), MsgListener {
         if (fullScreen) {
             setWindowFullScreen()
         }
-        statusBarColorFromTheme()
+        statusBarColorTheme()
         MsgCenter.listenAll(this)
 
         intentArg(intent)
@@ -106,13 +105,13 @@ open class BaseActivity : AppCompatActivity(), MsgListener {
         }
     }
 
-    fun statusBarColorFromTheme() {
+    fun statusBarColorTheme() {
         val c = MyColor(Colors.Theme)
         statusBarColor(c.multiRGB(0.7))
     }
 
     val findRootView: View
-        get() = (findViewById(android.R.id.content) as ViewGroup).getChildAt(0)
+        get() = (findViewById<ViewGroup>(android.R.id.content)).getChildAt(0)
 
     fun toast(text: String) {
         Task.fore {
