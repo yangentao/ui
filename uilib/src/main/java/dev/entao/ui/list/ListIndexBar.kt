@@ -13,8 +13,8 @@ import dev.entao.appbase.ex.colorParse
 import dev.entao.appbase.ex.dp
 import dev.entao.base.BlockUnit
 import dev.entao.base.ex.MultiHashMapArray
-import dev.entao.ui.ext.*
 import dev.entao.ui.creator.createTextView
+import dev.entao.ui.ext.*
 import dev.entao.util.Task
 import java.util.*
 
@@ -60,7 +60,7 @@ abstract class ListIndexBar<T>(context: Context, feedbackParentView: RelativeLay
 			strokeWidthPx = dp(2)
 			strokeColor = colorParse("#ddd")
 		}
-		feedbackView.textColor_(Color.WHITE).textSize_(50).gravityCenter().backDrawable(d).gone()
+		feedbackView.textColor(Color.WHITE).textSizeSp(50).gravityCenter().backDrawable(d).gone()
 		feedbackParentView.addView(feedbackView, relativeParam().centerInParent().size(70))
 
 		listView.setOnScrollListener(object : AbsListView.OnScrollListener {
@@ -192,9 +192,9 @@ abstract class ListIndexBar<T>(context: Context, feedbackParentView: RelativeLay
 		for (s in tagList) {
 			val v = createTextView()
 			v.tag = s
-			v.text_(s.toString()).textSizeD().textColor(Color.BLACK).gravityCenter()
+			v.text(s.toString()).textSizeD().textColor(Color.BLACK).gravityCenter()
 			addViewParam(v) {
-				width(40).height_(0).weight(1).gravityCenter()
+				width(40).height(0).weight(1).gravityCenter()
 			}
 		}
 	}

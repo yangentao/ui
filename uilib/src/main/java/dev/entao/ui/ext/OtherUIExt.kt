@@ -9,18 +9,17 @@ import android.widget.PopupWindow
  */
 
 fun PopupWindow.showDropUp(anchor: View, xoff: Int, yoff: Int) {
-	val v = this.contentView
-	v.measure(makeSpec(this.width), makeSpec(this.height))
-	val h = v.measuredHeight + anchor.height
-	this.showAsDropDown(anchor, xoff, -h + yoff)
+    val v = this.contentView
+    v.measure(makeSpec(this.width), makeSpec(this.height))
+    val h = v.measuredHeight + anchor.height
+    this.showAsDropDown(anchor, xoff, -h + yoff)
 }
 
 private fun makeSpec(measureSpec: Int): Int {
-	val mode: Int
-	if (measureSpec == ViewGroup.LayoutParams.WRAP_CONTENT) {
-		mode = View.MeasureSpec.UNSPECIFIED
-	} else {
-		mode = View.MeasureSpec.EXACTLY
-	}
-	return View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(measureSpec), mode)
+    val mode: Int = if (measureSpec == ViewGroup.LayoutParams.WRAP_CONTENT) {
+        View.MeasureSpec.UNSPECIFIED
+    } else {
+        View.MeasureSpec.EXACTLY
+    }
+    return View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(measureSpec), mode)
 }

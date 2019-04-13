@@ -9,6 +9,7 @@ import dev.entao.appbase.ex.RectDraw
 import dev.entao.ui.theme.ViewSize
 import dev.entao.ui.R
 import dev.entao.ui.base.BaseFragment
+import dev.entao.ui.base.hideInputMethod
 import dev.entao.ui.ext.*
 import dev.entao.ui.res.D
 import dev.entao.ui.res.Res

@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.entao.ui.ext
 
 import android.graphics.drawable.Drawable
@@ -8,8 +10,8 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.appbase.ex.*
-import dev.entao.ui.theme.Space
 import dev.entao.ui.res.D
+import dev.entao.ui.theme.Space
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.reflect.KClass
 
@@ -99,7 +101,7 @@ fun <T : View> T.isInvisiable(): Boolean {
 
 
 fun <T : View> T.padding(left: Int, top: Int, right: Int, bottom: Int): T {
-    this.setPadding(dp(left), dp(top), dp(right), dp(bottom));
+    this.setPadding(dp(left), dp(top), dp(right), dp(bottom))
     return this
 }
 
@@ -260,7 +262,7 @@ fun View.clickable(): View {
 fun <T : View> T.setLinearParam(f: LinearLayout.LayoutParams.() -> LinearLayout.LayoutParams): T {
     val lp = linearParam(f)
     this.layoutParams = lp
-    return this;
+    return this
 }
 
 

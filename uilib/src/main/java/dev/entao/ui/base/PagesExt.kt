@@ -21,14 +21,10 @@ import android.widget.TimePicker
 import android.widget.Toast
 import dev.entao.appbase.App
 import dev.entao.base.MyDate
-import dev.entao.base.getValue
 import dev.entao.log.loge
-import dev.entao.ui.dialogs.DialogX
-import dev.entao.ui.dialogs.GridConfig
 import dev.entao.ui.page.WebPage
 import dev.entao.util.Task
 import kotlin.reflect.KClass
-import kotlin.reflect.KProperty1
 
 /**
  * Created by entaoyang@163.com on 16/5/23.
@@ -156,45 +152,6 @@ fun Fragment.dial(phone: String) {
     }
 }
 
-@Suppress("UNCHECKED_CAST")
-fun <T : Any> Fragment.selectItemT(title: String, items: Collection<T>, displayBlock: (T) -> String, resultBlock: (T) -> Unit) {
-    DialogX.listItem(act, items.toList(), title, { displayBlock(it as T) }, { resultBlock(it as T) })
-}
-
-
-fun <T : Any> Fragment.selectItemT(title: String, items: Collection<T>, prop: KProperty1<*, *>, resultBlock: (T) -> Unit) {
-    selectItemT(title, items, { prop.getValue(it)?.toString() ?: "" }, resultBlock)
-}
-
-fun Fragment.selectItem(items: Collection<Any>, prop: KProperty1<*, *>, resultBlock: (Any) -> Unit) {
-    selectItem(items, { prop.getValue(it)?.toString() ?: "" }, resultBlock)
-}
-
-fun Fragment.selectItem(items: Collection<Any>, displayBlock: (Any) -> String, resultBlock: (Any) -> Unit) {
-    DialogX.listItem(act, items.toList(), "", displayBlock, resultBlock)
-}
-
-fun Fragment.selectString(items: Collection<String>, resultBlock: (String) -> Unit) {
-    DialogX.listItem(act, items.toList(), "", { it as String }) {
-        resultBlock(it as String)
-    }
-}
-
-fun Fragment.selectStringN(items: Collection<String>, block: (Int) -> Unit) {
-    DialogX.listStringN(act, items.toList(), "", block)
-}
-
-
-fun Fragment.selectGrid(items: List<Any>, callback: GridConfig.() -> Unit) {
-    DialogX.selectGrid(act, items, callback)
-}
-
-fun Fragment.showDialog(block: DialogX.() -> Unit): DialogX {
-    val d = DialogX(act)
-    d.block()
-    d.show()
-    return d
-}
 
 fun Fragment.pickDate(initDate: Long, block: (Long) -> Unit) {
     pickDate(MyDate(initDate), block)
@@ -248,6 +205,14 @@ fun Fragment.hideInputMethod() {
     }
 }
 
+fun Activity.hideInputMethod() {
+    val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    val v = this.currentFocus ?: return
+    if (imm.isActive) {
+        imm.hideSoftInputFromWindow(v.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+    }
+}
+
 fun Fragment.showInputMethod() {
     val imm = act.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     // 显示或者隐藏输入法
@@ -288,4 +253,19 @@ fun Fragment.toastShort(text: String) {
             Toast.makeText(App.inst, text, Toast.LENGTH_SHORT).show()
         }
     }
+}
+
+
+
+
+fun Context.viewImage(uri: Uri) {
+    this.viewAction(uri, "image/*")
+}
+
+fun Context.viewAction(uri: Uri, dataType: String) {
+    val intent = Intent()
+    intent.action = android.content.Intent.ACTION_VIEW
+    intent.setDataAndType(uri, dataType)
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    this.openActivity(intent)
 }

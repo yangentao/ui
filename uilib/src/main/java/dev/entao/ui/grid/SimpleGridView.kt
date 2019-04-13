@@ -1,10 +1,10 @@
+@file:Suppress("MemberVisibilityCanBePrivate", "unused")
+
 package dev.entao.ui.grid
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.view.View
-import android.widget.AbsListView
-import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.TextView
 import dev.entao.appbase.ex.dp
 import dev.entao.appbase.ex.limited
@@ -48,7 +48,7 @@ open class SimpleGridView(context: Context) : LineGridView(context) {
 
 		}
 		super.setAdapter(anyAdapter)
-		this.onItemClickListener = AdapterView.OnItemClickListener { _, _, pos, _ ->
+		this.onItemClickListener = OnItemClickListener { _, _, pos, _ ->
 			val s = anyAdapter.getItem(pos)
 			if (s is GridItem) {
 				s.onItemClick()
@@ -160,8 +160,8 @@ open class SimpleGridView(context: Context) : LineGridView(context) {
 		if (!heightMost) {
 			return super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 		}
-		val heightSpec: Int = if (layoutParams.height == AbsListView.LayoutParams.WRAP_CONTENT) {
-			View.MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE shr 2, View.MeasureSpec.AT_MOST)
+		val heightSpec: Int = if (layoutParams.height == LayoutParams.WRAP_CONTENT) {
+			MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE shr 2, MeasureSpec.AT_MOST)
 		} else {
 			heightMeasureSpec
 		}

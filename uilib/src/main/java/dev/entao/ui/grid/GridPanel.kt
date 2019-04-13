@@ -17,6 +17,7 @@ import dev.entao.ui.list.AnyAdapter
  * Created by entaoyang@163.com on 2016-08-27.
  */
 
+@Suppress("unused")
 open class GridPanel(context: Context) : GridView(context) {
 
 	var onNewCallback: (view: GridItemView) -> Unit = {}

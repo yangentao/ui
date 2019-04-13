@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.entao.ui.ext
 
 import dev.entao.appbase.ex.Colors

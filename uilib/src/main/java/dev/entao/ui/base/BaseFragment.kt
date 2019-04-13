@@ -25,9 +25,9 @@ import dev.entao.appbase.ex.Bmp
 import dev.entao.appbase.ex.saveJpg
 import dev.entao.appbase.ex.savePng
 import dev.entao.log.Yog
-import dev.entao.ui.dialogs.DialogX
 import dev.entao.ui.dialogs.HorProgressDlg
 import dev.entao.ui.dialogs.SpinProgressDlg
+import dev.entao.ui.dialogs.listItem
 import dev.entao.ui.widget.RelativeLayoutX
 import dev.entao.ui.widget.TabBar
 import dev.entao.util.*
@@ -161,7 +161,7 @@ open class BaseFragment : Fragment(), MsgListener {
     }
 
     fun selectImage(width: Int, block: (Uri) -> Unit) {
-        selectString(listOf("拍照", "相册")) {
+        this.listItem(listOf("拍照", "相册"), null) {
             if (it == "拍照") {
                 takePhotoJpg(width) { fff ->
                     block(Uri.fromFile(fff))
@@ -319,7 +319,6 @@ open class BaseFragment : Fragment(), MsgListener {
     }
 
 
-
     open fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         return false
     }
@@ -354,11 +353,6 @@ open class BaseFragment : Fragment(), MsgListener {
     }
 
 
-
-
-
-
-
     override fun onDestroy() {
         for (ob in watchMap.values) {
             act.contentResolver.unregisterContentObserver(ob)
@@ -371,9 +365,6 @@ open class BaseFragment : Fragment(), MsgListener {
     override fun onMsg(msg: Msg) {
     }
 
-    fun alert(msg: String) {
-        DialogX.alert(this.act, msg)
-    }
 
     companion object {
         private const val TAKE_PHOTO = 988

@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.entao.ui.ext
 
 import android.graphics.drawable.Drawable
@@ -7,8 +9,8 @@ import dev.entao.appbase.ex.ImageStated
 import dev.entao.appbase.ex.dp
 import dev.entao.appbase.ex.sized
 import dev.entao.ui.R
-import dev.entao.ui.res.D
 import dev.entao.ui.creator.createRadioButton
+import dev.entao.ui.res.D
 
 /**
  * Created by entaoyang@163.com on 2016-11-07.

@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.entao.ui.ext
 
 import android.view.View
@@ -11,19 +13,13 @@ val RParam: RelativeLayout.LayoutParams
         return relativeParam()
     }
 
-fun rParam(): RelativeLayout.LayoutParams {
-    return relativeParam()
-}
 
 fun relativeParam(): RelativeLayout.LayoutParams {
-    val ll =
-        RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
-    return ll
+    return RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
 }
 
 fun relativeParam(f: RelativeLayout.LayoutParams.() -> RelativeLayout.LayoutParams): RelativeLayout.LayoutParams {
-    val ll =
-        RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+    val ll = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
     ll.f()
     return ll
 }

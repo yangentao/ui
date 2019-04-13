@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.entao.ui.ext
 
 import android.app.Fragment
@@ -13,8 +15,7 @@ import android.widget.RelativeLayout
 //create
 
 fun Context.relativeLayout(): RelativeLayout {
-    val ll = RelativeLayout(this)
-    return ll
+    return RelativeLayout(this).genId()
 }
 
 fun Fragment.relativeLayout(): RelativeLayout {
@@ -29,6 +30,6 @@ fun ViewGroup.relativeLayout(): RelativeLayout {
 inline fun <reified T : RelativeLayout> T.addViewParam(view: View, noinline f: RelativeLayout.LayoutParams.() -> RelativeLayout.LayoutParams): T {
     val lp = relativeParam(f)
     this.addView(view, lp)
-    return this;
+    return this
 }
 

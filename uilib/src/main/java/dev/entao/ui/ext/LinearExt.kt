@@ -1,5 +1,8 @@
+@file:Suppress("unused")
+
 package dev.entao.ui.ext
 
+import android.annotation.SuppressLint
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
@@ -117,32 +120,33 @@ fun <T : LinearLayout> T.isVertical(): Boolean {
 }
 
 fun <T : LinearLayout> T.gravity(n: Int): T {
-	this.setGravity(n)
+	this.gravity = n
 	return this
 }
 
 fun <T : LinearLayout> T.gravityCenterVertical(): T {
-	this.setGravity(Gravity.CENTER_VERTICAL)
+	this.gravity = Gravity.CENTER_VERTICAL
 	return this
 }
 
 fun <T : LinearLayout> T.gravityCenterHorizontal(): T {
-	this.setGravity(Gravity.CENTER_HORIZONTAL)
+	this.gravity = Gravity.CENTER_HORIZONTAL
 	return this
 }
 
+@SuppressLint("RtlHardcoded")
 fun <T : LinearLayout> T.gravityLeftCenter(): T {
-	this.setGravity(Gravity.LEFT or Gravity.CENTER)
+	this.gravity = Gravity.LEFT or Gravity.CENTER
 	return this
 }
-
+@SuppressLint("RtlHardcoded")
 fun <T : LinearLayout> T.gravityRightCenter(): T {
-	this.setGravity(Gravity.RIGHT or Gravity.CENTER)
+	this.gravity = Gravity.RIGHT or Gravity.CENTER
 	return this
 }
 
 fun <T : LinearLayout> T.gravityCenter(): T {
-	this.setGravity(Gravity.CENTER)
+	this.gravity = Gravity.CENTER
 	return this
 }
 

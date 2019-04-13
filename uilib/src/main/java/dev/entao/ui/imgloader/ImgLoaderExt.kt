@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.entao.ui.imgloader
 
 import android.widget.ImageView

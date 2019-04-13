@@ -1,14 +1,11 @@
-package dev.entao.ui.ext
+package dev.entao.ui.base
 
-import android.app.Activity
 import android.app.Fragment
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
-import android.view.inputmethod.InputMethodManager
-import dev.entao.ui.base.openActivity
 import java.io.Serializable
 
 /**
@@ -43,26 +40,6 @@ fun Context.dialPhone(phone: String) {
 }
 
 
-fun Activity.hideInputMethod() {
-	val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-	val v = this.currentFocus ?: return
-	if (imm.isActive) {
-		imm.hideSoftInputFromWindow(v.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-	}
-}
-
-
-fun Context.viewImage(uri: Uri) {
-	this.viewAction(uri, "image/*")
-}
-
-fun Context.viewAction(uri: Uri, dataType: String) {
-	val intent = Intent()
-	intent.action = android.content.Intent.ACTION_VIEW
-	intent.setDataAndType(uri, dataType)
-	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-	this.openActivity(intent)
-}
 
 
 fun <T : Fragment> T.withArguments(vararg params: Pair<String, Any>): T {

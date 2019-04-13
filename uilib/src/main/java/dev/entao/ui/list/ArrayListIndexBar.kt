@@ -14,8 +14,8 @@ import dev.entao.appbase.ex.Shapes
 import dev.entao.appbase.ex.colorParse
 import dev.entao.appbase.ex.dp
 import dev.entao.base.BlockUnit
-import dev.entao.ui.ext.*
 import dev.entao.ui.creator.textView
+import dev.entao.ui.ext.*
 import dev.entao.util.Task
 import java.util.*
 
@@ -56,7 +56,7 @@ class ArrayListIndexBar(context: Context, feedbackParentView: RelativeLayout) : 
 	init {
 		orientationVertical().gravityCenterHorizontal().padding(0, 0, 0, 0).makeClickable()
 		feedbackView = feedbackParentView.textView(relativeParam().centerInParent().size(70)) {
-			textColor_(Color.WHITE).textSize_(50).gravityCenter().backDrawable(
+			textColor(Color.WHITE).textSizeSp(50).gravityCenter().backDrawable(
 					Shapes.rect {
 						cornerPx = dp(10)
 						fillColor = colorParse("#555")
@@ -117,9 +117,9 @@ class ArrayListIndexBar(context: Context, feedbackParentView: RelativeLayout) : 
 		this.tagPosMap = tagPosMap
 		removeAllViews()
 		for (s in tagList) {
-			textView(lParam().width(40).height_(0).weight(1).gravityCenter()) {
+			textView(lParam().width(40).height(0).weight(1).gravityCenter()) {
 				this.tag = s
-				text_(s.toString()).textSizeD().textColor(Color.BLACK).gravityCenter()
+				text(s.toString()).textSizeD().textColor(Color.BLACK).gravityCenter()
 			}
 		}
 	}

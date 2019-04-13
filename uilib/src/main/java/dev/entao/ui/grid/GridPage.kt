@@ -11,6 +11,7 @@ import dev.entao.ui.page.TitlePage
  * Created by entaoyang@163.com on 2016-08-24.
  */
 
+@Suppress("unused")
 abstract class GridPage : TitlePage() {
 	lateinit var gridView: LineGridView
 	lateinit var anyAdapter: AnyAdapter

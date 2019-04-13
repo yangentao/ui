@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate")
+
 package dev.entao.ui.grid
 
 import android.content.Context
@@ -7,11 +9,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import dev.entao.ui.theme.IconSize
-import dev.entao.ui.ext.*
 import dev.entao.ui.creator.imageView
 import dev.entao.ui.creator.linearVer
 import dev.entao.ui.creator.textView
+import dev.entao.ui.ext.*
+import dev.entao.ui.theme.IconSize
 
 /**
  * Created by entaoyang@163.com on 2016-08-24.
@@ -24,7 +26,7 @@ class GridItemView(context: Context) : RelativeLayout(context) {
 
 	init {
 		padding(10)
-		val ll = linearVer(rParam().wrap().centerInParent()) {}
+		val ll = linearVer(RParam.wrap().centerInParent()) {}
 		ll.gravityCenter()
 		imageView = ll.imageView(lParam().width(IconSize.Large).height(IconSize.Large).gravityBottomCenter()) {
 			scaleCenterInside()

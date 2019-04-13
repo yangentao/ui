@@ -11,10 +11,10 @@ import dev.entao.appbase.ex.Colors
 import dev.entao.appbase.ex.dp
 import dev.entao.base.getValue
 import dev.entao.base.labelProp_
-import dev.entao.ui.theme.ViewSize
+import dev.entao.ui.creator.*
 import dev.entao.ui.dialogs.DialogX
 import dev.entao.ui.res.D
-import dev.entao.ui.creator.*
+import dev.entao.ui.theme.ViewSize
 import kotlin.reflect.KProperty0
 
 /**
@@ -97,7 +97,7 @@ class FormView(val tableLayout: TableLayout) {
 			text
 		}
 		return rowButton(label, s).onClick { tv ->
-			DialogX.listString(tv.context, items, label) {
+			DialogX.listItem(tv.context, items, label) {
 				tv.tag = it
 				tv.textS = it
 			}
