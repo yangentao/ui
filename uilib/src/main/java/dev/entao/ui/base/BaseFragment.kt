@@ -44,6 +44,9 @@ import kotlin.collections.set
  * fragment基类 公用方法在此处理
  */
 open class BaseFragment : Fragment(), MsgListener {
+
+    val uniqueName: String = "fragment${identity++}"
+
     protected lateinit var pageRootView: RelativeLayoutX
 
     private val resultListeners = HashMap<Int, PreferenceManager.OnActivityResultListener>(8)
@@ -371,6 +374,8 @@ open class BaseFragment : Fragment(), MsgListener {
         private const val TAKE_VIDEO = 989
         private const val PICK_PHOTO = 977
         private const val CROP_PHOTO = 966
+
+        private var identity: Int = 1
     }
 
 }

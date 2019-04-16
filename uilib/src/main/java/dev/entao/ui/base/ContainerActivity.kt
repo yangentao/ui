@@ -3,13 +3,13 @@
 package dev.entao.ui.base
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.support.v4.app.FragmentManager
 import android.widget.FrameLayout
 import dev.entao.log.logd
 import dev.entao.ui.R
 import dev.entao.ui.creator.createFrame
 
-open class ContainerActivity : AppCompatActivity() {
+open class ContainerActivity : BaseActivity() {
 
     protected lateinit var containerView: FrameLayout
 
@@ -50,7 +50,7 @@ open class ContainerActivity : AppCompatActivity() {
             }
         }
         b.add(containerId, fragment)
-        b.addToBackStack(null)
+        b.addToBackStack(fragment.uniqueName)
         b.commitAllowingStateLoss()
     }
 
@@ -65,6 +65,14 @@ open class ContainerActivity : AppCompatActivity() {
         } else {
             logd("finish")
             finish()
+        }
+    }
+
+    fun pop(page: BaseFragment, immediate: Boolean = false) {
+        if (immediate) {
+            fragMgr.popBackStackImmediate(page.uniqueName, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        } else {
+            fragMgr.popBackStack(page.uniqueName, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
     }
 

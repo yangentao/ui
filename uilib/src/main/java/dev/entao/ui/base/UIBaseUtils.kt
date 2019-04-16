@@ -14,6 +14,11 @@ fun BaseFragment.pushPage(p: BaseFragment) {
     this.containerActivity.push(p)
 }
 
+fun BaseFragment.pushPage(p: BaseFragment, block: BaseFragment.() -> Unit) {
+    p.block()
+    this.containerActivity.push(p)
+}
+
 fun BaseFragment.popPage() {
-    this.containerActivity.pop()
+    this.containerActivity.pop(this)
 }
