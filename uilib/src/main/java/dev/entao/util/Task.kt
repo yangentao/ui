@@ -10,6 +10,8 @@ import dev.entao.log.loge
 import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.ScheduledFuture
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by yet on 2015-11-20.
@@ -24,11 +26,19 @@ private fun uncaughtException(thread: Thread, ex: Throwable) {
     System.exit(-1)
 }
 
-
+private class SafeRun(val r: Runnable) : Runnable {
+    override fun run() {
+        try {
+            r.run()
+        } catch (ex: Throwable) {
+            ex.printStackTrace()
+        }
+    }
+}
 object Task {
     val mainHandler = Handler(Looper.getMainLooper())
     val es: ScheduledExecutorService = Executors.newScheduledThreadPool(1) { r ->
-        val t = Thread(r)
+        val t = Thread(SafeRun(r))
         t.isDaemon = true
         t.priority = Thread.NORM_PRIORITY - 1
         t.setUncaughtExceptionHandler(::uncaughtException)
@@ -56,20 +66,27 @@ object Task {
         es.submit(callback)
     }
 
-    fun backDelay(delay: Long, callback: BlockUnit) {
-        foreDelay(delay) {
-            back(callback)
-        }
+    fun backDelay(delay: Long, callback: BlockUnit): ScheduledFuture<*> {
+        return Task.es.schedule(callback, delay, TimeUnit.MILLISECONDS)
     }
 
     //返回true, 继续;  返回false, 中止
-    fun backRepeat(delay: Long, callback: () -> Boolean) {
-        backDelay(delay) {
-            val b = callback()
-            if (b) {
-                backRepeat(delay, callback)
+    fun backRepeat(delay: Long, callback: () -> Boolean): ScheduledFuture<*> {
+        val run = object : Runnable {
+            var future: ScheduledFuture<*>? = null
+            var goon = true
+            override fun run() {
+                if (goon) {
+                    goon = callback()
+                }
+                if (!goon) {
+                    future?.cancel(false)
+                }
             }
         }
+        val f = Task.es.scheduleAtFixedRate(run, delay, delay, TimeUnit.MILLISECONDS)
+        run.future = f
+        return f
     }
 
     //返回true, 继续;  返回false, 中止
