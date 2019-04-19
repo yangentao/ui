@@ -4,7 +4,7 @@ import android.app.Activity
 import android.os.Build
 import android.support.v4.app.Fragment
 import dev.entao.appbase.App
-import dev.entao.util.Task
+import dev.entao.appbase.Task
 import dev.entao.util.app.hasPerm
 import java.util.*
 import kotlin.collections.HashMap

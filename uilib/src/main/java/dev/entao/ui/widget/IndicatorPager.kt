@@ -9,16 +9,16 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import dev.entao.appbase.Task
 import dev.entao.appbase.ex.MyTimer
 import dev.entao.appbase.ex.Shapes
 import dev.entao.appbase.ex.grayColor
 import dev.entao.appbase.ex.sized
-import dev.entao.ui.ext.*
-import dev.entao.ui.res.D
 import dev.entao.ui.creator.createImageView
 import dev.entao.ui.creator.imageView
 import dev.entao.ui.creator.linearHor
-import dev.entao.util.Task
+import dev.entao.ui.ext.*
+import dev.entao.ui.res.D
 
 class IndicatorPager(context: Context) : RelativeLayout(context) {
     val pointSize: Int = 8

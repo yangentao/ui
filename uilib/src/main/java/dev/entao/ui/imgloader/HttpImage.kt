@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import dev.entao.appbase.App
+import dev.entao.appbase.Task
 import dev.entao.appbase.ex.Bmp
 import dev.entao.appbase.ex.limited
 import dev.entao.appbase.ex.roundSqure
@@ -14,7 +15,6 @@ import dev.entao.ui.ext.leftImage
 import dev.entao.ui.ext.rightImage
 import dev.entao.ui.ext.topImage
 import dev.entao.ui.res.Res
-import dev.entao.util.Task
 import java.lang.ref.WeakReference
 
 

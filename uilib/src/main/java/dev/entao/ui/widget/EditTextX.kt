@@ -7,12 +7,12 @@ import android.text.TextWatcher
 import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
+import dev.entao.appbase.Task
 import dev.entao.appbase.ex.dp
 import dev.entao.ui.ext.genId
 import dev.entao.ui.ext.hideInputMethod
 import dev.entao.ui.ext.padding
 import dev.entao.ui.res.D
-import dev.entao.util.Task
 
 class EditTextX(context: Context) : EditText(context) {
 	private var x: Drawable = D.EditClear

@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import dev.entao.util.Task
+import dev.entao.appbase.Task
 import java.util.*
 import kotlin.reflect.KClass
 

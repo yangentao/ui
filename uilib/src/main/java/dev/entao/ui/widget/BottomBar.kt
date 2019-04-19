@@ -10,14 +10,14 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
+import dev.entao.appbase.Task
 import dev.entao.appbase.ex.*
+import dev.entao.ui.creator.createLinearVertical
+import dev.entao.ui.creator.createTextViewB
 import dev.entao.ui.ext.*
 import dev.entao.ui.page.Cmd
 import dev.entao.ui.res.D
 import dev.entao.ui.res.Res
-import dev.entao.ui.creator.createLinearVertical
-import dev.entao.ui.creator.createTextViewB
-import dev.entao.util.Task
 /**
  * Created by entaoyang@163.com on 2018-04-18.
  */

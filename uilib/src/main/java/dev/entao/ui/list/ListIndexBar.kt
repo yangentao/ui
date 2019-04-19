@@ -8,6 +8,7 @@ import android.graphics.drawable.GradientDrawable
 import android.view.MotionEvent
 import android.view.View
 import android.widget.*
+import dev.entao.appbase.Task
 import dev.entao.appbase.ex.Shapes
 import dev.entao.appbase.ex.colorParse
 import dev.entao.appbase.ex.dp
@@ -15,7 +16,6 @@ import dev.entao.base.BlockUnit
 import dev.entao.base.ex.MultiHashMapArray
 import dev.entao.ui.creator.createTextView
 import dev.entao.ui.ext.*
-import dev.entao.util.Task
 import java.util.*
 
 /**

@@ -9,6 +9,7 @@ import android.support.annotation.DrawableRes
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import dev.entao.appbase.Task
 import dev.entao.appbase.ex.*
 import dev.entao.ui.base.ContainerActivity
 
@@ -16,7 +17,6 @@ import dev.entao.ui.ext.*
 import dev.entao.ui.res.D
 import dev.entao.ui.res.Res
 import dev.entao.ui.creator.*
-import dev.entao.util.Task
 
 @SuppressLint("ViewConstructor")
 class TitleBar(val context: Activity) : RelativeLayout(context) {

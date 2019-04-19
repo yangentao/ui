@@ -15,6 +15,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.appbase.App
+import dev.entao.appbase.Task
 import dev.entao.appbase.ex.Colors
 import dev.entao.appbase.ex.dp
 import dev.entao.ui.creator.*
@@ -24,7 +25,6 @@ import dev.entao.ui.list.CheckListView
 import dev.entao.ui.list.SimpleListView
 import dev.entao.ui.theme.ViewSize
 import dev.entao.ui.widget.TitleBar
-import dev.entao.util.Task
 
 class DialogX(val context: Context) {
     private var titleHeight = 45

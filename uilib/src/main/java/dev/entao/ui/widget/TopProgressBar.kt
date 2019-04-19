@@ -5,10 +5,10 @@ import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.view.View
+import dev.entao.appbase.Task
 import dev.entao.appbase.ex.Colors
 import dev.entao.appbase.ex.Shapes
 import dev.entao.ui.ext.backColorWhite
-import dev.entao.util.Task
 
 /**
  * Created by yet on 2015/10/31.

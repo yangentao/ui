@@ -4,7 +4,7 @@ package dev.entao.ui.dialogs
 
 import android.app.ProgressDialog
 import android.content.Context
-import dev.entao.util.Task
+import dev.entao.appbase.Task
 
 class SpinProgressDlg(context: Context) {
 	var dlg: ProgressDialog = ProgressDialog(context)

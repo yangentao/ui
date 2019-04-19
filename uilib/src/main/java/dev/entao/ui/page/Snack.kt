@@ -6,10 +6,10 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.widget.LinearLayout
 import android.widget.TextView
+import dev.entao.appbase.Task
 import dev.entao.appbase.ex.Colors
-import dev.entao.ui.ext.*
 import dev.entao.ui.creator.textView
-import dev.entao.util.Task
+import dev.entao.ui.ext.*
 import java.util.*
 
 /**

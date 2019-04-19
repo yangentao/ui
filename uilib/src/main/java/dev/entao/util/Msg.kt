@@ -1,6 +1,8 @@
 package dev.entao.util
 
 import android.support.annotation.Keep
+import dev.entao.appbase.Task
+import dev.entao.appbase.sync
 import java.lang.ref.WeakReference
 import kotlin.reflect.KClass
 

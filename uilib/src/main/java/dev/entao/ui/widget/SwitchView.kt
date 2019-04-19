@@ -2,8 +2,8 @@ package dev.entao.ui.widget
 
 import android.content.Context
 import android.widget.LinearLayout
+import dev.entao.appbase.Task
 import dev.entao.ui.ext.*
-import dev.entao.util.Task
 import java.util.*
 
 open class SwitchView(context: Context): LinearLayout(context) {

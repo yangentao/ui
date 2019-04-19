@@ -6,13 +6,13 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.TextView
+import dev.entao.appbase.Task
 import dev.entao.appbase.ex.dp
 import dev.entao.appbase.ex.limited
 import dev.entao.appbase.ex.sized
 import dev.entao.ui.ext.*
 import dev.entao.ui.list.AnyAdapter
 import dev.entao.ui.res.D
-import dev.entao.util.Task
 
 /**
  * Created by entaoyang@163.com on 2016-08-27.
