@@ -17,7 +17,7 @@ fun BaseFragment.pushPage(p: BaseFragment) {
     this.containerAct?.push(p)
 }
 
-fun BaseFragment.pushPage(p: BaseFragment, block: BaseFragment.() -> Unit) {
+fun <T : BaseFragment> BaseFragment.pushPage(p: T, block: T.() -> Unit) {
     p.block()
     this.containerAct?.push(p)
 }
