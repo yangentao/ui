@@ -4,6 +4,7 @@ package dev.entao.ui.base
 
 import android.os.Bundle
 import android.support.v4.app.FragmentManager
+import android.view.Window
 import android.widget.FrameLayout
 import dev.entao.log.logd
 import dev.entao.ui.R
@@ -20,6 +21,7 @@ open class ContainerActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.requestFeature(Window.FEATURE_NO_TITLE)
         containerView = this.createFrame()
         setContentView(containerView)
     }
@@ -29,7 +31,7 @@ open class ContainerActivity : BaseActivity() {
         if ((this.currentFragment as? BaseFragment)?.onBackPressed() == true) {
             return
         }
-        if (fragMgr.backStackEntryCount > 1) {
+        if (backCount > 0) {
             fragMgr.popBackStack()
         } else {
             finish()
@@ -37,9 +39,20 @@ open class ContainerActivity : BaseActivity() {
     }
 
 
+    fun setContentPage(fragment: BaseFragment) {
+        val b = fragMgr.beginTransaction()
+        b.replace(containerId, fragment)
+        b.commitAllowingStateLoss()
+    }
+
+    fun <T : BaseFragment> setContentPage(fragment: T, block: T.() -> Unit) {
+        fragment.block()
+        setContentPage(fragment)
+    }
+
     fun push(fragment: BaseFragment, pushAnim: Boolean, popAnim: Boolean) {
         val b = fragMgr.beginTransaction()
-        if (fragMgr.backStackEntryCount > 0) {
+        if (backCount > 0) {
             if (pushAnim || popAnim) {
                 b.setCustomAnimations(
                     if (pushAnim) R.animator.yet_right_in else 0,
@@ -60,7 +73,7 @@ open class ContainerActivity : BaseActivity() {
 
     fun pop() {
         logd("pop")
-        if (fragMgr.backStackEntryCount > 1) {
+        if (backCount > 0) {
             fragMgr.popBackStack()
         } else {
             logd("finish")
@@ -77,7 +90,7 @@ open class ContainerActivity : BaseActivity() {
     }
 
     fun popToBottom() {
-        while (fragMgr.backStackEntryCount > 1) {
+        while (backCount > 0) {
             fragMgr.popBackStackImmediate()
         }
     }

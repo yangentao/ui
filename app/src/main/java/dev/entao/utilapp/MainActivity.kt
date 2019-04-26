@@ -10,13 +10,13 @@ class MainActivity : ContainerActivity() {
         super.onCreate(savedInstanceState)
 
         val tabPage = TabBarPage()
-        push(tabPage)
         tabPage.onReady = {
             it.tab("Hello", R.mipmap.ic_launcher, HelloPage())
             it.tab("Yang", R.mipmap.ic_launcher, YangPage())
             it.commit()
             it.selectTab("Hello")
         }
+        setContentPage(tabPage)
     }
 
 }

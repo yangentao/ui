@@ -70,7 +70,7 @@ open class TitlePage : BaseFragment(), Progress {
 
         val ac = this.act
         if (ac is ContainerActivity) {
-            if (ac.backCount > 1) {
+            if (ac.backCount > 0) {
                 titleBar.showBack()
             }
         } else {

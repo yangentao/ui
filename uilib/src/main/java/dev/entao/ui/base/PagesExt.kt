@@ -13,6 +13,7 @@ import android.os.Build
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -111,6 +112,20 @@ val Fragment.fragMgr: FragmentManager
     get() {
         return this.requireFragmentManager()
     }
+
+fun AppCompatActivity.trans(block: FragmentTransaction.() -> Unit) {
+    val b = fragMgr.beginTransaction()
+    b.block()
+    b.commitAllowingStateLoss()
+}
+
+
+fun Fragment.trans(block: FragmentTransaction.() -> Unit) {
+    val b = fragMgr.beginTransaction()
+    b.block()
+    b.commitAllowingStateLoss()
+}
+
 
 val AppCompatActivity.currentFragment: Fragment? get() = fragMgr.fragments?.lastOrNull()
 
@@ -254,8 +269,6 @@ fun Fragment.toastShort(text: String) {
         }
     }
 }
-
-
 
 
 fun Context.viewImage(uri: Uri) {
