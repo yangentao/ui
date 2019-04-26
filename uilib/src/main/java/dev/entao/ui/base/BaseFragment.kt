@@ -57,7 +57,11 @@ open class BaseFragment : Fragment(), MsgListener {
     val watchMap = HashMap<Uri, ContentObserver>()
 
 
-    final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    final override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         pageRootView = RelativeLayoutX(act)
         onCreatePage(act, pageRootView, savedInstanceState)
         return pageRootView
@@ -294,17 +298,11 @@ open class BaseFragment : Fragment(), MsgListener {
     }
 
     open fun onBackPressed(): Boolean {
-        val a = act
-        if (a is ContainerActivity) {
-            a.pop()
-        } else {
-            a.finish()
-        }
-        return true
+        return false
     }
 
     fun finish() {
-        val a = act
+        val a = activity ?: return
         if (a is ContainerActivity) {
             a.pop()
         } else {

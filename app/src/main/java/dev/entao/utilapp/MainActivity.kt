@@ -9,6 +9,7 @@ class MainActivity : ContainerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        this.doubleBack = true
         val tabPage = TabBarPage()
         tabPage.onReady = {
             it.tab("Hello", R.mipmap.ic_launcher, HelloPage())

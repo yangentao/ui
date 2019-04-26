@@ -12,12 +12,16 @@ import dev.entao.ui.creator.createFrame
 
 open class ContainerActivity : BaseActivity() {
 
+
     protected lateinit var containerView: FrameLayout
 
     private val containerId: Int
         get() = containerView.id
 
     val backCount: Int get() = this.fragMgr.backStackEntryCount
+
+    var doubleBack = false
+    private var lastBackTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +38,20 @@ open class ContainerActivity : BaseActivity() {
         if (backCount > 0) {
             fragMgr.popBackStack()
         } else {
-            finish()
+            if (allowFinish()) {
+                finish()
+            }
         }
+    }
+
+    open fun allowFinish(): Boolean {
+        val cur = System.currentTimeMillis()
+        if (cur - lastBackTime < 2000) {
+            return true
+        }
+        lastBackTime = cur
+        toast("再按一次返回键退出")
+        return false
     }
 
 
