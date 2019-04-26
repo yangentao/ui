@@ -36,6 +36,7 @@ open class BaseActivity : AppCompatActivity(), MsgListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        App.init(this.application)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         if (fullScreen) {
             setWindowFullScreen()
