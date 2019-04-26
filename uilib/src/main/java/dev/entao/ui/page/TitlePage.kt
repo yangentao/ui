@@ -46,7 +46,8 @@ open class TitlePage : BaseFragment(), Progress {
     var enableContentScroll = false
 
     override fun onCreatePage(context: Context, pageView: RelativeLayout, savedInstanceState: Bundle?) {
-        rootLinearView = pageView.linearVer(RParam.Fill) {
+        pageView.linearVer(RParam.Fill) {
+            rootLinearView = this
             backColorWhite()
             if (hasTopProgress) {
                 topProgress = append(TopProgressBar(act).gone(), LParam.WidthFill.height(6))
