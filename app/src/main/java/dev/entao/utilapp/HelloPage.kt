@@ -2,8 +2,8 @@ package dev.entao.utilapp
 
 import android.content.Context
 import android.widget.LinearLayout
-import dev.entao.ui.base.pushPage
-import dev.entao.ui.page.TitlePage
+import dev.entao.kan.base.pushPage
+import dev.entao.kan.page.TitlePage
 
 class HelloPage : TitlePage() {
 

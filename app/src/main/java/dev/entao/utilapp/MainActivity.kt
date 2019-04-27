@@ -1,8 +1,8 @@
 package dev.entao.utilapp
 
 import android.os.Bundle
-import dev.entao.ui.base.ContainerActivity
-import dev.entao.ui.base.TabBarPage
+import dev.entao.kan.base.ContainerActivity
+import dev.entao.kan.base.TabBarPage
 
 class MainActivity : ContainerActivity() {
 

@@ -20,18 +20,18 @@
         <!--android:windowSoftInputMode="adjustPan"/>-->
 
 
-        <activity android:name="dev.entao.util.app.UpgradeActivity"/>
+        <activity android:name="dev.entao.kan.util.app.UpgradeActivity"/>
 
-        <receiver android:name="dev.entao.util.app.ApkDownReceiver">
+        <receiver android:name="dev.entao.kan.util.app.ApkDownReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
             </intent-filter>
         </receiver>
 
-        <receiver android:name="dev.entao.util.app.NotifyReceiver">
+        <receiver android:name="dev.entao.kan.util.app.NotifyReceiver">
         </receiver>
         <provider
-                android:name="dev.entao.util.app.FileProv"
+                android:name="dev.entao.kan.util.app.FileProv"
                 android:authorities="${applicationId}.files"
                 android:grantUriPermissions="true"
                 android:exported="false"/>
