@@ -14,6 +14,7 @@ open class ContainerActivity : BaseActivity() {
 
 
     protected lateinit var containerView: FrameLayout
+        private set
 
     private val containerId: Int
         get() = containerView.id
@@ -60,9 +61,9 @@ open class ContainerActivity : BaseActivity() {
 
 
     fun setContentPage(fragment: BaseFragment) {
-        val b = fragMgr.beginTransaction()
-        b.replace(containerId, fragment)
-        b.commitAllowingStateLoss()
+        trans {
+            replace(containerId, fragment)
+        }
     }
 
     fun <T : BaseFragment> setContentPage(fragment: T, block: T.() -> Unit) {
@@ -71,20 +72,20 @@ open class ContainerActivity : BaseActivity() {
     }
 
     fun push(fragment: BaseFragment, pushAnim: Boolean, popAnim: Boolean) {
-        val b = fragMgr.beginTransaction()
-        if (fragMgr.fragments.size > 0) {
-            if (pushAnim || popAnim) {
-                b.setCustomAnimations(
-                    if (pushAnim) R.animator.yet_right_in else 0,
-                    if (pushAnim) R.animator.yet_fade_out else 0,
-                    if (popAnim) R.animator.yet_fade_in else 0,
-                    if (popAnim) R.animator.yet_right_out else 0
-                )
+        trans {
+            if (fragMgr.fragments.size > 0) {
+                if (pushAnim || popAnim) {
+                    setCustomAnimations(
+                        if (pushAnim) R.animator.yet_right_in else 0,
+                        if (pushAnim) R.animator.yet_fade_out else 0,
+                        if (popAnim) R.animator.yet_fade_in else 0,
+                        if (popAnim) R.animator.yet_right_out else 0
+                    )
+                }
             }
+            add(containerId, fragment)
+            addToBackStack(fragment.uniqueName)
         }
-        b.add(containerId, fragment)
-        b.addToBackStack(fragment.uniqueName)
-        b.commitAllowingStateLoss()
     }
 
     fun push(fragment: BaseFragment) {
