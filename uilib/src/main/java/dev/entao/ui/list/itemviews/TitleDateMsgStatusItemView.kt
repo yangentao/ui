@@ -3,14 +3,15 @@ package dev.entao.ui.list.itemviews
 import android.content.Context
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.appbase.ex.RGB
-import dev.entao.appbase.ex.Shapes
-import dev.entao.base.MyDate
+import dev.entao.kan.appbase.ex.RGB
+import dev.entao.kan.appbase.ex.Shapes
+import dev.entao.kan.base.MyDate
 import dev.entao.ui.ext.*
 import dev.entao.ui.creator.createLinearHorizontal
 import dev.entao.ui.creator.createLinearVertical
 import dev.entao.ui.creator.createTextViewB
 import dev.entao.ui.creator.createTextViewC
+import java.nio.file.Files.size
 
 /**
  * Created by entaoyang@163.com on 16/3/13.

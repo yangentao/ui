@@ -10,8 +10,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
-import dev.entao.appbase.Task
-import dev.entao.appbase.ex.*
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.appbase.ex.*
 import dev.entao.ui.creator.createLinearVertical
 import dev.entao.ui.creator.createTextViewB
 import dev.entao.ui.ext.*

@@ -1,10 +1,10 @@
 package dev.entao.ui.imgloader
 
-import dev.entao.appbase.App
-import dev.entao.appbase.Task
-import dev.entao.base.Sleep
-import dev.entao.base.ex.MultiHashMap
-import dev.entao.http.Http
+import dev.entao.kan.appbase.App
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.base.Sleep
+import dev.entao.kan.base.ex.MultiHashMap
+import dev.entao.kan.http.Http
 import java.io.File
 import java.util.*
 

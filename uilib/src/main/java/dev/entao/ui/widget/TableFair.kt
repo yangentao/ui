@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.RelativeLayout
 import android.widget.TableLayout
 import android.widget.TableRow
-import dev.entao.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.Colors
 import dev.entao.ui.ext.*
 import dev.entao.ui.creator.createRelative
 import java.util.*

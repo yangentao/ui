@@ -9,8 +9,8 @@ import android.support.annotation.DrawableRes
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import dev.entao.appbase.Task
-import dev.entao.appbase.ex.*
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.appbase.ex.*
 import dev.entao.ui.base.ContainerActivity
 import dev.entao.ui.creator.*
 import dev.entao.ui.ext.*

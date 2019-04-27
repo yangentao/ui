@@ -5,8 +5,8 @@ import android.content.Context
 import android.os.Environment
 import android.view.View
 import android.widget.LinearLayout
-import dev.entao.appbase.App
-import dev.entao.log.Yog
+import dev.entao.kan.appbase.App
+import dev.entao.kan.log.Yog
 import dev.entao.ui.base.ContainerActivity
 import dev.entao.ui.base.act
 import dev.entao.ui.list.ListPage

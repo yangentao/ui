@@ -1,6 +1,6 @@
 package dev.entao.ui.imgloader
 
-import dev.entao.appbase.sql.MapTable
+import dev.entao.kan.appbase.sql.MapTable
 import java.io.File
 
 object ImageLocal {

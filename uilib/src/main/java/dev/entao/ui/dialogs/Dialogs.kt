@@ -6,7 +6,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.support.v4.app.Fragment
 import android.view.Gravity
-import dev.entao.appbase.ex.dp
+import dev.entao.kan.appbase.ex.dp
 import dev.entao.ui.base.act
 import dev.entao.ui.base.toast
 import dev.entao.ui.ext.inputTypeNumber

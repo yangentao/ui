@@ -3,9 +3,9 @@ package dev.entao.ui.widget
 import android.content.Context
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.appbase.ex.Colors
-import dev.entao.ui.ext.*
+import dev.entao.kan.appbase.ex.Colors
 import dev.entao.ui.creator.createTextViewB
+import dev.entao.ui.ext.*
 
 /**
  * Created by entaoyang@163.com on 2016-09-04.

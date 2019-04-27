@@ -7,11 +7,11 @@ import android.provider.Settings
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.appbase.App
-import dev.entao.appbase.Task
-import dev.entao.base.Progress
-import dev.entao.base.ex.keepDot
-import dev.entao.log.loge
+import dev.entao.kan.appbase.App
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.base.Progress
+import dev.entao.kan.base.ex.keepDot
+import dev.entao.kan.log.loge
 import dev.entao.ui.base.TitledActivity
 import dev.entao.ui.creator.buttonGreenRound
 import dev.entao.ui.creator.textView

@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.view.View
 import android.widget.LinearLayout
-import dev.entao.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.Colors
 import dev.entao.ui.ext.*
 /**
  * Created by entaoyang@163.com on 16/3/13.

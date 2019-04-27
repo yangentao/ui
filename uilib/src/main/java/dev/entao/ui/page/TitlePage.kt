@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.support.v4.widget.NestedScrollView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import dev.entao.appbase.Task
-import dev.entao.appbase.ex.Colors
-import dev.entao.base.Progress
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.base.Progress
 import dev.entao.ui.base.BaseFragment
 import dev.entao.ui.base.ContainerActivity
 import dev.entao.ui.base.act

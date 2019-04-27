@@ -12,10 +12,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Toast
-import dev.entao.appbase.App
-import dev.entao.appbase.Task
-import dev.entao.appbase.ex.Colors
-import dev.entao.json.YsonObject
+import dev.entao.kan.appbase.App
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.json.YsonObject
 import dev.entao.ui.theme.MyColor
 import dev.entao.util.Msg
 import dev.entao.util.MsgCenter

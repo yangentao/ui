@@ -7,9 +7,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
-import dev.entao.appbase.App
-import dev.entao.appbase.sql.MapTable
-import dev.entao.log.logd
+import dev.entao.kan.appbase.App
+import dev.entao.kan.appbase.sql.MapTable
+import dev.entao.kan.log.logd
 
 class ApkDownReceiver : BroadcastReceiver() {
 

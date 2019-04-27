@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.widget.RelativeLayout
 import android.widget.TextView
-import dev.entao.appbase.ex.*
+import dev.entao.kan.appbase.ex.*
 import dev.entao.ui.ext.*
 import dev.entao.ui.res.D
 import dev.entao.ui.res.Res

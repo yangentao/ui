@@ -1,7 +1,7 @@
 package dev.entao.util;
 
-import dev.entao.appbase.App;
-import dev.entao.log.Yog;
+import dev.entao.kan.appbase.App;
+import dev.entao.kan.log.Yog;
 
 import java.lang.reflect.*;
 import java.util.Arrays;

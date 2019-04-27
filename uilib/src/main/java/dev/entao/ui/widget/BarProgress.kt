@@ -1,6 +1,6 @@
 package dev.entao.ui.widget
 
-import dev.entao.base.Progress
+import dev.entao.kan.base.Progress
 
 /**
  * Created by entaoyang@163.com on 16/6/18.

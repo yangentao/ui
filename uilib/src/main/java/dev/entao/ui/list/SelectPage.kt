@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
-import dev.entao.ui.R
+import dev.entao.kan.ui.R
 import dev.entao.ui.base.toast
 import dev.entao.ui.theme.Str
 import dev.entao.ui.widget.BarItem

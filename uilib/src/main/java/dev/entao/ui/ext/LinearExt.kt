@@ -6,10 +6,10 @@ import android.annotation.SuppressLint
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
-import dev.entao.appbase.ex.Bmp
-import dev.entao.appbase.ex.Colors
-import dev.entao.appbase.ex.dp
-import dev.entao.appbase.ex.drawable
+import dev.entao.kan.appbase.ex.Bmp
+import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.appbase.ex.drawable
 
 /**
  * Created by entaoyang@163.com on 16/3/12.

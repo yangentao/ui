@@ -4,7 +4,7 @@ package dev.entao.ui.ext
 
 import android.support.annotation.DrawableRes
 import android.widget.ImageView
-import dev.entao.appbase.ex.tintedWhite
+import dev.entao.kan.appbase.ex.tintedWhite
 import dev.entao.ui.res.Res
 
 /**

@@ -20,11 +20,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
-import dev.entao.appbase.App
-import dev.entao.appbase.ex.Bmp
-import dev.entao.appbase.ex.saveJpg
-import dev.entao.appbase.ex.savePng
-import dev.entao.log.Yog
+import dev.entao.kan.appbase.App
+import dev.entao.kan.appbase.ex.Bmp
+import dev.entao.kan.appbase.ex.saveJpg
+import dev.entao.kan.appbase.ex.savePng
+import dev.entao.kan.log.Yog
 import dev.entao.ui.dialogs.HorProgressDlg
 import dev.entao.ui.dialogs.SpinProgressDlg
 import dev.entao.ui.dialogs.listItem

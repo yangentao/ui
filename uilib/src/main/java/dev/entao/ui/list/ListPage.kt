@@ -5,7 +5,7 @@ import android.database.DataSetObserver
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.View
 import android.widget.*
-import dev.entao.appbase.Task
+import dev.entao.kan.appbase.Task
 import dev.entao.ui.creator.*
 import dev.entao.ui.ext.*
 import dev.entao.ui.list.itemviews.TextItemView

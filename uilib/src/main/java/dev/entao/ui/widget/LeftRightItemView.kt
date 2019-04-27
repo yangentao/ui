@@ -8,13 +8,13 @@ import android.widget.ImageView
 import android.widget.ImageView.ScaleType
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.appbase.ex.Colors
-import dev.entao.ui.ext.*
-import dev.entao.ui.res.D
+import dev.entao.kan.appbase.ex.Colors
 import dev.entao.ui.creator.createCheckBox
 import dev.entao.ui.creator.createImageView
 import dev.entao.ui.creator.createTextViewA
 import dev.entao.ui.creator.createTextViewB
+import dev.entao.ui.ext.*
+import dev.entao.ui.res.D
 
 /**
  * 左右对齐listview itemview

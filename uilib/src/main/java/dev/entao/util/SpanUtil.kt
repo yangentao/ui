@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.*
-import dev.entao.appbase.App
+import dev.entao.kan.appbase.App
 
 class SpanUtil(s: String) {
 	var ss: SpannableString = SpannableString(s)

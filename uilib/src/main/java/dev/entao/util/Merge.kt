@@ -1,6 +1,6 @@
 package dev.entao.util
 
-import dev.entao.appbase.Task
+import dev.entao.kan.appbase.Task
 import java.util.*
 
 /**

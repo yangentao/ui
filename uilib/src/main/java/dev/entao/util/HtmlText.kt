@@ -3,7 +3,7 @@ package dev.entao.util
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
-import dev.entao.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.Colors
 
 /**
  * Created by entaoyang@163.com on 2016-11-04.

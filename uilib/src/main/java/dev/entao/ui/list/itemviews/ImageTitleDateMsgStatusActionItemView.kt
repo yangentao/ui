@@ -8,10 +8,10 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.appbase.ex.Colors
-import dev.entao.appbase.ex.RGB
-import dev.entao.appbase.ex.Shapes
-import dev.entao.base.MyDate
+import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.RGB
+import dev.entao.kan.appbase.ex.Shapes
+import dev.entao.kan.base.MyDate
 import dev.entao.ui.theme.IconSize
 import dev.entao.ui.ext.*
 import dev.entao.ui.res.D

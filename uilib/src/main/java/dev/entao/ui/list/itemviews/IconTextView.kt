@@ -8,7 +8,7 @@ import android.util.TypedValue
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.appbase.ex.dp
+import dev.entao.kan.appbase.ex.dp
 import dev.entao.ui.theme.IconSize
 import dev.entao.ui.ext.*
 import dev.entao.ui.creator.createImageView

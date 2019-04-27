@@ -4,8 +4,8 @@ package dev.entao.ui.dialogs
 
 import android.app.ProgressDialog
 import android.content.Context
-import dev.entao.appbase.InMainThread
-import dev.entao.appbase.Task
+import dev.entao.kan.appbase.InMainThread
+import dev.entao.kan.appbase.Task
 
 class HorProgressDlg(context: Context) {
 	val dlg: ProgressDialog = ProgressDialog(context)

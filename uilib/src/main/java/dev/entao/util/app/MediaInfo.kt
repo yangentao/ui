@@ -3,9 +3,9 @@ package dev.entao.util.app
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
-import dev.entao.appbase.sql.RowData
-import dev.entao.appbase.sql.UriQuery
-import dev.entao.appbase.sql.listRow_
+import dev.entao.kan.appbase.sql.RowData
+import dev.entao.kan.appbase.sql.UriQuery
+import dev.entao.kan.appbase.sql.listRow_
 
 /**
  * Created by entaoyang@163.com on 16/5/12.

@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import android.view.Window
 import android.widget.FrameLayout
-import dev.entao.log.logd
-import dev.entao.ui.R
+import dev.entao.kan.log.logd
+import dev.entao.kan.ui.R
 import dev.entao.ui.creator.createFrame
 
 open class ContainerActivity : BaseActivity() {

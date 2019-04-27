@@ -8,11 +8,11 @@ import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Build
 import android.support.annotation.DrawableRes
-import dev.entao.appbase.App
-import dev.entao.appbase.ex.*
+import dev.entao.kan.appbase.App
+import dev.entao.kan.appbase.ex.*
 import dev.entao.ui.theme.IconSize
 import dev.entao.ui.theme.ViewSize
-import dev.entao.ui.R
+import dev.entao.kan.ui.R
 import dev.entao.ui.widget.EditTextX
 
 /**

@@ -5,10 +5,10 @@ package dev.entao.ui.ext
 import android.graphics.drawable.Drawable
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import dev.entao.appbase.ex.ImageStated
-import dev.entao.appbase.ex.dp
-import dev.entao.appbase.ex.sized
-import dev.entao.ui.R
+import dev.entao.kan.appbase.ex.ImageStated
+import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.appbase.ex.sized
+import dev.entao.kan.ui.R
 import dev.entao.ui.creator.createRadioButton
 import dev.entao.ui.res.D
 

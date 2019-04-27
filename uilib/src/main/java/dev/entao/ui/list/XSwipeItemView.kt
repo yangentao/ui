@@ -5,9 +5,9 @@ import android.graphics.Color
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.appbase.ex.Colors
-import dev.entao.appbase.ex.sized
-import dev.entao.log.Yog
+import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.sized
+import dev.entao.kan.log.Yog
 import dev.entao.ui.ext.*
 import dev.entao.ui.list.itemviews.HorItemView
 import dev.entao.ui.list.itemviews.ItemViewCheckable

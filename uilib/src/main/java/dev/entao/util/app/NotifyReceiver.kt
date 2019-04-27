@@ -3,7 +3,7 @@ package dev.entao.util.app
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import dev.entao.appbase.App
+import dev.entao.kan.appbase.App
 
 /**
  * Created by entaoyang@163.com on 2018-07-17.

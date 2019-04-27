@@ -4,8 +4,8 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import android.widget.TextView
-import dev.entao.appbase.ex.dp
-import dev.entao.appbase.ex.sized
+import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.appbase.ex.sized
 import dev.entao.ui.ext.*
 import dev.entao.ui.res.D
 import dev.entao.ui.res.Res

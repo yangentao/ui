@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.drawable.LayerDrawable
 import android.view.View
 import android.widget.CheckBox
-import dev.entao.appbase.ex.*
+import dev.entao.kan.appbase.ex.*
 
 /**
  * Created by entaoyang@163.com on 16/6/4.

@@ -2,8 +2,8 @@ package dev.entao.util
 
 import android.content.Context
 import android.widget.Toast
-import dev.entao.appbase.App
-import dev.entao.appbase.Task
+import dev.entao.kan.appbase.App
+import dev.entao.kan.appbase.Task
 import dev.entao.ui.res.Res
 
 object ToastUtil {

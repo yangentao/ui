@@ -2,28 +2,29 @@ package dev.entao.ui.res
 
 import android.graphics.drawable.Drawable
 import android.os.Build
-import dev.entao.appbase.App
+import dev.entao.kan.appbase.App
+import dev.entao.kan.ui.R
 
 /**
  * Created by entaoyang@163.com on 2016-10-16.
  */
 object Res {
-	val menu = dev.entao.ui.R.drawable.yet_menu
-	val me = dev.entao.ui.R.drawable.yet_me
-	val addWhite = dev.entao.ui.R.drawable.yet_add_white
-	val arrowRight = dev.entao.ui.R.drawable.yet_arrow_right
-	val more = dev.entao.ui.R.drawable.yet_arrow_right
-	val back = dev.entao.ui.R.drawable.yet_back
-	val checkbox = dev.entao.ui.R.drawable.yet_checkbox
-	val checkboxChecked = dev.entao.ui.R.drawable.yet_checkbox_checked
-	val dropdown = dev.entao.ui.R.drawable.yet_dropdown
-	val editClear = dev.entao.ui.R.drawable.yet_edit_clear
-	val imageMiss = dev.entao.ui.R.drawable.yet_image_miss
-	val picAdd = dev.entao.ui.R.drawable.yet_pic_add
-	val portrait = dev.entao.ui.R.drawable.yet_portrait
-	val selAll = dev.entao.ui.R.drawable.yet_sel_all
-	val selAllLight = dev.entao.ui.R.drawable.yet_sel_all2
-	val del = dev.entao.ui.R.drawable.del
+	val menu = R.drawable.yet_menu
+	val me = R.drawable.yet_me
+	val addWhite = R.drawable.yet_add_white
+	val arrowRight = R.drawable.yet_arrow_right
+	val more = R.drawable.yet_arrow_right
+	val back = R.drawable.yet_back
+	val checkbox = R.drawable.yet_checkbox
+	val checkboxChecked = R.drawable.yet_checkbox_checked
+	val dropdown = R.drawable.yet_dropdown
+	val editClear = R.drawable.yet_edit_clear
+	val imageMiss = R.drawable.yet_image_miss
+	val picAdd = R.drawable.yet_pic_add
+	val portrait = R.drawable.yet_portrait
+	val selAll = R.drawable.yet_sel_all
+	val selAllLight = R.drawable.yet_sel_all2
+	val del = R.drawable.del
 
 	fun str(resId: Int): String {
 		return App.resource.getString(resId)

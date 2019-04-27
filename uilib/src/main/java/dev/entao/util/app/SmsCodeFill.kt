@@ -4,10 +4,10 @@ package dev.entao.util.app
 
 import android.net.Uri
 import android.widget.TextView
-import dev.entao.appbase.sql.GE
-import dev.entao.appbase.sql.RowData
-import dev.entao.appbase.sql.UriQuery
-import dev.entao.appbase.sql.listRow_
+import dev.entao.kan.appbase.sql.GE
+import dev.entao.kan.appbase.sql.RowData
+import dev.entao.kan.appbase.sql.UriQuery
+import dev.entao.kan.appbase.sql.listRow_
 import java.util.regex.Pattern
 
 /**

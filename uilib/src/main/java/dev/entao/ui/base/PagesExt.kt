@@ -20,10 +20,10 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
-import dev.entao.appbase.App
-import dev.entao.appbase.Task
-import dev.entao.base.MyDate
-import dev.entao.log.loge
+import dev.entao.kan.appbase.App
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.base.MyDate
+import dev.entao.kan.log.loge
 import dev.entao.ui.page.WebPage
 import kotlin.reflect.KClass
 

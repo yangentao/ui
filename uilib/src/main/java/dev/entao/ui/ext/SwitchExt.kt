@@ -3,10 +3,10 @@
 package dev.entao.ui.ext
 
 import android.widget.Switch
-import dev.entao.appbase.ex.Colors
-import dev.entao.appbase.ex.ImageStated
-import dev.entao.appbase.ex.Shapes
-import dev.entao.appbase.ex.dp
+import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.ImageStated
+import dev.entao.kan.appbase.ex.Shapes
+import dev.entao.kan.appbase.ex.dp
 import dev.entao.util.app.OS
 
 /**

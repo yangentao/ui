@@ -4,10 +4,10 @@ import android.app.*
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
-import dev.entao.appbase.App
-import dev.entao.appbase.ex.Bmp
-import dev.entao.appbase.ex.UriRes
-import dev.entao.json.YsonObject
+import dev.entao.kan.appbase.App
+import dev.entao.kan.appbase.ex.Bmp
+import dev.entao.kan.appbase.ex.UriRes
+import dev.entao.kan.json.YsonObject
 
 @Suppress("DEPRECATION")
 /**

@@ -7,7 +7,7 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import dev.entao.appbase.ex.color
+import dev.entao.kan.appbase.ex.color
 import dev.entao.ui.ext.*
 import dev.entao.ui.res.D
 import dev.entao.ui.widget.EditTextX

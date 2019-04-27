@@ -2,11 +2,11 @@ package net.yet.kutil.ui.activities
 
 import android.os.Bundle
 import android.widget.ImageView
-import dev.entao.appbase.Task
-import dev.entao.appbase.ex.ARGB
-import dev.entao.appbase.ex.RGB
-import dev.entao.appbase.ex.Shapes
-import dev.entao.base.Sleep
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.appbase.ex.ARGB
+import dev.entao.kan.appbase.ex.RGB
+import dev.entao.kan.appbase.ex.Shapes
+import dev.entao.kan.base.Sleep
 import dev.entao.ui.base.BaseActivity
 import dev.entao.ui.creator.createRelative
 import dev.entao.ui.creator.imageView

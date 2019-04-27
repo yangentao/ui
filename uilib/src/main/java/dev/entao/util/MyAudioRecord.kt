@@ -2,8 +2,8 @@ package dev.entao.util
 
 import android.content.Context
 import android.media.MediaRecorder
-import dev.entao.appbase.Task
-import dev.entao.log.Yog
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.log.Yog
 import java.io.File
 
 @Suppress("DEPRECATION")

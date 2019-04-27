@@ -3,12 +3,12 @@
 package dev.entao.util.app
 
 import android.app.Activity
-import dev.entao.appbase.App
-import dev.entao.appbase.Task
-import dev.entao.appbase.sql.MapTable
-import dev.entao.base.Progress
-import dev.entao.http.Http
-import dev.entao.json.YsonObject
+import dev.entao.kan.appbase.App
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.appbase.sql.MapTable
+import dev.entao.kan.base.Progress
+import dev.entao.kan.http.Http
+import dev.entao.kan.json.YsonObject
 import dev.entao.ui.base.BaseFragment
 import dev.entao.ui.base.act
 import dev.entao.ui.base.openActivity

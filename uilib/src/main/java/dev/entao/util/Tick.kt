@@ -1,6 +1,6 @@
 package dev.entao.util
 
-import dev.entao.log.Yog
+import dev.entao.kan.log.Yog
 
 
 /**

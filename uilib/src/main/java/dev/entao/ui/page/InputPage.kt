@@ -4,10 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.ViewGroup
 import android.widget.*
-import dev.entao.appbase.Task
-import dev.entao.appbase.ex.Colors
-import dev.entao.base.*
-import dev.entao.log.logd
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.base.*
+import dev.entao.kan.base.setValue
+import dev.entao.kan.log.logd
 import dev.entao.ui.base.act
 import dev.entao.ui.base.hideInputMethod
 import dev.entao.ui.base.pickDate
@@ -22,8 +23,6 @@ import dev.entao.ui.res.Res
 import dev.entao.ui.theme.ViewSize
 import dev.entao.ui.util.TimeDown
 import dev.entao.util.ToastUtil
-import yet.ext.defaultValueOfProperty
-import yet.ext.strToV
 import java.util.regex.Pattern
 import kotlin.collections.component1
 import kotlin.collections.component2

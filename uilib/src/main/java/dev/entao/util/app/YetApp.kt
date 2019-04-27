@@ -3,9 +3,9 @@ package dev.entao.util.app
 import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDex
-import dev.entao.appbase.App
-import dev.entao.json.YsonObject
-import dev.entao.log.logd
+import dev.entao.kan.appbase.App
+import dev.entao.kan.json.YsonObject
+import dev.entao.kan.log.logd
 import dev.entao.ui.base.AppVisibleListener
 
 /**

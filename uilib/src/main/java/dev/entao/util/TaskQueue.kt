@@ -2,7 +2,7 @@ package dev.entao.util
 
 import android.os.Handler
 import android.os.HandlerThread
-import dev.entao.appbase.Task
+import dev.entao.kan.appbase.Task
 
 class TaskQueue(name: String) {
 	val handler: Handler

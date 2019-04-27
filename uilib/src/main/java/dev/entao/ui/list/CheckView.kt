@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.View
 import android.widget.Checkable
 import android.widget.CheckedTextView
-import dev.entao.appbase.ex.sized
-import dev.entao.log.fatalIf
+import dev.entao.kan.appbase.ex.sized
+import dev.entao.kan.log.fatalIf
 import dev.entao.ui.ext.*
 import dev.entao.ui.list.itemviews.HorItemView
 import dev.entao.ui.res.D

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import dev.entao.appbase.Task
+import dev.entao.kan.appbase.Task
 import dev.entao.ui.ext.genId
 import dev.entao.ui.list.itemviews.TextItemView
 import java.util.TreeSet

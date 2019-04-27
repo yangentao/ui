@@ -3,7 +3,7 @@ package dev.entao.ui.widget
 import android.content.Context
 import android.view.View
 import android.widget.LinearLayout
-import dev.entao.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.Colors
 import dev.entao.ui.ext.*
 import dev.entao.ui.creator.linearHor
 

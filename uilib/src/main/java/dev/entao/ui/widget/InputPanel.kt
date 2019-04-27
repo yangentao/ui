@@ -3,11 +3,11 @@ package dev.entao.ui.widget
 import android.content.Context
 import android.view.View
 import android.widget.*
-import dev.entao.appbase.Task
-import dev.entao.appbase.ex.Colors
-import dev.entao.appbase.ex.ImageStated
-import dev.entao.appbase.ex.RectDraw
-import dev.entao.ui.R
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.ImageStated
+import dev.entao.kan.appbase.ex.RectDraw
+import dev.entao.kan.ui.R
 import dev.entao.ui.base.BaseFragment
 import dev.entao.ui.base.hideInputMethod
 import dev.entao.ui.creator.*

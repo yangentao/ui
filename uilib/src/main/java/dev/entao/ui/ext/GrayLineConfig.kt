@@ -2,7 +2,7 @@
 
 package dev.entao.ui.ext
 
-import dev.entao.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.Colors
 
 /**
  * Created by entaoyang@163.com on 2016-11-07.

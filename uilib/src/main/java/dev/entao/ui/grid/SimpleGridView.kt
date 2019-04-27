@@ -6,10 +6,10 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.TextView
-import dev.entao.appbase.Task
-import dev.entao.appbase.ex.dp
-import dev.entao.appbase.ex.limited
-import dev.entao.appbase.ex.sized
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.appbase.ex.limited
+import dev.entao.kan.appbase.ex.sized
 import dev.entao.ui.ext.*
 import dev.entao.ui.list.AnyAdapter
 import dev.entao.ui.res.D

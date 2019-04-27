@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.appbase.ex.*
+import dev.entao.kan.appbase.ex.*
 import dev.entao.ui.res.D
 import dev.entao.ui.theme.Space
 import java.util.concurrent.atomic.AtomicInteger

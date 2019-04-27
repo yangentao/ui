@@ -6,11 +6,11 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import dev.entao.appbase.ex.ARGB
-import dev.entao.appbase.ex.RGB
-import dev.entao.appbase.ex.Shapes
-import dev.entao.appbase.ex.dp
-import dev.entao.log.Yog
+import dev.entao.kan.appbase.ex.ARGB
+import dev.entao.kan.appbase.ex.RGB
+import dev.entao.kan.appbase.ex.Shapes
+import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.log.Yog
 import dev.entao.ui.ext.*
 import dev.entao.ui.creator.createLinearVertical
 import dev.entao.ui.creator.createTextViewC

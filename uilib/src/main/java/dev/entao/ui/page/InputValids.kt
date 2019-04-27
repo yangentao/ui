@@ -1,7 +1,7 @@
 package dev.entao.ui.page
 
 import android.widget.EditText
-import dev.entao.base.ex.FormatPhone
+import dev.entao.kan.base.ex.FormatPhone
 
 /**
  * Created by entaoyang@163.com on 2018-03-30.

@@ -2,8 +2,8 @@ package dev.entao.util
 
 import android.net.Uri
 import android.os.Build
-import dev.entao.appbase.App
-import dev.entao.log.loge
+import dev.entao.kan.appbase.App
+import dev.entao.kan.log.loge
 import dev.entao.util.app.FileProv
 import java.io.File
 

@@ -1,6 +1,6 @@
 package dev.entao.ui.theme
 
-import dev.entao.ui.R
+import dev.entao.kan.ui.R
 import dev.entao.ui.res.Res
 
 

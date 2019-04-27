@@ -2,7 +2,7 @@ package dev.entao.ui.widget
 
 import android.content.Context
 import android.widget.LinearLayout
-import dev.entao.appbase.Task
+import dev.entao.kan.appbase.Task
 import dev.entao.ui.ext.*
 import java.util.*
 

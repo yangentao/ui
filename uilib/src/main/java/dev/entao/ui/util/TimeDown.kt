@@ -1,9 +1,9 @@
 package dev.entao.ui.util
 
 import android.widget.TextView
-import dev.entao.appbase.Task
-import dev.entao.log.logd
-import dev.entao.ui.R
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.log.logd
+import dev.entao.kan.ui.R
 import dev.entao.ui.res.Res
 import java.util.*
 

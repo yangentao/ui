@@ -4,9 +4,9 @@ package dev.entao.ui.ext
 
 import android.widget.Button
 import android.widget.CheckBox
-import dev.entao.appbase.ex.Colors
-import dev.entao.ui.theme.ViewSize
+import dev.entao.kan.appbase.ex.Colors
 import dev.entao.ui.res.D
+import dev.entao.ui.theme.ViewSize
 
 /**
  * Created by entaoyang@163.com on 16/4/28.

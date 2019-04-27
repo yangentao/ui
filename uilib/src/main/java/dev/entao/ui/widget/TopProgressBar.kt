@@ -5,9 +5,9 @@ import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.view.View
-import dev.entao.appbase.Task
-import dev.entao.appbase.ex.Colors
-import dev.entao.appbase.ex.Shapes
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.Shapes
 import dev.entao.ui.ext.backColorWhite
 
 /**

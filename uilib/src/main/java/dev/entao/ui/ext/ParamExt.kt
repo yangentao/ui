@@ -4,7 +4,7 @@ package dev.entao.ui.ext
 
 import android.view.View
 import android.view.ViewGroup
-import dev.entao.appbase.ex.dp
+import dev.entao.kan.appbase.ex.dp
 import dev.entao.ui.theme.Space
 import dev.entao.ui.theme.ViewSize
 

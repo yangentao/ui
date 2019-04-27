@@ -18,14 +18,15 @@ import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-import dev.entao.appbase.ex.ColorListLight
-import dev.entao.appbase.ex.Colors
-import dev.entao.appbase.ex.dp
-import dev.entao.appbase.ex.sized
-import dev.entao.ui.R
+import dev.entao.kan.appbase.ex.ColorListLight
+import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.appbase.ex.sized
+import dev.entao.kan.ui.R
 import dev.entao.ui.res.D
 import dev.entao.ui.theme.Space
 import dev.entao.ui.theme.TextSize
+import dev.entao.ui.util.XTextWatcher
 import dev.entao.util.HtmlText
 
 /**
@@ -460,10 +461,11 @@ fun <T : TextView> T.imagePadding(p: Int): T {
 
 
 fun <T : TextView> T.onTextChanged(block: (String) -> Unit): T {
-    this.addTextChangedListener(object : dev.entao.ui.util.XTextWatcher() {
-        override fun afterTextChanged(text: String?) {
-            block(text ?: "")
+    this.addTextChangedListener(object : XTextWatcher() {
+        override fun afterTextChanged(text: String) {
+            block(text)
         }
+
     })
     return this
 }

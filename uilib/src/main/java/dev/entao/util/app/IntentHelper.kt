@@ -7,10 +7,10 @@ import android.content.BroadcastReceiver
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import dev.entao.appbase.App
-import dev.entao.base.ex.extraString
-import dev.entao.json.YsonObject
-import dev.entao.log.Yog
+import dev.entao.kan.appbase.App
+import dev.entao.kan.base.ex.extraString
+import dev.entao.kan.json.YsonObject
+import dev.entao.kan.log.Yog
 
 /**
  * 明确带有Sys后缀的函数, 是面向Android系统的全局回调/调用

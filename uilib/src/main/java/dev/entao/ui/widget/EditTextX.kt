@@ -7,8 +7,8 @@ import android.text.TextWatcher
 import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
-import dev.entao.appbase.Task
-import dev.entao.appbase.ex.dp
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.appbase.ex.dp
 import dev.entao.ui.ext.genId
 import dev.entao.ui.ext.hideInputMethod
 import dev.entao.ui.ext.padding

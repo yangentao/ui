@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.view.View
 import android.widget.BaseAdapter
 import android.widget.ListView
-import dev.entao.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.Colors
 import dev.entao.ui.ext.backColorWhite
 import dev.entao.ui.ext.genId
 import dev.entao.ui.res.D

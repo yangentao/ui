@@ -3,8 +3,8 @@ package dev.entao.ui.base
 import android.app.Activity
 import android.os.Build
 import android.support.v4.app.Fragment
-import dev.entao.appbase.App
-import dev.entao.appbase.Task
+import dev.entao.kan.appbase.App
+import dev.entao.kan.appbase.Task
 import dev.entao.util.app.hasPerm
 import java.util.*
 import kotlin.collections.HashMap

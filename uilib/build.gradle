@@ -5,7 +5,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 //apply plugin: 'maven'
 
 
-group = 'dev.entao'
+group = 'dev.entao.kan'
 
 android {
     compileSdkVersion 27
@@ -16,7 +16,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
-        versionName "2.0.17"
+        versionName "3.0.0"
     }
 
 }
@@ -40,11 +40,11 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
-    implementation 'dev.entao:base:2.0.2'
-    implementation 'dev.entao:json:2.0.1'
-    implementation 'dev.entao:http:2.0.1'
-    implementation 'dev.entao:log:2.0.1'
-    implementation 'dev.entao:appbase:2.0.3.2711.1330'
+    implementation 'dev.entao.kan:base:3.0.0'
+    implementation 'dev.entao.kan:json:3.0.0'
+    implementation 'dev.entao.kan:http:3.0.0'
+    implementation 'dev.entao.kan:log:3.0.0'
+    implementation 'dev.entao.kan:appbase:3.0.0'
 
 }
 

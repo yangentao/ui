@@ -3,7 +3,7 @@ package dev.entao.ui.list
 import android.content.Context
 import android.view.View
 import android.widget.LinearLayout
-import dev.entao.log.Yog
+import dev.entao.kan.log.Yog
 import dev.entao.ui.widget.Action
 
 /**

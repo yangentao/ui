@@ -9,11 +9,11 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import dev.entao.appbase.Task
-import dev.entao.appbase.ex.MyTimer
-import dev.entao.appbase.ex.Shapes
-import dev.entao.appbase.ex.grayColor
-import dev.entao.appbase.ex.sized
+import dev.entao.kan.appbase.Task
+import dev.entao.kan.appbase.ex.MyTimer
+import dev.entao.kan.appbase.ex.Shapes
+import dev.entao.kan.appbase.ex.grayColor
+import dev.entao.kan.appbase.ex.sized
 import dev.entao.ui.creator.createImageView
 import dev.entao.ui.creator.imageView
 import dev.entao.ui.creator.linearHor

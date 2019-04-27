@@ -7,8 +7,8 @@ import android.view.View
 import android.widget.AbsListView
 import android.widget.AdapterView
 import android.widget.GridView
-import dev.entao.appbase.ex.dp
-import dev.entao.appbase.ex.sized
+import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.appbase.ex.sized
 import dev.entao.ui.ext.genId
 import dev.entao.ui.ext.padding
 import dev.entao.ui.list.AnyAdapter
