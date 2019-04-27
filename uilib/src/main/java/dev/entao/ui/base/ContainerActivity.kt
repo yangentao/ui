@@ -68,7 +68,7 @@ open class ContainerActivity : BaseActivity() {
 
     fun push(fragment: BaseFragment, pushAnim: Boolean, popAnim: Boolean) {
         val b = fragMgr.beginTransaction()
-        if (backCount > 0) {
+        if (fragMgr.fragments.size > 0) {
             if (pushAnim || popAnim) {
                 b.setCustomAnimations(
                     if (pushAnim) R.animator.yet_right_in else 0,
