@@ -45,13 +45,17 @@ open class ContainerActivity : BaseActivity() {
     }
 
     open fun allowFinish(): Boolean {
-        val cur = System.currentTimeMillis()
-        if (cur - lastBackTime < 2000) {
+        if (doubleBack) {
+            val cur = System.currentTimeMillis()
+            if (cur - lastBackTime < 2000) {
+                return true
+            }
+            lastBackTime = cur
+            toast("再按一次返回键退出")
+            return false
+        } else {
             return true
         }
-        lastBackTime = cur
-        toast("再按一次返回键退出")
-        return false
     }
 
 
