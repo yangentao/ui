@@ -8,7 +8,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import dev.entao.kan.appbase.App
-import dev.entao.kan.base.ex.extraString
+import dev.entao.kan.base.yson
 import dev.entao.kan.json.YsonObject
 import dev.entao.kan.log.Yog
 
@@ -28,109 +28,98 @@ import dev.entao.kan.log.Yog
 
 
 object IntentHelper {
-	const val ARG_NAME = "intent_arg"
 
-	fun pendingActivity(cls: Class<out Activity>, flag: Int, yo: YsonObject): PendingIntent {
-		val it = Intent(App.inst, cls).yson(yo)
-		return PendingIntent.getActivity(App.inst, 0, it, flag)
-	}
+    fun pendingActivity(cls: Class<out Activity>, flag: Int, yo: YsonObject): PendingIntent {
+        val it = Intent(App.inst, cls).yson(yo)
+        return PendingIntent.getActivity(App.inst, 0, it, flag)
+    }
 
-	fun pendingService(cls: Class<out Service>, flag: Int, yo: YsonObject): PendingIntent {
-		val it = Intent(App.inst, cls).yson(yo)
-		return PendingIntent.getService(App.inst, 0, it, flag)
-	}
+    fun pendingService(cls: Class<out Service>, flag: Int, yo: YsonObject): PendingIntent {
+        val it = Intent(App.inst, cls).yson(yo)
+        return PendingIntent.getService(App.inst, 0, it, flag)
+    }
 
-	fun pendingBroadcastApp(action: String, flag: Int, yo: YsonObject): PendingIntent {
-		val it = Intent(action).yson(yo)
-		it.setPackage(App.packageName)
-		return PendingIntent.getBroadcast(App.inst, 0, it, flag)
-	}
+    fun pendingBroadcastApp(action: String, flag: Int, yo: YsonObject): PendingIntent {
+        val it = Intent(action).yson(yo)
+        it.setPackage(App.packageName)
+        return PendingIntent.getBroadcast(App.inst, 0, it, flag)
+    }
 
-	fun pendingBroadcastSys(action: String, flag: Int, yo: YsonObject): PendingIntent {
-		val it = Intent(action).yson(yo)
-		return PendingIntent.getBroadcast(App.inst, 0, it, flag)
-	}
+    fun pendingBroadcastSys(action: String, flag: Int, yo: YsonObject): PendingIntent {
+        val it = Intent(action).yson(yo)
+        return PendingIntent.getBroadcast(App.inst, 0, it, flag)
+    }
 
-	fun pendingBroadcast(cls: Class<out BroadcastReceiver>, yo: YsonObject): PendingIntent {
-		val it = Intent(App.inst, cls).yson(yo)
-		return PendingIntent.getBroadcast(App.inst, 0, it, PendingIntent.FLAG_UPDATE_CURRENT)
-	}
+    fun pendingBroadcast(cls: Class<out BroadcastReceiver>, yo: YsonObject): PendingIntent {
+        val it = Intent(App.inst, cls).yson(yo)
+        return PendingIntent.getBroadcast(App.inst, 0, it, PendingIntent.FLAG_UPDATE_CURRENT)
+    }
 
-	fun startService(cls: Class<out Service>, action: String, yo: YsonObject) {
-		startService(cls, action, null, yo)
-	}
+    fun startService(cls: Class<out Service>, action: String, yo: YsonObject) {
+        startService(cls, action, null, yo)
+    }
 
-	fun startService(cls: Class<out Service>, uri: Uri) {
-		startService(cls, null, uri, YsonObject())
-	}
+    fun startService(cls: Class<out Service>, uri: Uri) {
+        startService(cls, null, uri, YsonObject())
+    }
 
-	fun startService(cls: Class<out Service>, action: String?, uri: Uri?, yo: YsonObject) {
-		val it = Intent(action, uri, App.inst, cls).yson(yo)
-		App.inst.startService(it)
-	}
+    fun startService(cls: Class<out Service>, action: String?, uri: Uri?, yo: YsonObject) {
+        val it = Intent(action, uri, App.inst, cls).yson(yo)
+        App.inst.startService(it)
+    }
 
-	fun startService(cls: Class<out Service>, yo: YsonObject) {
-		val it = Intent(App.inst, cls).yson(yo)
-		App.inst.startService(it)
-	}
-
-
-	fun broadcast(action: String, yo: YsonObject) {
-		broadcast(action, null, yo)
-	}
-
-	fun broadcast(action: String, uri: Uri?, yo: YsonObject) {
-		val it = Intent(action, uri).yson(yo)
-		it.setPackage(App.packageName)
-		App.inst.sendBroadcast(it)
-	}
+    fun startService(cls: Class<out Service>, yo: YsonObject) {
+        val it = Intent(App.inst, cls).yson(yo)
+        App.inst.startService(it)
+    }
 
 
-	fun broadcastSys(action: String, uri: Uri?, yo: YsonObject) {
-		val it = Intent(action, uri).yson(yo)
-		App.inst.sendBroadcast(it)
-	}
+    fun broadcast(action: String, yo: YsonObject) {
+        broadcast(action, null, yo)
+    }
+
+    fun broadcast(action: String, uri: Uri?, yo: YsonObject) {
+        val it = Intent(action, uri).yson(yo)
+        it.setPackage(App.packageName)
+        App.inst.sendBroadcast(it)
+    }
 
 
-	fun dump(it: Intent?) {
-		Yog.d("Dump Intent")
-		if (it == null) {
-			Yog.d("NULL")
-			return
-		}
-		Yog.d("ACTION:", it.action)
-		dump(it.extras)
-		Yog.d("Dump Intent  END")
-	}
+    fun broadcastSys(action: String, uri: Uri?, yo: YsonObject) {
+        val it = Intent(action, uri).yson(yo)
+        App.inst.sendBroadcast(it)
+    }
 
-	fun dump(b: Bundle?) {
-		dump("", b)
-	}
 
-	private fun dump(prefix: String, b: Bundle?) {
-		if (b != null) {
-			for (key in b.keySet()) {
-				val value = b.get(key)
-				if (value is Bundle) {
-					Yog.d(prefix, key)
-					dump("$prefix        ", value)
-				} else {
-					Yog.d(prefix, key, value, if (value == null) " null " else value.javaClass.simpleName)
-				}
+    fun dump(it: Intent?) {
+        Yog.d("Dump Intent")
+        if (it == null) {
+            Yog.d("NULL")
+            return
+        }
+        Yog.d("ACTION:", it.action)
+        dump(it.extras)
+        Yog.d("Dump Intent  END")
+    }
 
-			}
-		}
-	}
+    fun dump(b: Bundle?) {
+        dump("", b)
+    }
+
+    private fun dump(prefix: String, b: Bundle?) {
+        if (b != null) {
+            for (key in b.keySet()) {
+                val value = b.get(key)
+                if (value is Bundle) {
+                    Yog.d(prefix, key)
+                    dump("$prefix        ", value)
+                } else {
+                    Yog.d(prefix, key, value, if (value == null) " null " else value.javaClass.simpleName)
+                }
+
+            }
+        }
+    }
 }
 
 
-val Intent.yson: YsonObject?
-	get() {
-		val s = this.extraString( IntentHelper.ARG_NAME) ?: return null
-		return YsonObject(s)
-	}
-
-fun Intent.yson(yo: YsonObject): Intent {
-	this.putExtra(IntentHelper.ARG_NAME, yo.toString())
-	return this
-}

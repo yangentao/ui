@@ -33,7 +33,7 @@ open class ContainerActivity : BaseActivity() {
 
 
     override fun onBackPressed() {
-        if ((this.currentFragment as? BaseFragment)?.onBackPressed() == true) {
+        if ((this.currentFragment as? BasePage)?.onBackPressed() == true) {
             return
         }
         if (backCount > 0) {
@@ -60,18 +60,18 @@ open class ContainerActivity : BaseActivity() {
     }
 
 
-    fun setContentPage(fragment: BaseFragment) {
+    fun setContentPage(fragment: BasePage) {
         trans {
             replace(containerId, fragment)
         }
     }
 
-    fun <T : BaseFragment> setContentPage(fragment: T, block: T.() -> Unit) {
+    fun <T : BasePage> setContentPage(fragment: T, block: T.() -> Unit) {
         fragment.block()
         setContentPage(fragment)
     }
 
-    fun push(fragment: BaseFragment, pushAnim: Boolean, popAnim: Boolean) {
+    fun push(fragment: BasePage, pushAnim: Boolean, popAnim: Boolean) {
         trans {
             if (fragMgr.fragments.size > 0) {
                 if (pushAnim || popAnim) {
@@ -88,7 +88,7 @@ open class ContainerActivity : BaseActivity() {
         }
     }
 
-    fun push(fragment: BaseFragment) {
+    fun push(fragment: BasePage) {
         push(fragment, pushAnim = true, popAnim = true)
     }
 
@@ -102,7 +102,7 @@ open class ContainerActivity : BaseActivity() {
         }
     }
 
-    fun pop(page: BaseFragment, immediate: Boolean = false) {
+    fun pop(page: BasePage, immediate: Boolean = false) {
         if (immediate) {
             fragMgr.popBackStackImmediate(page.uniqueName, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         } else {

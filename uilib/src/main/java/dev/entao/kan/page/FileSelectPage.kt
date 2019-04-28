@@ -6,12 +6,12 @@ import android.os.Environment
 import android.view.View
 import android.widget.LinearLayout
 import dev.entao.kan.appbase.App
-import dev.entao.kan.log.Yog
 import dev.entao.kan.base.ContainerActivity
 import dev.entao.kan.base.act
+import dev.entao.kan.base.reqPerm
 import dev.entao.kan.list.ListPage
 import dev.entao.kan.list.itemviews.TextDetailView
-import dev.entao.kan.util.app.needPerm
+import dev.entao.kan.log.Yog
 import java.io.File
 
 class FileSelectPage : ListPage() {
@@ -29,7 +29,7 @@ class FileSelectPage : ListPage() {
 			}
 		}
 
-		needPerm(Manifest.permission.READ_EXTERNAL_STORAGE) {
+		reqPerm(Manifest.permission.READ_EXTERNAL_STORAGE) {
 			requestItems()
 		}
 	}
@@ -89,7 +89,7 @@ class FileSelectPage : ListPage() {
 		val f = dir.parentFile
 		if (f != null) {
 			dir = f
-			needPerm(Manifest.permission.READ_EXTERNAL_STORAGE) {
+			reqPerm(Manifest.permission.READ_EXTERNAL_STORAGE) {
 				requestItems()
 			}
 		}

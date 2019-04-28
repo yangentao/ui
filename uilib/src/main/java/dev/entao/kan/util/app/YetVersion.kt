@@ -9,7 +9,7 @@ import dev.entao.kan.appbase.sql.MapTable
 import dev.entao.kan.base.Progress
 import dev.entao.kan.http.Http
 import dev.entao.kan.json.YsonObject
-import dev.entao.kan.base.BaseFragment
+import dev.entao.kan.base.BasePage
 import dev.entao.kan.base.act
 import dev.entao.kan.base.openActivity
 import dev.entao.kan.dialogs.DialogX
@@ -50,11 +50,11 @@ class YetVersion(val jo: YsonObject) {
             return ignoreMap[verCode.toString()] != null
         }
 
-        fun checkByUser(page: BaseFragment) {
+        fun checkByUser(page: BasePage) {
             page.openActivity(UpgradeActivity::class)
         }
 
-        fun checkAuto(page: BaseFragment) {
+        fun checkAuto(page: BasePage) {
             val last = lastCheckUpdate
             val now = System.currentTimeMillis()
             if (now - last < CHECK_HOURS * 60 * 60 * 1000) {

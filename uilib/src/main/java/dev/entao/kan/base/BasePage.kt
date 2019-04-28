@@ -24,13 +24,13 @@ import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.ex.Bmp
 import dev.entao.kan.appbase.ex.saveJpg
 import dev.entao.kan.appbase.ex.savePng
-import dev.entao.kan.log.Yog
 import dev.entao.kan.dialogs.HorProgressDlg
 import dev.entao.kan.dialogs.SpinProgressDlg
 import dev.entao.kan.dialogs.listItem
+import dev.entao.kan.log.Yog
+import dev.entao.kan.util.*
 import dev.entao.kan.widget.RelativeLayoutX
 import dev.entao.kan.widget.TabBar
-import dev.entao.kan.util.*
 import java.io.File
 import kotlin.collections.set
 
@@ -43,7 +43,7 @@ import kotlin.collections.set
  * 不要调用getActivity().finish(). 要调用finish(), finish处理了动画
  * fragment基类 公用方法在此处理
  */
-open class BaseFragment : Fragment(), MsgListener {
+open class BasePage : Fragment(), MsgListener {
 
     val uniqueName: String = "fragment${identity++}"
 

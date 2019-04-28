@@ -8,7 +8,7 @@ import android.widget.RelativeLayout
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.base.Progress
-import dev.entao.kan.base.BaseFragment
+import dev.entao.kan.base.BasePage
 import dev.entao.kan.base.ContainerActivity
 import dev.entao.kan.base.act
 import dev.entao.kan.creator.append
@@ -20,7 +20,7 @@ import dev.entao.kan.widget.TitleBar
 import dev.entao.kan.widget.TopProgressBar
 import dev.entao.kan.util.app.OS
 
-open class TitlePage : BaseFragment(), Progress {
+open class TitlePage : BasePage(), Progress {
     lateinit var rootLinearView: LinearLayout
         private set
 

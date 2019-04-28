@@ -8,7 +8,7 @@ import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.ImageStated
 import dev.entao.kan.appbase.ex.RectDraw
 import dev.entao.kan.ui.R
-import dev.entao.kan.base.BaseFragment
+import dev.entao.kan.base.BasePage
 import dev.entao.kan.base.hideInputMethod
 import dev.entao.kan.creator.*
 import dev.entao.kan.ext.*
@@ -24,7 +24,7 @@ import java.util.*
  * Created by entaoyang@163.com on 2016-07-28.
  */
 
-class InputPanel constructor(context: Context, private val fragment: BaseFragment? = null) : LinearLayout(context) {
+class InputPanel constructor(context: Context, private val fragment: BasePage? = null) : LinearLayout(context) {
 	var INPUT_HEIGHT = 45
 	private val editMap = HashMap<String, EditText>()
 	private val checkMap = HashMap<String, CheckBox>()

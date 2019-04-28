@@ -8,7 +8,7 @@ import dev.entao.kan.appbase.App
 import dev.entao.kan.log.Yog
 import dev.entao.kan.ui.R
 import dev.entao.kan.base.ContainerActivity
-import dev.entao.kan.base.containerActivity
+import dev.entao.kan.base.containerAct
 import dev.entao.kan.base.act
 import dev.entao.kan.list.ListPage
 import dev.entao.kan.list.itemviews.TextDetailView
@@ -56,7 +56,7 @@ class DirSelectPage : ListPage() {
 	private fun goUp() {
 		val f = file.parentFile
 		if (f != null) {
-			DirSelectPage.open(this.containerActivity, f, onValue)
+			DirSelectPage.open(this.containerAct, f, onValue)
 			finish()
 		}
 	}
@@ -75,7 +75,7 @@ class DirSelectPage : ListPage() {
 	override fun onItemClickAdapter(view: View, item: Any, position: Int) {
 		item as File
 		if (item.isDirectory) {
-			DirSelectPage.open(this.containerActivity, item, onValue)
+			DirSelectPage.open(this.containerAct, item, onValue)
 			finish()
 		}
 	}

@@ -3,7 +3,7 @@ package dev.entao.kan.util
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import dev.entao.kan.log.Yog
-import dev.entao.kan.base.BaseFragment
+import dev.entao.kan.base.BasePage
 
 /**
  * Created by yet on 2015/10/10.
@@ -12,10 +12,10 @@ class FragmentHelper(val fm: FragmentManager, val frameLayoutId: Int) {
 	var current: Fragment? = null
 		private set
 
-	val currentBaseFragment: BaseFragment?
+	val currentBaseFragment: BasePage?
 		get() {
-			if (current is BaseFragment) {
-				return current as BaseFragment
+			if (current is BasePage) {
+				return current as BasePage
 			}
 			return null
 		}

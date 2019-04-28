@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.entao.kan.base
 
 import android.content.Context
@@ -6,13 +8,13 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import dev.entao.kan.ext.*
 import dev.entao.kan.creator.frame
 import dev.entao.kan.creator.linearVer
+import dev.entao.kan.ext.*
 import dev.entao.kan.widget.TabBar
 import java.util.*
 
-class TabBarPage : BaseFragment() {
+class TabBarPage : BasePage() {
     private lateinit var rootLinearView: LinearLayout
     private lateinit var containerView: FrameLayout
     private var containerId = 0
@@ -20,7 +22,7 @@ class TabBarPage : BaseFragment() {
     lateinit var tabBar: TabBar
         private set
 
-    private val pages = HashMap<String, BaseFragment>()
+    private val pages = HashMap<String, BasePage>()
 
     var onReady: (TabBarPage) -> Unit = {}
 
@@ -47,12 +49,12 @@ class TabBarPage : BaseFragment() {
         tabBar.select(tag, true)
     }
 
-    fun tab(text: String, icon: Int, page: BaseFragment) {
+    fun tab(text: String, icon: Int, page: BasePage) {
         tabBar.tab(text, icon)
         pages[text] = page
     }
 
-    fun tab(text: String, drawable: Drawable, page: BaseFragment) {
+    fun tab(text: String, drawable: Drawable, page: BasePage) {
         tabBar.tab(text, drawable)
         pages[text] = page
     }
