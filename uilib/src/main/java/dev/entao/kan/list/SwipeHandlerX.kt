@@ -113,7 +113,7 @@ class SwipeHandlerX(val listView: ListView) : OnTouchListener {
         if (horScroll) {
             val cancelEvent = MotionEvent.obtain(e2)
             cancelEvent.action = MotionEvent.ACTION_CANCEL
-            listView!!.onTouchEvent(cancelEvent)
+            listView.onTouchEvent(cancelEvent)
             val itemView = findSwipeItemView(e1)
             if (itemView != null) {
                 if (itemView !== curView) {

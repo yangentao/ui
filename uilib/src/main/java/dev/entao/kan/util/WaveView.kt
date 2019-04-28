@@ -54,11 +54,10 @@ class WaveView(context: Context) : View(context) {
         }
 
         val f = w * 1.0 / size//0.5
-        var left = 0
         for (i in 0 until size) {
-            val `val` = ls[i]
-            left = (i * f).toInt()
-            canvas.drawLine(left.toFloat(), (h - `val`).toFloat(), left.toFloat(), h.toFloat(), paint)
+            val valueI = ls[i]
+            val left = (i * f).toInt()
+            canvas.drawLine(left.toFloat(), (h - valueI).toFloat(), left.toFloat(), h.toFloat(), paint)
         }
 
     }

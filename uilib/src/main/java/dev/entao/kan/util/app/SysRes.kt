@@ -27,7 +27,7 @@ object SysRes {
     }
 
     fun idBool(name: String, defVal: Int): Int {
-        val n = RefUtil.getStatic("com.android.internal.R\$bool", name) as Int
+        val n = RefUtil.getStatic("com.android.internal.R\$bool", name) as? Int
         return n ?: defVal
     }
 
@@ -36,7 +36,7 @@ object SysRes {
     }
 
     fun idString(name: String, defVal: Int): Int {
-        val n = RefUtil.getStatic("com.android.internal.R\$string", name) as Int
+        val n = RefUtil.getStatic("com.android.internal.R\$string", name) as? Int
         return n ?: defVal
     }
 }
