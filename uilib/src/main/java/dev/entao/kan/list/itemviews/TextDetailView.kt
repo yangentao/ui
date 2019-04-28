@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.entao.kan.list.itemviews
 
 import android.content.Context
@@ -6,10 +8,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.appbase.ex.sized
+import dev.entao.kan.creator.textView
 import dev.entao.kan.ext.*
 import dev.entao.kan.res.D
 import dev.entao.kan.res.Res
-import dev.entao.kan.creator.textView
 
 /**
  * Created by entaoyang@163.com on 16/3/13.

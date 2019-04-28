@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanBePrivate", "unused")
+
 package dev.entao.kan.imgloader
 
 import android.graphics.Bitmap

@@ -1,10 +1,12 @@
+@file:Suppress("unused")
+
 package dev.entao.kan.list
 
 import android.content.Context
 import android.view.View
+import dev.entao.kan.list.itemviews.IconTextView
 import dev.entao.kan.theme.IconSize
 import dev.entao.kan.theme.TextSize
-import dev.entao.kan.list.itemviews.IconTextView
 
 /**
  * Created by entaoyang@163.com on 2017-01-05.

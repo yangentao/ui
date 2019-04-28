@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate")
+
 package dev.entao.kan.list.itemviews
 
 import android.content.Context
@@ -5,8 +7,8 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.theme.TextSize
 import dev.entao.kan.ext.*
+import dev.entao.kan.theme.TextSize
 /**
  * Created by entaoyang@163.com on 16/3/13.
  */

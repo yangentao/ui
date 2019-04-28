@@ -1,12 +1,14 @@
+@file:Suppress("unused")
+
 package dev.entao.kan.list.itemviews
 
 import android.content.Context
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.kan.ext.*
 import dev.entao.kan.creator.createLinearVertical
 import dev.entao.kan.creator.createTextView
+import dev.entao.kan.ext.*
 
 /**
  * Created by entaoyang@163.com on 16/3/13.
@@ -14,15 +16,11 @@ import dev.entao.kan.creator.createTextView
 
 
 class TextDetailItemViewVertical(context: Context) : HorItemView(context) {
-    private val verLayout: LinearLayout
-    var textView: TextView
-    var detailView: TextView
+    private val verLayout: LinearLayout = createLinearVertical()
+    var textView: TextView = createTextView().textSizeA().textColorMajor()
+    var detailView: TextView = createTextView().textSizeB().textColorMinor().singleLine()
 
     init {
-        verLayout = createLinearVertical()
-
-        textView = createTextView().textSizeA().textColorMajor()
-        detailView = createTextView().textSizeB().textColorMinor().singleLine()
 
         verLayout.addViewParam(textView) { widthFill().heightWrap().gravityLeftCenter() }
         verLayout.addViewParam(detailView) { widthFill().heightWrap().gravityLeftCenter() }

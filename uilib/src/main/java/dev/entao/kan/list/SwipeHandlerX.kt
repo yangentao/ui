@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.entao.kan.list
 
 import android.view.GestureDetector
@@ -61,7 +63,7 @@ class SwipeHandlerX(val listView: ListView) : OnTouchListener {
     }
 
     private fun findSwipeItemView(x: Float, y: Float): XSwipeItemView? {
-        val selectPos = listView!!.pointToPosition(x.toInt(), y.toInt())
+        val selectPos = listView.pointToPosition(x.toInt(), y.toInt())
         if (selectPos >= 0) {
             val view = listView.getChildAt(selectPos - listView.firstVisiblePosition)
             if (view is XSwipeItemView) {
@@ -85,10 +87,7 @@ class SwipeHandlerX(val listView: ListView) : OnTouchListener {
                         moveToX(itemView, 0)
                     }
                 } else {//-->
-                    val rightWidth = itemView.rightViewWidth
-                    //                    if (scrollX < rightWidth * 3 / 4) {
                     moveToX(itemView, 0)
-                    //                    }
                 }
             } else {//-->
                 if (dx > 0) {//-->
@@ -99,10 +98,7 @@ class SwipeHandlerX(val listView: ListView) : OnTouchListener {
                         moveToX(itemView, 0)
                     }
                 } else {//<--
-                    val leftWidth = itemView.leftViewWidth
-                    //                    if (-scrollX < leftWidth * 3 / 4) {
                     moveToX(itemView, 0)
-                    //                    }
                 }
 
             }

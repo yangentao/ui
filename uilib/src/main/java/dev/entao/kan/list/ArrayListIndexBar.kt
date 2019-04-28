@@ -1,5 +1,8 @@
+@file:Suppress("unused")
+
 package dev.entao.kan.list
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -22,6 +25,7 @@ import java.util.*
 /**
  * Created by yet on 2015/10/29.
  */
+@SuppressLint("ViewConstructor")
 class ArrayListIndexBar(context: Context, feedbackParentView: RelativeLayout) : LinearLayout(context) {
 
 	private var selectView: View? = null

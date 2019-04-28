@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate")
+
 package dev.entao.kan.list.itemviews
 
 import android.content.Context
@@ -5,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.support.annotation.DrawableRes
 import android.view.View
+import android.view.View.OnClickListener
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -12,10 +15,10 @@ import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.RGB
 import dev.entao.kan.appbase.ex.Shapes
 import dev.entao.kan.base.MyDate
-import dev.entao.kan.theme.IconSize
+import dev.entao.kan.creator.*
 import dev.entao.kan.ext.*
 import dev.entao.kan.res.D
-import dev.entao.kan.creator.*
+import dev.entao.kan.theme.IconSize
 
 /**
  * Created by entaoyang@163.com on 16/3/13.
@@ -185,7 +188,7 @@ class ImageTitleDateMsgStatusActionItemView(context: Context) : HorItemView(cont
 			fillColor = RGB(255, 128, 0)
 		}
 
-		private val clickListener = View.OnClickListener { v ->
+		private val clickListener = OnClickListener { v ->
 			val iv = v.tag as? ImageTitleDateMsgStatusActionItemView
 			if (iv != null) {
 				if (iv.callback != null) {

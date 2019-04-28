@@ -1,5 +1,8 @@
+@file:Suppress("MemberVisibilityCanBePrivate", "unused")
+
 package dev.entao.kan.list.itemviews
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
@@ -9,15 +12,16 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.kan.appbase.ex.dp
-import dev.entao.kan.theme.IconSize
-import dev.entao.kan.ext.*
 import dev.entao.kan.creator.createImageView
 import dev.entao.kan.creator.createTextViewA
+import dev.entao.kan.ext.*
+import dev.entao.kan.theme.IconSize
 
 /**
  * Created by entaoyang@163.com on 2016-12-27.
  */
 
+@SuppressLint("ViewConstructor")
 class IconTextView(context: Context, iconSize: Int = IconSize.Big) : LinearLayout(context) {
 	val iconView: ImageView
 	val textView: TextView

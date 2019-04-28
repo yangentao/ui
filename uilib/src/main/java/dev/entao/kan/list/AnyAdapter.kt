@@ -1,5 +1,8 @@
+@file:Suppress("MemberVisibilityCanBePrivate", "unused")
+
 package dev.entao.kan.list
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +22,7 @@ open class AnyAdapter : BaseAdapter() {
         private set
 
     private var backup: ArrayList<Any> = ArrayList()
+    @SuppressLint("UseSparseArrays")
     val posMap = HashMap<Int, Int>(256)
     val checkPosSet = TreeSet<Int>()
 
