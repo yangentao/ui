@@ -303,7 +303,7 @@ open class BasePage : Fragment(), MsgListener {
 
     fun finish() {
         val a = activity ?: return
-        if (a is ContainerActivity) {
+        if (a is StackActivity) {
             a.pop()
         } else {
             a.finish()

@@ -8,7 +8,7 @@ import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.LinearLayout
-import dev.entao.kan.base.ContainerActivity
+import dev.entao.kan.base.StackActivity
 import dev.entao.kan.ext.HeightFlex
 import dev.entao.kan.ext.LParam
 import dev.entao.kan.ext.WidthFill
@@ -78,7 +78,7 @@ open class WebPage : TitlePage() {
     }
 
     companion object {
-        fun open(context: ContainerActivity, title: String, url: String): WebPage {
+        fun open(context: StackActivity, title: String, url: String): WebPage {
             val page = WebPage()
             page.rootUrl = url
             page.title = title
@@ -86,7 +86,7 @@ open class WebPage : TitlePage() {
             return page
         }
 
-        fun openAsset(context: ContainerActivity, title: String, assetPath: String): WebPage {
+        fun openAsset(context: StackActivity, title: String, assetPath: String): WebPage {
             val page = WebPage()
             page.rootUrl = "file:///android_asset/$assetPath"
             page.title = title

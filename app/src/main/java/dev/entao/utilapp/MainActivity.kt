@@ -1,10 +1,10 @@
 package dev.entao.utilapp
 
 import android.os.Bundle
-import dev.entao.kan.base.ContainerActivity
+import dev.entao.kan.base.StackActivity
 import dev.entao.kan.base.TabBarPage
 
-class MainActivity : ContainerActivity() {
+class MainActivity : StackActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

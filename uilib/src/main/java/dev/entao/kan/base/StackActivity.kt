@@ -10,7 +10,7 @@ import dev.entao.kan.creator.createFrame
 import dev.entao.kan.log.logd
 import dev.entao.kan.ui.R
 
-open class ContainerActivity : BaseActivity() {
+open class StackActivity : BaseActivity() {
 
 
     protected lateinit var containerView: FrameLayout

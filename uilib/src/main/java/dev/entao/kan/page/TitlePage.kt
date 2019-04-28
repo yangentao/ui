@@ -9,7 +9,7 @@ import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.base.Progress
 import dev.entao.kan.base.BasePage
-import dev.entao.kan.base.ContainerActivity
+import dev.entao.kan.base.StackActivity
 import dev.entao.kan.base.act
 import dev.entao.kan.creator.append
 import dev.entao.kan.creator.linearVer
@@ -70,7 +70,7 @@ open class TitlePage : BasePage(), Progress {
 
 
         val ac = this.act
-        if (ac is ContainerActivity) {
+        if (ac is StackActivity) {
             if (ac.backCount > 0) {
                 titleBar.showBack()
             }

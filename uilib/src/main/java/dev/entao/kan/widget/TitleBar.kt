@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.*
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.*
-import dev.entao.kan.base.ContainerActivity
+import dev.entao.kan.base.StackActivity
 import dev.entao.kan.creator.*
 import dev.entao.kan.ext.*
 import dev.entao.kan.res.D
@@ -264,7 +264,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
         val a = leftImage(resId, BACK)
         a.onClick = {
 
-            if(context is ContainerActivity) {
+            if(context is StackActivity) {
                 context.pop()
             }else {
                 context.onBackPressed()

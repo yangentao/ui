@@ -131,25 +131,25 @@ val Fragment.act: FragmentActivity get() = this.requireActivity()
 
 
 
-val Fragment.containerAct: ContainerActivity get() = this.act as ContainerActivity
-val Fragment.containerActivity: ContainerActivity? get() = this.activity as? ContainerActivity
+val Fragment.stackAct: StackActivity get() = this.act as StackActivity
+val Fragment.stackActivity: StackActivity? get() = this.activity as? StackActivity
 
 
 fun BasePage.pushPage(p: BasePage, pushAnim: Boolean, popAnim: Boolean) {
-    this.containerActivity?.push(p, pushAnim, popAnim)
+    this.stackActivity?.push(p, pushAnim, popAnim)
 }
 
 fun BasePage.pushPage(p: BasePage) {
-    this.containerActivity?.push(p)
+    this.stackActivity?.push(p)
 }
 
 fun <T : BasePage> BasePage.pushPage(p: T, block: T.() -> Unit) {
     p.block()
-    this.containerActivity?.push(p)
+    this.stackActivity?.push(p)
 }
 
 fun BasePage.popPage() {
-    this.containerActivity?.pop(this)
+    this.stackActivity?.pop(this)
 }
 
 
@@ -235,11 +235,11 @@ fun Context.openApk(uri: Uri) {
 
 
 fun Fragment.openWeb(title: String, url: String) {
-    WebPage.open(containerAct, title, url)
+    WebPage.open(stackAct, title, url)
 }
 
 fun Fragment.openAssetHtml(title: String, file: String) {
-    WebPage.openAsset(containerAct, title, file)
+    WebPage.openAsset(stackAct, title, file)
 }
 
 fun Fragment.smsTo(phoneSet: Set<String>, body: String = "") {
