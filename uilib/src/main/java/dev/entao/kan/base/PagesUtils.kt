@@ -23,7 +23,6 @@ import dev.entao.kan.appbase.Task
 import dev.entao.kan.base.ex.extraString
 import dev.entao.kan.json.YsonObject
 import dev.entao.kan.log.loge
-import dev.entao.kan.page.WebPage
 import kotlin.reflect.KClass
 
 
@@ -128,11 +127,12 @@ val AppCompatActivity.currentFragment: Fragment? get() = fragMgr.fragments?.last
 val Fragment.act: FragmentActivity get() = this.requireActivity()
 
 
-
-
-
 val Fragment.stackAct: StackActivity get() = this.act as StackActivity
 val Fragment.stackActivity: StackActivity? get() = this.activity as? StackActivity
+
+
+val Fragment.pageAct: PageActivity get() = this.act as PageActivity
+val Fragment.pageActivity: PageActivity? get() = this.activity as? PageActivity
 
 
 fun BasePage.pushPage(p: BasePage, pushAnim: Boolean, popAnim: Boolean) {
@@ -151,7 +151,6 @@ fun <T : BasePage> BasePage.pushPage(p: T, block: T.() -> Unit) {
 fun BasePage.popPage() {
     this.stackActivity?.pop(this)
 }
-
 
 
 fun Fragment.softInputAdjustResize() {
@@ -234,14 +233,6 @@ fun Context.openApk(uri: Uri) {
 }
 
 
-fun Fragment.openWeb(title: String, url: String) {
-    WebPage.open(stackAct, title, url)
-}
-
-fun Fragment.openAssetHtml(title: String, file: String) {
-    WebPage.openAsset(stackAct, title, file)
-}
-
 fun Fragment.smsTo(phoneSet: Set<String>, body: String = "") {
     if (phoneSet.isNotEmpty()) {
         smsTo(phoneSet.joinToString(";"), body)
@@ -297,9 +288,6 @@ fun Fragment.pickTime(time: MyDate, block: (Long) -> Unit) {
     }, time.hour, time.minute, true)
     dlg.show()
 }
-
-
-
 
 
 val Context.configuration: Configuration

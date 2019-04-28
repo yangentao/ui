@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanBePrivate")
+
 package dev.entao.kan.util
 
 import java.util.*
@@ -8,27 +10,31 @@ import java.util.*
 
 
 class SyncQueue<T> {
-	val queue = LinkedList<T>()
+    val queue = LinkedList<T>()
 
-	fun clear() {
-		queue.clear()
-	}
+    val size: Int get() = queue.size
 
-	fun push(e: T) {
-		synchronized(this) {
-			queue.add(e)
-		}
-	}
+    fun isEmpty(): Boolean {
+        return queue.isEmpty()
+    }
 
-	fun pop(): T? {
-		synchronized(this) {
-			return queue.pollFirst()
-		}
-	}
+    @Synchronized
+    fun clear() {
+        queue.clear()
+    }
 
-	fun peek(): T? {
-		synchronized(this) {
-			return queue.peekFirst()
-		}
-	}
+    @Synchronized
+    fun add(e: T) {
+        queue.add(e)
+    }
+
+    @Synchronized
+    fun popFirst(): T? {
+        return queue.pollFirst()
+    }
+
+    @Synchronized
+    fun first(): T? {
+        return queue.peekFirst()
+    }
 }
