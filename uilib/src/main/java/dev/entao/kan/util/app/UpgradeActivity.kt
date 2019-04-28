@@ -1,5 +1,6 @@
 package dev.entao.kan.util.app
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -10,12 +11,12 @@ import android.widget.TextView
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.base.Progress
-import dev.entao.kan.base.ex.keepDot
-import dev.entao.kan.log.loge
 import dev.entao.kan.base.TitledActivity
+import dev.entao.kan.base.ex.keepDot
 import dev.entao.kan.creator.buttonGreenRound
 import dev.entao.kan.creator.textView
 import dev.entao.kan.ext.*
+import dev.entao.kan.log.loge
 import java.io.File
 
 
@@ -74,12 +75,14 @@ class UpgradeActivity : TitledActivity(), Progress {
 
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onProgressStart(total: Int) {
         Task.fore {
             msgView.text = "正在下载:共${sizeText(total)}"
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onProgress(current: Int, total: Int, percent: Int) {
         Task.fore {
             msgView.text = "正在下载:共${sizeText(total)}, $percent%"
@@ -113,6 +116,7 @@ class UpgradeActivity : TitledActivity(), Progress {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun install(file: File) {
         val apkUri = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
             Uri.fromFile(file)
@@ -150,6 +154,7 @@ class UpgradeActivity : TitledActivity(), Progress {
         download()
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 1) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -164,6 +169,7 @@ class UpgradeActivity : TitledActivity(), Progress {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun queryVersion() {
         Task.back {
             val v = YetVersion.check()

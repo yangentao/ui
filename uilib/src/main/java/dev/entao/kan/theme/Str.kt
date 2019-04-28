@@ -1,7 +1,9 @@
+@file:Suppress("unused")
+
 package dev.entao.kan.theme
 
-import dev.entao.kan.ui.R
 import dev.entao.kan.res.Res
+import dev.entao.kan.ui.R
 
 
 object Str {

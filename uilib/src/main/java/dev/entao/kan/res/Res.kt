@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.entao.kan.res
 
 import android.graphics.drawable.Drawable

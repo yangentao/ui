@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.entao.kan.util
 
 import android.graphics.Typeface

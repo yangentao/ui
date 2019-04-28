@@ -1,12 +1,25 @@
 package dev.entao.kan.util
 
 import android.net.Uri
+import android.os.Build
 import android.webkit.MimeTypeMap
+import dev.entao.kan.util.app.FileProv
 import dev.entao.kan.util.app.MediaInfo
+import java.io.File
 
 /**
  * Created by entaoyang@163.com on 2017-03-19.
  */
+
+
+fun UriFromSdFile(file: File): Uri {
+    return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+        Uri.fromFile(file)
+    } else {
+        FileProv.uriOfFile(file)
+    }
+}
+
 
 
 
