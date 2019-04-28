@@ -10,7 +10,7 @@ import dev.entao.kan.creator.createFrame
 import dev.entao.kan.util.SyncQueue
 import java.lang.ref.WeakReference
 
-class PageActivity : BaseActivity() {
+open class PageActivity : BaseActivity() {
 
     private lateinit var containerView: FrameLayout
 
@@ -56,6 +56,7 @@ class PageActivity : BaseActivity() {
             page.block()
             pageQueue.add(WeakReference(page))
             context.openActivity(PageActivity::class)
+
         }
     }
 

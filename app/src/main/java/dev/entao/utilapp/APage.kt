@@ -3,6 +3,7 @@ package dev.entao.utilapp
 import android.content.Context
 import android.widget.LinearLayout
 import dev.entao.kan.base.PageActivity
+import dev.entao.kan.log.logd
 import dev.entao.kan.page.TitlePage
 
 class APage : TitlePage() {
@@ -16,5 +17,6 @@ class APage : TitlePage() {
                 PageActivity.openPage(requireActivity(), BPage())
             }
         }
+        logd(this.activity!!::class.qualifiedName)
     }
 }

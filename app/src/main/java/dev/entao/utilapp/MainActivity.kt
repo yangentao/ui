@@ -18,6 +18,8 @@ class MainActivity : StackActivity() {
             it.selectTab("Hello")
         }
         setContentPage(tabPage)
+
+        this.applicationInfo
     }
 
 }
