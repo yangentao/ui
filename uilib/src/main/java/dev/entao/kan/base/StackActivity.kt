@@ -76,10 +76,10 @@ open class StackActivity : BaseActivity() {
             if (fragMgr.fragments.size > 0) {
                 if (pushAnim || popAnim) {
                     setCustomAnimations(
-                        if (pushAnim) R.animator.yet_right_in else 0,
-                        if (pushAnim) R.animator.yet_fade_out else 0,
-                        if (popAnim) R.animator.yet_fade_in else 0,
-                        if (popAnim) R.animator.yet_right_out else 0
+                        if (pushAnim) R.animator.yet_enter_right else 0,
+                        if (pushAnim) R.animator.yet_exit_fade else 0,
+                        if (popAnim) R.animator.yet_enter_fade else 0,
+                        if (popAnim) R.animator.yet_exit_right else 0
                     )
                 }
             }

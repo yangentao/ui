@@ -1,15 +1,15 @@
 package dev.entao.utilapp
 
 import android.os.Bundle
-import dev.entao.kan.base.StackActivity
+import dev.entao.kan.base.PageActivity
 import dev.entao.kan.base.TabBarPage
 
-class MainActivity : StackActivity() {
+class MainActivity : PageActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        this.doubleBack = true
+//        this.doubleBack = true
         val tabPage = TabBarPage()
         tabPage.onReady = {
             it.tab("Hello", R.mipmap.ic_launcher, HelloPage())

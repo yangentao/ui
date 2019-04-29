@@ -26,7 +26,7 @@ object Res {
 	val portrait = R.drawable.yet_portrait
 	val selAll = R.drawable.yet_sel_all
 	val selAllLight = R.drawable.yet_sel_all2
-	val del = R.drawable.del
+	val del = R.drawable.yet_del
 
 	fun str(resId: Int): String {
 		return App.resource.getString(resId)
