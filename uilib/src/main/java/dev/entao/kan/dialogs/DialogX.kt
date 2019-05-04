@@ -28,7 +28,7 @@ import dev.entao.kan.widget.TitleBar
 
 class DialogX(val context: Context) {
     private var titleHeight = 45
-    val dialog = Dialog(context, android.support.v7.appcompat.R.style.Theme_AppCompat_Light_NoActionBar)
+    val dialog = Dialog(context, android.support.v7.appcompat.R.style.Theme_AppCompat_Light_Dialog)
     val windowParam: WindowManager.LayoutParams = dialog.window?.attributes!!
     val cardView: CardView = CardView(context)
     private val rootLayout = context.createLinearVertical()
