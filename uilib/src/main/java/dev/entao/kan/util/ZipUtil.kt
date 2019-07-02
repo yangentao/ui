@@ -92,7 +92,7 @@ object ZipUtil {
         val zos = ZipOutputStream(fos)
         zos.putNextEntry(ZipEntry(from.name))
         try {
-            StreamUtil.copyStream(fis!!, zos, false)
+            StreamUtil.copyStream(fis, zos, false)
             zos.closeEntry()
             zos.flush()
             fos.flush()
