@@ -2,7 +2,7 @@
 
 package dev.entao.kan.util
 
-import android.support.annotation.Keep
+import androidx.annotation.Keep
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.sync
 import java.lang.ref.WeakReference

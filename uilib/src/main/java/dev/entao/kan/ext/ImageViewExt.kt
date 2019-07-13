@@ -2,7 +2,7 @@
 
 package dev.entao.kan.ext
 
-import android.support.annotation.DrawableRes
+import androidx.annotation.DrawableRes
 import android.widget.ImageView
 import dev.entao.kan.appbase.ex.tintedWhite
 import dev.entao.kan.res.Res

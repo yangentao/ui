@@ -2,11 +2,11 @@
 
 package dev.entao.kan.creator
 
-import android.app.Fragment
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.fragment.app.Fragment
 import dev.entao.kan.appbase.ex.color
 import dev.entao.kan.ext.*
 import dev.entao.kan.res.D
@@ -47,7 +47,7 @@ fun View.createEdit(): EditText {
 }
 
 fun Fragment.createEdit(): EditText {
-	return this.activity.createEdit()
+	return this.activity!!.createEdit()
 }
 
 fun Context.createEdit(): EditText {
@@ -83,7 +83,7 @@ fun View.createEditX(): EditTextX {
 }
 
 fun Fragment.createEditX(): EditTextX {
-	return this.activity.createEditX()
+	return this.activity!!.createEditX()
 }
 
 fun Context.createEditX(): EditTextX {
@@ -118,7 +118,7 @@ fun View.createEditArea(): EditText {
 }
 
 fun Fragment.createEditArea(): EditText {
-	return this.activity.createEditArea()
+	return this.activity!!.createEditArea()
 }
 
 fun Context.createEditArea(): EditText {

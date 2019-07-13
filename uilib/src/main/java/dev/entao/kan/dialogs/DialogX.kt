@@ -6,7 +6,6 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.support.v7.widget.CardView
 import android.view.Gravity
 import android.view.View
 import android.view.Window
@@ -14,6 +13,7 @@ import android.view.WindowManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.Colors
@@ -28,7 +28,7 @@ import dev.entao.kan.widget.TitleBar
 
 class DialogX(val context: Context) {
     private var titleHeight = 45
-    val dialog = Dialog(context, android.support.v7.appcompat.R.style.Theme_AppCompat_Light_Dialog)
+    val dialog = Dialog(context, androidx.appcompat.R.style.Theme_AppCompat_Light_Dialog)
     val windowParam: WindowManager.LayoutParams = dialog.window?.attributes!!
     val cardView: CardView = CardView(context)
     private val rootLayout = context.createLinearVertical()

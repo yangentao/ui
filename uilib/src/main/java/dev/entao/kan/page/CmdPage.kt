@@ -4,7 +4,7 @@ package dev.entao.kan.page
 
 import android.content.Context
 import android.graphics.Color
-import android.support.annotation.DrawableRes
+import androidx.annotation.DrawableRes
 import android.widget.Button
 import android.widget.LinearLayout
 import dev.entao.kan.appbase.ex.Colors

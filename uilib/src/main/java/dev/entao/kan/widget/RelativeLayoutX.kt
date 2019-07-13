@@ -1,7 +1,7 @@
 package dev.entao.kan.widget
 
 import android.content.Context
-import android.support.annotation.Keep
+import androidx.annotation.Keep
 import android.widget.RelativeLayout
 import dev.entao.kan.ext.genId
 import dev.entao.kan.ext.parentGroup

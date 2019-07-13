@@ -2,11 +2,11 @@
 
 package dev.entao.kan.creator
 
-import android.app.Fragment
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import androidx.fragment.app.Fragment
 import dev.entao.kan.ext.genId
 import dev.entao.kan.ext.textColorMajor
 import dev.entao.kan.res.D
@@ -40,7 +40,7 @@ fun View.createCheckBox(): CheckBox {
 }
 
 fun Fragment.createCheckBox(): CheckBox {
-	return this.activity.createCheckBox()
+	return this.activity!!.createCheckBox()
 }
 
 fun Context.createCheckBox(): CheckBox {

@@ -2,7 +2,7 @@ package dev.entao.kan.util.app
 
 import android.app.Application
 import android.content.Context
-import android.support.multidex.MultiDex
+import androidx.multidex.MultiDex
 import dev.entao.kan.appbase.App
 import dev.entao.kan.json.YsonObject
 import dev.entao.kan.log.logd

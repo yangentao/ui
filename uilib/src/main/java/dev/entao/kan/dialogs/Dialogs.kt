@@ -4,8 +4,8 @@ package dev.entao.kan.dialogs
 
 import android.app.Activity
 import android.app.Dialog
-import android.support.v4.app.Fragment
 import android.view.Gravity
+import androidx.fragment.app.Fragment
 import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.base.act
 import dev.entao.kan.base.toast
@@ -19,20 +19,20 @@ import dev.entao.kan.grid.SimpleGridView
 
 
 fun Dialog.gravityCenter(): Dialog {
-    val lp = this.window.attributes
+    val lp = this.window!!.attributes
     lp.gravity = Gravity.CENTER
     return this
 }
 
 fun Dialog.gravityTop(margin: Int = 0): Dialog {
-    val lp = this.window.attributes
+    val lp = this.window!!.attributes
     lp.gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
     lp.y = dp(margin)
     return this
 }
 
 fun Dialog.gravityBottom(margin: Int = 0): Dialog {
-    val lp = this.window.attributes
+    val lp = this.window!!.attributes
     lp.gravity = Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
     lp.y = dp(margin)
     return this

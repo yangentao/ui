@@ -2,6 +2,7 @@
 
 package dev.entao.kan.base
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -12,14 +13,13 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.preference.PreferenceManager
 import android.provider.MediaStore
-import android.support.v4.app.Fragment
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import androidx.fragment.app.Fragment
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.ex.Bmp
 import dev.entao.kan.appbase.ex.saveJpg
@@ -49,7 +49,8 @@ open class BasePage : Fragment(), MsgListener {
 
     protected lateinit var pageRootView: RelativeLayoutX
 
-    private val resultListeners = HashMap<Int, PreferenceManager.OnActivityResultListener>(8)
+    @SuppressLint("UseSparseArrays")
+    private val resultListeners = HashMap<Int, ActivityResultListener>(8)
     lateinit var spinProgressDlg: SpinProgressDlg
     lateinit var horProgressDlg: HorProgressDlg
 
@@ -137,18 +138,21 @@ open class BasePage : Fragment(), MsgListener {
      * @return
      */
     val isVisiableToUser: Boolean
-        get() = this.isResumed && isVisible && !App.keyguardManager.inKeyguardRestrictedInputMode()
+        get() = this.isResumed && isVisible
 
     fun takeViedo(sizeM: Int, block: (Uri) -> Unit) {
         val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
         intent.putExtra(MediaStore.EXTRA_SIZE_LIMIT, sizeM * 1024 * 1024)
-        val onResult = PreferenceManager.OnActivityResultListener { _, resultCode, data ->
-            if (resultCode == Activity.RESULT_OK) {
-                if (data != null && data.data != null) {
-                    block.invoke(data.data)
+        val onResult = object : ActivityResultListener {
+            override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent): Boolean {
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data.data != null) {
+                        block.invoke(data.data!!)
+                    }
                 }
+                return true
             }
-            true
+
         }
         startActivityForResult(TAKE_VIDEO, intent, onResult)
     }
@@ -156,13 +160,15 @@ open class BasePage : Fragment(), MsgListener {
     fun pickVideo(block: (Uri) -> Unit) {
         val i = Intent(Intent.ACTION_PICK)
         i.setDataAndType(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, "video/*")
-        val onResult = PreferenceManager.OnActivityResultListener { _, resultCode, data ->
-            if (resultCode == Activity.RESULT_OK) {
-                if (data != null && data.data != null) {
-                    block.invoke(data.data)
+        val onResult = object : ActivityResultListener {
+            override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent): Boolean {
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data.data != null) {
+                        block.invoke(data.data!!)
+                    }
                 }
+                return true
             }
-            true
         }
         startActivityForResult(PICK_PHOTO, i, onResult)
     }
@@ -184,18 +190,20 @@ open class BasePage : Fragment(), MsgListener {
     fun pickJpg(width: Int, block: (File) -> Unit) {
         val i = Intent(Intent.ACTION_PICK)
         i.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
-        val onResult = PreferenceManager.OnActivityResultListener { _, resultCode, data ->
-            if (resultCode == Activity.RESULT_OK) {
-                if (data != null && data.data != null) {
-                    val outputFile = App.files.ex.temp("" + System.currentTimeMillis() + ".jpg")
-                    val bmp = Bmp.uri(data.data, width, Bitmap.Config.ARGB_8888)
-                    if (bmp != null) {
-                        bmp.saveJpg(outputFile)
-                        block.invoke(outputFile)
+        val onResult = object : ActivityResultListener {
+            override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent): Boolean {
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data.data != null) {
+                        val outputFile = App.files.ex.temp("" + System.currentTimeMillis() + ".jpg")
+                        val bmp = Bmp.uri(data.data, width, Bitmap.Config.ARGB_8888)
+                        if (bmp != null) {
+                            bmp.saveJpg(outputFile)
+                            block.invoke(outputFile)
+                        }
                     }
                 }
+                return true
             }
-            true
         }
         startActivityForResult(PICK_PHOTO, i, onResult)
     }
@@ -203,21 +211,23 @@ open class BasePage : Fragment(), MsgListener {
     fun pickPhoto(width: Int, block: (Uri) -> Unit) {
         val i = Intent(Intent.ACTION_PICK)
         i.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
-        val onResult = PreferenceManager.OnActivityResultListener { _, resultCode, data ->
-            if (resultCode == Activity.RESULT_OK) {
-                if (data != null && data.data != null) {
-                    val f = App.files.ex.tempFile("PNG")
-                    val bmp = Bmp.uri(data.data, width, Bitmap.Config.ARGB_8888)
-                    if (bmp != null) {
-                        bmp.savePng(f)
-                        if (f.exists()) {
-                            block.invoke(Uri.fromFile(f))
+        val onResult = object : ActivityResultListener {
+            override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent): Boolean {
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data.data != null) {
+                        val f = App.files.ex.tempFile("PNG")
+                        val bmp = Bmp.uri(data.data, width, Bitmap.Config.ARGB_8888)
+                        if (bmp != null) {
+                            bmp.savePng(f)
+                            if (f.exists()) {
+                                block.invoke(Uri.fromFile(f))
+                            }
                         }
-                    }
 
+                    }
                 }
+                return true
             }
-            true
         }
         startActivityForResult(PICK_PHOTO, i, onResult)
     }
@@ -238,22 +248,24 @@ open class BasePage : Fragment(), MsgListener {
         val outUri = UriFromSdFile(outputFile)
         intent.putExtra(MediaStore.EXTRA_OUTPUT, outUri)
         intent.putExtra("outputFormat", fmt)
-        val onResult = PreferenceManager.OnActivityResultListener { _, resultCode, _ ->
-            if (resultCode == Activity.RESULT_OK && outputFile.exists()) {
-                val f = App.files.ex.tempFile(fmt.toLowerCase())
-                val bmp = Bmp.file(outputFile, width, Bitmap.Config.ARGB_8888)
-                if (bmp != null) {
-                    if (png) {
-                        bmp.savePng(f)
-                    } else {
-                        bmp.saveJpg(f)
-                    }
-                    if (f.exists()) {
-                        block(f)
+        val onResult = object : ActivityResultListener {
+            override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent): Boolean {
+                if (resultCode == Activity.RESULT_OK && outputFile.exists()) {
+                    val f = App.files.ex.tempFile(fmt.toLowerCase())
+                    val bmp = Bmp.file(outputFile, width, Bitmap.Config.ARGB_8888)
+                    if (bmp != null) {
+                        if (png) {
+                            bmp.savePng(f)
+                        } else {
+                            bmp.saveJpg(f)
+                        }
+                        if (f.exists()) {
+                            block(f)
+                        }
                     }
                 }
+                return true
             }
-            true
         }
         startActivityForResult(TAKE_PHOTO, intent, onResult)
     }
@@ -271,29 +283,31 @@ open class BasePage : Fragment(), MsgListener {
         intent.putExtra("outputY", outY)
         intent.putExtra("return-data", true)
         // intent.putExtra("output",CAMERA_EXTRA_OUTPUT_FILE);
-        val onResult = PreferenceManager.OnActivityResultListener { _, resultCode, data ->
-            if (resultCode == Activity.RESULT_OK) {
-                val extras = data.extras
-                var photo: Bitmap? = null
-                if (extras != null) {
-                    photo = extras.getParcelable("data")
+        val onResult = object : ActivityResultListener {
+            override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent): Boolean {
+                if (resultCode == Activity.RESULT_OK) {
+                    val extras = data.extras
+                    var photo: Bitmap? = null
+                    if (extras != null) {
+                        photo = extras.getParcelable("data")
+                    }
+                    result.invoke(photo)
+                } else {
+                    result.invoke(null)
                 }
-                result.invoke(photo)
-            } else {
-                result.invoke(null)
+                return true
             }
-            true
         }
         startActivityForResult(CROP_PHOTO, intent, onResult)
     }
 
-    fun startActivityForResult(requestCode: Int, intent: Intent, onResult: PreferenceManager.OnActivityResultListener) {
+    fun startActivityForResult(requestCode: Int, intent: Intent, onResult: ActivityResultListener) {
         resultListeners[requestCode] = onResult
         startActivityForResult(intent, requestCode)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        resultListeners.remove(requestCode)?.onActivityResult(requestCode, resultCode, data)
+        resultListeners.remove(requestCode)?.onActivityResult(requestCode, resultCode, data!!)
         super.onActivityResult(requestCode, resultCode, data)
     }
 

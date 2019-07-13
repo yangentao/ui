@@ -2,12 +2,13 @@
 
 package dev.entao.kan.creator
 
-import android.app.Fragment
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import androidx.fragment.app.Fragment
+import dev.entao.kan.base.act
 import dev.entao.kan.ext.genId
 import dev.entao.kan.ext.gravityLeftCenter
 /**
@@ -39,7 +40,7 @@ fun View.createRadioButton(): RadioButton {
 }
 
 fun Fragment.createRadioButton(): RadioButton {
-	return this.activity.createRadioButton()
+	return this.act.createRadioButton()
 }
 
 fun Context.createRadioButton(): RadioButton {
@@ -71,7 +72,7 @@ fun View.createRadioGroup(): RadioGroup {
 }
 
 fun Fragment.createRadioGroup(): RadioGroup {
-	return this.activity.createRadioGroup()
+	return this.act.createRadioGroup()
 }
 
 fun Context.createRadioGroup(): RadioGroup {

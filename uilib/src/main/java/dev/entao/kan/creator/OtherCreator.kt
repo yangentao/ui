@@ -1,6 +1,6 @@
 package dev.entao.kan.creator
 
-import android.support.v4.widget.SwipeRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import android.view.ViewGroup
 import dev.entao.kan.ext.genId
 /**

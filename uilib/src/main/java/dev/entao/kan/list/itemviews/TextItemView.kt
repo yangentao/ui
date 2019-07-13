@@ -2,7 +2,7 @@ package dev.entao.kan.list.itemviews
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.support.annotation.DrawableRes
+import androidx.annotation.DrawableRes
 import android.widget.TextView
 import dev.entao.kan.appbase.ex.sized
 import dev.entao.kan.theme.IconSize

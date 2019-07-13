@@ -2,11 +2,12 @@
 
 package dev.entao.kan.creator
 
-import android.app.Fragment
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.HorizontalScrollView
+import androidx.fragment.app.Fragment
+import dev.entao.kan.base.act
 import dev.entao.kan.ext.genId
 /**
  * Created by entaoyang@163.com on 2018-03-14.
@@ -37,7 +38,7 @@ fun View.createScrollHor(): HorizontalScrollView {
 }
 
 fun Fragment.createScrollHor(): HorizontalScrollView {
-	return this.activity.createScrollHor()
+	return this.act.createScrollHor()
 }
 
 fun Context.createScrollHor(): HorizontalScrollView {

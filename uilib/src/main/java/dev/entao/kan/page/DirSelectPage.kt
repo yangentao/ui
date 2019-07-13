@@ -34,8 +34,7 @@ class DirSelectPage : ListPage() {
 
 
     override fun onRequestItems(): List<File> {
-        val files = file.listFiles()
-        val ls: List<File> = listOf(*files).filter { !it.name.startsWith(".") }
+        val ls = file.listFiles()?.filter { !it.name.startsWith(".") } ?: emptyList()
         return ls.sortedBy { it.name }
     }
 

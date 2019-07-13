@@ -3,7 +3,7 @@
 package dev.entao.kan.base
 
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.FragmentManager
 import android.view.Window
 import android.widget.FrameLayout
 import dev.entao.kan.creator.createFrame

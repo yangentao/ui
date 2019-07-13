@@ -49,7 +49,7 @@ fun MimeOf(uri: Uri): String? {
             return MediaInfo(uri).mimeType
         }
     }
-    val filename = uri.lastPathSegment
+    val filename = uri.lastPathSegment ?: return null
     val n = filename.lastIndexOf('.')
     if (n > 0) {
         val ext = filename.substring(n + 1)

@@ -9,7 +9,7 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Build
-import android.support.annotation.DrawableRes
+import androidx.annotation.DrawableRes
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.ex.*
 import dev.entao.kan.theme.IconSize

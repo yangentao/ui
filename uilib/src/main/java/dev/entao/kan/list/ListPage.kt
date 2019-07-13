@@ -4,7 +4,7 @@ package dev.entao.kan.list
 
 import android.content.Context
 import android.database.DataSetObserver
-import android.support.v4.widget.SwipeRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import android.view.View
 import android.widget.*
 import dev.entao.kan.appbase.Task

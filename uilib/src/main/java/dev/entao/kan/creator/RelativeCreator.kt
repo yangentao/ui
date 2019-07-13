@@ -2,11 +2,12 @@
 
 package dev.entao.kan.creator
 
-import android.app.Fragment
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import androidx.fragment.app.Fragment
+import dev.entao.kan.base.act
 import dev.entao.kan.ext.genId
 
 /**
@@ -38,7 +39,7 @@ fun View.createRelative(): RelativeLayout {
 }
 
 fun Fragment.createRelative(): RelativeLayout {
-	return this.activity.createRelative()
+	return this.act.createRelative()
 }
 
 fun Context.createRelative(): RelativeLayout {

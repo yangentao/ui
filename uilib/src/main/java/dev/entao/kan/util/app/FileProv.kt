@@ -116,7 +116,7 @@ class FileProv : ContentProvider() {
             if (path.length < 2) {
                 return null
             }
-            val s = uri.path.substring(1).substringBefore('/')
+            val s = path.substring(1).substringBefore('/')
             val ss = mapTable[s] ?: return null
             return File(ss)
         }

@@ -2,7 +2,7 @@ package dev.entao.kan.page
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.widget.NestedScrollView
+import androidx.core.widget.NestedScrollView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import dev.entao.kan.appbase.Task

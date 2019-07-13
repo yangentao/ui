@@ -9,16 +9,16 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.net.Uri
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
-import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.base.ex.extraString
 import dev.entao.kan.json.YsonObject
@@ -121,7 +121,7 @@ fun Fragment.trans(block: FragmentTransaction.() -> Unit) {
 }
 
 
-val AppCompatActivity.currentFragment: Fragment? get() = fragMgr.fragments?.lastOrNull()
+val AppCompatActivity.currentFragment: Fragment? get() = fragMgr.fragments.lastOrNull()
 
 
 val Fragment.act: FragmentActivity get() = this.requireActivity()
@@ -266,7 +266,7 @@ fun Fragment.pickDate(initDate: Long, block: (Long) -> Unit) {
 }
 
 fun Fragment.pickDate(date: MyDate, block: (Long) -> Unit) {
-    val dlg = DatePickerDialog(activity, object : DatePickerDialog.OnDateSetListener {
+    val dlg = DatePickerDialog(act, object : DatePickerDialog.OnDateSetListener {
         override fun onDateSet(view: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
             block(MyDate.makeDate(year, monthOfYear, dayOfMonth))
         }

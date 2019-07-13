@@ -2,12 +2,13 @@
 
 package dev.entao.kan.creator
 
-import android.app.Fragment
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TableLayout
 import android.widget.TableRow
+import androidx.fragment.app.Fragment
+import dev.entao.kan.base.act
 import dev.entao.kan.ext.genId
 
 /**
@@ -48,7 +49,7 @@ fun View.createTable(): TableLayout {
 }
 
 fun Fragment.createTable(): TableLayout {
-	return this.activity.createTable()
+	return this.act.createTable()
 }
 
 fun Context.createTable(): TableLayout {

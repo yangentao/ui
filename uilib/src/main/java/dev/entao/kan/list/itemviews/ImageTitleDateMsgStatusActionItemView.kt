@@ -5,7 +5,7 @@ package dev.entao.kan.list.itemviews
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.support.annotation.DrawableRes
+import androidx.annotation.DrawableRes
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.ImageView

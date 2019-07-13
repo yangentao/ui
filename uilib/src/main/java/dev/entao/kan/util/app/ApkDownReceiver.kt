@@ -43,7 +43,7 @@ class ApkDownReceiver : BroadcastReceiver() {
             if (desc.isNotEmpty()) {
                 req.setDescription(desc)
             }
-            req.setVisibleInDownloadsUi(true)
+            //req.setVisibleInDownloadsUi(true)
             req.setAllowedOverRoaming(true)
             req.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
             req.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)

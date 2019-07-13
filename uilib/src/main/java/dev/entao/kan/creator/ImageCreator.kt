@@ -2,12 +2,13 @@
 
 package dev.entao.kan.creator
 
-import android.app.Fragment
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
+import dev.entao.kan.base.act
 import dev.entao.kan.ext.genId
 import dev.entao.kan.ext.scaleCenterCrop
 
@@ -40,7 +41,7 @@ fun View.createImageView(): ImageView {
 }
 
 fun Fragment.createImageView(): ImageView {
-	return this.activity.createImageView()
+	return this.act.createImageView()
 }
 
 fun Context.createImageView(): ImageView {
@@ -75,7 +76,7 @@ fun View.createImageButton(): ImageButton {
 }
 
 fun Fragment.createImageButton(): ImageButton {
-	return this.activity.createImageButton()
+	return this.act.createImageButton()
 }
 
 fun Context.createImageButton(): ImageButton {

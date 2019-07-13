@@ -1,7 +1,7 @@
 package dev.entao.kan.widget
 
 import android.content.Context
-import android.support.v4.view.PagerAdapter
+import androidx.viewpager.widget.PagerAdapter
 import android.view.View
 import android.view.ViewGroup
 import dev.entao.kan.ext.onClick

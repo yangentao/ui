@@ -6,7 +6,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.support.annotation.DrawableRes
+import androidx.annotation.DrawableRes
 import android.util.TypedValue
 import android.widget.ImageView
 import android.widget.LinearLayout
