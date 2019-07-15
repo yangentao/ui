@@ -2,6 +2,7 @@
 
 package dev.entao.kan.dialogs
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
@@ -14,10 +15,12 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.fragment.app.Fragment
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.base.act
 import dev.entao.kan.creator.*
 import dev.entao.kan.ext.*
 import dev.entao.kan.grid.SimpleGridView
@@ -41,6 +44,8 @@ class DialogX(val context: Context) {
     private var buttons = ArrayList<DialogButton>()
     var title: String = ""
     val result = ArrayList<Any>()
+
+    var timeoutToCloseSeconds = 0
 
     var argS: String = ""
     var argN = 0
@@ -266,264 +271,304 @@ class DialogX(val context: Context) {
         dialog.window!!.attributes = windowParam
     }
 
+    fun gravityCenter(): DialogX {
+        windowParam.gravity = Gravity.CENTER
+        return this
+    }
+
+
+    fun gravityBottom(margin: Int = 0): DialogX {
+        windowParam.gravity = Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
+        windowParam.y = dp(margin)
+        return this
+    }
+
     class DialogButton(val text: String, val color: Int, val callback: (String) -> Unit) {
         var backColor: Int = Colors.WHITE
     }
 
 
-    companion object {
-        var timeoutToCloseSeconds = 0
+    fun showAlert(msg: String) {
+        showAlert(msg, null)
+    }
 
-        fun show(context: Context, block: DialogX.() -> Unit) {
-            val d = DialogX(context)
-            d.block()
-            d.show()
+    fun showAlert(msg: String, title: String?, dismissCallback: () -> Unit = {}) {
+        val d = this
+        d.title(title)
+        d.bodyText(msg) {
+            if (msg.length < 16) {
+                gravityCenter()
+            } else {
+                gravityLeftCenter()
+            }
         }
-
-        fun alert(context: Context, msg: String) {
-            alert(context, msg, null)
+        d.ok {}
+        d.onDismiss = {
+            dismissCallback()
         }
+        d.show()
+    }
 
-        fun alert(context: Context, msg: String, title: String?, dismissCallback: () -> Unit = {}) {
-            val d = DialogX(context)
-            d.title(title)
-            d.bodyText(msg) {
-                if (msg.length < 16) {
-                    gravityCenter()
-                } else {
-                    gravityLeftCenter()
+
+    fun showConfirm(msg: String, title: String?, onOK: () -> Unit) {
+        val d = this
+        d.title(title)
+        d.bodyText(msg)
+        d.cancel()
+        d.ok {
+            onOK()
+        }
+        d.show()
+    }
+
+
+    fun showInput(title: String?, value: String = "", onOK: (String) -> Unit) {
+        this.showInput(title, value, {}, onOK)
+    }
+
+    fun showInput(title: String?, value: String, configBlock: (EditText) -> Unit, onOK: (String) -> Unit) {
+        val d = this
+        d.title(title)
+        d.bodyInput {
+            this.textS = value
+            configBlock(this)
+        }
+        d.cancel()
+        d.ok {
+            val s = d.result.first() as String
+            onOK(s)
+        }
+        d.show()
+    }
+
+    fun showInputLines(title: String?, value: String = "", onOK: (String) -> Unit) {
+        val d = this
+        d.title(title)
+        d.bodyInputLines {
+            this.textS = value
+        }
+        d.cancel()
+        d.ok {
+            val s = d.result.first() as String
+            onOK(s)
+        }
+        d.show()
+    }
+
+    fun showInputInteger(title: String, n: Long = 0, block: (Long) -> Unit) {
+        this.showInput(title, n.toString(), {
+            it.inputTypeNumber()
+        }) { s ->
+            if (s.trim().isNotEmpty()) {
+                val lval = s.trim().toLongOrNull()
+                if (lval != null) {
+                    block(lval)
                 }
             }
-            d.ok {}
-            d.onDismiss = {
-                dismissCallback()
-            }
-            d.show()
         }
+    }
 
-        fun confirm(context: Context, msg: String, title: String?, onOK: () -> Unit) {
-            val d = DialogX(context)
-            d.title(title)
-            d.bodyText(msg)
-            d.cancel()
-            d.ok {
-                onOK()
+    fun showInputDecimal(title: String, n: Long = 0, block: (Long) -> Unit) {
+        this.showInput(title, n.toString(), {
+            it.inputTypeNumberDecimal()
+        }) { s ->
+            if (s.trim().isNotEmpty()) {
+                val lval = s.trim().toLongOrNull()
+                if (lval != null) {
+                    block(lval)
+                }
             }
-            d.show()
         }
+    }
 
-        fun input(context: Context, title: String?, value: String = "", onOK: (String) -> Unit) {
-            this.input(context, title, value, {}, onOK)
+
+    fun showListAny(items: List<Any>, title: String?, onResult: (Any) -> Unit) {
+        this.showListAny(items, title, { it.toString() }, onResult)
+    }
+
+    fun showListAny(items: List<Any>, title: String?, textBlock: (Any) -> String, onResult: (Any) -> Unit) {
+        val d = this
+        d.title(title)
+        val lv = d.bodyListString(textBlock)
+        lv.setItems(items)
+        lv.onItemClick = {
+            d.dismiss()
+            onResult(it)
         }
+        d.show()
+    }
 
-        fun input(context: Context, title: String?, value: String, configBlock: (EditText) -> Unit, onOK: (String) -> Unit) {
-            val d = DialogX(context)
-            d.title(title)
-            d.bodyInput {
-                this.textS = value
-                configBlock(this)
-            }
-            d.cancel()
-            d.ok {
-                val s = d.result.first() as String
-                onOK(s)
-            }
-            d.show()
+    fun showListAnyN(items: List<Any>, title: String?, textBlock: (Any) -> String, onResult: (Int) -> Unit) {
+        val d = this
+        d.title(title)
+        val lv = d.bodyListString(textBlock)
+        lv.setItems(items)
+        lv.onItemClick2 = { _, _, p ->
+            d.dismiss()
+            onResult(p)
         }
+        d.show()
+    }
 
-        fun inputLines(context: Context, title: String?, value: String = "", onOK: (String) -> Unit) {
-            val d = DialogX(context)
-            d.title(title)
-            d.bodyInputLines {
-                this.textS = value
-            }
-            d.cancel()
-            d.ok {
-                val s = d.result.first() as String
-                onOK(s)
-            }
-            d.show()
+    fun <T : Any> showListItem(items: List<T>, title: String?, onResult: (T) -> Unit) {
+        this.showListItem(items, title, { it.toString() }, onResult)
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    fun <T : Any> showListItem(items: List<T>, title: String?, textBlock: (T) -> String, onResult: (T) -> Unit) {
+        val d = this
+        d.title(title)
+        val lv = d.bodyListString {
+            textBlock(it as T)
         }
-
-
-        fun listAny(context: Context, items: List<Any>, title: String?, onResult: (Any) -> Unit) {
-            this.listAny(context, items, title, { it.toString() }, onResult)
+        lv.setItems(items)
+        lv.onItemClick = {
+            d.dismiss()
+            onResult(it as T)
         }
+        d.show()
+    }
 
-        fun listAny(context: Context, items: List<Any>, title: String?, textBlock: (Any) -> String, onResult: (Any) -> Unit) {
-            val d = DialogX(context)
-            d.title(title)
-            val lv = d.bodyListString(textBlock)
-            lv.setItems(items)
-            lv.onItemClick = {
+
+    fun <T : Any> showListItemN(items: List<T>, title: String?, onResult: (Int) -> Unit) {
+        this.showListItemN(items, title, { it.toString() }, onResult)
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    fun <T : Any> showListItemN(items: List<T>, title: String?, textBlock: (T) -> String, onResult: (Int) -> Unit) {
+        val d = this
+        d.title(title)
+        val lv = d.bodyListString {
+            textBlock(it as T)
+        }
+        lv.setItems(items)
+        lv.onItemClick2 = { _, _, p ->
+            d.dismiss()
+            onResult(p)
+        }
+        d.show()
+    }
+
+    fun showCheckAny(items: List<Any>, checkedItems: List<Any>, title: String, onResult: (List<Any>) -> Unit) {
+        this.showCheckAny(items, checkedItems, title, { it.toString() }, onResult)
+    }
+
+    fun showCheckAny(items: List<Any>, checkedItems: List<Any>, title: String, textBlock: (Any) -> String, onResult: (List<Any>) -> Unit) {
+        val d = this
+        d.title(title)
+        val lv = d.bodyCheckString(textBlock)
+        lv.setItems(items)
+        for (item in checkedItems) {
+            lv.anyAdapter.checkItem(item)
+        }
+        d.cancel()
+        d.ok {
+            onResult(lv.anyAdapter.checkedItems)
+        }
+        d.show()
+    }
+
+    fun showCheckAnyN(items: List<Any>, checkedItems: List<Any>, title: String, onResult: (Set<Int>) -> Unit) {
+        this.showCheckAnyN(items, checkedItems, title, { it.toString() }, onResult)
+    }
+
+    fun showCheckAnyN(items: List<Any>, checkedItems: List<Any>, title: String, textBlock: (Any) -> String, onResult: (Set<Int>) -> Unit) {
+        val d = this
+        d.title(title)
+        val lv = d.bodyCheckString(textBlock)
+        lv.setItems(items)
+        for (item in checkedItems) {
+            lv.anyAdapter.checkItem(item)
+        }
+        d.cancel()
+        d.ok {
+            onResult(lv.anyAdapter.checkedIndexs)
+        }
+        d.show()
+    }
+
+
+    fun <T : Any> showCheckItem(items: List<T>, checkedItems: List<T>, title: String, onResult: (List<T>) -> Unit) {
+        this.showCheckItem(items, checkedItems, title, { it.toString() }, onResult)
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    fun <T : Any> showCheckItem(items: List<T>, checkedItems: List<T>, title: String, textBlock: (T) -> String, onResult: (List<T>) -> Unit) {
+        val d = this
+        d.title(title)
+        val lv = d.bodyCheckString {
+            textBlock(it as T)
+        }
+        lv.setItems(items)
+        for (item in checkedItems) {
+            lv.anyAdapter.checkItem(item)
+        }
+        d.cancel()
+        d.ok {
+            onResult(lv.anyAdapter.checkedItems.map { it as T })
+        }
+        d.show()
+    }
+
+    fun <T : Any> showCheckItemN(items: List<T>, checkedItems: List<T>, title: String, onResult: (Set<Int>) -> Unit) {
+        this.showCheckItemN(items, checkedItems, title, { it.toString() }, onResult)
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    fun <T : Any> showCheckItemN(items: List<T>, checkedItems: List<T>, title: String, textBlock: (T) -> String, onResult: (Set<Int>) -> Unit) {
+        val d = this
+        d.title(title)
+        val lv = d.bodyCheckString {
+            textBlock(it as T)
+        }
+        lv.setItems(items)
+        for (item in checkedItems) {
+            lv.anyAdapter.checkItem(item)
+        }
+        d.cancel()
+        d.ok {
+            onResult(lv.anyAdapter.checkedIndexs)
+        }
+        d.show()
+    }
+
+    fun showGridAny(items: List<Any>, configBlock: (DialogX, SimpleGridView) -> Unit, onResult: (Any) -> Unit) {
+        val d = this
+        d.bodyGrid {
+            configBlock(d, this)
+            setItems(items)
+            onItemClick = {
                 d.dismiss()
                 onResult(it)
             }
-            d.show()
         }
+        d.show()
+    }
 
-        fun listAnyN(context: Context, items: List<Any>, title: String?, textBlock: (Any) -> String, onResult: (Int) -> Unit) {
-            val d = DialogX(context)
-            d.title(title)
-            val lv = d.bodyListString(textBlock)
-            lv.setItems(items)
-            lv.onItemClick2 = { _, _, p ->
-                d.dismiss()
-                onResult(p)
-            }
-            d.show()
-        }
-
-        fun <T : Any> listItem(context: Context, items: List<T>, title: String?, onResult: (T) -> Unit) {
-            this.listItem(context, items, title, { it.toString() }, onResult)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        fun <T : Any> listItem(context: Context, items: List<T>, title: String?, textBlock: (T) -> String, onResult: (T) -> Unit) {
-            val d = DialogX(context)
-            d.title(title)
-            val lv = d.bodyListString {
-                textBlock(it as T)
-            }
-            lv.setItems(items)
-            lv.onItemClick = {
+    @Suppress("UNCHECKED_CAST")
+    fun <T : Any> showGridItem(items: List<T>, configBlock: (DialogX, SimpleGridView) -> Unit, onResult: (T) -> Unit) {
+        val d = this
+        d.bodyGrid {
+            configBlock(d, this)
+            setItems(items)
+            onItemClick = {
                 d.dismiss()
                 onResult(it as T)
             }
-            d.show()
         }
-
-
-        fun <T : Any> listItemN(context: Context, items: List<T>, title: String?, onResult: (Int) -> Unit) {
-            this.listItemN(context, items, title, { it.toString() }, onResult)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        fun <T : Any> listItemN(context: Context, items: List<T>, title: String?, textBlock: (T) -> String, onResult: (Int) -> Unit) {
-            val d = DialogX(context)
-            d.title(title)
-            val lv = d.bodyListString {
-                textBlock(it as T)
-            }
-            lv.setItems(items)
-            lv.onItemClick2 = { _, _, p ->
-                d.dismiss()
-                onResult(p)
-            }
-            d.show()
-        }
-
-        fun checkAny(context: Context, items: List<Any>, checkedItems: List<Any>, title: String, onResult: (List<Any>) -> Unit) {
-            this.checkAny(context, items, checkedItems, title, { it.toString() }, onResult)
-        }
-
-        fun checkAny(context: Context, items: List<Any>, checkedItems: List<Any>, title: String, textBlock: (Any) -> String, onResult: (List<Any>) -> Unit) {
-            val d = DialogX(context)
-            d.title(title)
-            val lv = d.bodyCheckString(textBlock)
-            lv.setItems(items)
-            for (item in checkedItems) {
-                lv.anyAdapter.checkItem(item)
-            }
-            d.cancel()
-            d.ok {
-                onResult(lv.anyAdapter.checkedItems)
-            }
-            d.show()
-        }
-
-        fun checkAnyN(context: Context, items: List<Any>, checkedItems: List<Any>, title: String, onResult: (Set<Int>) -> Unit) {
-            this.checkAnyN(context, items, checkedItems, title, { it.toString() }, onResult)
-        }
-
-        fun checkAnyN(context: Context, items: List<Any>, checkedItems: List<Any>, title: String, textBlock: (Any) -> String, onResult: (Set<Int>) -> Unit) {
-            val d = DialogX(context)
-            d.title(title)
-            val lv = d.bodyCheckString(textBlock)
-            lv.setItems(items)
-            for (item in checkedItems) {
-                lv.anyAdapter.checkItem(item)
-            }
-            d.cancel()
-            d.ok {
-                onResult(lv.anyAdapter.checkedIndexs)
-            }
-            d.show()
-        }
-
-
-        fun <T : Any> checkItem(context: Context, items: List<T>, checkedItems: List<T>, title: String, onResult: (List<T>) -> Unit) {
-            this.checkItem(context, items, checkedItems, title, { it.toString() }, onResult)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        fun <T : Any> checkItem(context: Context, items: List<T>, checkedItems: List<T>, title: String, textBlock: (T) -> String, onResult: (List<T>) -> Unit) {
-            val d = DialogX(context)
-            d.title(title)
-            val lv = d.bodyCheckString {
-                textBlock(it as T)
-            }
-            lv.setItems(items)
-            for (item in checkedItems) {
-                lv.anyAdapter.checkItem(item)
-            }
-            d.cancel()
-            d.ok {
-                onResult(lv.anyAdapter.checkedItems.map { it as T })
-            }
-            d.show()
-        }
-
-        fun <T : Any> checkItemN(context: Context, items: List<T>, checkedItems: List<T>, title: String, onResult: (Set<Int>) -> Unit) {
-            this.checkItemN(context, items, checkedItems, title, { it.toString() }, onResult)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        fun <T : Any> checkItemN(context: Context, items: List<T>, checkedItems: List<T>, title: String, textBlock: (T) -> String, onResult: (Set<Int>) -> Unit) {
-            val d = DialogX(context)
-            d.title(title)
-            val lv = d.bodyCheckString {
-                textBlock(it as T)
-            }
-            lv.setItems(items)
-            for (item in checkedItems) {
-                lv.anyAdapter.checkItem(item)
-            }
-            d.cancel()
-            d.ok {
-                onResult(lv.anyAdapter.checkedIndexs)
-            }
-            d.show()
-        }
-
-        fun gridAny(context: Context, items: List<Any>, configBlock: (DialogX, SimpleGridView) -> Unit, onResult: (Any) -> Unit) {
-            val d = DialogX(context)
-            d.bodyGrid {
-                configBlock(d, this)
-                setItems(items)
-                onItemClick = {
-                    d.dismiss()
-                    onResult(it)
-                }
-            }
-            d.show()
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        fun <T : Any> gridItem(context: Context, items: List<T>, configBlock: (DialogX, SimpleGridView) -> Unit, onResult: (T) -> Unit) {
-            val d = DialogX(context)
-            d.bodyGrid {
-                configBlock(d, this)
-                setItems(items)
-                onItemClick = {
-                    d.dismiss()
-                    onResult(it as T )
-                }
-            }
-            d.show()
-        }
-
+        d.show()
     }
 
+
 }
+
+
+val Fragment.dialogX: DialogX
+    get() {
+        return DialogX(this.act)
+    }
+val Activity.dialogX: DialogX
+    get() {
+        return DialogX(this)
+    }
 

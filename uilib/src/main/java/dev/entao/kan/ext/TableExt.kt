@@ -99,7 +99,7 @@ class FormView(val tableLayout: TableLayout) {
             text
         }
         return rowButton(label, s).onClick { tv ->
-            DialogX.listItem(tv.context, items, label) {
+            DialogX(tv.context).showListItem(items, label) {
                 tv.tag = it
                 tv.textS = it
             }

@@ -14,8 +14,7 @@ import dev.entao.kan.base.hideInputMethod
 import dev.entao.kan.base.pickDate
 import dev.entao.kan.creator.*
 import dev.entao.kan.dialogs.DialogX
-import dev.entao.kan.dialogs.alert
-import dev.entao.kan.dialogs.listItem
+import dev.entao.kan.dialogs.dialogX
 import dev.entao.kan.ext.*
 import dev.entao.kan.list.itemviews.TextDetailView
 import dev.entao.kan.list.itemviews.textDetail
@@ -270,7 +269,7 @@ abstract class InputPage : TitlePage() {
         v.detailView.backStrike(Colors.TRANS, 3, 1, Colors.LineGray)
         selectMap[p.nameProp] = v
         v.onClick {
-            this.listItem(optMap.keys.toList(), null, { optMap[it] ?: "" }) {
+            this.dialogX.showListItem(optMap.keys.toList(), null, { optMap[it] ?: "" }) {
                 v.tag = it
                 v.setDetail(optMap[it] ?: "")
                 logd("SelectItem: tag = ", v.tag, " val=", optMap[it])
@@ -291,7 +290,7 @@ abstract class InputPage : TitlePage() {
         v.detailView.backStrike(Colors.TRANS, 3, 1, Colors.LineGray)
         selectMap[p.nameProp] = v
         v.onClick {
-            DialogX.listAny(act, items.toList(), null, { displayProp.getValue(it)?.toString() ?: "" }) {
+            this.dialogX.showListAny( items.toList(), null, { displayProp.getValue(it)?.toString() ?: "" }) {
                 v.tag = idProp.getValue(it)
                 v.setDetail(displayProp.getValue(it)?.toString() ?: "")
             }
@@ -306,7 +305,7 @@ abstract class InputPage : TitlePage() {
         v.setDetail(value)
         v.tag = value
         v.onClick {
-            this.listItem(items, null) { item ->
+            this.dialogX.showListItem(items, null) { item ->
                 v.tag = item
                 v.setDetail(item)
             }
@@ -333,7 +332,7 @@ abstract class InputPage : TitlePage() {
         v.setDetail(item?.second)
         v.tag = item?.first
         v.onClick {
-            DialogX.listItemN(act, items.map { it.second }, null) {
+            this.dialogX.showListItemN(items.map { it.second }, null) {
                 v.tag = items[it].first
                 v.setDetail(items[it].second)
             }
@@ -347,7 +346,7 @@ abstract class InputPage : TitlePage() {
             val ed = editList.find { it.first == k }!!.second
             val info = v.checkAll(ed)
             if (info != null) {
-                this.alert(info)
+                this.dialogX.showAlert(info)
                 return false
             }
 

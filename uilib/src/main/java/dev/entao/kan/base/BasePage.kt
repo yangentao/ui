@@ -26,7 +26,7 @@ import dev.entao.kan.appbase.ex.saveJpg
 import dev.entao.kan.appbase.ex.savePng
 import dev.entao.kan.dialogs.HorProgressDlg
 import dev.entao.kan.dialogs.SpinProgressDlg
-import dev.entao.kan.dialogs.listItem
+import dev.entao.kan.dialogs.dialogX
 import dev.entao.kan.log.Yog
 import dev.entao.kan.util.*
 import dev.entao.kan.widget.RelativeLayoutX
@@ -174,7 +174,7 @@ open class BasePage : Fragment(), MsgListener {
     }
 
     fun selectImage(width: Int, block: (Uri) -> Unit) {
-        this.listItem(listOf("拍照", "相册"), null) {
+        this.dialogX.showListItem(listOf("拍照", "相册"), null) {
             if (it == "拍照") {
                 takePhotoJpg(width) { fff ->
                     block(Uri.fromFile(fff))
