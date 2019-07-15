@@ -2,6 +2,7 @@
 
 package dev.entao.kan.base
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
@@ -15,6 +16,8 @@ import kotlin.collections.HashMap
 /**
  * Created by entaoyang@163.com on 2016-11-17.
  */
+
+typealias ManiPerm = Manifest.permission
 
 open class Perm(private val perms: HashSet<String>) {
 
@@ -125,6 +128,25 @@ fun Fragment.reqPerm(pSet: Set<String>, block: (Map<String, Boolean>) -> Unit) {
         block(it)
     }
     perm.req(this)
+}
+
+
+
+
+fun Fragment.onPermAllow(perm: String, block: BlockUnit) {
+    this.activity?.onPermAllow(perm, block)
+}
+
+fun Activity.onPermAllow(perm: String, block: BlockUnit) {
+    if (this.hasPerm(perm)) {
+        block()
+    } else {
+        this.reqPerm(perm) {
+            if (this.hasPerm(perm)) {
+                block()
+            }
+        }
+    }
 }
 
 

@@ -8,8 +8,8 @@ object TextSize {
 	var Title = 18// sp
 	var Big = 18// sp
 	var Normal = 16// sp
-	var Small = 14// sp
-	var Tiny = 12// sp
+	var Small = 15// sp
+	var Tiny = 13// sp
 
 	fun addTextSize(n: Int) {
 		Large += n

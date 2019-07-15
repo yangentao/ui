@@ -26,7 +26,7 @@ open class TextDetailView(context: Context) : HorItemView(context) {
 	var argN: Int = 0
 
 	init {
-		padding(20, 10, 20, 10).gravityCenterVertical()
+		padding(20, 15, 20, 15).gravityCenterVertical()
 
 		textView = textView(lParam().widthWrap().heightWrap().gravityLeftCenter()) {
 			textSizeB().textColorMajor().singleLine()
