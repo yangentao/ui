@@ -566,7 +566,7 @@ class DialogX(val context: Context) {
         val d = this
         d.title(title)
         val lv = bodyList {
-            anyAdapter.onNewView = { c, p ->
+            anyAdapter.onNewView = { c, _ ->
                 TextDetailView(c)
             }
             anyAdapter.onBindView = { v, p ->
@@ -588,7 +588,7 @@ class DialogX(val context: Context) {
         val d = this
         d.title(title)
         val lv = bodyList {
-            anyAdapter.onNewView = { c, p ->
+            anyAdapter.onNewView = { c, _ ->
                 TextDetailView(c)
             }
             anyAdapter.onBindView = { v, p ->
