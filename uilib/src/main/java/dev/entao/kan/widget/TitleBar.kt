@@ -5,10 +5,10 @@ import android.app.Activity
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import androidx.annotation.DrawableRes
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.annotation.DrawableRes
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.*
 import dev.entao.kan.base.StackActivity
@@ -134,12 +134,12 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
             }
             d = d.sized(TitleBar.ImgSize)
             val iv = ImageView(context)
-            iv.scaleCenterCrop()
+            iv.scaleCenterInside()
             iv.backColorTransFade()
-            iv.padding(PAD_HOR, PAD_VER, PAD_HOR, PAD_VER)
+            iv.padding(0, 10, 0, 10)
             iv.setImageDrawable(d)
             item.view = iv
-            item.param = LParam.widthWrap().heightFill()
+            item.param = LParam.width(HEIGHT).heightFill()
             return
         }
         val tv = createTextViewB()
@@ -264,9 +264,9 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
         val a = leftImage(resId, BACK)
         a.onClick = {
 
-            if(context is StackActivity) {
+            if (context is StackActivity) {
                 context.pop()
-            }else {
+            } else {
                 context.onBackPressed()
             }
         }
@@ -391,8 +391,6 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
         const val MENU = "menu"
         const val ImgSize = 24
         const val HEIGHT = 50// dp
-        const val PAD_VER = (HEIGHT - ImgSize) / 2
-        const val PAD_HOR = (HEIGHT - ImgSize) / 2
         var TitleCenter = true
     }
 }
