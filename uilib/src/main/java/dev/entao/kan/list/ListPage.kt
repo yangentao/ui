@@ -4,9 +4,9 @@ package dev.entao.kan.list
 
 import android.content.Context
 import android.database.DataSetObserver
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import android.view.View
 import android.widget.*
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.creator.*
 import dev.entao.kan.ext.*
@@ -46,11 +46,14 @@ abstract class ListPage : TitlePage() {
 			searchEdit = contentView.editX(LParam.WidthFill.HeightEditSearch.margins(15, 5, 15, 5)) {
 				styleSearch()
 				singleLine()
-				imeSearch {
-					it.hideInputMethod()
-					val s = searchEdit?.textS?.trim() ?: ""
-					onSearchTextChanged(s)
-				}
+//				this.onTextChanged {
+//					onSearchTextChanged(it.trim())
+//				}
+//				imeSearch {
+//					it.hideInputMethod()
+//					val s = searchEdit?.textS?.trim() ?: ""
+//					onSearchTextChanged(s)
+//				}
 			}
 		}
 
