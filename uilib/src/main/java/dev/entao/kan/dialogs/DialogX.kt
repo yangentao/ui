@@ -26,6 +26,7 @@ import dev.entao.kan.ext.*
 import dev.entao.kan.grid.SimpleGridView
 import dev.entao.kan.list.CheckListView
 import dev.entao.kan.list.SimpleListView
+import dev.entao.kan.list.itemviews.TextDetailView
 import dev.entao.kan.theme.ViewSize
 import dev.entao.kan.widget.TitleBar
 
@@ -70,7 +71,7 @@ class DialogX(val context: Context) {
         rootLayout.divider()
 
         cardView.minimumHeight = dp(80)
-        val minW = App.screenWidthPx * 2 / 4
+        val minW = App.screenWidthPx * 3 / 4
         rootLayout.minimumWidth = minW
         rootLayout.minimumHeight = dp(80)
     }
@@ -121,7 +122,7 @@ class DialogX(val context: Context) {
 
     fun bodyText(text: String, block: TextView.() -> Unit = {}) {
         val tv = context.createTextViewB()
-        tv.padding(15, 10, 15, 10)
+        tv.padding(15, 15, 15, 15)
         tv.text = text
         tv.gravityCenter()
         tv.linkifyAll()
@@ -559,6 +560,50 @@ class DialogX(val context: Context) {
         d.show()
     }
 
+
+    @Suppress("UNCHECKED_CAST")
+    fun <T : Any> showListDetail(items: List<T>, title: String?, textBlock: (T) -> Pair<String, String>, onResult: (T) -> Unit) {
+        val d = this
+        d.title(title)
+        val lv = bodyList {
+            anyAdapter.onNewView = { c, p ->
+                TextDetailView(c)
+            }
+            anyAdapter.onBindView = { v, p ->
+                v as TextDetailView
+                val pp = textBlock(anyAdapter.item(p) as T)
+                v.setValues(pp.first, pp.second)
+            }
+        }
+        lv.setItems(items)
+        lv.onItemClick = {
+            d.dismiss()
+            onResult(it as T)
+        }
+        d.show()
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    fun <T : Any> showListDetailN(items: List<T>, title: String?, textBlock: (T) -> Pair<String, String>, onResult: (Int) -> Unit) {
+        val d = this
+        d.title(title)
+        val lv = bodyList {
+            anyAdapter.onNewView = { c, p ->
+                TextDetailView(c)
+            }
+            anyAdapter.onBindView = { v, p ->
+                v as TextDetailView
+                val pp = textBlock(anyAdapter.item(p) as T)
+                v.setValues(pp.first, pp.second)
+            }
+        }
+        lv.setItems(items)
+        lv.onItemClick2 = { _, _, p ->
+            d.dismiss()
+            onResult(p)
+        }
+        d.show()
+    }
 
 }
 

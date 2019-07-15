@@ -33,7 +33,7 @@ open class TextDetailView(context: Context) : HorItemView(context) {
 		}
 		addFlex()
 		detailView = textView(lParam().wrap().gravityRightCenter()) {
-			textSizeC().textColorMid().gravityRightCenter().multiLine()
+			textSizeC().textColorMinor().gravityRightCenter().multiLine()
 			maxLines(2)
 		}
 	}

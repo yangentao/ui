@@ -5,10 +5,7 @@ import android.graphics.drawable.Drawable
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import dev.entao.kan.appbase.ex.sized
-import dev.entao.kan.ext.gravityLeftCenter
-import dev.entao.kan.ext.padding
-import dev.entao.kan.ext.textColorMajor
-import dev.entao.kan.ext.textSizeA
+import dev.entao.kan.ext.*
 import dev.entao.kan.res.D
 import dev.entao.kan.theme.IconSize
 import dev.entao.kan.theme.Space
@@ -18,6 +15,7 @@ import dev.entao.kan.theme.Space
  */
 class TextItemView(context: Context) : TextView(context) {
     init {
+        genId()
         padding(Space.Normal, Space.Normal, Space.Normal, Space.Normal).gravityLeftCenter().textSizeA().textColorMajor()
     }
 

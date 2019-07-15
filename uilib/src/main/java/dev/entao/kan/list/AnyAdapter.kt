@@ -33,7 +33,7 @@ open class AnyAdapter : BaseAdapter() {
     var onViewType: (pos: Int) -> Int = { 0 }
 
     var onNewView: (context: Context, position: Int) -> View = { c, _ ->
-        TextItemView(c).genId()
+        TextItemView(c)
     }
     var onBindView: (itemView: View, pos: Int) -> Unit = { v, p ->
         onBindItem(v, getItem(p))
