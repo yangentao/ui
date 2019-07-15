@@ -18,7 +18,7 @@ class HelloPage : TitlePage() {
     }
 
     fun test() {
-        this.dialogX.showAlert("HelloHelloHelloHelloHelloHelloHello\nHelloHelloHelloHelloHelloHelloHelloHelloHelloHello")
+        this.dialogX.showAlert("HelloHelloHelloHelloHelloHelloHello\nHelloHelloHelloHelloHelloHelloHellolloHelloHelloHelHelloHelloHello")
 //        this.dialogX.showListDetail(listOf("删除", "复制", "查看", "复制号码和姓名"), null, { it to "13812345678" }) {
 //            logd(it)
 //        }

@@ -59,7 +59,8 @@ class DialogX(val context: Context) {
         dialog.window?.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         dialog.window?.setDimAmount(0.5f)
         windowParam.Wrap
-
+//        windowParam.horizontalMargin = dp(30).toFloat()
+//
 
         cardView.setCardBackgroundColor(Color.WHITE)
         cardView.cardElevation = dp(5).toFloat()
