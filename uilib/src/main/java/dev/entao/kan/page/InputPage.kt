@@ -7,17 +7,12 @@ import android.widget.*
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.base.*
-import dev.entao.kan.base.setValue
-import dev.entao.kan.log.logd
-import dev.entao.kan.base.act
-import dev.entao.kan.base.hideInputMethod
-import dev.entao.kan.base.pickDate
 import dev.entao.kan.creator.*
-import dev.entao.kan.dialogs.DialogX
 import dev.entao.kan.dialogs.dialogX
 import dev.entao.kan.ext.*
 import dev.entao.kan.list.itemviews.TextDetailView
 import dev.entao.kan.list.itemviews.textDetail
+import dev.entao.kan.log.logd
 import dev.entao.kan.res.Res
 import dev.entao.kan.theme.ViewSize
 import dev.entao.kan.util.TimeDown
@@ -370,9 +365,7 @@ abstract class InputPage : TitlePage() {
                     editList[n + 1].second.requestFocus()
                 }
             } else {
-                p.second.imeDone {
-                    hideInputMethod()
-                }
+                p.second.imeDone()
             }
         }
     }

@@ -22,12 +22,12 @@ import dev.entao.kan.appbase.ex.ColorListLight
 import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.appbase.ex.sized
-import dev.entao.kan.ui.R
 import dev.entao.kan.res.D
 import dev.entao.kan.theme.Space
 import dev.entao.kan.theme.TextSize
-import dev.entao.kan.util.XTextWatcher
+import dev.entao.kan.ui.R
 import dev.entao.kan.util.HtmlText
+import dev.entao.kan.util.XTextWatcher
 
 /**
  * Created by entaoyang@163.com on 16/3/12.
@@ -75,9 +75,9 @@ fun <T : TextView> T.imeAction(action: Int, block: (TextView) -> Unit): T {
     return this
 }
 
-fun <T : TextView> T.imeDone(block: (TextView) -> Unit): T {
+fun <T : TextView> T.imeDone(): T {
     this.imeOptions = EditorInfo.IME_ACTION_DONE
-    this.imeAction(EditorInfo.IME_ACTION_DONE, block)
+//    this.imeAction(EditorInfo.IME_ACTION_DONE, block)
     return this
 }
 
