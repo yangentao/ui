@@ -100,7 +100,6 @@ class GroupIndexBar(context: Context) : LinearLayout(context) {
     }
 
     fun setLabelItems(items: List<String>) {
-        logd("SetItems: $items ")
         this.items = items
         this.rebuild()
     }
