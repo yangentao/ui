@@ -27,6 +27,7 @@ import dev.entao.kan.grid.SimpleGridView
 import dev.entao.kan.list.CheckListView
 import dev.entao.kan.list.SimpleListView
 import dev.entao.kan.list.itemviews.TextDetailView
+import dev.entao.kan.list.itemviews.TextItemView
 import dev.entao.kan.theme.ViewSize
 import dev.entao.kan.widget.TitleBar
 
@@ -171,6 +172,11 @@ class DialogX(val context: Context) {
 
     fun bodyListString(block: (Any) -> String = { it.toString() }): SimpleListView {
         return bodyList {
+            anyAdapter.onNewView = { c, _ ->
+                val v = TextItemView(c)
+                v.padding(16, 12, 16, 12)
+                v
+            }
             anyAdapter.onBindView = { v, p ->
                 (v as TextView).text = block(anyAdapter.item(p))
             }
