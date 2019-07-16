@@ -2,9 +2,10 @@
 
 package dev.entao.kan.ext
 
-import androidx.annotation.DrawableRes
+import android.graphics.Color
 import android.widget.ImageView
-import dev.entao.kan.appbase.ex.tintedWhite
+import androidx.annotation.DrawableRes
+import dev.entao.kan.appbase.ex.*
 import dev.entao.kan.res.Res
 
 /**
@@ -12,43 +13,59 @@ import dev.entao.kan.res.Res
  */
 
 fun <T : ImageView> T.scaleCenter(): T {
-	this.scaleType = ImageView.ScaleType.CENTER
-	return this
+    this.scaleType = ImageView.ScaleType.CENTER
+    return this
 }
 
 fun <T : ImageView> T.scaleCenterInside(): T {
-	this.scaleType = ImageView.ScaleType.CENTER_INSIDE
-	return this
+    this.scaleType = ImageView.ScaleType.CENTER_INSIDE
+    return this
 }
 
 fun <T : ImageView> T.scaleCenterCrop(): T {
-	this.scaleType = ImageView.ScaleType.CENTER_CROP
-	return this
+    this.scaleType = ImageView.ScaleType.CENTER_CROP
+    return this
 }
 
 
 fun <T : ImageView> T.scaleFitXY(): T {
-	this.scaleType = ImageView.ScaleType.FIT_XY
-	return this
+    this.scaleType = ImageView.ScaleType.FIT_XY
+    return this
 }
 
 fun <T : ImageView> T.scaleFitCenter(): T {
-	this.scaleType = ImageView.ScaleType.FIT_CENTER
-	return this
+    this.scaleType = ImageView.ScaleType.FIT_CENTER
+    return this
 }
 
 fun <T : ImageView> T.scaleFitStart(): T {
-	this.scaleType = ImageView.ScaleType.FIT_START
-	return this
+    this.scaleType = ImageView.ScaleType.FIT_START
+    return this
 }
 
 fun <T : ImageView> T.scaleFitEnd(): T {
-	this.scaleType = ImageView.ScaleType.FIT_END
-	return this
+    this.scaleType = ImageView.ScaleType.FIT_END
+    return this
 }
 
-fun <T : ImageView> T.tintWhite(@DrawableRes resId:Int): T {
-	val d = Res.drawable(resId)
-	this.setImageDrawable(d.tintedWhite)
-	return this
+fun <T : ImageView> T.tintWhite(@DrawableRes resId: Int): T {
+    val d = Res.drawable(resId)
+    this.setImageDrawable(d.tintedWhite)
+    return this
+}
+
+fun <T : ImageView> T.resSizedWhite(@DrawableRes resId: Int, size: Int): T {
+    scaleCenterInside()
+    val b = Bmp.res(resId)
+    val bb = b.limit(dp(size)).tint(Color.WHITE)
+    this.setImageBitmap(bb)
+    return this
+}
+
+fun <T : ImageView> T.resSizedTheme(@DrawableRes resId: Int, size: Int): T {
+    scaleCenterInside()
+    val b = Bmp.res(resId)
+    val bb = b.limit(dp(size)).tint(Colors.Theme)
+    this.setImageBitmap(bb)
+    return this
 }
