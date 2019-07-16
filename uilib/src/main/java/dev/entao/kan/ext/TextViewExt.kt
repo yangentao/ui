@@ -77,7 +77,12 @@ fun <T : TextView> T.imeAction(action: Int, block: (TextView) -> Unit): T {
 
 fun <T : TextView> T.imeDone(): T {
     this.imeOptions = EditorInfo.IME_ACTION_DONE
-//    this.imeAction(EditorInfo.IME_ACTION_DONE, block)
+    return this
+}
+
+fun <T : TextView> T.imeDone(block: (TextView) -> Unit): T {
+    this.imeOptions = EditorInfo.IME_ACTION_DONE
+    this.imeAction(EditorInfo.IME_ACTION_DONE, block)
     return this
 }
 
