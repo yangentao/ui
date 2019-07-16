@@ -71,7 +71,7 @@ class GroupIndexBar(context: Context) : LinearLayout(context) {
                 val s = itemView.tag as? String
                 if (s != null && s != this.currentLabel) {
                     this.currentLabel = s
-                    Task.merge("label_changed", 50) {
+                    Task.mergeX("label_changed", 50) {
                         fireChanged()
                     }
                 }
@@ -125,7 +125,7 @@ class GroupIndexBar(context: Context) : LinearLayout(context) {
 
     fun setCurrentLabel(label: String) {
         this.currentLabel = label
-        Task.merge("set_curr_label", 20) {
+        Task.mergeX("set_curr_label", 20) {
             setLabel2()
         }
     }
