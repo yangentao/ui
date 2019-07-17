@@ -3,16 +3,17 @@
 package dev.entao.kan.util.app
 
 import android.app.Activity
+import androidx.annotation.Keep
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.sql.MapTable
-import dev.entao.kan.base.Progress
-import dev.entao.kan.http.Http
-import dev.entao.kan.json.YsonObject
 import dev.entao.kan.base.BasePage
+import dev.entao.kan.base.Progress
 import dev.entao.kan.base.act
 import dev.entao.kan.base.openActivity
 import dev.entao.kan.dialogs.DialogX
+import dev.entao.kan.http.Http
+import dev.entao.kan.json.YsonObject
 import dev.entao.kan.util.ToastUtil
 import java.io.File
 
@@ -20,6 +21,7 @@ import java.io.File
  * Created by entaoyang@163.com on 2017-06-13.
  */
 
+@Keep
 class YetVersion(val jo: YsonObject) {
     val versionCode: Int by jo
     val versionName: String by jo
