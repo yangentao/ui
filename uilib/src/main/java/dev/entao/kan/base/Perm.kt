@@ -19,11 +19,13 @@ import kotlin.collections.HashMap
 
 typealias ManiPerm = Manifest.permission
 
-open class Perm(private val perms: HashSet<String>) {
+//[240,250] 请求Code范围
+open class Perm(private val perms: Set<String>) {
 
     var onResult: (Map<String, Boolean>) -> Unit = {}
 
     private val resultMap = HashMap<String, Boolean>()
+    private val reqCode: Int = genCode()
 
     init {
         perms.forEach {
@@ -38,7 +40,7 @@ open class Perm(private val perms: HashSet<String>) {
                 callback()
             } else {
                 permStack.add(this)
-                act.requestPermissions(set.toTypedArray(), PERM_REQ_CODE)
+                act.requestPermissions(set.toTypedArray(), this.reqCode)
             }
         } else {
             callback()
@@ -52,7 +54,7 @@ open class Perm(private val perms: HashSet<String>) {
                 callback()
             } else {
                 permStack.add(this)
-                f.requestPermissions(set.toTypedArray(), PERM_REQ_CODE)
+                f.requestPermissions(set.toTypedArray(), this.reqCode)
             }
         } else {
             callback()
@@ -69,12 +71,23 @@ open class Perm(private val perms: HashSet<String>) {
     }
 
     companion object {
-        var PERM_REQ_CODE = 79
         private val permStack: LinkedList<Perm> = LinkedList()
+        private var code = 240
+        private fun genCode(): Int {
+            if (code > 250) {
+                code = 240
+            }
+            this.code += 1
+            return code
+        }
 
         fun onPermResult(requestCode: Int) {
-            if (requestCode == PERM_REQ_CODE) {
-                permStack.pollFirst()?.callback()
+            for (p in permStack) {
+                if (p.reqCode == requestCode) {
+                    permStack.remove(p)
+                    p.callback()
+                    return
+                }
             }
         }
     }
@@ -129,8 +142,6 @@ fun Fragment.reqPerm(pSet: Set<String>, block: (Map<String, Boolean>) -> Unit) {
     }
     perm.req(this)
 }
-
-
 
 
 fun Fragment.onPermAllow(perm: String, block: BlockUnit) {

@@ -19,10 +19,11 @@ allprojects {
     repositories {
         mavenCentral()
         google()
-        jcenter()
+
         maven {
             url 'http://maven.app800.cn/repository/public/'
         }
+        jcenter()
     }
 
 
