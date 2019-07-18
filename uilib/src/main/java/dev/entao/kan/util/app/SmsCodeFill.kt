@@ -7,7 +7,7 @@ import android.widget.TextView
 import dev.entao.kan.appbase.sql.GE
 import dev.entao.kan.appbase.sql.RowData
 import dev.entao.kan.appbase.sql.UriQuery
-import dev.entao.kan.appbase.sql.listRow_
+import dev.entao.kan.appbase.sql.listRowData
 import java.util.regex.Pattern
 
 /**
@@ -17,7 +17,7 @@ object SmsCodeFill {
 	private val INBOX_SMS_URI = Uri.parse("content://sms/inbox")
 
 	fun getSmsSince(time: Long): List<RowData> {
-		return  UriQuery(INBOX_SMS_URI).where("date" GE time).desc("date").query()?.listRow_ ?: return emptyList()
+		return  UriQuery(INBOX_SMS_URI).where("date" GE time).desc("date").query()?.listRowData ?: return emptyList()
 	}
 
 	fun searchSmsCode(textView: TextView, sinceTime: Long = System.currentTimeMillis()) {

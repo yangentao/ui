@@ -5,7 +5,7 @@ import android.os.Build
 import android.provider.MediaStore
 import dev.entao.kan.appbase.sql.RowData
 import dev.entao.kan.appbase.sql.UriQuery
-import dev.entao.kan.appbase.sql.listRow_
+import dev.entao.kan.appbase.sql.listRowData
 
 /**
  * Created by entaoyang@163.com on 16/5/12.
@@ -27,7 +27,7 @@ class MediaInfo(val uri: Uri) {
 		if (uri.host == "media" && uri.scheme == "content") {
 			val c =  UriQuery(uri).queryOne()
 			if(c != null) {
-				val map = c.listRow_.firstOrNull()
+				val map = c.listRowData.firstOrNull()
 				if(map != null) {
 					displayName = map.str(MediaStore.MediaColumns.DISPLAY_NAME)
 					mimeType = map.str(MediaStore.MediaColumns.MIME_TYPE)
