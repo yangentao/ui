@@ -120,7 +120,8 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
     private fun makeSureView(item: BarItem) {
         if (item.view != null) {
             item.view?.removeFromParent()
-            return
+            item.view = null
+//            return
         }
         var d: Drawable? = null
         if (item.drawable != null) {
@@ -358,7 +359,8 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
     private fun makeSureMenuItemView(item: BarItem): View {
         if (item.view != null) {
             item.view?.removeFromParent()
-            return item.view!!
+            item.view = null
+//            return item.view!!
         }
         val tv = context.createTextViewB()
         tv.singleLine()

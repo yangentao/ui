@@ -2,23 +2,23 @@ package dev.entao.kan.page
 
 import android.content.Context
 import android.os.Bundle
-import androidx.core.widget.NestedScrollView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import androidx.core.widget.NestedScrollView
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.base.Progress
 import dev.entao.kan.base.BasePage
+import dev.entao.kan.base.Progress
 import dev.entao.kan.base.StackActivity
 import dev.entao.kan.base.act
 import dev.entao.kan.creator.append
 import dev.entao.kan.creator.linearVer
 import dev.entao.kan.ext.*
 import dev.entao.kan.theme.MyColor
+import dev.entao.kan.util.app.OS
 import dev.entao.kan.widget.BottomBar
 import dev.entao.kan.widget.TitleBar
 import dev.entao.kan.widget.TopProgressBar
-import dev.entao.kan.util.app.OS
 
 open class TitlePage : BasePage(), Progress {
     lateinit var rootLinearView: LinearLayout
@@ -109,8 +109,10 @@ open class TitlePage : BasePage(), Progress {
     }
 
     override fun onProgress(current: Int, total: Int, percent: Int) {
-        topProgress?.visiable()
-        topProgress?.setProgress(percent)
+        Task.fore {
+            topProgress?.visiable()
+            topProgress?.setProgress(percent)
+        }
     }
 
     override fun onProgressFinish() {
