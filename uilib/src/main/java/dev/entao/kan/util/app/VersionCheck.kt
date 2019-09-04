@@ -3,6 +3,10 @@
 package dev.entao.kan.util.app
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import androidx.annotation.Keep
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.Task
@@ -14,6 +18,7 @@ import dev.entao.kan.base.openActivity
 import dev.entao.kan.dialogs.DialogX
 import dev.entao.kan.http.Http
 import dev.entao.kan.json.YsonObject
+import dev.entao.kan.log.loge
 import dev.entao.kan.util.ToastUtil
 import java.io.File
 
@@ -41,6 +46,7 @@ class VersionCheck(val jo: YsonObject) {
         }
         return null
     }
+
 
     companion object {
         val CHECK_URL: String = "http://app800.cn/am/check"
@@ -121,6 +127,47 @@ class VersionCheck(val jo: YsonObject) {
             return null
         }
 
+        fun checkAndInstallQuiet(context: Context) {
+            Task.back {
+                val v = check()
+                if (v != null) {
+                    if (v.great()) {
+                        val f = v.downloadFile(null)
+                        if (f != null) {
+                            Task.fore {
+                                installQuiet(context, f)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        fun installQuiet(context: Context, file: File) {
+            val apkUri = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+                Uri.fromFile(file)
+            } else {
+                FileProv.uriOfFile(file)
+            }
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+            intent.setDataAndType(apkUri, "application/vnd.android.package-archive")
+            val ls = context.packageManager.queryIntentActivities(intent, 0)
+            if (ls.isEmpty()) {
+                loge("未找到APK安装程序")
+                return
+            }
+            try {
+                context.startActivity(intent)
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+                loge(ex)
+            }
+        }
 
     }
 }
