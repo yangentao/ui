@@ -19,6 +19,7 @@
                   android:windowSoftInputMode="adjustPan"/>
 
         <activity android:name="dev.entao.kan.util.app.UpgradeActivity"/>
+        <activity android:name="dev.entao.kan.util.app.VersionUpgradeActivity"/>
 
         <receiver android:name="dev.entao.kan.util.app.ApkDownReceiver">
             <intent-filter>
