@@ -2,16 +2,9 @@ package dev.entao.utilapp
 
 import android.content.Context
 import android.widget.LinearLayout
-import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.appbase.ex.ShapeRect
-import dev.entao.kan.appbase.ex.dp
-import dev.entao.kan.creator.button
-import dev.entao.kan.creator.buttonRedRound
-import dev.entao.kan.creator.edit
-import dev.entao.kan.creator.textView
-import dev.entao.kan.ext.*
 import dev.entao.kan.page.TitlePage
 import dev.entao.kan.res.Res
+import dev.entao.kan.util.app.Notify
 
 class HelloPage : TitlePage() {
 
@@ -19,39 +12,21 @@ class HelloPage : TitlePage() {
         super.onCreateContent(context, contentView)
         titleBar {
             title("Hello")
-            rightImage(Res.addWhite)
-        }
-        contentView.backColor(Colors.WHITE)
-        contentView.edit(LParam.WidthFill.HeightEdit) {
-            this.imeDone()
-        }
-        contentView.buttonRedRound {
-            text = "Hello"
-            this.elevation = 3.0f
-            this.translationZ = 5f
+            rightImage(Res.addWhite).onClick = {
+                test()
+            }
+            rightText("Hide").onClick = {
+                hideNotify()
+            }
         }
 
-        contentView.button(LParam.width(80).HeightButton.gravityCenter().marginTop(30)) {
-            text = "Yang"
-            this.backColor(Colors.WHITE)
-            this.elevation = 50.0f
-        }
-        contentView.textView(LParam.width(100).HeightButton.gravityCenter().marginTop(30)) {
-            text = "Yang"
-            this.background = ShapeRect(Colors.RedMajor, 3).value
-            this.elevation = 30.0f
-            this.translationZ = 5f
-        }
-        contentView.textView(LParam.width(100).HeightButton.gravityCenter().marginTop(30)) {
-            text = "Yang"
-            this.backColorWhite()
-            this.elevation = 10.dp.toFloat()
-            this.translationZ = 0f
-        }
+    }
 
-        3.dp
+    fun hideNotify() {
+        Notify.cancel(111)
     }
 
     fun test() {
+        Notify(111).title("Hello").text("Yang Entao").show()
     }
 }
