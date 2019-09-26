@@ -1,16 +1,17 @@
+@file:Suppress("unused")
+
 package dev.entao.kan.util.app
 
 import android.os.Build
 import android.os.Build.VERSION
+import dev.entao.kan.base.ex.lowerCased
 import java.util.*
 
-@Suppress("DEPRECATION")
 object OS {
-    val SERIAL: String = Build.SERIAL
 
     val HUAWEI = isManufacturer("HUAWEI")
 
-    val API = Build.VERSION.SDK_INT
+    val API = VERSION.SDK_INT
 
     val GE50 = API >= 21
 
@@ -24,7 +25,7 @@ object OS {
     }
 
     fun isManufacturerEq(s: String): Boolean {
-        return Build.MANUFACTURER?.toLowerCase() == s.toLowerCase()
+        return Build.MANUFACTURER?.lowerCased == s.lowerCased
     }
 
     fun isModel(s: String): Boolean {

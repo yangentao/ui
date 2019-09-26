@@ -22,6 +22,8 @@ val Int.strRes: String
     get() {
         return App.resource.getString(this)
     }
+
+@Suppress("DEPRECATION")
 val Int.colorRes: Int
     get() {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -68,7 +70,6 @@ object Res {
     fun strArgs(resId: Int, vararg args: Any): String {
         return App.resource.getString(resId, *args)
     }
-
     @Suppress("DEPRECATION")
     fun color(resId: Int): Int {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -79,7 +80,6 @@ object Res {
     }
 
 
-    @Suppress("DEPRECATION")
     fun drawable(resId: Int): Drawable {
         return AppCompatResources.getDrawable(App.inst, resId)!!
     }

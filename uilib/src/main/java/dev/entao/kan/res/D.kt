@@ -8,9 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.StateListDrawable
-import android.os.Build
 import androidx.annotation.DrawableRes
-import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.ex.*
 import dev.entao.kan.theme.IconSize
 import dev.entao.kan.theme.ViewSize
@@ -77,13 +75,8 @@ object D {
         return ShapeRect(Color.WHITE, corner).stroke(1, color).value
     }
 
-    @Suppress("DEPRECATION")
     fun res(@DrawableRes resId: Int): Drawable {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            App.resource.getDrawable(resId, App.inst.theme)
-        } else {
-            App.resource.getDrawable(resId)
-        }
+        return Res.drawable(resId)
     }
 
     fun sized(@DrawableRes resId: Int, size: Int): Drawable {

@@ -6,6 +6,7 @@ import android.app.*
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
+import androidx.core.app.NotificationCompat
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.ex.UriRes
 import dev.entao.kan.json.YsonObject
@@ -19,7 +20,7 @@ import dev.entao.kan.res.bitmapRes
  * @author yangentao@gmail.com
  */
 class Notify(val id: Int) {
-    var builder: Notification.Builder
+    var builder: NotificationCompat.Builder
         private set
 
     var defaults: Int = 0
@@ -30,9 +31,10 @@ class Notify(val id: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val ch = NotificationChannel(App.packageName + "$id", "yet$id", NotificationManager.IMPORTANCE_DEFAULT)
             channel = ch
-            builder = Notification.Builder(App.inst, App.packageName + "$id")
+            builder = NotificationCompat.Builder(App.inst, App.packageName + "$id")
         } else {
-            builder = Notification.Builder(App.inst)
+            @Suppress("DEPRECATION")
+            builder = NotificationCompat.Builder(App.inst)
         }
         autoCancel(true)
         title(App.appName)
@@ -158,6 +160,8 @@ class Notify(val id: Int) {
      * 点击按钮时 打开Activity
      */
     fun actionActivity(icon: Int, title: String, cls: Class<out Activity>, yo: YsonObject): Notify {
+//        val a = Notification.Action(0, "", null)
+//        builder.addAction(a)
         builder.addAction(icon, title, IntentHelper.pendingActivity(cls, PendingIntent.FLAG_UPDATE_CURRENT, yo))
         return this
     }
@@ -182,7 +186,7 @@ class Notify(val id: Int) {
      * 默认的震动
      */
     fun vib(): Notify {
-        this.defaults = this.defaults or Notification.DEFAULT_VIBRATE
+        this.defaults = this.defaults or NotificationCompat.DEFAULT_VIBRATE
         return this
     }
 
@@ -190,16 +194,12 @@ class Notify(val id: Int) {
      * 默认的声音
      */
     fun sound(): Notify {
-        this.defaults = this.defaults or Notification.DEFAULT_SOUND
+        this.defaults = this.defaults or NotificationCompat.DEFAULT_SOUND
         return this
     }
 
     fun sound(uri: Uri): Notify {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            channel?.setSound(uri, Notification.AUDIO_ATTRIBUTES_DEFAULT)
-        } else {
-            builder.setSound(uri)
-        }
+        builder.setSound(uri)
         return this
     }
 
