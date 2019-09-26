@@ -11,10 +11,6 @@ object OS {
 
     val HUAWEI = isManufacturer("HUAWEI")
 
-    val API = VERSION.SDK_INT
-
-    val GE50 = API >= 21
-
 
     fun incremental(): String {
         return VERSION.INCREMENTAL
@@ -51,7 +47,7 @@ object OS {
      * @return
      */
     fun isModelApi(m: String, api: Int): Boolean {
-        return isModel(m) && API >= api
+        return isModel(m) && VERSION.SDK_INT >= api
     }
 
     fun isHardware(s: String): Boolean {

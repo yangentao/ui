@@ -4,7 +4,6 @@ package dev.entao.kan.ext
 
 import android.widget.Switch
 import dev.entao.kan.appbase.ex.*
-import dev.entao.kan.util.app.OS
 
 /**
  * Created by entaoyang@163.com on 16/6/3.
@@ -12,12 +11,7 @@ import dev.entao.kan.util.app.OS
 
 
 fun <T : Switch> T.themeSwitch(): T {
-    if (OS.GE50) {
-        return this
-    }
-    if (OS.API >= 16) {
-        this.thumbTextPadding = dp(10)
-    }
+    this.thumbTextPadding = dp(10)
 
     val w1 = 30
     val h1 = 30

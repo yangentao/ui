@@ -15,7 +15,6 @@ import dev.entao.kan.creator.append
 import dev.entao.kan.creator.linearVer
 import dev.entao.kan.ext.*
 import dev.entao.kan.theme.MyColor
-import dev.entao.kan.util.app.OS
 import dev.entao.kan.widget.BottomBar
 import dev.entao.kan.widget.TitleBar
 import dev.entao.kan.widget.TopProgressBar
@@ -81,10 +80,8 @@ open class TitlePage : BasePage(), Progress {
         onCreateContent(this.act, contentView)
         titleBar.commit()
         bottomBar?.commit()
-        if (OS.GE50) {
-            val c = MyColor(Colors.Theme)
-            statusBarColor(c.multiRGB(0.7))
-        }
+        val c = MyColor(Colors.Theme)
+        statusBarColor(c.multiRGB(0.7))
         onContentCreated()
         contentCreated = true
     }

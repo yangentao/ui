@@ -126,12 +126,14 @@ class ArrayListIndexBar(context: Context, feedbackParentView: RelativeLayout) : 
         val gd = GradientDrawable()
         gd.setColor(Color.GRAY)
         gd.setStroke(2, Color.WHITE)
-        gd.setCornerRadius(5f)
+        gd.cornerRadius = 5f
 
-        val lu = dev.entao.kan.util.LayerUtil()
-        lu.add(gd, 6, 0, 6, 0)
+        val lu = dev.entao.kan.util.LayerBuilder()
+        lu.add(gd) {
+            insetX(6)
+        }
         lu.add(ColorDrawable(Color.TRANSPARENT))
-        return lu.get()
+        return lu.value
     }
 
     override fun setVisibility(visibility: Int) {

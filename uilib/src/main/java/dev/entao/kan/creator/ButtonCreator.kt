@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import dev.entao.kan.appbase.ex.dpf
 import dev.entao.kan.base.act
-import dev.entao.kan.base.dpf
 import dev.entao.kan.ext.*
 
 /**
