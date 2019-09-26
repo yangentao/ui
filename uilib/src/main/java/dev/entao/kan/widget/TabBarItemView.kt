@@ -9,7 +9,7 @@ import dev.entao.kan.appbase.ex.*
 import dev.entao.kan.creator.textView
 import dev.entao.kan.ext.*
 import dev.entao.kan.res.D
-import dev.entao.kan.res.Res
+import dev.entao.kan.res.drawableRes
 
 /**
  * Created by entaoyang@163.com on 2018-04-18.
@@ -63,7 +63,7 @@ open class TabBarItemView(context: Context) : RelativeLayout(context) {
 
     fun setIcon(res: Int) {
         if (res != 0) {
-            setIcon(Res.drawable(res))
+            setIcon(res.drawableRes)
         }
     }
 

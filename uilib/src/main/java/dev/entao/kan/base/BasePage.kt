@@ -24,6 +24,7 @@ import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.ex.Bmp
 import dev.entao.kan.appbase.ex.saveJpg
 import dev.entao.kan.appbase.ex.savePng
+import dev.entao.kan.base.ex.lowerCased
 import dev.entao.kan.dialogs.HorProgressDlg
 import dev.entao.kan.dialogs.SpinProgressDlg
 import dev.entao.kan.dialogs.dialogX
@@ -58,11 +59,7 @@ open class BasePage : Fragment(), MsgListener {
     val watchMap = HashMap<Uri, ContentObserver>()
 
 
-    final override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         pageRootView = RelativeLayoutX(act)
         onCreatePage(act, pageRootView, savedInstanceState)
         return pageRootView
@@ -251,7 +248,7 @@ open class BasePage : Fragment(), MsgListener {
         val onResult = object : ActivityResultListener {
             override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent): Boolean {
                 if (resultCode == Activity.RESULT_OK && outputFile.exists()) {
-                    val f = App.files.ex.tempFile(fmt.toLowerCase())
+                    val f = App.files.ex.tempFile(fmt.lowerCased)
                     val bmp = Bmp.file(outputFile, width, Bitmap.Config.ARGB_8888)
                     if (bmp != null) {
                         if (png) {

@@ -2,6 +2,8 @@
 
 package dev.entao.kan.res
 
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Build
@@ -15,6 +17,32 @@ import dev.entao.kan.ui.R
 /**
  * Created by entaoyang@163.com on 2016-10-16.
  */
+
+val Int.strRes: String
+    get() {
+        return App.resource.getString(this)
+    }
+val Int.colorRes: Int
+    get() {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            App.resource.getColor(this, App.inst.theme)
+        } else {
+            App.resource.getColor(this)
+        }
+    }
+val Int.drawableRes: Drawable
+    get() {
+        return AppCompatResources.getDrawable(App.inst, this)!!
+    }
+val Int.bitmapRes: Bitmap?
+    get() {
+        val a = AppCompatResources.getDrawable(App.inst, this)
+        if (a is BitmapDrawable) {
+            return a.bitmap
+        }
+        return null
+    }
+
 object Res {
     val menu = R.drawable.yet_menu
     val me = R.drawable.yet_me
@@ -54,11 +82,6 @@ object Res {
     @Suppress("DEPRECATION")
     fun drawable(resId: Int): Drawable {
         return AppCompatResources.getDrawable(App.inst, resId)!!
-//		return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//			App.resource.getDrawable(resId, App.inst.theme)
-//		} else {
-//			App.resource.getDrawable(resId)
-//		}
     }
 
 }
@@ -67,12 +90,12 @@ object Res {
 fun StateList.drawable(@DrawableRes normal: Int, vararg ls: Pair<VState, Int>): StateListDrawable {
     val ld = StateListDrawable()
     for (p in ls) {
-        ld.addState(intArrayOf(p.first.value), Res.drawable(p.second))
+        ld.addState(intArrayOf(p.first.value), p.second.drawableRes)
     }
-    ld.addState(IntArray(0), Res.drawable(normal))
+    ld.addState(IntArray(0), normal.drawableRes)
     return ld
 }
 
 fun StateList.lightDrawable(@DrawableRes normal: Int, @DrawableRes light: Int): StateListDrawable {
-    return this.lightDrawable(Res.drawable(normal), Res.drawable(light))
+    return this.lightDrawable(normal.drawableRes, light.drawableRes)
 }

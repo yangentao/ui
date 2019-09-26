@@ -4,24 +4,24 @@ package dev.entao.kan.page
 
 import android.content.Context
 import android.graphics.Color
-import androidx.annotation.DrawableRes
 import android.widget.Button
 import android.widget.LinearLayout
+import androidx.annotation.DrawableRes
 import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.appbase.ex.sized
 import dev.entao.kan.appbase.ex.tinted
+import dev.entao.kan.base.act
 import dev.entao.kan.base.getValue
 import dev.entao.kan.base.labelProp_
 import dev.entao.kan.base.nameProp
-import dev.entao.kan.base.act
-import dev.entao.kan.ext.*
-import dev.entao.kan.list.itemviews.TextDetailView
-import dev.entao.kan.list.itemviews.TextItemView
-import dev.entao.kan.res.Res
 import dev.entao.kan.creator.createButton
 import dev.entao.kan.creator.createView
 import dev.entao.kan.creator.linearVer
+import dev.entao.kan.ext.*
+import dev.entao.kan.list.itemviews.TextDetailView
+import dev.entao.kan.list.itemviews.TextItemView
+import dev.entao.kan.res.drawableRes
 import dev.entao.kan.widget.UserItemView
 import kotlin.reflect.KProperty
 import kotlin.reflect.KProperty0
@@ -150,7 +150,7 @@ abstract class CmdPage : TitlePage() {
         this.text = text
         if (leftIcon != 0) {
             if (tintCmdIcon) {
-                leftImage(Res.drawable(leftIcon).tinted(Colors.Theme).sized(defaultIconSize))
+                leftImage(leftIcon.drawableRes.tinted(Colors.Theme).sized(defaultIconSize))
             } else {
                 leftImage(leftIcon, defaultIconSize)
             }

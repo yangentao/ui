@@ -119,7 +119,7 @@ object D {
     }
 
     fun light(@DrawableRes normal: Int, @DrawableRes light: Int): StateListDrawable {
-        return light(Res.drawable(normal), Res.drawable(light))
+        return light(normal.drawableRes, light.drawableRes)
     }
 
     fun lightColor(normalColor: Int, pressedColor: Int): StateListDrawable {
@@ -139,11 +139,11 @@ object D {
     }
 
     fun layerOval(resId: Int, tintColor: Int, ovalColor: Int, inset: Int): LayerDrawable {
-        return layerOval(Res.drawable(resId).tinted(tintColor), ovalColor, inset)
+        return layerOval(resId.drawableRes.tinted(tintColor), ovalColor, inset)
     }
 
     fun layerOval(resId: Int, ovalColor: Int, inset: Int): LayerDrawable {
-        return layerOval(Res.drawable(resId), ovalColor, inset)
+        return layerOval(resId.drawableRes, ovalColor, inset)
     }
 
     fun layerOval(drawable: Drawable, ovalColor: Int, inset: Int): LayerDrawable {

@@ -16,6 +16,7 @@ import dev.entao.kan.creator.*
 import dev.entao.kan.ext.*
 import dev.entao.kan.res.D
 import dev.entao.kan.res.Res
+import dev.entao.kan.res.drawableRes
 
 @SuppressLint("ViewConstructor")
 class TitleBar(val context: Activity) : RelativeLayout(context) {
@@ -127,7 +128,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
         if (item.drawable != null) {
             d = item.drawable?.mutate()
         } else if (item.resIcon != 0) {
-            d = Res.drawable(item.resIcon).mutate()
+            d = item.resIcon.drawableRes.mutate()
         }
         if (d != null) {
             if (item.tintTheme) {
@@ -275,7 +276,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
     }
 
     fun rightImage(resId: Int, BarItem: String = "$resId"): BarItem {
-        return rightImage(Res.drawable(resId), BarItem)
+        return rightImage(resId.drawableRes, BarItem)
     }
 
     fun rightImage(d: Drawable, cmd: String = BarItem.autoIdent()): BarItem {
@@ -293,7 +294,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
     }
 
     fun leftImage(resId: Int, BarItem: String = "$resId"): BarItem {
-        return leftImage(Res.drawable(resId), BarItem)
+        return leftImage(resId.drawableRes, BarItem)
     }
 
     fun leftImage(d: Drawable, cmd: String = BarItem.autoIdent()): BarItem {
@@ -317,7 +318,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
         p.isFocusable = true
         p.isOutsideTouchable = true
         p.setBackgroundDrawable(ColorDrawable(0))
-        val gd = ShapeRect(Colors.Theme).corners(0,0,2,2).value
+        val gd = ShapeRect(Colors.Theme).corners(0, 0, 2, 2).value
         val popRootView = context.createLinearVertical()
         popRootView.minimumWidth = dp(150)
         popRootView.backDrawable(gd).padding(5)
@@ -368,7 +369,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
         var d: Drawable = if (item.drawable != null) {
             item.drawable!!.mutate()
         } else if (item.resIcon != 0) {
-            Res.drawable(item.resIcon).mutate()
+            item.resIcon.drawableRes.mutate()
         } else {
             D.color(Color.TRANSPARENT)
         }

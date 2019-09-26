@@ -17,7 +17,7 @@ import dev.entao.kan.appbase.ex.roundSqure
 import dev.entao.kan.ext.leftImage
 import dev.entao.kan.ext.rightImage
 import dev.entao.kan.ext.topImage
-import dev.entao.kan.res.Res
+import dev.entao.kan.res.drawableRes
 import java.lang.ref.WeakReference
 
 class UriImage(val uri: Uri) {
@@ -44,7 +44,7 @@ class UriImage(val uri: Uri) {
 						block(v, BitmapDrawable(App.resource, bmp))
 					} else {
 						if (option.failedImage != 0) {
-							val d = Res.drawable(option.failedImage).limited(option.limit)
+							val d = option.failedImage.drawableRes.limited(option.limit)
 							block(v, d)
 						} else {
 							block(v, null)

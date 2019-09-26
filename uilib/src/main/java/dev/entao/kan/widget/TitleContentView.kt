@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.appbase.ex.color
-import dev.entao.kan.ext.*
-import dev.entao.kan.list.itemviews.TextDetailView
+import dev.entao.kan.appbase.ex.gray
 import dev.entao.kan.creator.createTextView
 import dev.entao.kan.creator.textView
+import dev.entao.kan.ext.*
+import dev.entao.kan.list.itemviews.TextDetailView
 
 /**
  * Created by entaoyang@163.com on 2017-05-20.
@@ -55,7 +55,7 @@ class TitleContentView(context: Context) : LinearLayout(context) {
 		var defaultTitleTextColor: Int = Colors.TextColorMajor
 		var defaultHasLine = true
 		var defaultLineColor = Colors.WHITE
-		var defaultBackColor = 0xeeeeee.color
+		var defaultBackColor = 0xee.gray
 		var defaultBackCorner = 4
 		var defaultTextColor = Colors.TextColorMajor
 	}

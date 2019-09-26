@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.*
 import dev.entao.kan.creator.createLinearVertical
@@ -18,6 +19,7 @@ import dev.entao.kan.ext.*
 import dev.entao.kan.page.Cmd
 import dev.entao.kan.res.D
 import dev.entao.kan.res.Res
+import dev.entao.kan.res.drawableRes
 
 /**
  * Created by entaoyang@163.com on 2018-04-18.
@@ -99,8 +101,8 @@ class BottomBar(context: Context) : LinearLayout(context) {
         }
     }
 
-    fun actionImage(resId: Int, cmd: String = "$resId"): Cmd {
-        return actionImage(Res.drawable(resId), cmd)
+    fun actionImage(@DrawableRes resId: Int, cmd: String = "$resId"): Cmd {
+        return actionImage(resId.drawableRes, cmd)
     }
 
     fun actionImage(d: Drawable, cmd: String = Cmd.genCmd): Cmd {
@@ -187,7 +189,7 @@ class BottomBar(context: Context) : LinearLayout(context) {
         var d: Drawable = if (item.drawable != null) {
             item.drawable!!.mutate()
         } else if (item.resIcon != 0) {
-            Res.drawable(item.resIcon).mutate()
+            item.resIcon.drawableRes.mutate()
         } else {
             D.color(Color.TRANSPARENT)
         }

@@ -6,7 +6,7 @@ import android.graphics.Color
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import dev.entao.kan.appbase.ex.*
-import dev.entao.kan.res.Res
+import dev.entao.kan.res.drawableRes
 
 /**
  * Created by entaoyang@163.com on 16/3/13.
@@ -49,8 +49,7 @@ fun <T : ImageView> T.scaleFitEnd(): T {
 }
 
 fun <T : ImageView> T.tintWhite(@DrawableRes resId: Int): T {
-    val d = Res.drawable(resId)
-    this.setImageDrawable(d.tintedWhite)
+    this.setImageDrawable(resId.drawableRes.tintedWhite)
     return this
 }
 
