@@ -8,12 +8,11 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import dev.entao.kan.appbase.ex.ARGB
 import dev.entao.kan.appbase.ex.RGB
-import dev.entao.kan.appbase.ex.Shapes
-import dev.entao.kan.appbase.ex.dp
-import dev.entao.kan.log.Yog
-import dev.entao.kan.ext.*
+import dev.entao.kan.appbase.ex.ShapeRect
 import dev.entao.kan.creator.createLinearVertical
 import dev.entao.kan.creator.createTextViewC
+import dev.entao.kan.ext.*
+import dev.entao.kan.log.Yog
 import java.io.File
 import java.util.*
 
@@ -24,7 +23,7 @@ import java.util.*
 class VoicePanel(val parent: RelativeLayout) : AmrRecord.AMRRecordCallback {
     lateinit var amrRecord: AmrRecord
     lateinit var infoPanel: LinearLayout
-    lateinit var waveView: dev.entao.kan.util.WaveView
+    lateinit var waveView: WaveView
     lateinit var textView: TextView
     private var callback: VoicePanelCallback? = null
 
@@ -35,16 +34,10 @@ class VoicePanel(val parent: RelativeLayout) : AmrRecord.AMRRecordCallback {
 
     fun init() {
         amrRecord = AmrRecord()
-
-        val bg = Shapes.rect {
-            cornerPx = dp(10)
-            fillColor = ARGB(0x80, 0, 0, 0)
-            strokeWidthPx = dp(1)
-            strokeColor = RGB(0xC0, 0xC0, 0xC0)
-        }
+        val bg = ShapeRect(ARGB(0x80, 0, 0, 0), 10).stroke(1, RGB(0xC0, 0xC0, 0xC0)).value
         infoPanel = context.createLinearVertical().backDrawable(bg).padding(5).gone()
 
-        waveView = dev.entao.kan.util.WaveView(context)
+        waveView = WaveView(context)
         waveView.setColor(Color.WHITE)
         waveView.setMaxValue(MAX)
         infoPanel.addView(waveView, linearParam().widthFill().height(100))

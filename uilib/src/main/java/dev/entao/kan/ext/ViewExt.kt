@@ -3,13 +3,16 @@
 package dev.entao.kan.ext
 
 import android.graphics.drawable.Drawable
-import androidx.annotation.DrawableRes
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.kan.appbase.ex.*
+import androidx.annotation.DrawableRes
+import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.ShapeRect
+import dev.entao.kan.appbase.ex.StateList
+import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.res.D
 import dev.entao.kan.theme.Space
 import java.util.concurrent.atomic.AtomicInteger
@@ -166,8 +169,7 @@ fun <T : View> T.backColor(color: Int): T {
 }
 
 fun <T : View> T.backColor(color: Int, fadeColor: Int): T {
-    //    background = colorDrawable(color, fadeColor)
-    this.background = ColorDrawable(color, fadeColor)
+    this.background = StateList.lightColorDrawable(color, fadeColor)
     return this
 }
 
@@ -208,19 +210,21 @@ fun <T : View> T.backColorPage(): T {
 }
 
 fun <T : View> T.backFillFade(fillColor: Int, corner: Int): T {
-    backDrawable(RectDraw(fillColor).corner(corner).value, RectDraw(Colors.Fade).corner(corner).value)
+    val a = ShapeRect(fillColor, corner).value
+    val b = ShapeRect(Colors.Fade, corner).value
+    backDrawable(a, b)
     return this
 }
 
 fun <T : View> T.backFill(fillColor: Int, corner: Int): T {
-    val d = RectDraw(fillColor).corner(corner)
-    backDrawable(d.value)
+    val a = ShapeRect(fillColor, corner).value
+    backDrawable(a)
     return this
 }
 
 fun <T : View> T.backStrike(fillColor: Int, corner: Int, borderWidth: Int, borderColor: Int): T {
-    val d = RectDraw(fillColor).corner(corner).stroke(borderWidth, borderColor)
-    backDrawable(d.value)
+    val a = ShapeRect(fillColor, corner).stroke(borderWidth, borderColor).value
+    backDrawable(a)
     return this
 }
 
@@ -234,10 +238,6 @@ fun <T : View> T.backDrawable(d: Drawable): T {
     return this
 }
 
-fun <T : View> T.backDrawable(block: Shapes.RectOption.() -> Unit): T {
-    this.background = Shapes.rect(block)
-    return this
-}
 
 fun <T : View> T.backDrawable(normal: Drawable, pressed: Drawable): T {
     this.background = D.light(normal, pressed)

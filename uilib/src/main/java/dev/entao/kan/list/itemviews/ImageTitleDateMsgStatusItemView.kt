@@ -4,12 +4,12 @@ package dev.entao.kan.list.itemviews
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import androidx.annotation.DrawableRes
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import dev.entao.kan.appbase.ex.RGB
-import dev.entao.kan.appbase.ex.Shapes
+import dev.entao.kan.appbase.ex.ShapeOval
 import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.base.MyDate
 import dev.entao.kan.creator.*
@@ -158,10 +158,7 @@ class ImageTitleDateMsgStatusItemView(context: Context) : HorItemView(context) {
     }
 
     companion object {
-        private val redDrawable = Shapes.oval {
-            size(10)
-            fillColor = RGB(255, 128, 0)
-        }
+        private val redDrawable = ShapeOval().fill(RGB(255, 128, 0)).size(10).value
     }
 
 }

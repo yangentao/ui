@@ -3,10 +3,7 @@
 package dev.entao.kan.ext
 
 import android.widget.Switch
-import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.appbase.ex.ImageStated
-import dev.entao.kan.appbase.ex.Shapes
-import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.appbase.ex.*
 import dev.entao.kan.util.app.OS
 
 /**
@@ -15,58 +12,26 @@ import dev.entao.kan.util.app.OS
 
 
 fun <T : Switch> T.themeSwitch(): T {
-	if (OS.GE50) {
-		return this
-	}
-	if (OS.API >= 16) {
-		this.thumbTextPadding = dp(10)
-	}
+    if (OS.GE50) {
+        return this
+    }
+    if (OS.API >= 16) {
+        this.thumbTextPadding = dp(10)
+    }
 
-	val w1 = 30
-	val h1 = 30
+    val w1 = 30
+    val h1 = 30
 
-	val d1 = Shapes.rect {
-		cornerPx = dp(h1 / 2)
-		fillColor = 0xFFCCCCCC.toInt()
-		size(w1, h1)
-	}
-	val d2 = Shapes.rect {
-		cornerPx = dp(h1 / 2)
-		fillColor = 0xFF4A90E2.toInt()
-		size(w1, h1)
-	}
-	val d3 = Shapes.rect {
-		cornerPx = dp(h1 / 2)
-		fillColor = Colors.LightGray
-		strokeWidthPx = dp(1)
-		strokeColor = Colors.GrayMajor
-		size(w1, h1)
-	}
+    val d1 = ShapeRect(0xFFCCCCCCL.argb, h1 / 2).size(w1, h1).value
+    val d2 = ShapeRect(0xFF4A90E2L.argb, h1 / 2).size(w1, h1).value
+    val d3 = ShapeRect(Colors.LightGray, h1 / 2).stroke(1, Colors.GrayMajor).size(w1, h1).value
+    this.thumbDrawable = StateList.drawable(d1, VState.Checked to d2, VState.Disabled to d3)
 
-	this.thumbDrawable = ImageStated(d1).checked(d2).enabled(d3, false).value
-
-
-	val w = 50
-	val h = 30
-	val dd1 = Shapes.rect {
-		cornerPx = dp(h / 2)
-		fillColor = Colors.WHITE
-		strokeWidthPx = dp(1)
-		strokeColor = Colors.LightGray
-		size(w, h)
-	}
-	val dd2 = Shapes.rect {
-		cornerPx = dp(h / 2)
-		fillColor = Colors.Safe
-		size(w, h)
-	}
-	val dd3 = Shapes.rect {
-		cornerPx = dp(h / 2)
-		fillColor = Colors.LightGray
-		strokeWidthPx = dp(1)
-		strokeColor = Colors.WHITE
-		size(w, h)
-	}
-	this.trackDrawable = ImageStated(dd1).checked(dd2).enabled(dd3, false).value
-	return this
+    val w = 50
+    val h = 30
+    val dd1 = ShapeRect(Colors.WHITE, h / 2).stroke(1, Colors.LightGray).size(w, h).value
+    val dd2 = ShapeRect(Colors.Safe, h / 2).size(w, h).value
+    val dd3 = ShapeRect(Colors.LightGray, h / 2).stroke(1, Colors.WHITE).size(w, h).value
+    this.trackDrawable = StateList.drawable(dd1, VState.Checked to dd2, VState.Disabled to dd3)
+    return this
 }

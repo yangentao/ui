@@ -6,7 +6,7 @@ import android.content.Context
 import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.kan.appbase.ex.RGB
-import dev.entao.kan.appbase.ex.Shapes
+import dev.entao.kan.appbase.ex.ShapeOval
 import dev.entao.kan.base.MyDate
 import dev.entao.kan.creator.createLinearHorizontal
 import dev.entao.kan.creator.createLinearVertical
@@ -96,10 +96,7 @@ class TitleDateMsgStatusItemView(context: Context) : HorItemView(context) {
             return TitleDateMsgStatusItemView(context)
         }
 
-        private val redDrawable = Shapes.oval {
-            size(10)
-            fillColor = RGB(255, 128, 0)
-        }
+        private val redDrawable = ShapeOval().fill(RGB(255, 128, 0)).size(10).value
     }
 
 }

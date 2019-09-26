@@ -5,7 +5,7 @@ import android.widget.ImageView
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.ARGB
 import dev.entao.kan.appbase.ex.RGB
-import dev.entao.kan.appbase.ex.Shapes
+import dev.entao.kan.appbase.ex.ShapeRect
 import dev.entao.kan.creator.createRelative
 import dev.entao.kan.creator.imageView
 import dev.entao.kan.creator.textView
@@ -33,7 +33,7 @@ abstract class BaseWelcomeActivity : BaseActivity() {
 
      * @return
      */
-    var guideImages: List<Int> = ArrayList<Int>()
+    var guideImages: List<Int> = ArrayList()
 
     //毫秒
     var minTime: Long = 1000
@@ -75,11 +75,8 @@ abstract class BaseWelcomeActivity : BaseActivity() {
                         textS = "进入"
                     }
                     padding(15, 5, 15, 5)
-                    backDrawable(Shapes.rect {
-                        fillColor = ARGB(100, 80, 80, 80)
-                        strokeColor = RGB(80, 80, 80)
-                        strokeWidthPx = 2
-                    })
+                    val d = ShapeRect().fill(ARGB(100, 80, 80, 80)).stroke(1, RGB(80, 80, 80))
+                    this.backDrawable(d.value)
                     onClick {
                         goNext()
                     }
@@ -103,11 +100,8 @@ abstract class BaseWelcomeActivity : BaseActivity() {
             rootRelView.textView(RParam.Wrap.ParentTop.ParentRight.margins(0, 20, 20, 0)) {
                 textS = "跳过"
                 padding(15, 5, 15, 5)
-                backDrawable(Shapes.rect {
-                    fillColor = ARGB(100, 80, 80, 80)
-                    strokeColor = RGB(80, 80, 80)
-                    strokeWidthPx = 2
-                })
+                val d = ShapeRect().fill(ARGB(100, 80, 80, 80)).stroke(1, RGB(80, 80, 80))
+                backDrawable(d.value)
                 onClick {
                     goNext()
                 }

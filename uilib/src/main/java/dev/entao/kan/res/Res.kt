@@ -3,9 +3,13 @@
 package dev.entao.kan.res
 
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.StateListDrawable
 import android.os.Build
+import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import dev.entao.kan.appbase.App
+import dev.entao.kan.appbase.ex.StateList
+import dev.entao.kan.appbase.ex.VState
 import dev.entao.kan.ui.R
 
 /**
@@ -57,4 +61,18 @@ object Res {
 //		}
     }
 
+}
+
+
+fun StateList.drawable(@DrawableRes normal: Int, vararg ls: Pair<VState, Int>): StateListDrawable {
+    val ld = StateListDrawable()
+    for (p in ls) {
+        ld.addState(intArrayOf(p.first.value), Res.drawable(p.second))
+    }
+    ld.addState(IntArray(0), Res.drawable(normal))
+    return ld
+}
+
+fun StateList.lightDrawable(@DrawableRes normal: Int, @DrawableRes light: Int): StateListDrawable {
+    return this.lightDrawable(Res.drawable(normal), Res.drawable(light))
 }

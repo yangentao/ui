@@ -18,8 +18,8 @@ import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-import dev.entao.kan.appbase.ex.ColorListLight
 import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.StateList
 import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.appbase.ex.sized
 import dev.entao.kan.res.D
@@ -266,7 +266,7 @@ fun <T : TextView> T.textColor(color: Int): T {
 
 
 fun <T : TextView> T.textColor(color: Int, pressed: Int): T {
-    this.setTextColor(ColorListLight(color, pressed))
+    this.setTextColor(StateList.lightColor(color, pressed))
     return this
 }
 

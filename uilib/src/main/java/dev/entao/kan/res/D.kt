@@ -22,139 +22,135 @@ import dev.entao.kan.widget.EditTextX
  */
 
 object D {
-	val CheckBox: Drawable get() = checked(R.drawable.yet_checkbox, R.drawable.yet_checkbox_checked)
-	val EditClear: Drawable get() = D.sized(R.drawable.yet_edit_clear, EditTextX.IMAGE_WIDTH)
-	val Back: Drawable get() = D.res(R.drawable.yet_back).sized(IconSize.Normal)
-	val ArrowRight: Drawable get() = D.res(R.drawable.yet_arrow_right).sized(IconSize.Tiny)
-	val RedPoint: Drawable
-		get() = Shapes.oval {
-			size(10)
-			fillColor = RGB(255, 128, 0)
-		}
-	val Input: Drawable
-		get() {
-			val corner: Int = ViewSize.EditCorner
-			val normal = RectDraw(Colors.WHITE).corner(corner).stroke(1, Colors.GRAY).value
-			val focused = RectDraw(Colors.WHITE).corner(corner).stroke(1, Colors.EditFocus).value
-			return focused(normal, focused)
-		}
-	val InputSearch: Drawable
-		get() {
-			val corner: Int = ViewSize.EditHeightSearch / 2
-			val normal = RectDraw(Colors.WHITE).corner(corner).stroke(1, Colors.GRAY).value
-			val focused = RectDraw(Colors.WHITE).corner(corner).stroke(1, Colors.EditFocus).value
-			return focused(normal, focused)
-		}
+    val CheckBox: Drawable get() = checked(R.drawable.yet_checkbox, R.drawable.yet_checkbox_checked)
+    val EditClear: Drawable get() = sized(R.drawable.yet_edit_clear, EditTextX.IMAGE_WIDTH)
+    val Back: Drawable get() = res(R.drawable.yet_back).sized(IconSize.Normal)
+    val ArrowRight: Drawable get() = res(R.drawable.yet_arrow_right).sized(IconSize.Tiny)
+    val RedPoint: Drawable
+        get() = ShapeOval().fill(RGB(255, 128, 0)).size(10).value
+    val Input: Drawable
+        get() {
+            val corner: Int = ViewSize.EditCorner
+            val normal = ShapeRect(Colors.WHITE, corner).stroke(1, Colors.GRAY).value
+            val focused = ShapeRect(Colors.WHITE, corner).stroke(1, Colors.EditFocus).value
+            return focused(normal, focused)
+        }
+    val InputSearch: Drawable
+        get() {
+            val corner: Int = ViewSize.EditHeightSearch / 2
+            val normal = ShapeRect(Colors.WHITE, corner).stroke(1, Colors.GRAY).value
+            val focused = ShapeRect(Colors.WHITE, corner).stroke(1, Colors.EditFocus).value
+            return focused(normal, focused)
+        }
 
-	val InputRect: Drawable
-		get() {
-			val normal = RectDraw(Colors.WHITE).corner(2).stroke(1, Colors.GRAY).value
-			val focused = RectDraw(Colors.WHITE).corner(2).stroke(1, Colors.EditFocus).value
-			return focused(normal, focused)
-		}
+    val InputRect: Drawable
+        get() {
+            val normal = ShapeRect(Colors.WHITE, 2).stroke(1, Colors.GRAY).value
+            val focused = ShapeRect(Colors.WHITE, 2).stroke(1, Colors.EditFocus).value
+            return focused(normal, focused)
+        }
 
-	fun buttonGray(corner: Int = ViewSize.ButtonCorner): Drawable {
-		return buttonColor(Colors.GrayMajor, corner)
-	}
-	fun buttonGreen(corner: Int = ViewSize.ButtonCorner): Drawable {
-		return buttonColor(Colors.Safe, corner)
-	}
+    fun buttonGray(corner: Int = ViewSize.ButtonCorner): Drawable {
+        return buttonColor(Colors.GrayMajor, corner)
+    }
 
-	fun buttonRed(corner: Int = ViewSize.ButtonCorner): Drawable {
-		return buttonColor(Colors.RedMajor, corner)
-	}
+    fun buttonGreen(corner: Int = ViewSize.ButtonCorner): Drawable {
+        return buttonColor(Colors.Safe, corner)
+    }
 
-	fun buttonWhite(corner: Int = ViewSize.ButtonCorner): Drawable {
-		return buttonColor(Color.rgb(230, 230, 230), corner)
-	}
+    fun buttonRed(corner: Int = ViewSize.ButtonCorner): Drawable {
+        return buttonColor(Colors.RedMajor, corner)
+    }
 
-	fun buttonColor(color: Int, corner: Int = ViewSize.ButtonCorner): Drawable {
-		val normal = RectDraw(color).corner(corner).value
-		val pressed = RectDraw(Colors.Fade).corner(corner).value
-		val enableFalse = RectDraw(Colors.Disabled).corner(corner).value
-		return ImageStated(normal).pressed(pressed).enabled(enableFalse, false).value
-	}
+    fun buttonWhite(corner: Int = ViewSize.ButtonCorner): Drawable {
+        return buttonColor(Color.rgb(230, 230, 230), corner)
+    }
 
-	fun panelBorder(color: Int = Colors.LightGray, corner: Int = ViewSize.ButtonCorner): Drawable {
-		return RectDraw(Color.WHITE).corner(corner).stroke(1, color).value
-	}
+    fun buttonColor(color: Int, corner: Int = ViewSize.ButtonCorner): Drawable {
+        val normal = ShapeRect(color, corner).value
+        val pressed = ShapeRect(Colors.Fade, corner).value
+        val enableFalse = ShapeRect(Colors.Disabled, corner).value
+        return StateList.drawable(normal, VState.Pressed to pressed, VState.Disabled to enableFalse)
+    }
 
-	@Suppress("DEPRECATION")
-	fun res(@DrawableRes resId: Int): Drawable {
-		return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			App.resource.getDrawable(resId, App.inst.theme)
-		} else {
-			App.resource.getDrawable(resId)
-		}
-	}
+    fun panelBorder(color: Int = Colors.LightGray, corner: Int = ViewSize.ButtonCorner): Drawable {
+        return ShapeRect(Color.WHITE, corner).stroke(1, color).value
+    }
 
-	fun sized(@DrawableRes resId: Int, size: Int): Drawable {
-		return res(resId).sized(size, size)
-	}
+    @Suppress("DEPRECATION")
+    fun res(@DrawableRes resId: Int): Drawable {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            App.resource.getDrawable(resId, App.inst.theme)
+        } else {
+            App.resource.getDrawable(resId)
+        }
+    }
 
-	fun limited(@DrawableRes resId: Int, edge: Int): Drawable {
-		return res(resId).limited(edge)
-	}
+    fun sized(@DrawableRes resId: Int, size: Int): Drawable {
+        return res(resId).sized(size, size)
+    }
 
-	fun tinted(@DrawableRes res: Int, color: Int): Drawable {
-		return D.res(res).tinted(color)
-	}
+    fun limited(@DrawableRes resId: Int, edge: Int): Drawable {
+        return res(resId).limited(edge)
+    }
 
-	fun tintTheme(@DrawableRes res: Int): StateListDrawable {
-		return Bmp.tintTheme(res)
-	}
+    fun tinted(@DrawableRes res: Int, color: Int): Drawable {
+        return res(res).tinted(color)
+    }
 
-	fun tintLight(@DrawableRes res: Int, normalColor: Int, lightColor: Int): StateListDrawable {
-		return Bmp.tintLight(res, normalColor, lightColor)
-	}
+    fun tintTheme(@DrawableRes res: Int): StateListDrawable {
+        return Bmp.tintTheme(res)
+    }
 
-	fun color(color: Int): ColorDrawable {
-		return ColorDrawable(color)
-	}
+    fun tintLight(@DrawableRes res: Int, normalColor: Int, lightColor: Int): StateListDrawable {
+        return Bmp.tintLight(res, normalColor, lightColor)
+    }
 
-	fun listColor(normal: Int, pressed: Int): ColorStateList {
-		return ColorList(normal).pressed(pressed).selected(pressed).focused(pressed).get()
-	}
+    fun color(color: Int): ColorDrawable {
+        return ColorDrawable(color)
+    }
 
-	fun light(normal: Drawable, pressed: Drawable): StateListDrawable {
-		return ImageStated(normal).pressed(pressed).selected(pressed).focused(pressed).value
-	}
+    fun listColor(normal: Int, pressed: Int): ColorStateList {
+        return StateList.lightColor(normal, pressed)
+    }
 
-	fun light(@DrawableRes normal: Int, @DrawableRes light: Int): StateListDrawable {
-		return ImageStated(normal).pressed(light).selected(light).focused(light).value
-	}
+    fun light(normal: Drawable, pressed: Drawable): StateListDrawable {
+        return StateList.lightDrawable(normal, pressed)
+    }
 
-	fun lightColor(normalColor: Int, pressedColor: Int): StateListDrawable {
-		return ColorStated(normalColor).pressed(pressedColor).selected(pressedColor).focused(pressedColor).value
-	}
+    fun light(@DrawableRes normal: Int, @DrawableRes light: Int): StateListDrawable {
+        return light(Res.drawable(normal), Res.drawable(light))
+    }
 
-	fun checked(@DrawableRes normalId: Int, @DrawableRes checkedId: Int): StateListDrawable {
-		return ImageStated(D.res(normalId)).checked(D.res(checkedId)).value
-	}
+    fun lightColor(normalColor: Int, pressedColor: Int): StateListDrawable {
+        return StateList.lightColorDrawable(normalColor, pressedColor)
+    }
 
-	fun focused(@DrawableRes normalId: Int, @DrawableRes checkedId: Int): StateListDrawable {
-		return ImageStated(D.res(normalId)).focused(D.res(checkedId)).value
-	}
+    fun checked(@DrawableRes normalId: Int, @DrawableRes checkedId: Int): StateListDrawable {
+        return StateList.drawable(normalId, VState.Checked to checkedId)
+    }
 
-	fun focused(normal: Drawable, focusedImage: Drawable): StateListDrawable {
-		return ImageStated(normal).focused(focusedImage).value
-	}
+    fun focused(@DrawableRes normalId: Int, @DrawableRes focusId: Int): StateListDrawable {
+        return StateList.drawable(normalId, VState.Focused to focusId)
+    }
 
-	fun layerOval(resId: Int, tintColor: Int, ovalColor: Int, inset: Int): LayerDrawable {
-		return layerOval(Res.drawable(resId).tinted(tintColor), ovalColor, inset)
-	}
+    fun focused(normal: Drawable, focusedImage: Drawable): StateListDrawable {
+        return StateList.drawable(normal, VState.Focused to focusedImage)
+    }
 
-	fun layerOval(resId: Int, ovalColor: Int, inset: Int): LayerDrawable {
-		return layerOval(Res.drawable(resId), ovalColor, inset)
-	}
+    fun layerOval(resId: Int, tintColor: Int, ovalColor: Int, inset: Int): LayerDrawable {
+        return layerOval(Res.drawable(resId).tinted(tintColor), ovalColor, inset)
+    }
 
-	fun layerOval(drawable: Drawable, ovalColor: Int, inset: Int): LayerDrawable {
-		val bg = Shapes.oval {
-			fillColor = ovalColor
-		}
-		val ld = LayerDrawable(arrayOf(bg, drawable))
-		val n = dp(inset)
-		ld.setLayerInset(1, n, n, n, n)
-		return ld
-	}
+    fun layerOval(resId: Int, ovalColor: Int, inset: Int): LayerDrawable {
+        return layerOval(Res.drawable(resId), ovalColor, inset)
+    }
+
+    fun layerOval(drawable: Drawable, ovalColor: Int, inset: Int): LayerDrawable {
+        val bg = ShapeOval().fill(ovalColor).value
+        val ld = LayerDrawable(arrayOf(bg, drawable))
+        val n = dp(inset)
+        ld.setLayerInset(1, n, n, n, n)
+        return ld
+    }
 }

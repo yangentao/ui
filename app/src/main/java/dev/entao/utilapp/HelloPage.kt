@@ -3,7 +3,7 @@ package dev.entao.utilapp
 import android.content.Context
 import android.widget.LinearLayout
 import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.appbase.ex.Shapes
+import dev.entao.kan.appbase.ex.ShapeRect
 import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.creator.button
 import dev.entao.kan.creator.buttonRedRound
@@ -38,10 +38,7 @@ class HelloPage : TitlePage() {
         }
         contentView.textView(LParam.width(100).HeightButton.gravityCenter().marginTop(30)) {
             text = "Yang"
-            this.background = Shapes.rect {
-                cornerDp = 3
-                fillColor = Colors.RedMajor
-            }
+            this.background = ShapeRect(Colors.RedMajor, 3).value
             this.elevation = 30.0f
             this.translationZ = 5f
         }

@@ -11,9 +11,8 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.appbase.ex.Shapes
+import dev.entao.kan.appbase.ex.ShapeRect
 import dev.entao.kan.appbase.ex.colorParse
-import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.creator.createTextView
 import dev.entao.kan.creator.textView
 import dev.entao.kan.ext.*
@@ -52,12 +51,7 @@ class GroupIndexBar(context: Context) : LinearLayout(context) {
         this.clickable()
         this.setOnTouchListener(this.touchListener)
 
-        val d = Shapes.rect {
-            cornerPx = dp(10)
-            fillColor = colorParse("#555")
-            strokeWidthPx = dp(2)
-            strokeColor = colorParse("#ddd")
-        }
+        val d = ShapeRect(colorParse("#555"), 10).stroke(2, colorParse("#ddd")).value
         feedbackView = createTextView()
         feedbackView.textColor(Color.WHITE).textSizeSp(50).gravityCenter().backDrawable(d).gone()
     }

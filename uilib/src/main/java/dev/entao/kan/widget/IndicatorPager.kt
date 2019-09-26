@@ -4,14 +4,14 @@ import android.content.Context
 import android.database.DataSetObserver
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import androidx.viewpager.widget.ViewPager
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import androidx.viewpager.widget.ViewPager
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.MyTimer
-import dev.entao.kan.appbase.ex.Shapes
+import dev.entao.kan.appbase.ex.ShapeOval
 import dev.entao.kan.appbase.ex.grayColor
 import dev.entao.kan.appbase.ex.sized
 import dev.entao.kan.creator.createImageView
@@ -98,8 +98,8 @@ class IndicatorPager(context: Context) : RelativeLayout(context) {
         indicatorLayout.removeAllViews()
         for (i in 0 until adapter.count) {
             indicatorLayout.imageView(LParam.size(pointSize).margins(pointSize / 2, 0, pointSize / 2, 0)) {
-                val d1 = Shapes.oval { fillColor = dotColor }
-                val d2 = Shapes.oval { fillColor = dotLightColor }
+                val d1 = ShapeOval().fill(dotColor).value
+                val d2 = ShapeOval().fill(dotLightColor).value
                 val d = D.light(d1, d2).sized(pointSize)
                 setImageDrawable(d)
                 this.scaleCenterInside()

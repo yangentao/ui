@@ -1,7 +1,7 @@
 package dev.entao.kan.creator
 
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import android.view.ViewGroup
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import dev.entao.kan.ext.genId
 /**
  * Created by entaoyang@163.com on 2018-04-18.

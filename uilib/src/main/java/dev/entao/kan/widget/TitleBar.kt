@@ -317,10 +317,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
         p.isFocusable = true
         p.isOutsideTouchable = true
         p.setBackgroundDrawable(ColorDrawable(0))
-        val gd = Shapes.rect {
-            fillColor = Colors.Theme
-            cornerListDp(0, 0, 2, 2)
-        }
+        val gd = ShapeRect(Colors.Theme).corners(0,0,2,2).value
         val popRootView = context.createLinearVertical()
         popRootView.minimumWidth = dp(150)
         popRootView.backDrawable(gd).padding(5)

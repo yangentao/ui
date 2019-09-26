@@ -3,6 +3,7 @@
 package dev.entao.kan.ext
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.LayerDrawable
 import android.view.View.OnLayoutChangeListener
 import android.widget.CheckBox
@@ -34,42 +35,20 @@ open class SwitchButton(context: Context) : CheckBox(context) {
     }
 
     fun makeDrawDp(w: Int, h: Int): LayerDrawable {
-
-        val dd1 = Shapes.rect {
-            cornerPx = dp(h / 2)
-            fillColor = Colors.WHITE
-            strokeWidthPx = dp(1)
-            strokeColor = Colors.LightGray
-            size(w, h)
-        }
-        val dd2 = Shapes.rect {
-            cornerPx = dp(h / 2)
-            fillColor = Colors.Safe
-            size(w, h)
-        }
-        val dd3 = Shapes.rect {
-            cornerPx = dp(h / 2)
-            fillColor = Colors.LightGray
-            strokeWidthPx = dp(1)
-            strokeColor = Colors.WHITE
-            size(w, h)
-        }
-        val draw = ImageStated(dd1).checked(dd2).enabled(dd3, false).value
-
+        val dd1 = ShapeRect(Color.WHITE, h / 2).stroke(1, Colors.LightGray).size(w, h).value
+        val dd2 = ShapeRect(Colors.Safe, h / 2).size(w, h).value
+        val dd3 = ShapeRect(Colors.LightGray, h / 2).stroke(1, Colors.WHITE).size(w, h).value
+        val draw = StateList.drawable(dd1, VState.Checked to dd2, VState.Enabled to dd3)
         val h2: Int = if (h <= 2) {
             1
         } else {
             h - 2
         }
-        val round = Shapes.oval {
-            size(h2)
-            fillColor = Colors.WHITE
-            if (isChecked) {
-                strokeWidthPx = dp(1)
-                strokeColor = Colors.LightGray
-            }
+        val a = ShapeOval().fill(Colors.WHITE)
+        if (isChecked) {
+            a.stroke(1, Colors.LightGray)
         }
-
+        val round = a.size(h2).value
 
         val ld = LayerDrawable(arrayOf(draw, round))
         val offset = dp(w - h)

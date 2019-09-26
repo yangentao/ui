@@ -17,12 +17,11 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenCentral()
-        google()
-
         maven {
             url 'http://maven.app800.cn/repository/public/'
         }
+        mavenCentral()
+        google()
         jcenter()
     }
 
