@@ -99,7 +99,7 @@ class MyAudioRecord(private val context: Context) {
         recorder = MediaRecorder()
         Yog.d("begin recording...")
         recorder!!.setAudioSource(MediaRecorder.AudioSource.MIC)// 设置MediaRecorder的音频源为麦克风
-        recorder!!.setOutputFormat(MediaRecorder.OutputFormat.RAW_AMR)// RAW_AMR
+        recorder!!.setOutputFormat(MediaRecorder.OutputFormat.AAC_ADTS)
         // 设置MediaRecorder录制的音频格式
         recorder!!.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT)// 设置音频编码Encoder
         recorder!!.setOutputFile(this.file!!.absolutePath)
