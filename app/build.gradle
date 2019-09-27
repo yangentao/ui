@@ -32,4 +32,5 @@ dependencies {
     implementation 'dev.entao.kan:log:4.0.0'
     implementation 'dev.entao.kan:json:4.0.3'
     implementation project(':uilib')
+    implementation 'androidx.slidingpanelayout:slidingpanelayout:1.0.0'
 }
