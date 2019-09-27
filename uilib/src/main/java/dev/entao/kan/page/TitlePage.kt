@@ -87,11 +87,6 @@ open class TitlePage : BasePage(), Progress {
     }
 
 
-    fun titleBar(block: TitleBar.() -> Unit) {
-        titleBar.block()
-    }
-
-
     open fun onContentCreated() {
 
     }

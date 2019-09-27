@@ -2,9 +2,11 @@ package dev.entao.utilapp
 
 import android.content.Context
 import android.widget.LinearLayout
+import dev.entao.kan.base.ManiPerm
+import dev.entao.kan.base.reqPerm
+import dev.entao.kan.log.logd
 import dev.entao.kan.page.TitlePage
-import dev.entao.kan.res.Res
-import dev.entao.kan.util.app.Notify
+import dev.entao.kan.util.app.ApkDownReceiver
 
 class HelloPage : TitlePage() {
 
@@ -12,21 +14,22 @@ class HelloPage : TitlePage() {
         super.onCreateContent(context, contentView)
         titleBar {
             title("Hello")
-            rightImage(Res.addWhite).onClick = {
-                test()
-            }
-            rightText("Hide").onClick = {
-                hideNotify()
+            rightText("Down").onClick = {
+                down()
             }
         }
 
     }
 
-    fun hideNotify() {
-        Notify.cancel(111)
+    fun down() {
+        this.reqPerm(ManiPerm.WRITE_EXTERNAL_STORAGE) {
+            logd("请求写download文件夹 $it ")
+            if (it) {
+                val a = "http://app800.cn/am/res/download?id=47"
+                ApkDownReceiver.downloadAndInstall(a, "下载APK")
+            }
+        }
+
     }
 
-    fun test() {
-        Notify(111).title("Hello").text("Yang Entao").show()
-    }
 }

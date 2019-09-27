@@ -4,8 +4,8 @@ import android.app.DownloadManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
-import android.os.Build
 import android.os.Environment
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.sql.MapTable
@@ -19,22 +19,35 @@ class ApkDownReceiver : BroadcastReceiver() {
         if (id == -1L) {
             return
         }
-        downMap.getString(id.toString()) ?: return
-        val fileUri = App.downloadManager.getUriForDownloadedFile(id) ?: return
-        logd(fileUri)
-        App.installApk(fileUri)
+        val url = downMap.getString(id.toString()) ?: return
+        logd("URL: ", url)
+        val uriLocal = App.downloadManager.getUriForDownloadedFile(id) ?: return
+        logd(uriLocal)
+        App.installApk(uriLocal)
     }
 
 
     companion object {
         val downMap = MapTable("downloadTasks")
+        private var downReceiver: ApkDownReceiver? = null
 
-        fun downloadAndInstall(url: String, title: String, desc: String = "") {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                App.openUrl(url)
+        private fun regDownRecv() {
+            if (this.downReceiver != null) {
                 return
             }
+            val d = ApkDownReceiver()
+            this.downReceiver = d
+            App.inst.registerReceiver(d, IntentFilter("android.intent.action.DOWNLOAD_COMPLETE"))
+        }
 
+        //        this.reqPerm(ManiPerm.WRITE_EXTERNAL_STORAGE) {
+//            logd("请求写download文件夹 $it ")
+//            if (it) {
+//                val a = "http://app800.cn/am/res/download?id=47"
+//                ApkDownReceiver.downloadAndInstall(a, "下载APK")
+//            }
+//        }
+        fun downloadAndInstall(url: String, title: String, desc: String = "") {
 
             val req = DownloadManager.Request(Uri.parse(url))
             if (title.isNotEmpty()) {
@@ -53,6 +66,7 @@ class ApkDownReceiver : BroadcastReceiver() {
             val downId = App.downloadManager.enqueue(req)
             logd("DownloadTask enqueue: ", downId)
             downMap.put(downId.toString(), url)
+            this.regDownRecv()
 
         }
 

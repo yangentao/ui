@@ -42,6 +42,10 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
         backColor(Colors.Theme)
     }
 
+    operator fun invoke(block: TitleBar.() -> Unit) {
+        block(this)
+    }
+
     fun push(block: TitleBar.() -> Unit) {
         if (!pushModel) {
             pushModel = true

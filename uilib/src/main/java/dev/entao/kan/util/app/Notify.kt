@@ -120,6 +120,7 @@ class Notify(val id: Int) {
     }
 
     fun clickBroadcast(yo: YsonObject): Notify {
+        NotifyReceiver.reg()
         builder.setContentIntent(IntentHelper.pendingBroadcast(NotifyReceiver::class.java, yo))
         return this
     }
