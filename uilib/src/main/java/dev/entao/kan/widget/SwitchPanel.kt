@@ -154,10 +154,10 @@ class SwitchPanel(context: Context) : LinearLayout(context) {
         fun styleLeft(): SwitchPanelItem {
             val a = ShapeRect(Colors.Theme).corners(corner, 0, 0, corner).value
             val b = ShapeRect(Colors.WHITE).corners(corner, 0, 0, corner).value
-            val d = StateList.drawable(a) {
+            val d = StateList.drawables(a) {
                 selected(b)
             }
-            val e = StateList.color(Colors.WHITE) {
+            val e = StateList.colors(Colors.WHITE) {
                 selected(Colors.Theme)
             }
             backDrawable(d).textColor(e)
@@ -167,8 +167,8 @@ class SwitchPanel(context: Context) : LinearLayout(context) {
         fun styleRight(): SwitchPanelItem {
             val a = ShapeRect(Colors.Theme).corners(0, corner, corner, 0).value
             val b = ShapeRect(Colors.WHITE).corners(0, corner, corner, 0).value
-            val d = StateList.drawable(a) { selected(b) }
-            val e = StateList.color(Colors.WHITE) { selected(Colors.Theme) }
+            val d = StateList.drawables(a) { selected(b) }
+            val e = StateList.colors(Colors.WHITE) { selected(Colors.Theme) }
             backDrawable(d).textColor(e)
             return this
         }
@@ -176,8 +176,8 @@ class SwitchPanel(context: Context) : LinearLayout(context) {
         fun styleMid(): SwitchPanelItem {
             val a = ShapeRect(Colors.Theme).value
             val b = ShapeRect(Colors.WHITE).value
-            val d = StateList.drawable(a) { selected(b) }
-            val e = StateList.color(Colors.WHITE) { selected(Colors.Theme) }
+            val d = StateList.drawables(a) { selected(b) }
+            val e = StateList.colors(Colors.WHITE) { selected(Colors.Theme) }
             backDrawable(d).textColor(e)
             return this
         }

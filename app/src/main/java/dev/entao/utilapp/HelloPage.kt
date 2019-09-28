@@ -2,22 +2,27 @@ package dev.entao.utilapp
 
 import android.content.Context
 import android.graphics.Color
+import android.view.Menu
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.StateList
+import dev.entao.kan.appbase.ex.colors
 import dev.entao.kan.appbase.ex.dp
-import dev.entao.kan.appbase.ex.dpf
-import dev.entao.kan.creator.createButton
 import dev.entao.kan.creator.createTextView
 import dev.entao.kan.ext.*
-import dev.entao.kan.material.snackShow
+import dev.entao.kan.log.logd
 import dev.entao.kan.page.TitlePage
+import dev.entao.kan.util.IdGen
 
 
 class HelloPage : TitlePage() {
+    lateinit var navMenu: Menu
+    lateinit var bb: BottomNavigationView
 
     override fun onCreateContent(context: Context, contentView: LinearLayout) {
         super.onCreateContent(context, contentView)
@@ -29,32 +34,40 @@ class HelloPage : TitlePage() {
 
         }
 
-//        val b = Button(context, null, android.R.attr.actionButtonStyle)
-//        val b = Button(context)
-        val b = createButton("Hello")
-        this.contentView.addView(b, LParam.width(200).height(80).margins(20))
-        b.text = "Hello"
-        b.setOnClickListener { v -> }
-//        b.backTint(Colors.Safe)
-//        b.styleGreen()
-//        b.backColor(Colors.WHITE)
-        b.backTintRed()
-//        b.backTint(Colors.Safe)
-//        b.stateListAnimator = null
-//        b.elevation = 30.dpf
+        val b = BottomNavigationView(context)
+        bb = b
+        this.contentView.addView(b, LParam.WidthFill.HeightWrap)
+        b.menu.buildItems {
+            "Home" TO R.drawable.yet_del
+//            "Discover" TO R.drawable.yet_add_white
+            "Me" TO R.drawable.yet_me
+        }
+//        b.menu.apply {
+//            this.add("Home").setIcon(R.drawable.yet_del)
+//            this.add("Discover").setIcon(R.drawable.yet_add_white)
+//            this.add("Me").setIcon(R.drawable.yet_me)
+//        }
+        val a = com.google.android.material.R.color.secondary_text_default_material_light
+        val cs = StateList.colors(a) {
+            selected(Colors.Theme)
+            checked(Colors.Theme)
+        }
+        b.itemTextColor = cs
+        b.itemIconTintList = cs
 
-        val c = TextView(context)
-        this.contentView.addView(c, LParam.width(200).height(80).margins(20))
-        c.text = "Hello"
-        c.backColor(Colors.WHITE)
-//        c.backColor(Colors.Safe)
-//        c.backTint(Colors.Safe)
-        c.elevation = 30.dpf
+        b.setOnNavigationItemSelectedListener {
+            logd("Select: ", it.title, it.itemId)
+            true
+        }
+
+        navMenu = b.menu
+
 
     }
 
     fun onOK() {
-        this.snackShow("Hlelo")
+        navMenu.getItem(0)?.setChecked(true)
+        logd(bb.selectedItemId)
 
     }
 
@@ -80,6 +93,22 @@ class HelloPage : TitlePage() {
 
     }
 
+}
+
+fun Menu.buildItems(block: MenuItemBuilder.() -> Unit) {
+    val a = MenuItemBuilder(this)
+    a.block()
+}
+
+class MenuItemBuilder(val menu: Menu) {
+
+    infix fun String.TO(@DrawableRes iconId: Int) {
+        menu.add(0, IdGen.gen(), 0, this).setIcon(iconId)
+    }
+
+    fun add(title: String) {
+        menu.add(title)
+    }
 }
 
 
