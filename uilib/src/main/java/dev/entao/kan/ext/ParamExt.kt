@@ -209,27 +209,27 @@ val <T : ViewGroup.LayoutParams> T.HeightEditSearch: T
 
 
 fun <T : ViewGroup.MarginLayoutParams> T.marginLeft(v: Int): T {
-    this.leftMargin = dp(v)
+    this.leftMargin = v.dp
     return this
 }
 
 fun <T : ViewGroup.MarginLayoutParams> T.marginRight(v: Int): T {
-    this.rightMargin = dp(v)
+    this.rightMargin = v.dp
     return this
 }
 
 fun <T : ViewGroup.MarginLayoutParams> T.marginTop(v: Int): T {
-    this.topMargin = dp(v)
+    this.topMargin = v.dp
     return this
 }
 
 fun <T : ViewGroup.MarginLayoutParams> T.marginBottom(v: Int): T {
-    this.bottomMargin = dp(v)
+    this.bottomMargin = v.dp
     return this
 }
 
 fun <T : ViewGroup.MarginLayoutParams> T.margins(left: Int, top: Int, right: Int, bottom: Int): T {
-    this.setMargins(dp(left), dp(top), dp(right), dp(bottom))
+    this.setMargins(left.dp, top.dp, right.dp, bottom.dp)
     return this
 }
 
@@ -243,27 +243,27 @@ fun <T : ViewGroup.MarginLayoutParams> T.margins(hor: Int, ver: Int): T {
 }
 
 fun <T : ViewGroup.MarginLayoutParams> T.marginX(left: Int, right: Int): T {
-    this.setMargins(dp(left), this.topMargin, dp(right), this.bottomMargin)
+    this.setMargins(left.dp, this.topMargin, right.dp, this.bottomMargin)
     return this
 }
 
 fun <T : ViewGroup.MarginLayoutParams> T.marginX(x: Int): T {
-    this.setMargins(dp(x), this.topMargin, dp(x), this.bottomMargin)
+    this.setMargins(x.dp, this.topMargin, x.dp, this.bottomMargin)
     return this
 }
 
 fun <T : ViewGroup.MarginLayoutParams> T.marginY(top: Int, bottom: Int): T {
-    this.setMargins(this.leftMargin, dp(top), this.rightMargin, dp(bottom))
+    this.setMargins(this.leftMargin, top.dp, this.rightMargin, bottom.dp)
     return this
 }
 
 fun <T : ViewGroup.MarginLayoutParams> T.marginY(y: Int): T {
-    this.setMargins(this.leftMargin, dp(y), this.rightMargin, dp(y))
+    this.setMargins(this.leftMargin, y.dp, this.rightMargin, y.dp)
     return this
 }
 
 fun <T : ViewGroup.MarginLayoutParams> T.margins(m: Int): T {
-    val v = dp(m)
+    val v = m.dp
     this.setMargins(v, v, v, v)
     return this
 }

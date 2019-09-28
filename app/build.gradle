@@ -33,4 +33,5 @@ dependencies {
     implementation 'dev.entao.kan:json:4.0.3'
     implementation project(':uilib')
     implementation 'androidx.slidingpanelayout:slidingpanelayout:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
 }

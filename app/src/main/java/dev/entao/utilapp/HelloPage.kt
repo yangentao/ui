@@ -10,10 +10,10 @@ import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.appbase.ex.dpf
-import dev.entao.kan.base.toast
 import dev.entao.kan.creator.createButton
 import dev.entao.kan.creator.createTextView
 import dev.entao.kan.ext.*
+import dev.entao.kan.material.snackShow
 import dev.entao.kan.page.TitlePage
 
 
@@ -25,13 +25,8 @@ class HelloPage : TitlePage() {
             title("Hello")
             rightItems {
                 "OK" on ::onOK
-                "Down" on ::down
             }
-            menuItems {
-                "Hello" to R.drawable.yet_add_white on ::onOK
-                "Yang" to R.drawable.yet_del on ::onOK
 
-            }
         }
 
 //        val b = Button(context, null, android.R.attr.actionButtonStyle)
@@ -59,7 +54,8 @@ class HelloPage : TitlePage() {
     }
 
     fun onOK() {
-        toast("OK")
+        this.snackShow("Hlelo")
+
     }
 
     fun sliding(context: Context) {

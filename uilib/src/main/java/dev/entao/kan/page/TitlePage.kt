@@ -2,6 +2,7 @@ package dev.entao.kan.page
 
 import android.content.Context
 import android.os.Bundle
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.core.widget.NestedScrollView
@@ -55,12 +56,14 @@ open class TitlePage : BasePage(), Progress {
             if (hasSnak) {
                 snack = append(Snack(act).gone(), LParam.WidthFill.HeightWrap.GravityCenterVertical)
             }
-            if (enableContentScroll) {
-                append(NestedScrollView(rootLinearView.context).genId(), LParam.WidthFill.height(0).weight(1)) {
-                    contentView = linearVer(LParam.WidthFill.HeightWrap) {}
+            append(FrameLayout(context).genId(), LParam.WidthFill.HeightFlex).apply {
+                if (enableContentScroll) {
+                    append(NestedScrollView(context).genId(), FParam.Fill) {
+                        contentView = linearVer(LParam.WidthFill.HeightWrap) {}
+                    }
+                } else {
+                    contentView = linearVer(FParam.Fill) {}
                 }
-            } else {
-                contentView = linearVer(LParam.WidthFill.height(0).weight(1)) {}
             }
             if (hasBottomBar) {
                 bottomBar = append(BottomBar(act), LParam.WidthFill.height(BottomBar.HEIGHT))
@@ -115,3 +118,4 @@ open class TitlePage : BasePage(), Progress {
     }
 
 }
+

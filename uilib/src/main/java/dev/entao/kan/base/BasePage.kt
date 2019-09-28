@@ -48,7 +48,8 @@ open class BasePage : Fragment(), MsgListener {
 
     val uniqueName: String = "fragment${identity++}"
 
-    protected lateinit var pageRootView: RelativeLayoutX
+    lateinit var pageRootView: RelativeLayoutX
+        private set
 
     @SuppressLint("UseSparseArrays")
     private val resultListeners = HashMap<Int, ActivityResultListener>(8)
