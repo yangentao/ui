@@ -9,10 +9,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.appbase.ex.ShapeRect
-import dev.entao.kan.appbase.ex.StateList
-import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.appbase.ex.*
 import dev.entao.kan.res.D
 import dev.entao.kan.theme.Space
 import java.util.concurrent.atomic.AtomicInteger
@@ -23,6 +20,20 @@ import kotlin.reflect.KClass
  */
 
 private val atomInt = AtomicInteger(1)
+
+fun <T : View> T.backTintRed(): T {
+    return this.backTint(Colors.RedMajor)
+}
+
+fun <T : View> T.backTintGreen(): T {
+    return this.backTint(Colors.GreenMajor)
+}
+
+fun <T : View> T.backTint(color: Int): T {
+    this.backgroundTintList = StateList.color(color, VState.Disabled to Colors.Disabled)
+    return this
+}
+
 
 fun genViewId(): Int {
     while (true) {

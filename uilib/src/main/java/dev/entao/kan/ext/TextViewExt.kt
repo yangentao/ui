@@ -15,13 +15,12 @@ import android.text.util.Linkify
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.TextView
-import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.appbase.ex.StateList
-import dev.entao.kan.appbase.ex.dp
-import dev.entao.kan.appbase.ex.sized
+import dev.entao.kan.appbase.ex.*
 import dev.entao.kan.res.D
 import dev.entao.kan.theme.Space
 import dev.entao.kan.theme.TextSize
@@ -32,6 +31,7 @@ import dev.entao.kan.util.XTextWatcher
 /**
  * Created by entaoyang@163.com on 16/3/12.
  */
+
 
 fun <T : TextView> T.html(block: HtmlText.() -> Unit): T {
     val h = HtmlText()

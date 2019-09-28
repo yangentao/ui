@@ -40,6 +40,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
 
     init {
         backColor(Colors.Theme)
+        this.elevation = 10.dpf
     }
 
     operator fun invoke(block: TitleBar.() -> Unit) {
@@ -389,12 +390,63 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
         return tv
     }
 
+    fun leftItems(block: TitleBarItemBuilder.() -> Unit) {
+        val a = TitleBarItemBuilder(this, true)
+        a.block()
+    }
+
+    fun rightItems(block: TitleBarItemBuilder.() -> Unit) {
+        val a = TitleBarItemBuilder(this, false)
+        a.block()
+    }
+
+    fun menuItems(block: TitleBarMenuItemBuilder.() -> Unit) {
+        val m = find(MENU) ?: rightImage(Res.menu, MENU)
+        val a = TitleBarMenuItemBuilder(m)
+        a.block()
+    }
 
     companion object {
         const val BACK = "back"
         const val MENU = "menu"
         const val ImgSize = 24
-        const val HEIGHT = 50// dp
+        const val HEIGHT = 50// dp, android Toolbar高度是56
         var TitleCenter = true
+    }
+}
+
+class TitleBarItemBuilder(val bar: TitleBar, val isLeft: Boolean) {
+
+    infix fun String.on(block: () -> Unit) {
+        if (isLeft) {
+            bar.leftText(this).onClick = {
+                block()
+            }
+        } else {
+            bar.rightText(this).onClick = {
+                block()
+            }
+        }
+    }
+
+    infix fun Int.on(block: () -> Unit) {
+        if (isLeft) {
+            bar.leftImage(this).onClick = {
+                block()
+            }
+        } else {
+            bar.rightImage(this).onClick = {
+                block()
+            }
+        }
+    }
+}
+
+class TitleBarMenuItemBuilder(val barItem: BarItem) {
+
+    infix fun Pair<String, Int>.on(block: () -> Unit) {
+        barItem.add(this.second, this.first).onClick = {
+            block()
+        }
     }
 }

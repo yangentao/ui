@@ -5,6 +5,8 @@ package dev.entao.kan.ext
 import android.widget.Button
 import android.widget.CheckBox
 import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.appbase.ex.StateList
+import dev.entao.kan.appbase.ex.VState
 import dev.entao.kan.res.D
 import dev.entao.kan.theme.ViewSize
 
@@ -13,39 +15,41 @@ import dev.entao.kan.theme.ViewSize
  */
 
 fun <T : Button> T.styleGreen(corner: Int = 2): T {
-	this.textSizeB().textColor(Colors.WHITE).backDrawable(D.buttonGreen(corner))
-	return this
+    this.textSizeB().textColor(Colors.WHITE).backDrawable(D.buttonGreen(corner))
+    return this
 }
 
 fun <T : Button> T.styleGreenRound(): T {
-	this.textSizeB().textColor(Colors.WHITE).backDrawable(D.buttonGreen(ViewSize.ButtonHeight / 2))
-	return this
+    this.textSizeB().textColor(Colors.WHITE).backDrawable(D.buttonGreen(ViewSize.ButtonHeight / 2))
+    return this
 }
 
 fun <T : Button> T.styleGrayRound(): T {
-	this.textSizeB().textColor(Colors.TextColorMajor).backDrawable(D.buttonGreen(ViewSize.ButtonHeight / 2))
-	return this
+    this.textSizeB().textColor(Colors.TextColorMajor).backDrawable(D.buttonGreen(ViewSize.ButtonHeight / 2))
+    return this
 }
 
 fun <T : Button> T.styleRed(corner: Int = 2): T {
-	this.textSizeB().textColor(Colors.WHITE).backDrawable(D.buttonRed(corner))
-	return this
+    this.textSizeB().textColor(Colors.WHITE).backDrawable(D.buttonRed(corner))
+    return this
 }
 
 fun <T : Button> T.styleRedRound(): T {
-	this.textSizeB().textColor(Colors.WHITE).backDrawable(D.buttonRed(ViewSize.ButtonHeight / 2))
-	return this
+    this.textSizeB().textColor(Colors.WHITE).backDrawable(D.buttonRed(ViewSize.ButtonHeight / 2))
+    return this
 }
 
 fun <T : Button> T.styleWhite(corner: Int = 2): T {
-	this.textSizeB().textColorMajor().backDrawable(D.buttonWhite(corner))
-	return this
+    this.textSizeB().textColorMajor().backDrawable(D.buttonWhite(corner))
+    return this
 }
 
 fun <T : Button> T.styleWhiteRound(): T {
-	this.textSizeB().textColorMajor().backDrawable(D.buttonWhite(ViewSize.ButtonHeight / 2))
-	return this
+    this.textSizeB().textColorMajor().backDrawable(D.buttonWhite(ViewSize.ButtonHeight / 2))
+    return this
 }
+
+
 
 fun <T : CheckBox> T.styleSwitch(): T {
 //	val w = 50
@@ -62,5 +66,5 @@ fun <T : CheckBox> T.styleSwitch(): T {
 //	cb.backColorPage()
 //	cb.compoundDrawablePadding = 0
 //	this.textSizeB().textColorMajor().backDrawable(ShapeDef.whiteButton())
-	return this
+    return this
 }
