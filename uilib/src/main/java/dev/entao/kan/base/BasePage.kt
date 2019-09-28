@@ -31,7 +31,6 @@ import dev.entao.kan.dialogs.dialogX
 import dev.entao.kan.log.Yog
 import dev.entao.kan.util.*
 import dev.entao.kan.widget.RelativeLayoutX
-import dev.entao.kan.widget.TabBar
 import java.io.File
 import kotlin.collections.set
 
@@ -320,15 +319,6 @@ open class BasePage : Fragment(), MsgListener {
         } else {
             a.finish()
         }
-    }
-
-    fun findTabBar(): TabBar? {
-        for (f in this.fragMgr.fragments) {
-            if (f is TabBarPage) {
-                return f.tabBar
-            }
-        }
-        return null
     }
 
 

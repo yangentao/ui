@@ -3,15 +3,26 @@
 package dev.entao.kan.creator
 
 import android.content.Context
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import dev.entao.kan.base.act
 import dev.entao.kan.ext.genId
 
 /**
  * Created by entaoyang@163.com on 2016-07-22.
  */
+
+fun <T : View> ViewGroup.addViewX(child: T, param: ViewGroup.LayoutParams): T {
+    this.addView(child, param)
+    return child
+}
+
+fun <T : View> ViewGroup.addViewX(child: T, param: ViewGroup.LayoutParams, block: T.() -> Unit): T {
+    this.addView(child, param)
+    child.block()
+    return child
+}
 
 fun <T : View> ViewGroup.append(child: T, param: ViewGroup.LayoutParams): T {
     this.addView(child, param)
