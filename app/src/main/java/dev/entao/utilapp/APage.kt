@@ -1,22 +1,31 @@
 package dev.entao.utilapp
 
 import android.content.Context
-import android.widget.LinearLayout
-import dev.entao.kan.base.PageActivity
-import dev.entao.kan.log.logd
-import dev.entao.kan.page.TitlePage
+import android.os.Bundle
+import android.widget.RelativeLayout
+import dev.entao.kan.base.BasePage
+import dev.entao.kan.creator.textView
+import dev.entao.kan.ext.CenterInParent
+import dev.entao.kan.ext.RParam
+import dev.entao.kan.ext.wrap
 
-class APage : TitlePage() {
+class APage : BasePage() {
 
-    override fun onCreateContent(context: Context, contentView: LinearLayout) {
-        super.onCreateContent(context, contentView)
-        titleBar {
-            title("A")
-            rightText("Open").onClick = {
-                //                pushPage(YangPage(), true, true)
-                PageActivity.openPage(requireActivity(), BPage())
-            }
+    override fun onCreatePage(context: Context, pageView: RelativeLayout, savedInstanceState: Bundle?) {
+        super.onCreatePage(context, pageView, savedInstanceState)
+        pageView.textView(RParam.CenterInParent.wrap()) {
+            text = "APage "
         }
-        logd(this.activity!!::class.qualifiedName)
+    }
+}
+
+
+class BPage : BasePage() {
+
+    override fun onCreatePage(context: Context, pageView: RelativeLayout, savedInstanceState: Bundle?) {
+        super.onCreatePage(context, pageView, savedInstanceState)
+        pageView.textView(RParam.CenterInParent.wrap()) {
+            text = "BB "
+        }
     }
 }

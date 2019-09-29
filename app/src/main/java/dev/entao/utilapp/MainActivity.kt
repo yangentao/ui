@@ -12,6 +12,7 @@ class MainActivity : StackActivity() {
         val p = BottomNavPage()
         p.add("Hello", R.drawable.yet_del, HelloPage())
         p.add("Yang", R.drawable.yet_me, YangPage())
+        p.enableUserInput = false
         setContentPage(p)
 
 

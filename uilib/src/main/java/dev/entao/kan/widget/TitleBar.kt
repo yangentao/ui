@@ -40,7 +40,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
 
     init {
         backColor(Colors.Theme)
-        this.elevation = 10.dpf
+        this.elevation = 5.dpf
     }
 
     operator fun invoke(block: TitleBar.() -> Unit) {

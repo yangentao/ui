@@ -19,16 +19,34 @@ import dev.entao.kan.creator.addViewX
 import dev.entao.kan.creator.linearVer
 import dev.entao.kan.ext.*
 
-class BottomNavItem(val title: String, val icon: Int, val page: BasePage)
+class TitleIconPageItem(val title: String, val icon: Int, val page: BasePage)
 
 class BottomNavPage : BasePage() {
     lateinit var bottomNav: BottomNavigationView
     lateinit var pager: ViewPager2
     val inactiveColor = 0x8a000000.argb
     val checkedColor: Int = Colors.Theme
-    val navItems = ArrayList<BottomNavItem>()
+    val navItems = ArrayList<TitleIconPageItem>()
 
+    var ready = false
     var onReady: (BottomNavPage) -> Unit = {}
+
+    private var _enableUserInput = true
+    var enableUserInput: Boolean
+        get() {
+            if (ready) {
+                return this.pager.isUserInputEnabled
+            } else {
+                return _enableUserInput
+            }
+        }
+        set(value) {
+            if (ready) {
+                this.pager.isUserInputEnabled = value
+            } else {
+                _enableUserInput = value
+            }
+        }
 
     override fun onCreatePage(context: Context, pageView: RelativeLayout, savedInstanceState: Bundle?) {
         super.onCreatePage(context, pageView, savedInstanceState)
@@ -76,10 +94,12 @@ class BottomNavPage : BasePage() {
             }
         }
 
+        pager.isUserInputEnabled = _enableUserInput
+        ready = true
         onReady(this)
     }
 
     fun add(title: String, icon: Int, page: BasePage) {
-        navItems += BottomNavItem(title, icon, page)
+        navItems += TitleIconPageItem(title, icon, page)
     }
 }
