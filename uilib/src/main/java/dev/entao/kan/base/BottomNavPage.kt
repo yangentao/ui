@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.StateList
 import dev.entao.kan.appbase.ex.argb
@@ -22,13 +23,16 @@ import dev.entao.kan.ext.*
 class TitleIconPageItem(val title: String, val icon: Int, val page: BasePage)
 
 class BottomNavPage : BasePage() {
+    var bottomNavStyle = com.google.android.material.R.style.Widget_MaterialComponents_BottomNavigationView
+    var inactiveColor = 0x8a000000.argb
+    var checkedColor: Int = Colors.Theme
+    val navItems = ArrayList<TitleIconPageItem>()
     lateinit var bottomNav: BottomNavigationView
     lateinit var pager: ViewPager2
-    val inactiveColor = 0x8a000000.argb
-    val checkedColor: Int = Colors.Theme
-    val navItems = ArrayList<TitleIconPageItem>()
 
     var ready = false
+        private set
+
     var onReady: (BottomNavPage) -> Unit = {}
 
     private var _enableUserInput = true
@@ -68,7 +72,8 @@ class BottomNavPage : BasePage() {
             pager = addViewX(ViewPager2(context), LParam.WidthFill.HeightFlex)
             val lineView = addViewX(View(context), LParam.WidthFill.height(1))
             lineView.backColor(0x44cccccc.argb)
-            bottomNav = addViewX(BottomNavigationView(context), LParam.WidthFill.HeightWrap)
+
+            bottomNav = addViewX(BottomNavigationView(context, null, bottomNavStyle), LParam.WidthFill.HeightWrap)
         }
         pager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int {
@@ -91,6 +96,7 @@ class BottomNavPage : BasePage() {
         }
         bottomNav.itemTextColor = cs
         bottomNav.itemIconTintList = cs
+        bottomNav.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
 
         bottomNav.setOnNavigationItemSelectedListener {
             val m = bottomNav.menu
