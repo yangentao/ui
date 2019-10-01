@@ -417,7 +417,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
 
 class TitleBarItemBuilder(val bar: TitleBar, val isLeft: Boolean) {
 
-    infix fun String.on(block: () -> Unit) {
+    infix fun String.ON(block: () -> Unit) {
         if (isLeft) {
             bar.leftText(this).onClick = {
                 block()
@@ -429,7 +429,7 @@ class TitleBarItemBuilder(val bar: TitleBar, val isLeft: Boolean) {
         }
     }
 
-    infix fun Int.on(block: () -> Unit) {
+    infix fun Int.ON(block: () -> Unit) {
         if (isLeft) {
             bar.leftImage(this).onClick = {
                 block()
@@ -444,7 +444,7 @@ class TitleBarItemBuilder(val bar: TitleBar, val isLeft: Boolean) {
 
 class TitleBarMenuItemBuilder(val barItem: BarItem) {
 
-    infix fun Pair<String, Int>.on(block: () -> Unit) {
+    infix fun Pair<String, Int>.ON(block: () -> Unit) {
         barItem.add(this.second, this.first).onClick = {
             block()
         }
