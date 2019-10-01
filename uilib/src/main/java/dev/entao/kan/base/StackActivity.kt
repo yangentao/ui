@@ -3,9 +3,9 @@
 package dev.entao.kan.base
 
 import android.os.Bundle
-import androidx.fragment.app.FragmentManager
 import android.view.Window
 import android.widget.FrameLayout
+import androidx.fragment.app.FragmentManager
 import dev.entao.kan.creator.createFrame
 import dev.entao.kan.log.logd
 import dev.entao.kan.ui.R
@@ -36,13 +36,7 @@ open class StackActivity : BaseActivity() {
         if ((this.currentFragment as? BasePage)?.onBackPressed() == true) {
             return
         }
-        if (backCount > 0) {
-            fragMgr.popBackStack()
-        } else {
-            if (allowFinish()) {
-                finish()
-            }
-        }
+        this.pop()
     }
 
     open fun allowFinish(): Boolean {
@@ -72,19 +66,21 @@ open class StackActivity : BaseActivity() {
     }
 
     fun push(fragment: BasePage, pushAnim: Boolean, popAnim: Boolean) {
+//        val a = if (pushAnim) R.animator.yet_enter_right else 0
+        //val b = if (popAnim) R.animator.yet_exit_right else 0
+        val a = if (pushAnim) R.anim.yet_enter_right else 0
+        val b = if (popAnim) R.anim.yet_exit_right else 0
         trans {
             if (fragMgr.fragments.size > 0) {
                 if (pushAnim || popAnim) {
-                    setCustomAnimations(
-                        if (pushAnim) R.animator.yet_enter_right else 0,
-                        if (pushAnim) R.animator.yet_exit_fade else 0,
-                        if (popAnim) R.animator.yet_enter_fade else 0,
-                        if (popAnim) R.animator.yet_exit_right else 0
-                    )
+                    setCustomAnimations(a, 0, 0, b)
                 }
             }
-            add(containerId, fragment)
+            add(containerId, fragment, fragment.uniqueName)
             addToBackStack(fragment.uniqueName)
+
+//            add(containerId, fragment)
+//            addToBackStack(null)
         }
     }
 
@@ -93,12 +89,13 @@ open class StackActivity : BaseActivity() {
     }
 
     fun pop() {
-        logd("pop")
         if (backCount > 0) {
+            logd("pop")
             fragMgr.popBackStack()
         } else {
-            logd("finish")
-            finish()
+            if (allowFinish()) {
+                finish()
+            }
         }
     }
 
@@ -111,6 +108,7 @@ open class StackActivity : BaseActivity() {
     }
 
     fun popAll() {
+//        fragMgr.popBackStackImmediate(null,0)
         while (backCount > 0) {
             fragMgr.popBackStackImmediate()
         }

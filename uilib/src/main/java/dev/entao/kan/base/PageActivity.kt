@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.Window
 import android.widget.FrameLayout
+import androidx.fragment.app.Fragment
 import dev.entao.kan.creator.createFrame
 import dev.entao.kan.util.SyncQueue
 import java.lang.ref.WeakReference
@@ -63,3 +64,5 @@ open class PageActivity : BaseActivity() {
 }
 
 
+val Fragment.pageAct: PageActivity get() = this.act as PageActivity
+val Fragment.pageActivity: PageActivity? get() = this.activity as? PageActivity

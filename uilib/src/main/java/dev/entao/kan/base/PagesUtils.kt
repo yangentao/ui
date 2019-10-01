@@ -131,8 +131,6 @@ val Fragment.stackAct: StackActivity get() = this.act as StackActivity
 val Fragment.stackActivity: StackActivity? get() = this.activity as? StackActivity
 
 
-val Fragment.pageAct: PageActivity get() = this.act as PageActivity
-val Fragment.pageActivity: PageActivity? get() = this.activity as? PageActivity
 
 
 fun BasePage.pushPage(p: BasePage, pushAnim: Boolean, popAnim: Boolean) {
@@ -152,6 +150,10 @@ fun BasePage.popPage() {
     this.stackActivity?.pop(this)
 }
 
+fun BasePage.setContentPage(p: BasePage) {
+    this.stackActivity?.popAll()
+    this.stackActivity?.setContentPage(p)
+}
 
 fun Fragment.softInputAdjustResize() {
     act.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
