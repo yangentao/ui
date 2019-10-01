@@ -53,6 +53,19 @@ abstract class InputPage : TitlePage() {
         enableContentScroll = true
     }
 
+    override fun onDestroyView() {
+        editList.clear()
+        checkMap.clear()
+        dateFormatMap.clear()
+        selectMap.clear()
+        validMap.clear()
+        codeEdit?.removeFromParent()
+        codeButton?.removeFromParent()
+        codeEdit = null
+        codeButton = null
+        super.onDestroyView()
+    }
+
     fun fromEdit(model: Any, ps: List<KMutableProperty1<*, *>>) {
         for (p in ps) {
             val s = getText(p.nameProp)
@@ -285,7 +298,7 @@ abstract class InputPage : TitlePage() {
         v.detailView.backStrike(Colors.TRANS, 3, 1, Colors.LineGray)
         selectMap[p.nameProp] = v
         v.onClick {
-            this.dialogX.showListAny( items.toList(), null, { displayProp.getValue(it)?.toString() ?: "" }) {
+            this.dialogX.showListAny(items.toList(), null, { displayProp.getValue(it)?.toString() ?: "" }) {
                 v.tag = idProp.getValue(it)
                 v.setDetail(displayProp.getValue(it)?.toString() ?: "")
             }

@@ -28,6 +28,7 @@ import dev.entao.kan.base.ex.lowerCased
 import dev.entao.kan.dialogs.HorProgressDlg
 import dev.entao.kan.dialogs.SpinProgressDlg
 import dev.entao.kan.dialogs.dialogX
+import dev.entao.kan.ext.removeFromParent
 import dev.entao.kan.log.Yog
 import dev.entao.kan.util.*
 import dev.entao.kan.widget.RelativeLayoutX
@@ -58,6 +59,11 @@ open class BasePage : Fragment(), MsgListener {
 
     val watchMap = HashMap<Uri, ContentObserver>()
 
+    override fun onDestroyView() {
+        pageRootView.removeAllViews()
+        pageRootView.removeFromParent()
+        super.onDestroyView()
+    }
 
     final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         pageRootView = RelativeLayoutX(act)

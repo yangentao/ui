@@ -82,7 +82,7 @@ class BottomNavPage : BasePage() {
             val m = bottomNav.menu
             for (i in 0 until m.size()) {
                 if (m.getItem(i) === it) {
-                    pager.currentItem = i
+                    pager.setCurrentItem(i, false)
                     break
                 }
             }

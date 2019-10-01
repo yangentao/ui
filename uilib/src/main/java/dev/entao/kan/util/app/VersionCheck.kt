@@ -49,7 +49,7 @@ class VersionCheck(val jo: YsonObject) {
 
 
     companion object {
-        val CHECK_URL: String = "http://app800.cn/am/check"
+        var CHECK_URL: String = "http://app800.cn/am/check"
         var CHECK_HOURS = 4 //最多每4小时检查一次
 
         private val ignoreMap = MapTable("ver_ignore")

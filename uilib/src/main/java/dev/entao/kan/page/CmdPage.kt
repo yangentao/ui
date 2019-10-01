@@ -55,9 +55,17 @@ abstract class CmdPage : TitlePage() {
         commit()
     }
 
+    override fun onDestroyView() {
+        cmdPanel.removeAllViews()
+        cmdList.clear()
+        bindList.clear()
+        super.onDestroyView()
+    }
+
     fun commit() {
         cmdPanel.removeAllViews()
         for (c in cmdList) {
+            c.view.removeFromParent()
             cmdPanel.addView(c.view, c.param)
             c.view.tag = c
             if (c.clickable) {

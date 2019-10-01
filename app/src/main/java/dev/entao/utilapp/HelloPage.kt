@@ -9,10 +9,12 @@ import android.widget.LinearLayout
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.dp
-import dev.entao.kan.creator.addViewX
-import dev.entao.kan.creator.createImageView
+import dev.entao.kan.creator.buttonGreenRound
 import dev.entao.kan.creator.createTextView
-import dev.entao.kan.ext.*
+import dev.entao.kan.ext.LParam
+import dev.entao.kan.ext.WidthFill
+import dev.entao.kan.ext.backColor
+import dev.entao.kan.ext.height
 import dev.entao.kan.page.TitlePage
 
 
@@ -31,9 +33,9 @@ class HelloPage : TitlePage() {
 
         }
 
-        imageView = contentView.addViewX(createImageView(), LParam.size(300).margins(30))
-        imageView.setBackgroundColor(Color.GRAY)
-//        val d = VectorDrawableCompat.create(act.resources, R.drawable.yet_account, act.theme)!!
+        contentView.buttonGreenRound {
+            text = "Hello"
+        }
 
 
     }

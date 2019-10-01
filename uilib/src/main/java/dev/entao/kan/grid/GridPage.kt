@@ -32,6 +32,10 @@ abstract class GridPage : TitlePage() {
     var emptyText = "没有内容"
     var loadingText = "加载中..."
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
+
     override fun onCreateContent(context: Context, contentView: LinearLayout) {
         gridView = LineGridView(context)
         gridView.numColumns = 2

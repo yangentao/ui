@@ -60,6 +60,6 @@ fun Fragment.createButton(text: String = ""): Button {
 fun Context.createButton(text: String = ""): Button {
     val b = Button(this).genId().text(text).textSizeB().padding(3)
     b.stateListAnimator = null
-    b.elevation = 16.dpf
+    b.elevation = 6.dpf
     return b
 }

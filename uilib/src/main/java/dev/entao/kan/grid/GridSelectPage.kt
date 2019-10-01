@@ -26,23 +26,27 @@ import dev.entao.kan.page.TitlePage
  */
 
 open class GridSelectPage : TitlePage() {
-	lateinit var gridView: SimpleGridView
-	var title: String = "选择"
+    lateinit var gridView: SimpleGridView
+    var title: String = "选择"
 
-	var onPageCreated: (GridSelectPage) -> Unit = {}
+    var onPageCreated: (GridSelectPage) -> Unit = {}
 
 
-	override fun onContentCreated() {
-		super.onContentCreated()
-		onPageCreated(this)
-	}
+    override fun onContentCreated() {
+        super.onContentCreated()
+        onPageCreated(this)
+    }
 
-	override fun onCreateContent(context: Context, contentView: LinearLayout) {
-		titleBar.title(title)
-		gridView = contentView.simpleGridView(LParam.WidthFill.HeightFlex) {
+    override fun onCreateContent(context: Context, contentView: LinearLayout) {
+        titleBar.title(title)
+        gridView = contentView.simpleGridView(LParam.WidthFill.HeightFlex) {
 
-		}
-	}
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
 
 
 }
