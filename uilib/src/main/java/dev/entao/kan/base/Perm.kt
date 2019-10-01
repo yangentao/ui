@@ -98,6 +98,15 @@ fun App.hasPerm(p: String): Boolean {
 }
 
 
+fun Context.hasPermSet(ps: Set<String>): Boolean {
+    for (p in ps) {
+        if (!hasPerm(p)) {
+            return false
+        }
+    }
+    return true
+}
+
 fun Context.hasPerm(p: String): Boolean {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         PackageManager.PERMISSION_GRANTED == this.checkSelfPermission(p)

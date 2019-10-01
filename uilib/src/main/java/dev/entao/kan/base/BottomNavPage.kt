@@ -48,6 +48,20 @@ class BottomNavPage : BasePage() {
             }
         }
 
+    fun selectTab(n: Int) {
+        this.pager.setCurrentItem(n, false)
+        bottomNav.menu.getItem(n).isChecked = true
+    }
+
+    fun selectTab(block: (TitleIconPageItem) -> Boolean) {
+        for (i in this.navItems.indices) {
+            if (block(navItems[i])) {
+                selectTab(i)
+                return
+            }
+        }
+    }
+
     override fun onCreatePage(context: Context, pageView: RelativeLayout, savedInstanceState: Bundle?) {
         super.onCreatePage(context, pageView, savedInstanceState)
         pageView.linearVer(RParam.Fill) {

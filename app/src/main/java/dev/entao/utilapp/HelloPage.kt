@@ -16,6 +16,7 @@ import dev.entao.kan.ext.WidthFill
 import dev.entao.kan.ext.backColor
 import dev.entao.kan.ext.height
 import dev.entao.kan.page.TitlePage
+import dev.entao.kan.util.fireMsg
 
 
 class HelloPage : TitlePage() {
@@ -41,6 +42,7 @@ class HelloPage : TitlePage() {
     }
 
     fun onOK() {
+        fireMsg("tab")
     }
 
 

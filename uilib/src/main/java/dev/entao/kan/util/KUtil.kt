@@ -10,10 +10,6 @@ import dev.entao.kan.appbase.App
 
 val debug: Boolean by lazy { App.debug }
 
-fun assetPath(p: String): String {
-    return "file:///android_asset/$p"
-}
-
 
 fun ByteArray?.prefix(vararg bs: Byte): Boolean {
     if (this == null) {

@@ -16,8 +16,8 @@ import dev.entao.kan.ext.genId
 open class WebPage : TitlePage() {
 
     lateinit var webView: WebView
-    protected var rootUrl: String? = null
-    protected var title: String? = null
+    var rootUrl: String? = null
+    var title: String? = null
 
 
     open fun onLoadWebUrl(view: WebView, url: String) {

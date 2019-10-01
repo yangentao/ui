@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.ex.UriRes
 import dev.entao.kan.json.YsonObject
@@ -153,6 +154,7 @@ class Notify(val id: Int) {
      * 清除时启动Service
      */
     fun deleteService(cls: Class<out Service>, yo: YsonObject): Notify {
+
         builder.setDeleteIntent(IntentHelper.pendingService(cls, PendingIntent.FLAG_UPDATE_CURRENT, yo))
         return this
     }
@@ -161,8 +163,6 @@ class Notify(val id: Int) {
      * 点击按钮时 打开Activity
      */
     fun actionActivity(icon: Int, title: String, cls: Class<out Activity>, yo: YsonObject): Notify {
-//        val a = Notification.Action(0, "", null)
-//        builder.addAction(a)
         builder.addAction(icon, title, IntentHelper.pendingActivity(cls, PendingIntent.FLAG_UPDATE_CURRENT, yo))
         return this
     }
@@ -245,18 +245,23 @@ class Notify(val id: Int) {
     }
 
     fun show() {
-        val mgr = App.notificationManager
+        val n = this.build()
+        NotificationManagerCompat.from(App.inst).notify(id, n)
+    }
+
+    @Suppress("DEPRECATION")
+    fun build(): Notification {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val ch = channel
             if (ch != null) {
-                mgr.createNotificationChannel(ch)
+                NotificationManagerCompat.from(App.inst).createNotificationChannel(ch)
             }
         }
         if (defaults != 0) {
             builder.setDefaults(defaults)
         }
         val n = builder.build()
-        mgr.notify(id, n)
+        return n
     }
 
     companion object {
@@ -264,7 +269,7 @@ class Notify(val id: Int) {
         var largeIcon = 0
 
         fun cancel(id: Int) {
-            App.notificationManager.cancel(id)
+            NotificationManagerCompat.from(App.inst).cancel(id)
         }
     }
 }

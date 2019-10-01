@@ -22,6 +22,7 @@ class Msg(val msg: String) {
     var b1: Boolean = false
     var b2: Boolean = false
     var cls: KClass<*>? = null
+    var any:Any? = null
 
     constructor(cls: Class<*>) : this(cls.name)
     constructor(cls: KClass<*>) : this(cls.qualifiedName!!)

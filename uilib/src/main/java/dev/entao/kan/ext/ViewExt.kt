@@ -260,6 +260,13 @@ fun <T : View> T.backDrawable(@DrawableRes resId: Int, @DrawableRes pressed: Int
     return this
 }
 
+fun <T : View> T.backRect(block: ShapeRect.() -> Unit): T {
+    val a = ShapeRect()
+    a.block()
+    this.background = a.value
+    return this
+}
+
 fun View.makeClickable(): View {
     this.isClickable = true
     return this
