@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import dev.entao.kan.appbase.ex.*
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.res.drawableRes
 
 /**
@@ -64,7 +65,7 @@ fun <T : ImageView> T.resSizedWhite(@DrawableRes resId: Int, size: Int): T {
 fun <T : ImageView> T.resSizedTheme(@DrawableRes resId: Int, size: Int): T {
     scaleCenterInside()
     val b = Bmp.res(resId)
-    val bb = b.limit(dp(size)).tint(Colors.Theme)
+    val bb = b.limit(dp(size)).tint(ColorX.theme)
     this.setImageBitmap(bb)
     return this
 }

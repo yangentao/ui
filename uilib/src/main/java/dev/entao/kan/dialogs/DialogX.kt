@@ -18,8 +18,8 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.Task
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.base.act
 import dev.entao.kan.creator.*
 import dev.entao.kan.ext.*
@@ -90,15 +90,15 @@ class DialogX(val context: Context) {
     }
 
     fun risk(text: String, block: (String) -> Unit) {
-        button(text, Colors.Risk, block)
+        button(text, ColorX.actionRed, block)
     }
 
     fun safe(text: String, block: (String) -> Unit) {
-        button(text, Colors.GreenMajor, block)
+        button(text, ColorX.actionGreen, block)
     }
 
     fun normal(text: String, block: (String) -> Unit) {
-        button(text, Colors.TextColorMajor, block)
+        button(text, ColorX.textPrimary, block)
     }
 
     fun cancel(text: String = "取消") {
@@ -292,7 +292,7 @@ class DialogX(val context: Context) {
     }
 
     class DialogButton(val text: String, val color: Int, val callback: (String) -> Unit) {
-        var backColor: Int = Colors.WHITE
+        var backColor: Int = Color.WHITE
     }
 
 

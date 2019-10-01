@@ -11,8 +11,8 @@ import android.widget.LinearLayout
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.google.android.material.button.MaterialButton
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.base.pushPage
 import dev.entao.kan.creator.addViewX
 import dev.entao.kan.creator.button
@@ -46,7 +46,7 @@ class HelloPage : TitlePage() {
 
 
         contentView.button(LParam.size(150, 48).margins(10)) {
-            style { fillGreen() }
+            style { fillRed() }
             text = "提交"
         }
         contentView.button(LParam.size(150, 48).margins(10)) {
@@ -93,8 +93,8 @@ class HelloPage : TitlePage() {
 //        a.addView(d, 150.dp, ViewGroup.LayoutParams.MATCH_PARENT)
 
         a.backColor(Color.DKGRAY)
-        b.backColor(Colors.RedMajor)
-        c.backColor(Colors.GreenMajor)
+        b.backColor(ColorX.red)
+        c.backColor(ColorX.green)
 //        d.backColor(Colors.BlueMajor)
     }
 

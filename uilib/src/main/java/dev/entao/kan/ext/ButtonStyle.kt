@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.widget.Button
 import dev.entao.kan.appbase.ex.*
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.theme.ViewSize
 
 
@@ -21,7 +22,7 @@ class ButtonStyle(val button: Button) {
     var style: Int = S_FILL
         private set
 
-    var fadeColor: Int = Colors.Fade
+    var fadeColor: Int = ColorX.fade
     var textDisabledColor: Int = TX_DISABLED
     var backDisabledColor: Int = BG_DISABLED
 
@@ -29,7 +30,7 @@ class ButtonStyle(val button: Button) {
 
     var fillColor: Int = Color.TRANSPARENT
     var strokeColor: Int = Color.LTGRAY
-    var textColor: Int = Colors.TextColorMajor
+    var textColor: Int = ColorX.textPrimary
 
     fun cornersRound(): ButtonStyle {
         return corners(ViewSize.ButtonHeight / 2)
@@ -123,7 +124,7 @@ class ButtonStyle(val button: Button) {
     }
 
     fun outlineTheme(): ButtonStyle {
-        outline(Colors.Theme)
+        outline(ColorX.theme)
         return this
     }
 
@@ -143,7 +144,7 @@ class ButtonStyle(val button: Button) {
     }
 
     fun textTheme(): ButtonStyle {
-        text(Colors.Theme)
+        text(ColorX.theme)
         return this
     }
 
@@ -166,7 +167,7 @@ class ButtonStyle(val button: Button) {
     }
 
     fun fillTheme(): ButtonStyle {
-        this.fill(Colors.Theme)
+        this.fill(ColorX.theme)
         textColor = Color.WHITE
         return this
     }
@@ -176,10 +177,10 @@ class ButtonStyle(val button: Button) {
         const val S_OUTLINE = 1
         const val S_TEXT = 2
 
-        var C_BLUE: Int = 0x3F52B5L.rgb
-        var C_RED: Int = 0xD81B60L.rgb
-        var C_GREEN: Int = 0x45A859L.rgb
-        var TX_DISABLED: Int = 0x61000000L.argb
-        var BG_DISABLED: Int = 0x1F000000L.argb
+        var C_BLUE: Int = ColorX.actionBlue
+        var C_RED: Int = ColorX.actionRed
+        var C_GREEN: Int = ColorX.actionGreen
+        var TX_DISABLED: Int = ColorX.textDisabled
+        var BG_DISABLED: Int = ColorX.backDisabled
     }
 }

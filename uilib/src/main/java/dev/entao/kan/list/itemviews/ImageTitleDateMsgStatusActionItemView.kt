@@ -11,9 +11,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.RGB
 import dev.entao.kan.appbase.ex.ShapeOval
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.base.MyDate
 import dev.entao.kan.creator.*
 import dev.entao.kan.ext.*
@@ -67,7 +67,7 @@ class ImageTitleDateMsgStatusActionItemView(context: Context) : HorItemView(cont
 
         this.addViewParam(ll) { widthDp(0).weight(1f).heightWrap().margins(5, 10, 5, 5) }
 
-        subIconView = createImageView().backColor(Color.TRANSPARENT, Colors.Fade).padding(16)
+        subIconView = createImageView().backColor(Color.TRANSPARENT, ColorX.fade).padding(16)
         subIconView.setImageDrawable(arrowRight)
         subIconView.scaleType = ImageView.ScaleType.CENTER_INSIDE
         addViewParam(subIconView) { heightFill().widthDp(45).gravityCenter() }

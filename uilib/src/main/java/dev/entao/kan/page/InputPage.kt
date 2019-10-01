@@ -5,7 +5,6 @@ import android.content.Context
 import android.view.ViewGroup
 import android.widget.*
 import dev.entao.kan.appbase.Task
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.base.*
 import dev.entao.kan.creator.*
 import dev.entao.kan.dialogs.dialogX
@@ -256,7 +255,7 @@ abstract class InputPage : TitlePage() {
 
     fun date(key: String, title: String, format: String = MyDate.FORMAT_DATE, marginTop: Int = inputMarginTop): TextDetailView {
         val v = textDetail(title, marginTop)
-        v.detailView.backStrike(Colors.TRANS, 3, 1, Colors.LineGray)
+        v.detailView.backStrike(ColorX.TRANS, 3, 1, ColorX.lineGray)
         dateMap[key] = v
         dateFormatMap[key] = format
         setDate(key, 0L)
@@ -274,7 +273,7 @@ abstract class InputPage : TitlePage() {
         if (p.hasAnnotation<Required>()) {
             v.textView.text = p.labelProp_ + "*"
         }
-        v.detailView.backStrike(Colors.TRANS, 3, 1, Colors.LineGray)
+        v.detailView.backStrike(ColorX.TRANS, 3, 1, ColorX.lineGray)
         selectMap[p.nameProp] = v
         v.onClick {
             this.dialogX.showListItem(optMap.keys.toList(), null, { optMap[it] ?: "" }) {
@@ -295,7 +294,7 @@ abstract class InputPage : TitlePage() {
         if (p.hasAnnotation<Required>()) {
             v.textView.text = p.labelProp_ + "*"
         }
-        v.detailView.backStrike(Colors.TRANS, 3, 1, Colors.LineGray)
+        v.detailView.backStrike(ColorX.TRANS, 3, 1, ColorX.lineGray)
         selectMap[p.nameProp] = v
         v.onClick {
             this.dialogX.showListAny(items.toList(), null, { displayProp.getValue(it)?.toString() ?: "" }) {
@@ -308,7 +307,7 @@ abstract class InputPage : TitlePage() {
 
     fun select(key: String, title: String, value: String, items: List<String>): TextDetailView {
         val v = textDetail(title)
-        v.detailView.backStrike(Colors.TRANS, 3, 1, Colors.LineGray)
+        v.detailView.backStrike(ColorX.TRANS, 3, 1, ColorX.lineGray)
         selectMap[key] = v
         v.setDetail(value)
         v.tag = value
@@ -334,7 +333,7 @@ abstract class InputPage : TitlePage() {
 
     fun selectPair(key: String, title: String, value: String, items: List<Pair<String, String>>): TextDetailView {
         val v = textDetail(title)
-        v.detailView.backStrike(Colors.TRANS, 3, 1, Colors.LineGray)
+        v.detailView.backStrike(ColorX.TRANS, 3, 1, ColorX.lineGray)
         selectMap[key] = v
         val item = items.find { it.first == value }
         v.setDetail(item?.second)

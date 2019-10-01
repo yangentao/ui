@@ -4,8 +4,8 @@ import android.content.Context
 import android.graphics.Color
 import android.widget.RelativeLayout
 import android.widget.TextView
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.dpf
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.creator.textView
 import dev.entao.kan.ext.*
 
@@ -31,7 +31,7 @@ class MsgItemView(context: Context) : RelativeLayout(context) {
 
     fun setMsgPos(isLeft: Boolean) {
         if (isLeft) {
-            textView.textColor(Colors.Theme)
+            textView.textColor(ColorX.theme)
             textView.gravityLeftCenter()
             textView.layoutParams = RParam.Wrap.ParentTop.ParentLeft.margins(6, 6, 40, 6)
         } else {

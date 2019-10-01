@@ -8,8 +8,8 @@ import android.graphics.Color
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.sized
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.creator.createLinearHorizontal
 import dev.entao.kan.creator.createTextViewA
 import dev.entao.kan.ext.*
@@ -151,9 +151,9 @@ open class XSwipeItemView(context: Context, val itemView: View) : HorItemView(co
         val tv = context.createTextViewA()
         tv.textX(action.label).miniWidthDp(ACTION_MIN_WIDTH_DP).gravityCenter()
         if (action.risk) {
-            tv.textColor(Color.WHITE).backColor(Colors.Risk)
+            tv.textColor(Color.WHITE).backColor(ColorX.actionRed)
         } else {
-            tv.textColor(Color.WHITE).backColor(Colors.Safe)
+            tv.textColor(Color.WHITE).backColor(ColorX.actionGreen)
         }
         if (action.icon != null) {
             val d = action.icon

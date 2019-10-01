@@ -1,14 +1,15 @@
 package dev.entao.kan.widget
 
 import android.content.Context
+import android.graphics.Color
 import android.view.View
 import android.widget.*
 import dev.entao.kan.appbase.Task
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.ShapeRect
 import dev.entao.kan.appbase.ex.StateList
 import dev.entao.kan.appbase.ex.VState
 import dev.entao.kan.base.BasePage
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.base.hideInputMethod
 import dev.entao.kan.creator.*
 import dev.entao.kan.ext.*
@@ -164,11 +165,11 @@ class InputPanel constructor(context: Context, private val fragment: BasePage? =
     }
 
     fun addVerifyCode(timeDownKey: String, phoneEditKey: String, marginTop: Int, block: (String) -> Unit) {
-        val llDraw = ShapeRect(Colors.TRANS, ViewSize.EditCorner).stroke(1, Colors.EditFocus).value
-        val editDraw = ShapeRect(Colors.WHITE).corners(ViewSize.EditCorner, 0, 0, ViewSize.EditCorner).value
-        val btnNormalDraw = ShapeRect(Colors.Theme).corners(0, ViewSize.EditCorner, ViewSize.EditCorner, 0).value
-        val btnPressDraw = ShapeRect(Colors.Fade).corners(0, ViewSize.EditCorner, ViewSize.EditCorner, 0).value
-        val btnDisableDraw = ShapeRect(Colors.Disabled).corners(0, ViewSize.EditCorner, ViewSize.EditCorner, 0).value
+        val llDraw = ShapeRect(ColorX.TRANS, ViewSize.EditCorner).stroke(1, ColorX.EditFocus).value
+        val editDraw = ShapeRect(Color.WHITE).corners(ViewSize.EditCorner, 0, 0, ViewSize.EditCorner).value
+        val btnNormalDraw = ShapeRect(ColorX.theme).corners(0, ViewSize.EditCorner, ViewSize.EditCorner, 0).value
+        val btnPressDraw = ShapeRect(ColorX.fade).corners(0, ViewSize.EditCorner, ViewSize.EditCorner, 0).value
+        val btnDisableDraw = ShapeRect(ColorX.backDisabled).corners(0, ViewSize.EditCorner, ViewSize.EditCorner, 0).value
         val btnDraw = StateList.drawable(btnNormalDraw, VState.Pressed to btnPressDraw, VState.Disabled to btnDisableDraw)
 
         linearHor(lParam().widthFill().height(ViewSize.EditHeight).margins(0, marginTop, 0, 0)) {

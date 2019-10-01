@@ -11,7 +11,6 @@ import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.Task
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.json.YsonObject
 import dev.entao.kan.theme.MyColor
 import dev.entao.kan.util.Msg
@@ -69,7 +68,7 @@ open class BaseActivity : AppCompatActivity(), MsgListener {
     }
 
     fun statusBarColorTheme() {
-        val c = MyColor(Colors.Theme)
+        val c = MyColor(ColorX.theme)
         statusBarColor(c.multiRGB(0.7))
     }
 

@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.view.View
 import android.widget.LinearLayout
-import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.ext.*
 /**
  * Created by entaoyang@163.com on 16/3/13.
@@ -19,7 +19,7 @@ open class LinearPanel(context: Context) : LinearLayout(context) {
     }
 
     private var normalColor = Color.WHITE
-    private var pressedColor = Colors.Fade
+    private var pressedColor = ColorX.fade
     private var itemHeight = LinearLayout.LayoutParams.WRAP_CONTENT
     private var divider = 1
     private var itemClickListener: LinearPanelItemListener? = null

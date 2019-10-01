@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.StateList
 import dev.entao.kan.appbase.ex.colors
 import dev.entao.kan.creator.addViewX
@@ -19,8 +18,8 @@ open class TabLayoutPage : TitlePage() {
     lateinit var tabLayout: TabLayout
     lateinit var pager: ViewPager
     val tabItems = ArrayList<TitleIconPageItem>()
-    var colorNormal: Int = Colors.TextColorMinor
-    var colorSelected: Int = Colors.Theme
+    var colorNormal: Int = ColorX.textSecondary
+    var colorSelected: Int = ColorX.theme
 
 
     override fun onCreateContent(context: Context, contentView: LinearLayout) {

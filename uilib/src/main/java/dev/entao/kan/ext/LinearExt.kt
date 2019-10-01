@@ -7,15 +7,15 @@ import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import dev.entao.kan.appbase.ex.Bmp
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.appbase.ex.drawable
+import dev.entao.kan.base.ColorX
 
 /**
  * Created by entaoyang@163.com on 16/3/12.
  */
 
-class Divider(var color: Int = Colors.LineGray) {
+class Divider(var color: Int = ColorX.lineGray) {
 	//px
 	var size: Int = 1
 	var begin: Boolean = false
@@ -56,7 +56,7 @@ class Divider(var color: Int = Colors.LineGray) {
 }
 
 fun <T : LinearLayout> T.divider(): T {
-	return this.divider(Divider(Colors.LineGray))
+	return this.divider(Divider(ColorX.lineGray))
 }
 
 fun <T : LinearLayout> T.divider(color: Int): T {
@@ -174,7 +174,7 @@ fun <T : LinearLayout> T.addView(view: View, index: Int, f: LinearLayout.LayoutP
 	return this
 }
 
-fun <T : LinearLayout> T.addGrayLine(size: Int = 1, margin: Int = 0, color: Int = Colors.LineGray): View {
+fun <T : LinearLayout> T.addGrayLine(size: Int = 1, margin: Int = 0, color: Int = ColorX.lineGray): View {
 	return addGrayLine {
 		this.size = size
 		this.marginLeft = margin

@@ -12,7 +12,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.StateList
 import dev.entao.kan.appbase.ex.argb
 import dev.entao.kan.appbase.ex.colors
@@ -25,7 +24,7 @@ class TitleIconPageItem(val title: String, val icon: Int, val page: BasePage)
 class BottomNavPage : BasePage() {
     var bottomNavStyle = com.google.android.material.R.style.Widget_MaterialComponents_BottomNavigationView
     var inactiveColor = 0x8a000000.argb
-    var checkedColor: Int = Colors.Theme
+    var checkedColor: Int = ColorX.theme
     val navItems = ArrayList<TitleIconPageItem>()
     lateinit var bottomNav: BottomNavigationView
     lateinit var pager: ViewPager2

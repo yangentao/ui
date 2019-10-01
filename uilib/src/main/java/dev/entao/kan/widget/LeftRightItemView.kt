@@ -1,6 +1,7 @@
 package dev.entao.kan.widget
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.CheckBox
@@ -8,7 +9,7 @@ import android.widget.ImageView
 import android.widget.ImageView.ScaleType
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.creator.createCheckBox
 import dev.entao.kan.creator.createImageView
 import dev.entao.kan.creator.createTextViewA
@@ -26,7 +27,7 @@ import dev.entao.kan.res.D
 class LeftRightItemView(context: Context, marginBottom: Int) : LinearLayout(context) {
 
 	init {
-		orientationHorizontal().gravityCenterVertical().padding(10, 5, 10, 5).backColor(Colors.WHITE, Colors.Fade)
+		orientationHorizontal().gravityCenterVertical().padding(10, 5, 10, 5).backColor(Color.WHITE, ColorX.fade)
 		linearParam().widthFill().height(ITEM_HEIGHT).margins(0, 0, 0, marginBottom).set(this)
 
 		val v = View(getContext()).genId()

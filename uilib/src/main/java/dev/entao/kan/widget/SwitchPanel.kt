@@ -1,11 +1,16 @@
 package dev.entao.kan.widget
 
 import android.content.Context
+import android.graphics.Color
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.kan.appbase.Task
-import dev.entao.kan.appbase.ex.*
+import dev.entao.kan.appbase.ex.ShapeRect
+import dev.entao.kan.appbase.ex.StateList
+import dev.entao.kan.appbase.ex.colors
+import dev.entao.kan.appbase.ex.drawables
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.ext.*
 import java.util.*
 
@@ -24,7 +29,7 @@ class SwitchPanel(context: Context) : LinearLayout(context) {
     init {
         genId()
         horizontal()
-        backDrawable(ShapeRect(Colors.WHITE, CORNER).value)
+        backDrawable(ShapeRect(Color.WHITE, CORNER).value)
 
     }
 
@@ -147,37 +152,37 @@ class SwitchPanel(context: Context) : LinearLayout(context) {
         }
 
         fun styleOne(): SwitchPanelItem {
-            backDrawable(ShapeRect(Colors.WHITE).corner(corner).value).textColor(Colors.Theme)
+            backDrawable(ShapeRect(Color.WHITE).corner(corner).value).textColor(ColorX.theme)
             return this
         }
 
         fun styleLeft(): SwitchPanelItem {
-            val a = ShapeRect(Colors.Theme).corners(corner, 0, 0, corner).value
-            val b = ShapeRect(Colors.WHITE).corners(corner, 0, 0, corner).value
+            val a = ShapeRect(ColorX.theme).corners(corner, 0, 0, corner).value
+            val b = ShapeRect(Color.WHITE).corners(corner, 0, 0, corner).value
             val d = StateList.drawables(a) {
                 selected(b)
             }
-            val e = StateList.colors(Colors.WHITE) {
-                selected(Colors.Theme)
+            val e = StateList.colors(Color.WHITE) {
+                selected(ColorX.theme)
             }
             backDrawable(d).textColor(e)
             return this
         }
 
         fun styleRight(): SwitchPanelItem {
-            val a = ShapeRect(Colors.Theme).corners(0, corner, corner, 0).value
-            val b = ShapeRect(Colors.WHITE).corners(0, corner, corner, 0).value
+            val a = ShapeRect(ColorX.theme).corners(0, corner, corner, 0).value
+            val b = ShapeRect(Color.WHITE).corners(0, corner, corner, 0).value
             val d = StateList.drawables(a) { selected(b) }
-            val e = StateList.colors(Colors.WHITE) { selected(Colors.Theme) }
+            val e = StateList.colors(Color.WHITE) { selected(ColorX.theme) }
             backDrawable(d).textColor(e)
             return this
         }
 
         fun styleMid(): SwitchPanelItem {
-            val a = ShapeRect(Colors.Theme).value
-            val b = ShapeRect(Colors.WHITE).value
+            val a = ShapeRect(ColorX.theme).value
+            val b = ShapeRect(Color.WHITE).value
             val d = StateList.drawables(a) { selected(b) }
-            val e = StateList.colors(Colors.WHITE) { selected(Colors.Theme) }
+            val e = StateList.colors(Color.WHITE) { selected(ColorX.theme) }
             backDrawable(d).textColor(e)
             return this
         }

@@ -6,7 +6,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.widget.GridView
-import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.base.ColorX
 
 
 /**
@@ -20,7 +20,7 @@ open class LineGridView(context: Context) : GridView(context) {
 	var lineTop = false
 	var lineRight = false
 	var lineLeft = false
-	var lineColor = Colors.LineGray
+	var lineColor = ColorX.lineGray
 	var lineWidth = 1
 	private val localPaint = Paint()
 

@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.annotation.DrawableRes
 import dev.entao.kan.appbase.Task
 import dev.entao.kan.appbase.ex.*
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.base.StackActivity
 import dev.entao.kan.creator.*
 import dev.entao.kan.ext.*
@@ -39,7 +40,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
     private var titleClickCallback: () -> Unit = {}
 
     init {
-        backColor(Colors.Theme)
+        backColor(ColorX.theme)
         this.elevation = 5.dpf
     }
 
@@ -323,7 +324,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
         p.isFocusable = true
         p.isOutsideTouchable = true
         p.setBackgroundDrawable(ColorDrawable(0))
-        val gd = ShapeRect(Colors.Theme).corners(0, 0, 2, 2).value
+        val gd = ShapeRect(ColorX.theme).corners(0, 0, 2, 2).value
         val popRootView = context.createLinearVertical()
         popRootView.minimumWidth = dp(150)
         popRootView.backDrawable(gd).padding(5)

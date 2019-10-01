@@ -4,8 +4,8 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.annotation.DrawableRes
 import dev.entao.kan.appbase.Task
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.StateList
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.res.D
 import dev.entao.kan.res.lightDrawable
 import dev.entao.kan.theme.IconSize
@@ -87,7 +87,7 @@ class Action(val tag: String) {
     /**
      * 颜色设置
      */
-    var subLabelColor = Colors.TextColorMinor
+    var subLabelColor = ColorX.textSecondary
     /**
      * 右边的图标, 用于AcionPage
      */

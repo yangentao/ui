@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.widget.RelativeLayout
 import android.widget.TextView
 import dev.entao.kan.appbase.ex.*
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.creator.textView
 import dev.entao.kan.ext.*
 import dev.entao.kan.res.D
@@ -29,7 +30,7 @@ open class TabBarItemView(context: Context) : RelativeLayout(context) {
             textSizeD()
             gravityCenter()
             padding(1, 4, 1, 1)
-            textColor(D.listColor(Colors.TextColorMajor, Colors.Theme))
+            textColor(D.listColor(ColorX.textPrimary, ColorX.theme))
         }
         indicateView = textView(RParam.ParentTop.ParentRight.margins(0, 5, 5, 0)) {
             textColor(Color.WHITE)
@@ -69,7 +70,7 @@ open class TabBarItemView(context: Context) : RelativeLayout(context) {
 
     fun setIcon(d: Drawable) {
         val dd = if (autoTintDrawable) {
-            d.tinted(Colors.Unselected, Colors.Theme)
+            d.tinted(ColorX.Unselected, ColorX.theme)
         } else {
             d.mutate()
         }

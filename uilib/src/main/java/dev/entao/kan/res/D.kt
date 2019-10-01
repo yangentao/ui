@@ -10,6 +10,7 @@ import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.StateListDrawable
 import androidx.annotation.DrawableRes
 import dev.entao.kan.appbase.ex.*
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.theme.IconSize
 import dev.entao.kan.theme.ViewSize
 import dev.entao.kan.ui.R
@@ -29,35 +30,35 @@ object D {
     val Input: Drawable
         get() {
             val corner: Int = ViewSize.EditCorner
-            val normal = ShapeRect(Colors.WHITE, corner).stroke(1, Colors.GRAY).value
-            val focused = ShapeRect(Colors.WHITE, corner).stroke(1, Colors.EditFocus).value
+            val normal = ShapeRect(Color.WHITE, corner).stroke(1, ColorX.borderGray).value
+            val focused = ShapeRect(Color.WHITE, corner).stroke(1, ColorX.EditFocus).value
             return focused(normal, focused)
         }
     val InputSearch: Drawable
         get() {
             val corner: Int = ViewSize.EditHeightSearch / 2
-            val normal = ShapeRect(Colors.WHITE, corner).stroke(1, Colors.GRAY).value
-            val focused = ShapeRect(Colors.WHITE, corner).stroke(1, Colors.EditFocus).value
+            val normal = ShapeRect(Color.WHITE, corner).stroke(1, ColorX.borderGray).value
+            val focused = ShapeRect(Color.WHITE, corner).stroke(1, ColorX.EditFocus).value
             return focused(normal, focused)
         }
 
     val InputRect: Drawable
         get() {
-            val normal = ShapeRect(Colors.WHITE, 2).stroke(1, Colors.GRAY).value
-            val focused = ShapeRect(Colors.WHITE, 2).stroke(1, Colors.EditFocus).value
+            val normal = ShapeRect(Color.WHITE, 2).stroke(1, ColorX.borderGray).value
+            val focused = ShapeRect(Color.WHITE, 2).stroke(1, ColorX.EditFocus).value
             return focused(normal, focused)
         }
 
     fun buttonGray(corner: Int = ViewSize.ButtonCorner): Drawable {
-        return buttonColor(Colors.GrayMajor, corner)
+        return buttonColor(ColorX.backDisabled, corner)
     }
 
     fun buttonGreen(corner: Int = ViewSize.ButtonCorner): Drawable {
-        return buttonColor(Colors.Safe, corner)
+        return buttonColor(ColorX.actionGreen, corner)
     }
 
     fun buttonRed(corner: Int = ViewSize.ButtonCorner): Drawable {
-        return buttonColor(Colors.RedMajor, corner)
+        return buttonColor(ColorX.red, corner)
     }
 
     fun buttonWhite(corner: Int = ViewSize.ButtonCorner): Drawable {
@@ -66,12 +67,12 @@ object D {
 
     fun buttonColor(color: Int, corner: Int = ViewSize.ButtonCorner): Drawable {
         val normal = ShapeRect(color, corner).value
-        val pressed = ShapeRect(Colors.Fade, corner).value
-        val enableFalse = ShapeRect(Colors.Disabled, corner).value
+        val pressed = ShapeRect(ColorX.fade, corner).value
+        val enableFalse = ShapeRect(ColorX.backDisabled, corner).value
         return StateList.drawable(normal, VState.Pressed to pressed, VState.Disabled to enableFalse)
     }
 
-    fun panelBorder(color: Int = Colors.LightGray, corner: Int = ViewSize.ButtonCorner): Drawable {
+    fun panelBorder(color: Int = ColorX.borderGray, corner: Int = ViewSize.ButtonCorner): Drawable {
         return ShapeRect(Color.WHITE, corner).stroke(1, color).value
     }
 
@@ -91,8 +92,8 @@ object D {
         return res(res).tinted(color)
     }
 
-    fun tintTheme(@DrawableRes res: Int): StateListDrawable {
-        return Bmp.tintTheme(res)
+    fun tintTheme(@DrawableRes res: Int): Drawable {
+        return tinted(res, ColorX.theme)
     }
 
     fun tintLight(@DrawableRes res: Int, normalColor: Int, lightColor: Int): StateListDrawable {

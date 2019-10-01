@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.View
 import android.widget.AbsListView
 import android.widget.LinearLayout
-import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.ext.*
 import dev.entao.kan.list.itemviews.TextItemView
 import kotlin.reflect.KClass
@@ -149,7 +149,7 @@ abstract class GroupPage<T : Any>(val itemClass: KClass<T>) : ListPage() {
         return if (item::class == GroupItem::class) {
             val v = TextItemView(context)
             v.padding(10, 0, 0, 0)
-            v.backColor(Colors.GRAY)
+            v.backColor(ColorX.backGray)
             v.textColorWhite()
             v.textSizeB()
             v

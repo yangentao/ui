@@ -8,7 +8,7 @@ import android.graphics.drawable.GradientDrawable
 import android.view.View
 import dev.entao.kan.appbase.App
 import dev.entao.kan.appbase.Task
-import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.base.ColorX
 
 /**
  * Created by yet on 2015/10/31.
@@ -37,7 +37,7 @@ class MyProgressBarIndeterminate(context: Context) : View(context) {
 
     init {
         setBackDrawable(makeDrawable(0, 0.5f, Color.parseColor("#999999"), Color.parseColor("#555555"), Color.parseColor("#777777")))
-        setForeDrawable(makeDrawable(0, 0.5f, Colors.Safe, Color.rgb(0, 255, 0), Colors.Safe))
+        setForeDrawable(makeDrawable(0, 0.5f, ColorX.green, Color.rgb(0, 255, 0), ColorX.green))
     }
 
     override fun onVisibilityChanged(changedView: View, visibility: Int) {

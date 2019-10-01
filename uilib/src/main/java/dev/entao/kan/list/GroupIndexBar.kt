@@ -10,9 +10,9 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import dev.entao.kan.appbase.Task
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.ShapeRect
 import dev.entao.kan.appbase.ex.colorParse
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.creator.createTextView
 import dev.entao.kan.creator.textView
 import dev.entao.kan.ext.*
@@ -20,7 +20,7 @@ import dev.entao.kan.log.logd
 
 
 class GroupIndexBar(context: Context) : LinearLayout(context) {
-    var labelColor: Int = Colors.TextColorMajor
+    var labelColor: Int = ColorX.textPrimary
     private var items: List<String> = emptyList()
     private var currentLabel: String? = null
     private var feedbackView: TextView

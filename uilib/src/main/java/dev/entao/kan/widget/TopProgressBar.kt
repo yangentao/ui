@@ -6,8 +6,8 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import dev.entao.kan.appbase.Task
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.ShapeRect
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.ext.backColorWhite
 
 /**
@@ -15,7 +15,7 @@ import dev.entao.kan.ext.backColorWhite
  */
 class TopProgressBar(context: Context) : View(context) {
     var duration = 200//动画时间 200毫秒---从0到最大值(100%)的时间
-    var foreDrawable: Drawable = ShapeRect(Colors.Progress).value
+    var foreDrawable: Drawable = ShapeRect(ColorX.Progress).value
     private var max = 100
     private var progress = 0
     private var animProgress = 0

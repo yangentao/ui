@@ -12,7 +12,11 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import dev.entao.kan.appbase.Task
-import dev.entao.kan.appbase.ex.*
+import dev.entao.kan.appbase.ex.ShapeRect
+import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.appbase.ex.sized
+import dev.entao.kan.appbase.ex.tinted
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.creator.createLinearVertical
 import dev.entao.kan.creator.createTextViewB
 import dev.entao.kan.ext.*
@@ -38,7 +42,7 @@ class BottomBar(context: Context) : LinearLayout(context) {
     init {
         genId()
         horizontal()
-        backColor(Colors.WHITE)
+        backColor(Color.WHITE)
         divider()
     }
 
@@ -108,7 +112,7 @@ class BottomBar(context: Context) : LinearLayout(context) {
     fun actionImage(d: Drawable, cmd: String = Cmd.genCmd): Cmd {
         val iv = createImageItemView()
         if (autoTintDrawable) {
-            iv.setImageDrawable(d.tinted(Colors.TextColorMajor))
+            iv.setImageDrawable(d.tinted(ColorX.textPrimary))
         } else {
             iv.setImageDrawable(d.mutate())
         }
@@ -141,7 +145,7 @@ class BottomBar(context: Context) : LinearLayout(context) {
         p.isOutsideTouchable = true
         p.setBackgroundDrawable(ColorDrawable(0))
 
-        val gd = ShapeRect().fill(Colors.WHITE).stroke(1, Colors.LightGray).corners(2, 2, 0, 0).value
+        val gd = ShapeRect().fill(Color.WHITE).stroke(1, ColorX.borderGray).corners(2, 2, 0, 0).value
 
         val popRootView = context.createLinearVertical()
         popRootView.minimumWidth = dp(150)

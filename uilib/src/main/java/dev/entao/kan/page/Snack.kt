@@ -7,7 +7,7 @@ import android.view.MotionEvent
 import android.widget.LinearLayout
 import android.widget.TextView
 import dev.entao.kan.appbase.Task
-import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.creator.textView
 import dev.entao.kan.ext.*
 import java.util.*
@@ -38,7 +38,7 @@ class Snack(context: Context) : LinearLayout(context) {
 			padding(15, 0, 15, 0)
 			textSizeA()
 			textColorWhite()
-			backColor(Color.TRANSPARENT, Colors.Fade)
+			backColor(Color.TRANSPARENT, ColorX.fade)
 			gravityCenter()
 			text("取消")
 			onClick {
@@ -50,7 +50,7 @@ class Snack(context: Context) : LinearLayout(context) {
 			padding(15, 0, 15, 0)
 			textSizeA()
 			textColorWhite()
-			backColor(Color.TRANSPARENT, Colors.Fade)
+			backColor(Color.TRANSPARENT, ColorX.fade)
 			gravityCenter()
 
 		}

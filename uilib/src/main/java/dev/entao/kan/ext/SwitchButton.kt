@@ -8,6 +8,7 @@ import android.graphics.drawable.LayerDrawable
 import android.view.View.OnLayoutChangeListener
 import android.widget.CheckBox
 import dev.entao.kan.appbase.ex.*
+import dev.entao.kan.base.ColorX
 
 /**
  * Created by entaoyang@163.com on 16/6/4.
@@ -35,18 +36,18 @@ open class SwitchButton(context: Context) : CheckBox(context) {
     }
 
     fun makeDrawDp(w: Int, h: Int): LayerDrawable {
-        val dd1 = ShapeRect(Color.WHITE, h / 2).stroke(1, Colors.LightGray).size(w, h).value
-        val dd2 = ShapeRect(Colors.Safe, h / 2).size(w, h).value
-        val dd3 = ShapeRect(Colors.LightGray, h / 2).stroke(1, Colors.WHITE).size(w, h).value
-        val draw = StateList.drawable(dd1, VState.Checked to dd2, VState.Enabled to dd3)
+        val dd1 = ShapeRect(Color.WHITE, h / 2).stroke(1, ColorX.borderGray).size(w, h).value
+        val dd2 = ShapeRect(ColorX.green, h / 2).size(w, h).value
+        val dd3 = ShapeRect(ColorX.backDisabled, h / 2).stroke(1, Color.WHITE).size(w, h).value
+        val draw = StateList.drawable(dd1, VState.Checked to dd2, VState.Disabled to dd3)
         val h2: Int = if (h <= 2) {
             1
         } else {
             h - 2
         }
-        val a = ShapeOval().fill(Colors.WHITE)
+        val a = ShapeOval().fill(Color.WHITE)
         if (isChecked) {
-            a.stroke(1, Colors.LightGray)
+            a.stroke(1, ColorX.borderGray)
         }
         val round = a.size(h2).value
 

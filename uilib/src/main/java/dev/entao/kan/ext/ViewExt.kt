@@ -2,6 +2,7 @@
 
 package dev.entao.kan.ext
 
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,11 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import dev.entao.kan.appbase.ex.*
+import dev.entao.kan.appbase.ex.ShapeRect
+import dev.entao.kan.appbase.ex.StateList
+import dev.entao.kan.appbase.ex.VState
+import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.res.D
 import dev.entao.kan.theme.Space
 import java.util.concurrent.atomic.AtomicInteger
@@ -22,15 +27,15 @@ import kotlin.reflect.KClass
 private val atomInt = AtomicInteger(1)
 
 fun <T : View> T.backTintRed(): T {
-    return this.backTint(Colors.RedMajor)
+    return this.backTint(ColorX.red)
 }
 
 fun <T : View> T.backTintGreen(): T {
-    return this.backTint(Colors.GreenMajor)
+    return this.backTint(ColorX.green)
 }
 
 fun <T : View> T.backTint(color: Int): T {
-    this.backgroundTintList = StateList.color(color, VState.Disabled to Colors.Disabled)
+    this.backgroundTintList = StateList.color(color, VState.Disabled to ColorX.backDisabled)
     return this
 }
 
@@ -186,43 +191,43 @@ fun <T : View> T.backColor(color: Int, fadeColor: Int): T {
 
 
 fun <T : View> T.backColorWhite(): T {
-    setBackgroundColor(Colors.WHITE)
+    setBackgroundColor(Color.WHITE)
     return this
 }
 
 fun <T : View> T.backColorTrans(): T {
-    setBackgroundColor(Colors.TRANS)
+    setBackgroundColor(ColorX.TRANS)
     return this
 }
 
 fun <T : View> T.backColorTheme(): T {
-    backColor(Colors.Theme)
+    backColor(ColorX.theme)
     return this
 }
 
 fun <T : View> T.backColorThemeFade(): T {
-    backColor(Colors.Theme, Colors.Fade)
+    backColor(ColorX.theme, ColorX.fade)
     return this
 }
 
 fun <T : View> T.backColorWhiteFade(): T {
-    backColor(Colors.WHITE, Colors.Fade)
+    backColor(Color.WHITE, ColorX.fade)
     return this
 }
 
 fun <T : View> T.backColorTransFade(): T {
-    backColor(Colors.TRANS, Colors.Fade)
+    backColor(ColorX.TRANS, ColorX.fade)
     return this
 }
 
 fun <T : View> T.backColorPage(): T {
-    setBackgroundColor(Colors.PageGray)
+    setBackgroundColor(ColorX.backGray)
     return this
 }
 
 fun <T : View> T.backFillFade(fillColor: Int, corner: Int): T {
     val a = ShapeRect(fillColor, corner).value
-    val b = ShapeRect(Colors.Fade, corner).value
+    val b = ShapeRect(ColorX.fade, corner).value
     backDrawable(a, b)
     return this
 }

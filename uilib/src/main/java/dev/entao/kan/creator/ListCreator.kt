@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import androidx.fragment.app.Fragment
-import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.base.act
 import dev.entao.kan.ext.genId
 import dev.entao.kan.list.SimpleListView
@@ -56,6 +56,6 @@ fun Fragment.createListView(): ListView {
 fun Context.createListView(): ListView {
 	val lv = ListView(this).genId()
 	lv.cacheColorHint = 0
-	lv.selector = D.lightColor(Color.TRANSPARENT, Colors.Fade)
+	lv.selector = D.lightColor(Color.TRANSPARENT, ColorX.fade)
 	return lv
 }

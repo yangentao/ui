@@ -7,11 +7,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.core.widget.NestedScrollView
 import dev.entao.kan.appbase.Task
-import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.base.BasePage
-import dev.entao.kan.base.Progress
-import dev.entao.kan.base.StackActivity
-import dev.entao.kan.base.act
+import dev.entao.kan.base.*
 import dev.entao.kan.creator.append
 import dev.entao.kan.creator.linearVer
 import dev.entao.kan.ext.*
@@ -83,7 +79,7 @@ open class TitlePage : BasePage(), Progress {
         onCreateContent(this.act, contentView)
         titleBar.commit()
         bottomBar?.commit()
-        val c = MyColor(Colors.Theme)
+        val c = MyColor(ColorX.theme)
         statusBarColor(c.multiRGB(0.7))
         onContentCreated()
         contentCreated = true

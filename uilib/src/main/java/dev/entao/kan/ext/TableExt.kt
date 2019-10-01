@@ -9,8 +9,8 @@ import android.widget.EditText
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.base.getValue
 import dev.entao.kan.base.labelProp_
 import dev.entao.kan.creator.*
@@ -26,7 +26,7 @@ import kotlin.reflect.KProperty0
 class FormView(val tableLayout: TableLayout) {
     fun header(label: String, label2: String) {
         tableLayout.tableRow(TParam.WidthFill.HeightWrap.marginBottom(5)) {
-            setBackgroundColor(Colors.Theme)
+            setBackgroundColor(ColorX.theme)
             textView(RowParam.WidthWrap.HeightEditSmall) {
                 text = label
                 minimumWidth = dp(80)
@@ -139,7 +139,7 @@ fun TableLayout.stretch(vararg cols: Int) {
 
 fun TableLayout.header(block: TableRow.() -> Unit): TableRow {
     return tableRow(TParam.WidthFill.HeightWrap.marginBottom(5)) {
-        setBackgroundColor(Colors.Theme)
+        setBackgroundColor(ColorX.theme)
         this.tag = "header"
         this.block()
 

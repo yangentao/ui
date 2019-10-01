@@ -1,11 +1,12 @@
 package dev.entao.kan.widget
 
 import android.content.Context
+import android.graphics.Color
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.gray
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.creator.createTextView
 import dev.entao.kan.creator.textView
 import dev.entao.kan.ext.*
@@ -45,19 +46,19 @@ class TitleContentView(context: Context) : LinearLayout(context) {
 	fun styleColored(color: Int) {
 		titleView.textColorWhite()
 		addGrayLine {
-			color(Colors.WHITE)
+			color(Color.WHITE)
 			bottom(10)
 		}
 		backFill(color, 4)
 	}
 
 	companion object {
-		var defaultTitleTextColor: Int = Colors.TextColorMajor
+		var defaultTitleTextColor: Int = ColorX.textPrimary
 		var defaultHasLine = true
-		var defaultLineColor = Colors.WHITE
+		var defaultLineColor = Color.WHITE
 		var defaultBackColor = 0xee.gray
 		var defaultBackCorner = 4
-		var defaultTextColor = Colors.TextColorMajor
+		var defaultTextColor = ColorX.textPrimary
 	}
 }
 inline fun <P : ViewGroup.LayoutParams> ViewGroup.addTitleContentView(param: P, block: TitleContentView.() -> Unit): TitleContentView {

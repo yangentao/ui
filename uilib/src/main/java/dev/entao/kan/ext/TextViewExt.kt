@@ -5,6 +5,7 @@ package dev.entao.kan.ext
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.text.Html
@@ -15,12 +16,13 @@ import android.text.util.Linkify
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.KeyEvent
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
 import android.widget.TextView
-import dev.entao.kan.appbase.ex.*
+import dev.entao.kan.appbase.ex.StateList
+import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.appbase.ex.sized
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.res.D
 import dev.entao.kan.theme.Space
 import dev.entao.kan.theme.TextSize
@@ -252,11 +254,11 @@ fun <T : TextView> T.maxLines(maxLines: Int): T {
 }
 
 fun <T : TextView> T.textColorGreen(): T {
-    return this.textColor(Colors.GreenMajor)
+    return this.textColor(ColorX.green)
 }
 
 fun <T : TextView> T.textColorRed(): T {
-    return this.textColor(Colors.RedMajor)
+    return this.textColor(ColorX.red)
 }
 
 fun <T : TextView> T.textColor(color: Int): T {
@@ -276,57 +278,57 @@ fun <T : TextView> T.textColor(ls: ColorStateList): T {
 }
 
 fun <T : TextView> T.textColorWhite(): T {
-    this.setTextColor(Colors.WHITE)
+    this.setTextColor(Color.WHITE)
     return this
 }
 
 fun <T : TextView> T.colorWhite(): T {
-    this.setTextColor(Colors.WHITE)
+    this.setTextColor(Color.WHITE)
     return this
 }
 
 fun <T : TextView> T.textColorMajor(): T {
-    this.setTextColor(Colors.TextColorMajor)
+    this.setTextColor(ColorX.textPrimary)
     return this
 }
 
 fun <T : TextView> T.colorMajor(): T {
-    this.setTextColor(Colors.TextColorMajor)
+    this.setTextColor(ColorX.textPrimary)
     return this
 }
 
 fun <T : TextView> T.textColorMinor(): T {
-    this.setTextColor(Colors.TextColorMinor)
+    this.setTextColor(ColorX.textSecondary)
     return this
 }
 
 fun <T : TextView> T.colorMinor(): T {
-    this.setTextColor(Colors.TextColorMinor)
+    this.setTextColor(ColorX.textSecondary)
     return this
 }
 
 fun <T : TextView> T.textColorMid(): T {
-    this.setTextColor(Colors.TextColorMid)
+    this.setTextColor(ColorX.textPrimary)
     return this
 }
 
 fun <T : TextView> T.textColorSafe(): T {
-    this.setTextColor(Colors.Safe)
+    this.setTextColor(ColorX.green)
     return this
 }
 
 fun <T : TextView> T.colorGreen(): T {
-    this.setTextColor(Colors.Safe)
+    this.setTextColor(ColorX.green)
     return this
 }
 
 fun <T : TextView> T.colorRed(): T {
-    this.setTextColor(Colors.RedMajor)
+    this.setTextColor(ColorX.red)
     return this
 }
 
 fun <T : TextView> T.textColorMajorFade(): T {
-    setTextColor(D.listColor(Colors.TextColor, Colors.Fade))
+    setTextColor(D.listColor(ColorX.textPrimary, ColorX.fade))
     return this
 }
 

@@ -4,17 +4,17 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.annotation.StyleRes
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
-import dev.entao.kan.appbase.ex.Colors
+import androidx.annotation.StyleRes
 import dev.entao.kan.appbase.ex.dp
+import dev.entao.kan.base.ColorX
+import dev.entao.kan.creator.createTextView
 import dev.entao.kan.ext.backColor
 import dev.entao.kan.ext.padding
 import dev.entao.kan.ext.textColorWhite
-import dev.entao.kan.creator.createTextView
 
 /**
  * Created by entaoyang@163.com on 2016-11-20.
@@ -34,7 +34,7 @@ open class PopWindow {
 
 	var onDismiss: () -> Unit = {}
 	var onCreateView: (context: Context) -> View = {
-		val tv = it.createTextView().padding(20).backColor(Colors.GreenMajor).textColorWhite()
+		val tv = it.createTextView().padding(20).backColor(ColorX.green).textColorWhite()
 		tv.setText("Hello PopWindow")
 		tv
 	}

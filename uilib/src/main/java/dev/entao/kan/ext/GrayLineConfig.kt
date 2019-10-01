@@ -2,7 +2,7 @@
 
 package dev.entao.kan.ext
 
-import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.base.ColorX
 
 /**
  * Created by entaoyang@163.com on 2016-11-07.
@@ -10,7 +10,7 @@ import dev.entao.kan.appbase.ex.Colors
 
 class GrayLineConfig {
 	var size: Int = 1
-	var color: Int = Colors.LineGray
+	var color: Int = ColorX.lineGray
 	var marginLeft: Int = 0
 	var marginRight: Int = 0
 	var marginTop: Int = 0

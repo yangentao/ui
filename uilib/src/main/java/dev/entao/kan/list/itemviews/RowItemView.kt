@@ -6,7 +6,7 @@ import android.content.Context
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import dev.entao.kan.appbase.ex.Colors
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.ext.*
 import dev.entao.kan.theme.TextSize
 /**
@@ -17,7 +17,7 @@ class RowItemView(context: Context) : LinearLayout(context) {
     private val mid: View
     private var space = 10
     private var minWidth = 60
-    private var textColor = Colors.TextColorMinor
+    private var textColor = ColorX.textSecondary
     private var textSize = TextSize.Normal
 
     init {

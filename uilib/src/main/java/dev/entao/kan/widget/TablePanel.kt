@@ -3,9 +3,9 @@ package dev.entao.kan.widget
 import android.content.Context
 import android.view.View
 import android.widget.LinearLayout
-import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.ext.*
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.creator.linearHor
+import dev.entao.kan.ext.*
 
 /**
  * Created by entaoyang@163.com on 16/3/13.
@@ -21,7 +21,7 @@ open class TablePanel(context: Context) : LinearLayout(context) {
 
 	init {
 		vertical()
-		this.setBackgroundColor(Colors.PageGray)
+		this.setBackgroundColor(ColorX.backGray)
 		linearParam().widthFill().heightWrap().set(this)
 	}
 

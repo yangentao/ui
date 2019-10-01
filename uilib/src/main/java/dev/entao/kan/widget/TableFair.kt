@@ -6,9 +6,9 @@ import android.view.View
 import android.widget.RelativeLayout
 import android.widget.TableLayout
 import android.widget.TableRow
-import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.ext.*
+import dev.entao.kan.base.ColorX
 import dev.entao.kan.creator.createRelative
+import dev.entao.kan.ext.*
 import java.util.*
 
 /**
@@ -22,12 +22,12 @@ open class TableFair(context: Context) : TableLayout(context) {
 	var horSpace = 1
 	var verSpace = 1
 
-	var lineColor = Colors.LineGray
+	var lineColor = ColorX.lineGray
 	var horDivider: Divider? = null
 	var verDivider: Divider? = null
 
 	private var colorNormal = Color.WHITE
-	private var colorPressed = Colors.Fade
+	private var colorPressed = ColorX.fade
 
 	var onItemClick: (Int) -> Unit = { _ -> }
 

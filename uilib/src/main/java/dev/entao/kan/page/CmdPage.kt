@@ -7,14 +7,10 @@ import android.graphics.Color
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
-import dev.entao.kan.appbase.ex.Colors
 import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.appbase.ex.sized
 import dev.entao.kan.appbase.ex.tinted
-import dev.entao.kan.base.act
-import dev.entao.kan.base.getValue
-import dev.entao.kan.base.labelProp_
-import dev.entao.kan.base.nameProp
+import dev.entao.kan.base.*
 import dev.entao.kan.creator.createButton
 import dev.entao.kan.creator.createView
 import dev.entao.kan.creator.linearVer
@@ -158,7 +154,7 @@ abstract class CmdPage : TitlePage() {
             this.text = text
             if (leftIcon != 0) {
                 if (tintCmdIcon) {
-                    leftImage(leftIcon.drawableRes.tinted(Colors.Theme).sized(defaultIconSize))
+                    leftImage(leftIcon.drawableRes.tinted(ColorX.theme).sized(defaultIconSize))
                 } else {
                     leftImage(leftIcon, defaultIconSize)
                 }
