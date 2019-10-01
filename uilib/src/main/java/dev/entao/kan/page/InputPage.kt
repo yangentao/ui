@@ -456,7 +456,9 @@ abstract class InputPage : TitlePage() {
             }
             codeButton = button(LParam.WidthWrap.HeightButtonSmall.margins(3, 0, 0, 0)) {
                 text = "获取验证码"
-                styleWhite(6)
+                style {
+                    outlineBlue()
+                }
             }
         }
         TimeDown.updateView(this.timeDownKey, codeButton!!)

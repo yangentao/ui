@@ -78,7 +78,7 @@ abstract class CmdPage : TitlePage() {
     }
 
     fun textItemView(block: TextItemView.() -> Unit): TextItemView {
-        val v = TextItemView(act)
+        val v = TextItemView(this.requireActivity())
         v.backColorWhiteFade()
         v.textSizeB()
         v.textColorMajor()
@@ -155,18 +155,18 @@ abstract class CmdPage : TitlePage() {
 
     fun cmdText(text: String, @DrawableRes leftIcon: Int = 0, @DrawableRes rightIcon: Int = 0, rightSize: Int = 16, cmd: String = text): Cmd {
         return cmdTextView(cmd) {
-        this.text = text
-        if (leftIcon != 0) {
-            if (tintCmdIcon) {
-                leftImage(leftIcon.drawableRes.tinted(Colors.Theme).sized(defaultIconSize))
-            } else {
-                leftImage(leftIcon, defaultIconSize)
+            this.text = text
+            if (leftIcon != 0) {
+                if (tintCmdIcon) {
+                    leftImage(leftIcon.drawableRes.tinted(Colors.Theme).sized(defaultIconSize))
+                } else {
+                    leftImage(leftIcon, defaultIconSize)
+                }
+            }
+            if (rightIcon != 0) {
+                rightImage(rightIcon, rightSize)
             }
         }
-        if (rightIcon != 0) {
-            rightImage(rightIcon, rightSize)
-        }
-    }
     }
 
     fun cmdUser(cmd: String = "user"): Cmd {
@@ -200,7 +200,10 @@ abstract class CmdPage : TitlePage() {
     fun cmdButtonWhite(text: String): Cmd {
         return cmd(text) {
             view = buttonItemView {
-                styleWhiteRound()
+                style {
+                    outlineBlue()
+                    cornersRound()
+                }
                 textS = text
             }
             param = LParam.width(280).HeightButton.gravityCenter().margins(20)

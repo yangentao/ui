@@ -4,51 +4,48 @@ package dev.entao.kan.ext
 
 import android.widget.Button
 import android.widget.CheckBox
-import dev.entao.kan.appbase.ex.Colors
-import dev.entao.kan.appbase.ex.StateList
-import dev.entao.kan.appbase.ex.VState
-import dev.entao.kan.res.D
-import dev.entao.kan.theme.ViewSize
 
 /**
  * Created by entaoyang@163.com on 16/4/28.
  */
 
-fun <T : Button> T.styleGreen(corner: Int = 2): T {
-    this.textSizeB().textColor(Colors.WHITE).backDrawable(D.buttonGreen(corner))
+fun <T : Button> T.styleGreen(): T {
+    this.style {
+        fillGreen()
+    }
     return this
 }
 
 fun <T : Button> T.styleGreenRound(): T {
-    this.textSizeB().textColor(Colors.WHITE).backDrawable(D.buttonGreen(ViewSize.ButtonHeight / 2))
+    this.style {
+        fillGreen()
+        cornersRound()
+    }
     return this
 }
 
-fun <T : Button> T.styleGrayRound(): T {
-    this.textSizeB().textColor(Colors.TextColorMajor).backDrawable(D.buttonGreen(ViewSize.ButtonHeight / 2))
-    return this
-}
 
-fun <T : Button> T.styleRed(corner: Int = 2): T {
-    this.textSizeB().textColor(Colors.WHITE).backDrawable(D.buttonRed(corner))
+fun <T : Button> T.styleRed(): T {
+    style {
+        fillRed()
+    }
     return this
 }
 
 fun <T : Button> T.styleRedRound(): T {
-    this.textSizeB().textColor(Colors.WHITE).backDrawable(D.buttonRed(ViewSize.ButtonHeight / 2))
+    style {
+        fillRed()
+        cornersRound()
+    }
     return this
 }
 
-fun <T : Button> T.styleWhite(corner: Int = 2): T {
-    this.textSizeB().textColorMajor().backDrawable(D.buttonWhite(corner))
+fun <T : Button> T.styleWhite(): T {
+    style {
+        outlineBlue()
+    }
     return this
 }
-
-fun <T : Button> T.styleWhiteRound(): T {
-    this.textSizeB().textColorMajor().backDrawable(D.buttonWhite(ViewSize.ButtonHeight / 2))
-    return this
-}
-
 
 
 fun <T : CheckBox> T.styleSwitch(): T {
