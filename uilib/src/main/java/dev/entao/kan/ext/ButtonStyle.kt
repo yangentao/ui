@@ -37,7 +37,7 @@ class ButtonStyle(val button: TextView) {
             h = button.layoutParams.height
         }
         if (h > 0) {
-            return corners(px2dp(h))
+            return corners(px2dp(h / 2))
         }
         return corners(ViewSize.ButtonHeight / 2)
     }

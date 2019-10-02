@@ -49,7 +49,7 @@ class HelloPage : TitlePage() {
         }
 
 
-        contentView.button(LParam.size(150, 48).margins(10)) {
+        contentView.button(LParam.size(200, 64).margins(10)) {
             style {
                 fillRed()
                 cornersRound()
