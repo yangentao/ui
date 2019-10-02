@@ -45,7 +45,7 @@ class TitleBar(val context: Activity) : RelativeLayout(context) {
     }
 
     operator fun invoke(block: TitleBar.() -> Unit) {
-        block(this)
+        this.block()
     }
 
     fun push(block: TitleBar.() -> Unit) {

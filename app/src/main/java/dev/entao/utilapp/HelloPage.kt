@@ -8,17 +8,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.appcompat.view.ContextThemeWrapper
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
-import com.google.android.material.button.MaterialButton
 import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.base.ColorX
-import dev.entao.kan.base.pushPage
 import dev.entao.kan.creator.addViewX
-import dev.entao.kan.creator.button
 import dev.entao.kan.creator.createTextView
 import dev.entao.kan.ext.*
 import dev.entao.kan.page.TitlePage
+import dev.entao.kan.widget.BottomActionBar
+import dev.entao.kan.widget.HeightBottomActionBar
 
 class HelloPage : TitlePage() {
 
@@ -40,78 +38,20 @@ class HelloPage : TitlePage() {
 
         }
 
-        val a = com.google.android.material.R.style.Widget_MaterialComponents_Button
-        val c = com.google.android.material.R.style.Theme_MaterialComponents
-        val mb = MaterialButton(ContextThemeWrapper(context, c), null, a)
-        contentView.addViewX(mb, LParam.size(150, 60).margins(10)) {
-            text = "Hello"
-            gravityCenter()
+        contentView.addViewX(BottomActionBar(context), LParam.WidthFill.HeightBottomActionBar.marginTop(20)) {
+            "ADD" ON ::onOK
+            "Delete" to R.drawable.yet_del ON ::onOK
+            R.drawable.yet_me ON ::onOK
+            //setBackgroundColor(ColorX.blueDark)
+
+//            styleBlue()
+            commit()
         }
 
 
-        contentView.button(LParam.size(200, 64).margins(10)) {
-            style {
-                fillRed()
-                cornersRound()
-            }
-            text = "提交"
-        }
-        contentView.button(LParam.size(150, 48).margins(10)) {
-            style {
-                fillGreen()
-                cornersRound()
-            }
-            text = "提交"
-        }
-        contentView.button(LParam.size(150, 48).margins(10)) {
-            style {
-                fillBlue()
-                cornersRound()
-            }
-            text = "提交"
-        }
-
-        contentView.button(LParam.size(150, 48).margins(10)) {
-            style {
-                outlineRed()
-            }
-            text = "提交"
-        }
-        contentView.button(LParam.size(150, 48).margins(10)) {
-            style {
-                outlineGreen()
-            }
-            text = "提交"
-        }
-        contentView.button(LParam.size(150, 48).margins(10)) {
-            style {
-                outlineBlue()
-            }
-            text = "提交"
-        }
-
-        contentView.button(LParam.size(150, 48).margins(10)) {
-            style {
-                textRed()
-            }
-            text = "提交"
-        }
-        contentView.button(LParam.size(150, 48).margins(10)) {
-            style {
-                textGreen()
-            }
-            text = "提交"
-        }
-        contentView.button(LParam.size(150, 48).margins(10)) {
-            style {
-                textBlue()
-            }
-            text = "提交"
-        }
     }
 
     fun onOK() {
-        pushPage(APage())
     }
 
 
