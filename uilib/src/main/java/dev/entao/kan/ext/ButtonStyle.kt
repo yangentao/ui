@@ -3,22 +3,21 @@
 package dev.entao.kan.ext
 
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.widget.Button
+import android.widget.TextView
 import dev.entao.kan.appbase.ex.*
 import dev.entao.kan.base.ColorX
 import dev.entao.kan.theme.ViewSize
 
 
-val Button.styleX: ButtonStyle get() = ButtonStyle(this)
+val TextView.styleX: ButtonStyle get() = ButtonStyle(this)
 
-fun Button.style(block: ButtonStyle.() -> Unit) {
+fun TextView.style(block: ButtonStyle.() -> Unit) {
     val a = ButtonStyle(this)
     a.block()
     a.setup()
 }
 
-class ButtonStyle(val button: Button) {
+class ButtonStyle(val button: TextView) {
     var style: Int = S_FILL
         private set
 
@@ -33,6 +32,13 @@ class ButtonStyle(val button: Button) {
     var textColor: Int = ColorX.textPrimary
 
     fun cornersRound(): ButtonStyle {
+        var h = button.height
+        if (h <= 0) {
+            h = button.layoutParams.height
+        }
+        if (h > 0) {
+            return corners(px2dp(h))
+        }
         return corners(ViewSize.ButtonHeight / 2)
     }
 
@@ -69,13 +75,13 @@ class ButtonStyle(val button: Button) {
 
         val normalShape = ShapeRect(fillColor, corner)
         val fadeShape = ShapeRect(fadeColor, corner)
-
         when (style) {
             S_FILL -> {
+                val disabledShape = ShapeRect(backDisabledColor, corner)
                 button.background = StateList.drawables(normalShape.value) {
                     pressed(fadeShape.value)
                     checked(fadeShape.value)
-                    disabled(ColorDrawable(backDisabledColor))
+                    disabled(disabledShape.value)
                 }
                 button.textColor(textColor)
             }

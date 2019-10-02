@@ -20,12 +20,16 @@ import dev.entao.kan.creator.createTextView
 import dev.entao.kan.ext.*
 import dev.entao.kan.page.TitlePage
 
-
 class HelloPage : TitlePage() {
 
     lateinit var imageView: ImageView
 
+    init {
+        enableContentScroll = true
+    }
+
     override fun onCreateContent(context: Context, contentView: LinearLayout) {
+
         super.onCreateContent(context, contentView)
         titleBar {
             title("Hello")
@@ -46,33 +50,63 @@ class HelloPage : TitlePage() {
 
 
         contentView.button(LParam.size(150, 48).margins(10)) {
-            style { fillRed() }
+            style {
+                fillRed()
+                cornersRound()
+            }
             text = "提交"
         }
         contentView.button(LParam.size(150, 48).margins(10)) {
-            style { outlineGreen() }
-            text = "保存"
+            style {
+                fillGreen()
+                cornersRound()
+            }
+            text = "提交"
         }
         contentView.button(LParam.size(150, 48).margins(10)) {
-            style { textRed() }
-            text = "Hello"
+            style {
+                fillBlue()
+                cornersRound()
+            }
+            text = "提交"
         }
 
+        contentView.button(LParam.size(150, 48).margins(10)) {
+            style {
+                outlineRed()
+            }
+            text = "提交"
+        }
+        contentView.button(LParam.size(150, 48).margins(10)) {
+            style {
+                outlineGreen()
+            }
+            text = "提交"
+        }
+        contentView.button(LParam.size(150, 48).margins(10)) {
+            style {
+                outlineBlue()
+            }
+            text = "提交"
+        }
 
         contentView.button(LParam.size(150, 48).margins(10)) {
-            style { fillBlue() }
-            text = "Hello"
-            this.isEnabled = false
+            style {
+                textRed()
+            }
+            text = "提交"
         }
         contentView.button(LParam.size(150, 48).margins(10)) {
-            style { outlineGreen() }
-            text = "Hello"
-            this.isEnabled = false
+            style {
+                textGreen()
+            }
+            text = "提交"
         }
         contentView.button(LParam.size(150, 48).margins(10)) {
-            style { textRed() }
-            text = "Hello"
-            this.isEnabled = false
+            style {
+                textBlue()
+            }
+            text = "提交"
         }
     }
 
