@@ -224,7 +224,7 @@ abstract class InputPage : TitlePage() {
     }
 
     fun button(key: String, title: String, marginTop: Int = buttonMarginTop): Button {
-        val b = inputLayout.button(LParam.WidthFill.HeightButton.margins(0, marginTop, 0, 0)) {
+        val b = inputLayout.button(LParam.WidthFill.HeightButton.margins(0, marginTop, 0, 6)) {
             setOnClickListener { _onButtonClick(key) }
             text = title
         }
