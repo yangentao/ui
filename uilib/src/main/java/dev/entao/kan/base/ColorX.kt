@@ -26,7 +26,7 @@ object ColorX {
 
     var actionBlue: Int = 0x3F52B5L.rgb
     var actionRed: Int = 0xF31717L.rgb
-    var actionGreen: Int = 0x0CD300L.rgb
+    var actionGreen: Int = 0x02ba14.rgb
     var fade: Int = 0xFFFF8800.argb
 
     var textDisabled: Int = 0x61000000L.argb

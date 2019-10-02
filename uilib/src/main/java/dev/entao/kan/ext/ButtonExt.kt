@@ -40,6 +40,21 @@ fun <T : Button> T.styleRedRound(): T {
     return this
 }
 
+fun <T : Button> T.styleBlue(): T {
+    style {
+        fillBlue()
+    }
+    return this
+}
+
+fun <T : Button> T.styleBlueRound(): T {
+    style {
+        fillBlue()
+        cornersRound()
+    }
+    return this
+}
+
 fun <T : Button> T.styleWhite(): T {
     style {
         outlineBlue()

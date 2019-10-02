@@ -29,7 +29,12 @@ fun LinearLayout.buttonRedRound(block: Button.() -> Unit): Button {
         this.block()
     }
 }
-
+fun LinearLayout.buttonBlueRound(block: Button.() -> Unit): Button {
+    return this.button(LParam.WidthFill.HeightButton.margins(15)) {
+        styleBlueRound()
+        this.block()
+    }
+}
 //Button
 fun ViewGroup.button(param: ViewGroup.LayoutParams, block: Button.() -> Unit): Button {
     val v = this.createButton()
