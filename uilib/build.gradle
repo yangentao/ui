@@ -42,7 +42,7 @@ dependencies {
     implementation 'dev.entao.kan:json:4.0.3'
     implementation 'dev.entao.kan:http:4.0.6'
     implementation 'dev.entao.kan:log:4.0.0'
-    implementation 'dev.entao.kan:appbase:4.1.7'
+    implementation 'dev.entao.kan:appbase:4.1.8'
 
 
 }
