@@ -1,12 +1,8 @@
 package dev.entao.kan.page
 
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import dev.entao.kan.ext.HeightWrap
-import dev.entao.kan.ext.LParam
-import dev.entao.kan.ext.WidthFill
 import dev.entao.kan.ext.textS
 import dev.entao.kan.widget.ActionMenuItemInfo
 
@@ -19,7 +15,7 @@ class Cmd(var cmd: String = genCmd) {
 	}
 
 	lateinit var view: View
-	var param: ViewGroup.MarginLayoutParams = LParam.WidthFill.HeightWrap
+//	var param: ViewGroup.MarginLayoutParams = LParam.WidthFill.HeightWrap
 
 	val items = ArrayList<ActionMenuItemInfo>()
 

@@ -14,8 +14,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 4203
-        versionName "4.2.3"
+        versionCode 4204
+        versionName "4.2.4"
     }
     compileOptions {
         sourceCompatibility = 1.7

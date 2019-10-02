@@ -62,7 +62,11 @@ abstract class CmdPage : TitlePage() {
         cmdPanel.removeAllViews()
         for (c in cmdList) {
             c.view.removeFromParent()
-            cmdPanel.addView(c.view, c.param)
+            if (c.view.layoutParams != null) {
+                cmdPanel.addView(c.view)
+            } else {
+                cmdPanel.addView(c.view, LParam.WidthFill.HeightWrap)
+            }
             c.view.tag = c
             if (c.clickable) {
                 c.view.onClick {
@@ -176,41 +180,42 @@ abstract class CmdPage : TitlePage() {
     fun cmdButtonRed(text: String): Cmd {
         return cmd(text) {
             view = buttonItemView {
+                layoutParams = LParam.width(280).HeightButton.gravityCenter().margins(20)
                 styleRedRound()
                 textS = text
             }
-            param = LParam.width(280).HeightButton.gravityCenter().margins(20)
+
         }
     }
 
     fun cmdButtonGreen(text: String): Cmd {
         return cmd(text) {
             view = buttonItemView {
+                layoutParams = LParam.width(280).HeightButton.gravityCenter().margins(20)
                 styleGreenRound()
                 textS = text
             }
-            param = LParam.width(280).HeightButton.gravityCenter().margins(20)
         }
     }
 
     fun cmdButtonWhite(text: String): Cmd {
         return cmd(text) {
             view = buttonItemView {
+                layoutParams = LParam.width(280).HeightButton.gravityCenter().margins(20)
                 style {
                     outlineBlue()
                     cornersRound()
                 }
                 textS = text
             }
-            param = LParam.width(280).HeightButton.gravityCenter().margins(20)
         }
     }
 
     fun sep(sepHeight: Int = 10): CmdPage {
         val a = Cmd(Cmd.Sep)
         a.clickable = false
-        a.param.height(sepHeight)
         a.view = createView().backColor(divider.color)
+        a.view.layoutParams = LParam.WidthFill.height(sepHeight)
         cmdList.add(a)
         return this
     }
@@ -218,10 +223,10 @@ abstract class CmdPage : TitlePage() {
     fun label(label: String, height: Int = 50): TextItemView {
         val a = Cmd(Cmd.Sep)
         a.clickable = false
-        a.param.height(height)
         val tv = textItemView {
             text = label
             backColorPage()
+            layoutParams = LParam.WidthFill.height(height)
         }
         a.view = tv
         cmdList.add(a)

@@ -34,7 +34,7 @@ class ButtonStyle(val button: TextView) {
     fun cornersRound(): ButtonStyle {
         var h = button.height
         if (h <= 0) {
-            h = button.layoutParams.height
+            h = button.layoutParams?.height ?: 0
         }
         if (h > 0) {
             return corners(px2dp(h / 2))
