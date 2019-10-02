@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import dev.entao.kan.appbase.ex.dp
 import dev.entao.kan.base.ColorX
 import dev.entao.kan.creator.addViewX
 import dev.entao.kan.creator.createTextView
 import dev.entao.kan.ext.*
+import dev.entao.kan.log.logd
 import dev.entao.kan.page.TitlePage
 import dev.entao.kan.widget.BottomActionBar
 import dev.entao.kan.widget.HeightBottomActionBar
@@ -34,17 +36,16 @@ class HelloPage : TitlePage() {
             rightItems {
                 "OK" ON ::onOK
             }
-
-
         }
+        contentView.addView(TextView(context), LParam.WidthFill.HeightFlex)
 
         contentView.addViewX(BottomActionBar(context), LParam.WidthFill.HeightBottomActionBar.marginTop(20)) {
-            "ADD" ON ::onOK
-            "Delete" to R.drawable.yet_del ON ::onOK
+            "我的" ON ::onOK
+            "删除" to R.drawable.yet_del ON ::onOK
+            "菜单" to R.drawable.yet_menu ON ::onOK
             R.drawable.yet_me ON ::onOK
-            //setBackgroundColor(ColorX.blueDark)
 
-//            styleBlue()
+            styleBlue()
             commit()
         }
 
@@ -52,6 +53,7 @@ class HelloPage : TitlePage() {
     }
 
     fun onOK() {
+        logd("Hello")
     }
 
 

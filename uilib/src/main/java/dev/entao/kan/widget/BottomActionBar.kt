@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import dev.entao.kan.appbase.ex.*
 import dev.entao.kan.base.BlockUnit
 import dev.entao.kan.base.ColorX
@@ -72,7 +73,6 @@ class BottomActionBar(context: Context) : LinearLayout(context) {
 
         for (item in items) {
             val v = makeView(item)
-            v.padding(4)
             this.addView(v, LParam.WidthFlex.HeightFill.gravityCenter())
             v.setOnClickListener {
                 item.onAction()
@@ -97,33 +97,36 @@ class BottomActionBar(context: Context) : LinearLayout(context) {
         }
 
     private fun makeView(item: BarItemData): View {
+        val d: Drawable? = item.draw
+        val rl = RelativeLayout(context).genId()
         if (item.label.isEmpty()) {
             val v = createImageView()
-            v.scaleCenter()
-            val d: Drawable? = item.draw
+            v.scaleCenterInside()
             if (d != null) {
-                val dd = d.sizeX(36, 36).drawable
-                dd.tinted(itemColor)
-                v.setImageDrawable(dd)
+                v.setImageDrawable(d.tinted(itemColor))
             }
-            return v
+            rl.addView(v, RParam.size(36).centerInParent())
         } else {
-            val v = createTextView()
-            v.gravityCenter()
-
-            v.setTextColor(itemColor)
-            v.text = item.label
-            val d: Drawable? = item.draw
-            if (d != null) {
+            if (d == null) {
+                val v = createTextView()
+                v.gravityCenter()
+                v.setTextColor(itemColor)
+                v.text = item.label
+                v.textSizeB()
+                rl.addView(v, RParam.Wrap.centerInParent())
+            } else {
+                val v = createTextView()
+                v.gravityCenter()
+                v.setTextColor(itemColor)
+                v.text = item.label
                 val dd = d.sizeH(24).tinted(itemColor)
-                v.compoundDrawablePadding = 0
+                v.compoundDrawablePadding = 2.dp
                 v.setCompoundDrawables(null, dd, null, null)
                 v.textSizeD()
-            } else {
-                v.textSizeB()
+                rl.addView(v, RParam.Wrap.centerInParent())
             }
-            return v
         }
+        return rl
     }
 
     infix fun String.ON(block: BlockUnit): BarItemData {
